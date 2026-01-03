@@ -300,7 +300,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 95168679}
-  - component: {fileID: 95168680}
   m_Layer: 0
   m_Name: '[CONTROLLERS]'
   m_TagString: Untagged
@@ -321,25 +320,12 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 580294985}
   - {fileID: 644394077}
   - {fileID: 1689672684}
   - {fileID: 842684433}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &95168680
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 95168678}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f563a562e88b564c89beb92b134f40d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UIController
-  m_objectActivationText: {fileID: 0}
-  m_figureText: {fileID: 0}
 --- !u!1 &136312869
 GameObject:
   m_ObjectHideFlags: 0
@@ -549,6 +535,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RollRotation
   m_angleRotation: 72
   m_rotationTime: 0.2
+  m_puzzle: {fileID: 580294986}
   m_rightNmber: 3
 --- !u!1 &380803009
 GameObject:
@@ -799,12 +786,57 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d152976c65fd136448dab0ca849289f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LockCheck
-  m_locks:
+  m_doorAngel: {x: 0, y: 0, z: 90}
+  m_openingTime: 1
+  m_puzzle: {fileID: 580294986}
+--- !u!1 &580294984
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 580294985}
+  - component: {fileID: 580294986}
+  m_Layer: 0
+  m_Name: RollPuzzle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &580294985
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 580294984}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 13.62555, y: 0, z: -7.9856205}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 95168679}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &580294986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 580294984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d02fe432fcdc3ed4ba860debdc02887c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Puzzles.RollPuzzle
+  m_rolls:
   - {fileID: 1115704493}
   - {fileID: 1414840112}
   - {fileID: 313681853}
-  m_doorAngel: {x: 0, y: 0, z: 90}
-  m_openingTime: 1
 --- !u!1 &644394076
 GameObject:
   m_ObjectHideFlags: 0
@@ -1251,6 +1283,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RollRotation
   m_angleRotation: 72
   m_rotationTime: 0.2
+  m_puzzle: {fileID: 580294986}
   m_rightNmber: 1
 --- !u!1 &1118570180
 GameObject:
@@ -6862,12 +6895,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d152976c65fd136448dab0ca849289f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LockCheck
-  m_locks:
-  - {fileID: 1115704493}
-  - {fileID: 1414840112}
-  - {fileID: 313681853}
   m_doorAngel: {x: 0, y: 0, z: -90}
   m_openingTime: 1
+  m_puzzle: {fileID: 0}
 --- !u!114 &1414840112
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6882,6 +6912,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RollRotation
   m_angleRotation: 72
   m_rotationTime: 0.2
+  m_puzzle: {fileID: 580294986}
   m_rightNmber: 2
 --- !u!1 &1461289148
 GameObject:
