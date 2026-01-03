@@ -1,6 +1,6 @@
 using System.Collections;
 using UnityEngine;
-
+using Puzzles;
 public class RotationArrow : Usable
 {
     

@@ -1,46 +1,44 @@
 using System.Collections;
 using UnityEngine;
-
-public class LockCheck : MonoBehaviour
-{
-    [SerializeField] private RollRotation[] m_locks;
-    [SerializeField] private Vector3 m_doorAngel = new Vector3(90f,0,0);
-    [SerializeField] private float m_openingTime = 1f;
-    private bool m_opened = false;
-
-    void Update()
+namespace Puzzles {
+    public class LockCheck : MonoBehaviour
     {
-        bool unlocked = true;
-        foreach (RollRotation roll in m_locks)
+
+        [SerializeField] private Vector3 m_doorAngel = new Vector3(90f, 0, 0);
+        [SerializeField] private float m_openingTime = 1f;
+        [SerializeField] private BasePuzzle m_puzzle;
+
+        private void OnEnable()
         {
-            if (roll.isRightNumber == false)
+            if (m_puzzle != null)
             {
-                //print("not open");
-                unlocked = false;
-                break;
+                print("sub");
+                m_puzzle.m_onSolved += OpenDoor;
             }
-
         }
-        if (unlocked && !m_opened)
+        private void OnDisable()
         {
-            print("try open");
-            m_opened = true;
-            StartCoroutine(OpenDoor());
+            if (m_puzzle != null)
+            {
+                print("unsub");
+                m_puzzle.m_onSolved -= OpenDoor;
+            }
         }
-
-    }
-
-
-    IEnumerator OpenDoor()
-    {
-        print("open");
-        for (float i = 0; i < m_openingTime; i+=Time.deltaTime)
+        private void OpenDoor()
         {
-            Vector3 angle = m_doorAngel * Time.deltaTime;
-            transform.Rotate(angle);
-            yield return null;
+            StartCoroutine(OpenDoorCoroutine());
         }
-        print("opened");
+        IEnumerator OpenDoorCoroutine()
+        {
+            print("open");
+            for (float i = 0; i < m_openingTime; i += Time.deltaTime)
+            {
+                Vector3 angle = m_doorAngel * Time.deltaTime;
+                transform.Rotate(angle);
+                yield return null;
+            }
+            print("opened");
 
+        }
     }
 }
