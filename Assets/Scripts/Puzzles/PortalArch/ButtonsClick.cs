@@ -1,12 +1,14 @@
 using System.Collections;
 using UnityEngine;
+using Puzzles;
 
 public class ButtonsClick : Usable
 {
 
-    [SerializeField] private RuneActivation[] m_runeActivations;
+    [SerializeField] private RuneSwitch[] m_runeActivations;
     [SerializeField] private Vector3 m_clickedShiftPosition;
     [SerializeField] private float m_timeClick = 0.3f;
+    [SerializeField] private BasePuzzle m_puzzle;
     private bool m_clicked = false;
     private Vector3 m_startPosition;
     private Vector3 m_newPosition;
@@ -27,6 +29,7 @@ public class ButtonsClick : Usable
             {
                 m_runeActivations[i].changeState();
             }
+            m_puzzle.CheckCondition();
         }
     }
     

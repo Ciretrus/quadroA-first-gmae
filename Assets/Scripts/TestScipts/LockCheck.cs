@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 namespace Puzzles {
-    public class LockCheck : MonoBehaviour
+    public class DoorActivation : MonoBehaviour
     {
 
         [SerializeField] private Vector3 m_doorAngel = new Vector3(90f, 0, 0);

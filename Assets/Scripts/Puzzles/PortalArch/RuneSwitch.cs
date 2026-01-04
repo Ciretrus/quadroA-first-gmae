@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.Rendering.DebugUI;
 
-public class RuneActivation : MonoBehaviour
+public class RuneSwitch : MonoBehaviour
 {
 
     private MaterialPropertyBlock m_emissionMat;
@@ -13,6 +13,7 @@ public class RuneActivation : MonoBehaviour
     [SerializeField] private Color m_colorOn = Color.cyan;
     private bool m_isStarted = false;
     private bool m_isActive = false;
+    private Coroutine coroutine;
     public bool isActive
     {
         get { return m_isActive; }
@@ -24,22 +25,20 @@ public class RuneActivation : MonoBehaviour
     }
 
     public bool changeState() 
-    {  if (m_isStarted) return false;
-        else
-        {
+    {       if (coroutine != null) StopCoroutine(coroutine);  
             m_isStarted = true;
             if (m_isActive)
             {
                 m_isActive = false;
-                StartCoroutine(StartGlowing(m_colorOff, 1));
+                coroutine = StartCoroutine(StartGlowing(m_colorOff, 1));
             }
             else 
             { 
                 m_isActive = true;
-                StartCoroutine(StartGlowing(m_colorOn, 1));
+                coroutine = StartCoroutine(StartGlowing(m_colorOn, 1));
             }
             return true;
-        }
+        
     } 
     IEnumerator StartGlowing(Color color,float intensity)
     {   m_isStarted = true;

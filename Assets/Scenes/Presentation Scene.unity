@@ -682,6 +682,7 @@ MonoBehaviour:
   - {fileID: 1266217815}
   m_clickedShiftPosition: {x: 0, y: 0, z: 0}
   m_timeClick: 0.3
+  m_puzzle: {fileID: 842684434}
 --- !u!64 &526569095
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1067,7 +1068,6 @@ MonoBehaviour:
   - {fileID: 655146100}
   - {fileID: 1266217815}
   - {fileID: 867477514}
-  m_particle: {fileID: 1299888718}
 --- !u!114 &867477514
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1175,6 +1175,7 @@ MonoBehaviour:
   - {fileID: 655146100}
   m_clickedShiftPosition: {x: 0, y: 0, z: 0}
   m_timeClick: 0.3
+  m_puzzle: {fileID: 842684434}
 --- !u!64 &976860151
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7313,6 +7314,7 @@ MonoBehaviour:
   - {fileID: 1266217815}
   m_clickedShiftPosition: {x: 0, y: 0, z: 0}
   m_timeClick: 0.3
+  m_puzzle: {fileID: 842684434}
 --- !u!64 &1643170211
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7928,6 +7930,7 @@ MonoBehaviour:
   - {fileID: 867477514}
   m_clickedShiftPosition: {x: 0, y: 0, z: 0}
   m_timeClick: 0.3
+  m_puzzle: {fileID: 842684434}
 --- !u!64 &1958411124
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8221,6 +8224,7 @@ MonoBehaviour:
   - {fileID: 655146100}
   m_clickedShiftPosition: {x: 0, y: 0, z: 0}
   m_timeClick: 0.3
+  m_puzzle: {fileID: 842684434}
 --- !u!64 &2125765095
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -24735,20 +24739,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 8178478553066435436}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06dba59b62b824744941bc490ed90dd9, type: 3}
+  m_Script: {fileID: 11500000, guid: ee39181370055394e8b23fb60c4af08b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PortalActivation
-  m_runes:
-  - {fileID: 1169413176}
-  - {fileID: 251878297}
-  - {fileID: 1133677167}
-  - {fileID: 1991383404}
-  - {fileID: 882891945}
-  - {fileID: 578667530}
-  - {fileID: 781410513}
-  - {fileID: 655146100}
-  - {fileID: 1266217815}
-  - {fileID: 867477514}
+  m_puzzle: {fileID: 842684434}
   m_particle: {fileID: 1299888718}
 --- !u!1 &8207587393068808795
 GameObject:
