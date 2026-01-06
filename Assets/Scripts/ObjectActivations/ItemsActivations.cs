@@ -10,6 +10,7 @@ public class ItemsActivations : MonoBehaviour
 
     private CameraMovement m_cameraMovement;
     private Vector3 m_screenCenter;
+    private Usable m_usable;
     private bool m_isUIBlocked;
 
     private void Awake()
@@ -27,29 +28,34 @@ public class ItemsActivations : MonoBehaviour
 
         if (hit.collider != null)
         {
-            Usable usableObject = hit.collider.gameObject.GetComponent<Usable>();
+            m_usable = hit.collider.gameObject.GetComponent<Usable>();
 
-            if (usableObject != null)
+            if (m_usable != null)
             {
                 m_uiController.ShowObjectActivationText(true);
+                m_usable.GetComponent<Outline>().enabled = true;
                 if (Input.GetKeyDown(KeyCode.E))
                 {
-                    switch (usableObject.type)
+                    switch (m_usable.type)
                     {
                         case UsableType.NonBlocking: Debug.Log("Interacted with Non-Blocking UI thing"); break;
                         case UsableType.Blocking:
                             {
-                                ChangeUIMode(usableObject);
+                                ChangeUIMode(m_usable);
                                 break;
                             }
                     }
-                    usableObject.Use();
+                    m_usable.Use();
                 }
             }
         }
         else
         {
             m_uiController.ShowObjectActivationText(false);
+            if (m_usable != null)
+            {
+                m_usable.GetComponent<Outline>().enabled = false;
+            }
         }
     }
 

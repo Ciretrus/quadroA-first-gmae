@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Outline))]
 public abstract class Usable: MonoBehaviour
 {
     private UsableType m_type;
