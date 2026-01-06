@@ -42,13 +42,13 @@ public class FigureDrawing : MonoBehaviour
         {
             HasStartedDrawing?.Invoke();
 
-            // TODO Fix line position
             Vector3 mousePixelPos = Input.mousePosition;
             mousePixelPos.z = Camera.main.nearClipPlane + Camera.main.nearClipPlane * 0.01f;
 
-            Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(mousePixelPos);
+            Vector3 mouseWorldPos = Camera.main.ScreenToViewportPoint(mousePixelPos);
             mouseWorldPos.x = - mouseWorldPos.x;
-            mouseWorldPos.y -= 1.25f;
+            mouseWorldPos.x += 0.47f;
+            mouseWorldPos.y -= 0.5f;
             mouseWorldPos.z = 0f;
 
             if (m_dotsList.Count > 0)

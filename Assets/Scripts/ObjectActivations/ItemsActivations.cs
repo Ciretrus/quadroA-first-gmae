@@ -77,6 +77,7 @@ public class ItemsActivations : MonoBehaviour
             m_camera.transform.localPosition = new Vector3(cameraPos.x, cameraPos.y, z);
 
             Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
 
         m_isUIBlocked = !m_isUIBlocked;

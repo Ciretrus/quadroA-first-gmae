@@ -3,19 +3,25 @@ using UnityEngine;
 
 public class DrawingFigureController : MonoBehaviour
 {
-    [SerializeField] private FigureDrawing m_figureDrawing;
+    [SerializeField] private FigureDrawing[] m_figuresDrawings;
     [SerializeField] private UIController m_uiController;
 
     private void OnEnable()
     {
-        m_figureDrawing.HasDrawnSymbol += CompareDrawing;
-        m_figureDrawing.HasStartedDrawing += HideText;
+        foreach(var figure in m_figuresDrawings)
+        {
+            figure.HasDrawnSymbol += CompareDrawing;
+            figure.HasStartedDrawing += HideText;
+        }
     }
 
     private void OnDisable()
     {
-        m_figureDrawing.HasDrawnSymbol -= CompareDrawing;
-        m_figureDrawing.HasStartedDrawing -= HideText;
+        foreach (var figure in m_figuresDrawings)
+        {
+            figure.HasDrawnSymbol -= CompareDrawing;
+            figure.HasStartedDrawing -= HideText;
+        }
     }
 
     private void CompareDrawing((string, List<Vector3>)[] originals, List<Vector3> points)
