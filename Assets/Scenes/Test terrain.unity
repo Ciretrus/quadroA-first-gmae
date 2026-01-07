@@ -538,7 +538,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f563a562e88b564c89beb92b134f40d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIController
-  m_ObjectActivationText: {fileID: 1710759363}
+  m_objectActivationText: {fileID: 1710759363}
+  m_figureText: {fileID: 0}
 --- !u!1 &505513644
 GameObject:
   m_ObjectHideFlags: 0
@@ -1911,6 +1912,7 @@ GameObject:
   - component: {fileID: 1119403619}
   - component: {fileID: 1119403620}
   - component: {fileID: 1119403621}
+  - component: {fileID: 1119403622}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2095,9 +2097,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c85f8aedc10102841b8a863c8c854c13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemsActivations
+  m_playerController: {fileID: 0}
   m_camera: {fileID: 1119403615}
   m_uiController: {fileID: 493258490}
   m_rayDistance: 3
+--- !u!114 &1119403622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1119403613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5caf7784fdb51814dbc2e51f8e9698fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerController
+  m_characterController: {fileID: 0}
+  m_head: {fileID: 0}
+  m_walkSpeed: 10
+  m_sprintSpeed: 20
+  m_sneakSpeed: 5
+  m_jumpForce: 5
+  _groundCheckerPivot: {fileID: 0}
+  _checkGroundRadius: 0.3
+  _groundMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &1162719179
 GameObject:
   m_ObjectHideFlags: 0
@@ -2683,7 +2709,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1710759364
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6443,6 +6469,7 @@ GameObject:
   - component: {fileID: 6299481657668279649}
   - component: {fileID: 6687542817279352194}
   - component: {fileID: 6687542817279352195}
+  - component: {fileID: 6687542817279352196}
   m_Layer: 0
   m_Name: arrow  down (6)
   m_TagString: Untagged
@@ -7786,6 +7813,7 @@ GameObject:
   - component: {fileID: 8551538329265042645}
   - component: {fileID: 8854376604415237619}
   - component: {fileID: 8854376604415237620}
+  - component: {fileID: 8854376604415237621}
   m_Layer: 0
   m_Name: arrow  down (2)
   m_TagString: Untagged
@@ -9022,6 +9050,7 @@ GameObject:
   - component: {fileID: 3365330232666653471}
   - component: {fileID: 7880836866785131652}
   - component: {fileID: 7880836866785131653}
+  - component: {fileID: 7880836866785131654}
   m_Layer: 0
   m_Name: arrow  up (3)
   m_TagString: Untagged
@@ -9948,6 +9977,24 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -5495902117074765545, guid: f7ac4f7984dcdc046ab44e961de6c9ab, type: 3}
+--- !u!114 &6687542817279352196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2967142473277721752}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Outline
+  outlineMode: 0
+  outlineColor: {r: 0.23921569, g: 0.5882353, b: 0.7529412, a: 1}
+  outlineWidth: 10
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!33 &6697621764403852239
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -10447,6 +10494,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RollRotation
   m_angleRotation: 72
   m_rotationTime: 0.2
+  m_puzzle: {fileID: 0}
   m_rightNmber: 1
 --- !u!1 &7150756833699428574
 GameObject:
@@ -11197,6 +11245,24 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -5495902117074765545, guid: f7ac4f7984dcdc046ab44e961de6c9ab, type: 3}
+--- !u!114 &7880836866785131654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5927086941986229644}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Outline
+  outlineMode: 0
+  outlineColor: {r: 0.23921569, g: 0.5882353, b: 0.7529412, a: 1}
+  outlineWidth: 10
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!33 &7896021340258357101
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -11272,6 +11338,7 @@ GameObject:
   - component: {fileID: 6735654380623922506}
   - component: {fileID: 7977650933204487195}
   - component: {fileID: 7977650933204487196}
+  - component: {fileID: 7977650933204487197}
   m_Layer: 0
   m_Name: arrow  up (5)
   m_TagString: Untagged
@@ -11315,6 +11382,24 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -5495902117074765545, guid: f7ac4f7984dcdc046ab44e961de6c9ab, type: 3}
+--- !u!114 &7977650933204487197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7977650933204487193}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Outline
+  outlineMode: 0
+  outlineColor: {r: 0.23921569, g: 0.5882353, b: 0.7529412, a: 1}
+  outlineWidth: 10
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!4 &8176319575640381651
 Transform:
   m_ObjectHideFlags: 0
@@ -11463,6 +11548,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RollRotation
   m_angleRotation: 72
   m_rotationTime: 0.2
+  m_puzzle: {fileID: 0}
   m_rightNmber: 1
 --- !u!4 &8364049461961377702
 Transform:
@@ -11983,12 +12069,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d152976c65fd136448dab0ca849289f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LockCheck
-  m_locks:
-  - {fileID: 8346782949469404830}
-  - {fileID: 8938287146111639949}
-  - {fileID: 7147239352065288805}
-  m_doorAngel: 90
+  m_doorAngel: {x: 90, y: 0, z: 0}
   m_openingTime: 1
+  m_puzzle: {fileID: 0}
 --- !u!4 &8613808877374890584
 Transform:
   m_ObjectHideFlags: 0
@@ -12077,6 +12160,7 @@ GameObject:
   - component: {fileID: 413767417360055964}
   - component: {fileID: 8772113041375560324}
   - component: {fileID: 8772113041375560325}
+  - component: {fileID: 8772113041375560326}
   m_Layer: 0
   m_Name: arrow  up (1)
   m_TagString: Untagged
@@ -12120,6 +12204,24 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -5495902117074765545, guid: f7ac4f7984dcdc046ab44e961de6c9ab, type: 3}
+--- !u!114 &8772113041375560326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8772113041375560323}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Outline
+  outlineMode: 0
+  outlineColor: {r: 0.23921569, g: 0.5882353, b: 0.7529412, a: 1}
+  outlineWidth: 10
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!4 &8796187630163793197
 Transform:
   m_ObjectHideFlags: 0
@@ -12249,6 +12351,24 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -5495902117074765545, guid: f7ac4f7984dcdc046ab44e961de6c9ab, type: 3}
+--- !u!114 &8854376604415237621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4655739782340718082}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Outline
+  outlineMode: 0
+  outlineColor: {r: 0.23921569, g: 0.5882353, b: 0.7529412, a: 1}
+  outlineWidth: 10
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!4 &8857944162511822394
 Transform:
   m_ObjectHideFlags: 0
@@ -12345,6 +12465,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RollRotation
   m_angleRotation: 72
   m_rotationTime: 0.2
+  m_puzzle: {fileID: 0}
   m_rightNmber: 1
 --- !u!1 &9017328540304301056
 GameObject:
@@ -12385,6 +12506,7 @@ GameObject:
   - component: {fileID: 4626226985704493243}
   - component: {fileID: 9031052415204908380}
   - component: {fileID: 9031052415204908381}
+  - component: {fileID: 9031052415204908382}
   m_Layer: 0
   m_Name: arrow  down (4)
   m_TagString: Untagged
@@ -12428,6 +12550,24 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -5495902117074765545, guid: f7ac4f7984dcdc046ab44e961de6c9ab, type: 3}
+--- !u!114 &9031052415204908382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9031052415204908379}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Outline
+  outlineMode: 0
+  outlineColor: {r: 0.23921569, g: 0.5882353, b: 0.7529412, a: 1}
+  outlineWidth: 10
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!4 &9078949021367158690
 Transform:
   m_ObjectHideFlags: 0
