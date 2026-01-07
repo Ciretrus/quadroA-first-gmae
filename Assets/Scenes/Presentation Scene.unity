@@ -9841,7 +9841,7 @@ GameObject:
   - component: {fileID: 7718907606533275194}
   - component: {fileID: 882891945}
   - component: {fileID: 882891948}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube.006
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11718,7 +11718,7 @@ GameObject:
   - component: {fileID: 2210900028146518030}
   - component: {fileID: 781410513}
   - component: {fileID: 781410516}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube.008
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13261,7 +13261,7 @@ GameObject:
   - component: {fileID: 7584263323796196814}
   - component: {fileID: 1266217815}
   - component: {fileID: 1266217819}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube.010
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13567,7 +13567,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -14789,7 +14789,7 @@ GameObject:
   - component: {fileID: 4895857962906328217}
   - component: {fileID: 867477514}
   - component: {fileID: 867477517}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube.011
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14870,13 +14870,13 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 65
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 63
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -16266,7 +16266,7 @@ GameObject:
   - component: {fileID: 8771326705853684176}
   - component: {fileID: 1169413176}
   - component: {fileID: 1169413179}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16674,7 +16674,7 @@ GameObject:
   - component: {fileID: 7828030941320831593}
   - component: {fileID: 655146100}
   - component: {fileID: 655146103}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube.009
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17164,7 +17164,7 @@ GameObject:
   - component: {fileID: 227493706844844963}
   - component: {fileID: 1133677167}
   - component: {fileID: 1133677168}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20095,6 +20095,7 @@ GameObject:
   - component: {fileID: 8575918310154925580}
   - component: {fileID: 2626526346310695819}
   - component: {fileID: 962805315}
+  - component: {fileID: 8575918310154925581}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -20133,6 +20134,8 @@ GameObject:
   - component: {fileID: 70481996273344745}
   - component: {fileID: 2692429925738935291}
   - component: {fileID: 35676759598914679}
+  - component: {fileID: 8282332754217140084}
+  - component: {fileID: 8282332754217140083}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -22151,7 +22154,7 @@ GameObject:
   - component: {fileID: 3939257531865636788}
   - component: {fileID: 1991383404}
   - component: {fileID: 1991383407}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24940,6 +24943,40 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8772080642847817578}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8282332754217140083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6158033490160207269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Core.Runtime::UnityEngine.Rendering.Volume
+  m_IsGlobal: 1
+  priority: 0
+  blendDistance: 0
+  weight: 0
+  sharedProfile: {fileID: 11400000, guid: 9763d5d31eda1964b921e975d6d0c7c8, type: 2}
+--- !u!114 &8282332754217140084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6158033490160207269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Core.Runtime::UnityEngine.Rendering.Volume
+  m_IsGlobal: 1
+  priority: 0
+  blendDistance: 0
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: 05b9afd017a231d4882ccd01ebdd95a7, type: 2}
 --- !u!114 &8319179692011743415
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25053,7 +25090,7 @@ GameObject:
   - component: {fileID: 7596077348340933630}
   - component: {fileID: 251878297}
   - component: {fileID: 251878298}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25600,6 +25637,24 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &8575918310154925581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6142269424880152683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 447a984c2e4369b40a7a47123666dff4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ThiefEye
+  m_camera: {fileID: 3407456236391867822}
+  m_layerThiefEye:
+    serializedVersion: 2
+    m_Bits: 64
+  m_activationTime: 0.3
+  m_durationTime: 3
 --- !u!33 &8578776536930302424
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -25621,7 +25676,7 @@ GameObject:
   - component: {fileID: 588013627327140839}
   - component: {fileID: 578667530}
   - component: {fileID: 578667533}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube.007
   m_TagString: Untagged
   m_Icon: {fileID: 0}
