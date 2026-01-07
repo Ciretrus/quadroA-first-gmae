@@ -47,7 +47,7 @@ public class FigureDrawing : MonoBehaviour
 
             Vector3 mouseWorldPos = Camera.main.ScreenToViewportPoint(mousePixelPos);
             mouseWorldPos.x = - mouseWorldPos.x;
-            mouseWorldPos.x += 0.47f;
+            mouseWorldPos.x += 0.5f;
             mouseWorldPos.y -= 0.5f;
             mouseWorldPos.z = 0f;
 

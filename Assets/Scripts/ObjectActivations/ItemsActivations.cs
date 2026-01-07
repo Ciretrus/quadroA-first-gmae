@@ -73,14 +73,17 @@ public class ItemsActivations : MonoBehaviour
         }
         else
         {
-            Quaternion newRotation = usable.gameObject.transform.rotation;
-            m_camera.transform.rotation = Quaternion.Euler(0f, newRotation.eulerAngles.y + 180, 0f);
+            Quaternion newRot = usable.gameObject.transform.rotation;
+            transform.rotation = Quaternion.Euler(0f, newRot.eulerAngles.y + 180, 0f);
+            m_camera.transform.localRotation = Quaternion.identity;
 
-            Vector3 newPosition = usable.transform.position;
-            m_camera.transform.position = newPosition;
-            Vector3 cameraPos = m_camera.transform.localPosition;
-            float z = cameraPos.z - 1f;
-            m_camera.transform.localPosition = new Vector3(cameraPos.x, cameraPos.y, z);
+            Vector3 newPos = usable.transform.position;
+            Vector3 position = transform.position;
+            transform.position = new Vector3(newPos.x, position.y, newPos.z);
+            transform.position -= transform.forward;
+
+            Vector3 cameraPos = m_camera.transform.position;
+            m_camera.transform.position = new Vector3(cameraPos.x, newPos.y, cameraPos.z);
 
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;

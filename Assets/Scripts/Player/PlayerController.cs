@@ -23,7 +23,6 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        //Application.targetFrameRate = 60;
         m_input = new PlayerInput();
         m_input.Player.Enable();
 
@@ -31,8 +30,12 @@ public class PlayerController : MonoBehaviour
         m_input.Player.Sprint.performed += Sprint;
         m_input.Player.Sprint.canceled += StopSprint;
         m_input.Player.Sneak.performed += Sneak;
-        // TODO Fix NullRefException
         m_input.Player.Sneak.canceled += StopSneak;
+    }
+
+    private void OnDestroy()
+    {
+        m_input.Player.Disable();
     }
 
     private void Update()
@@ -126,7 +129,6 @@ public class PlayerController : MonoBehaviour
         {
             m_isSneaking = false;
 
-            // TODO Fix NullRefException
             m_head.transform.position += new Vector3(0f, 0.5f, 0f);
         }
     }
