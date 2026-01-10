@@ -149,8 +149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09609ca73b56ad842bdf8e129dcb1699, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DiaryInteractable
-  m_sprite: {fileID: 21300028, guid: 7ab74e659e1f0a34d9cfec21c478fc12, type: 3}
-  m_filename: a
+  m_diaryInteractable: {fileID: 11400000, guid: 6535111763b4ad54ca0f0f6fba624b0a, type: 2}
 --- !u!135 &15468534
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -417,8 +416,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09609ca73b56ad842bdf8e129dcb1699, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DiaryInteractable
-  m_sprite: {fileID: 21300030, guid: 7ab74e659e1f0a34d9cfec21c478fc12, type: 3}
-  m_filename: b
+  m_diaryInteractable: {fileID: 11400000, guid: 9b9bf07c69e92d84493c5e3b4ef5fbef, type: 2}
 --- !u!135 &91329189
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -455,17 +453,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &105812436 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3288200315212206338, guid: de4a297003c38804e9a426c81b13cdbc, type: 3}
-  m_PrefabInstance: {fileID: 570303006}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c85f8aedc10102841b8a863c8c854c13, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ItemsActivations
 --- !u!1 &173978500
 GameObject:
   m_ObjectHideFlags: 0
@@ -1106,10 +1093,6 @@ PrefabInstance:
       propertyPath: m_diary
       value: 
       objectReference: {fileID: 958763508}
-    - target: {fileID: 1967337552844822243, guid: de4a297003c38804e9a426c81b13cdbc, type: 3}
-      propertyPath: m_itemsActivations
-      value: 
-      objectReference: {fileID: 105812436}
     - target: {fileID: 2206868261620830748, guid: de4a297003c38804e9a426c81b13cdbc, type: 3}
       propertyPath: m_Name
       value: Player 1
@@ -1265,8 +1248,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09609ca73b56ad842bdf8e129dcb1699, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DiaryInteractable
-  m_sprite: {fileID: 21300032, guid: 7ab74e659e1f0a34d9cfec21c478fc12, type: 3}
-  m_filename: c
+  m_diaryInteractable: {fileID: 11400000, guid: 428bc4e98138fbe4ebeee151c3a3be69, type: 2}
 --- !u!135 &863099569
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1333,8 +1315,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09609ca73b56ad842bdf8e129dcb1699, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DiaryInteractable
-  m_sprite: {fileID: 21300034, guid: 7ab74e659e1f0a34d9cfec21c478fc12, type: 3}
-  m_filename: d
+  m_diaryInteractable: {fileID: 11400000, guid: 1627e951733f3514a9b627394f56b4ef, type: 2}
 --- !u!135 &930418004
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1522,8 +1503,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09609ca73b56ad842bdf8e129dcb1699, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DiaryInteractable
-  m_sprite: {fileID: 21300038, guid: 7ab74e659e1f0a34d9cfec21c478fc12, type: 3}
-  m_filename: f
+  m_diaryInteractable: {fileID: 11400000, guid: ef2c3b8d0e98b3149a2ac80baab047f3, type: 2}
 --- !u!135 &1097437834
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2107,8 +2087,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09609ca73b56ad842bdf8e129dcb1699, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DiaryInteractable
-  m_sprite: {fileID: 21300036, guid: 7ab74e659e1f0a34d9cfec21c478fc12, type: 3}
-  m_filename: e
+  m_diaryInteractable: {fileID: 11400000, guid: d9447a98f049e664e8001cb69b770237, type: 2}
 --- !u!135 &1679752863
 SphereCollider:
   m_ObjectHideFlags: 0

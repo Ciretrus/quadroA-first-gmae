@@ -33,8 +33,8 @@ public class ItemsActivations : MonoBehaviour
             {
                 m_uiController.ShowObjectActivationText(true);
                 m_usable.GetComponent<Outline>().enabled = true;
-                // TODO Switch to new input system
-                if (Input.GetKeyDown(KeyCode.E))
+
+                if (m_playerController.input.UI.Interact.WasPerformedThisFrame())
                 {
                     switch (m_usable.type)
                     {
@@ -69,6 +69,8 @@ public class ItemsActivations : MonoBehaviour
     public void ChangeUIMode(InputAction.CallbackContext context)
     {
         ChangeMovementState();
+
+        m_isUIBlocked = !m_isUIBlocked;
     }
 
     private void ChangeMovementState()
@@ -77,8 +79,6 @@ public class ItemsActivations : MonoBehaviour
         m_cameraMovement.enabled = !m_cameraMovement.enabled;
 
         ChangeCursorState();
-
-        m_isUIBlocked = !m_isUIBlocked;
     }
 
     private void ChangeCursorState()
@@ -118,5 +118,7 @@ public class ItemsActivations : MonoBehaviour
             Vector3 cameraPos = m_camera.transform.position;
             m_camera.transform.position = new Vector3(cameraPos.x, newPos.y, cameraPos.z);
         }
+
+        m_isUIBlocked = !m_isUIBlocked;
     }
 }

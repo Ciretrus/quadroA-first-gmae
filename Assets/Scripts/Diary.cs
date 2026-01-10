@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class Diary : MonoBehaviour
 {
-    [SerializeField] private GameObject m_pagePrefab;
     [SerializeField] private Dictionary<string, Sprite> m_pages = new Dictionary<string, Sprite>();
+    [SerializeField] private GameObject m_pagePrefab;
     [SerializeField] private DiaryInteractable[] m_interactables;
     [SerializeField] private Button m_buttonBack;
     [SerializeField] private Button m_buttonForward;
@@ -19,9 +19,7 @@ public class Diary : MonoBehaviour
     private void Awake()
     {
         m_spreads = new List<GameObject>();
-        // TODO Bring to a new method
-        m_lastSpread = Instantiate(m_pagePrefab, transform);
-        m_spreads.Add(m_lastSpread);
+        AddSpread();
 
         foreach (var interactable in m_interactables)
         {
@@ -48,15 +46,14 @@ public class Diary : MonoBehaviour
         if (!m_pages.ContainsKey(fileName))
         {
             m_pages.Add(fileName, sprite);
-            AddPage(sprite);
+            AddSprite(sprite);
             if (m_isFull)
             {
                 m_lastSpread.SetActive(false);
                 m_spreads[m_currentSpread - 1].SetActive(false);
-                m_lastSpread = Instantiate(m_pagePrefab, transform);
-                m_spreads.Add(m_lastSpread);
+                AddSpread();
                 m_currentSpread = m_spreads.Count;
-                AddPage(sprite);
+                AddSprite(sprite);
             }
             m_pageAmount++;
         }
@@ -67,7 +64,7 @@ public class Diary : MonoBehaviour
         gameObject.SetActive(!gameObject.activeSelf);
     }
 
-    private void AddPage(Sprite sprite)
+    private void AddSprite(Sprite sprite)
     {
         Image[] images = m_lastSpread.GetComponentsInChildren<Image>();
         foreach (Image image in images)
@@ -107,12 +104,9 @@ public class Diary : MonoBehaviour
         m_spreads[m_currentSpread - 1].SetActive(true);
     }
 
-    private void SwitchPage()
+    private void AddSpread()
     {
-        // 3 5 7 9...
-        int n = m_currentSpread;
-        n++;
-        m_spreads[(n / 2) - 1].SetActive(true);
-        //m_currentSpread.SetActive(false);
+        m_lastSpread = Instantiate(m_pagePrefab, transform);
+        m_spreads.Add(m_lastSpread);
     }
 }
