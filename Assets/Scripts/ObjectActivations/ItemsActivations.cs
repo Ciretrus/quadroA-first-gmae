@@ -50,15 +50,16 @@ public class ItemsActivations : MonoBehaviour
             }
             else if (hit.collider.gameObject.TryGetComponent(out DiaryInteractable interactable))
             {
-                // TODO Add single, non-repetitive notification
-                interactable.TriggerDiaryRecord();
-                m_uiController.ShowDiaryNotification(true);
+                if (!interactable.wasTriggered)
+                {
+                    m_uiController.ShowDiaryNotification();
+                    interactable.TriggerDiaryRecord();
+                }
             }
         }
         else
         {
             m_uiController.ShowObjectActivationText(false);
-            m_uiController.ShowDiaryNotification(false);
             if (m_usable != null)
             {
                 m_usable.GetComponent<Outline>().enabled = false;

@@ -52,8 +52,8 @@ public class Diary : MonoBehaviour
                 m_lastSpread.SetActive(false);
                 m_spreads[m_currentSpread - 1].SetActive(false);
                 AddSpread();
-                m_currentSpread = m_spreads.Count;
                 AddSprite(sprite);
+                m_currentSpread = m_spreads.Count;
             }
             m_pageAmount++;
         }

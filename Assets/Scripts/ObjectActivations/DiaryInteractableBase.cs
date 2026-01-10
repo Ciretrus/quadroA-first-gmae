@@ -8,4 +8,10 @@ public class DiaryInteractableBase : ScriptableObject
 
     public Sprite sprite => m_sprite;
     public string filename => m_filename;
+    public bool wasTriggered { get; set; }
+
+    private void OnValidate()
+    {
+        wasTriggered = false;
+    }
 }

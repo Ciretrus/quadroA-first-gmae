@@ -4,8 +4,8 @@ using TMPro;
 public class UIController : MonoBehaviour
 {
     [SerializeField] private GameObject m_objectActivationText;
-    [SerializeField] private GameObject m_newDiaryRecordText;
     [SerializeField] private TMP_Text m_figureText;
+    [SerializeField] private DiaryNotificationSystem m_notificationSystem;
 
     public void ShowObjectActivationText(bool shouldBeActivated)
     {
@@ -18,8 +18,8 @@ public class UIController : MonoBehaviour
         m_figureText.gameObject.SetActive(shouldBeActivated);
     }
 
-    public void ShowDiaryNotification(bool shouldBeActivated)
+    public void ShowDiaryNotification()
     {
-        m_newDiaryRecordText.SetActive(shouldBeActivated);
+        m_notificationSystem.TriggerNotification();
     }
 }
