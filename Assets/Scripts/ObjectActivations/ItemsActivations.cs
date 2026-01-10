@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(PlayerController))]
 public class ItemsActivations : MonoBehaviour
@@ -28,24 +29,31 @@ public class ItemsActivations : MonoBehaviour
 
         if (hit.collider != null)
         {
-            m_usable = hit.collider.gameObject.GetComponent<Usable>();
-
-            if (m_usable != null)
+            if (hit.collider.gameObject.TryGetComponent(out m_usable))
             {
                 m_uiController.ShowObjectActivationText(true);
                 m_usable.GetComponent<Outline>().enabled = true;
-                if (Input.GetKeyDown(KeyCode.E))
+
+                if (m_playerController.input.UI.Interact.WasPerformedThisFrame())
                 {
                     switch (m_usable.type)
                     {
                         case UsableType.NonBlocking: Debug.Log("Interacted with Non-Blocking UI thing"); break;
                         case UsableType.Blocking:
                             {
-                                ChangeUIMode(m_usable);
+                                ChangeDrawingMode(m_usable);
                                 break;
                             }
                     }
                     m_usable.Use();
+                }
+            }
+            else if (hit.collider.gameObject.TryGetComponent(out DiaryInteractable interactable))
+            {
+                if (!interactable.wasTriggered)
+                {
+                    m_uiController.ShowDiaryNotification();
+                    interactable.TriggerDiaryRecord();
                 }
             }
         }
@@ -59,15 +67,41 @@ public class ItemsActivations : MonoBehaviour
         }
     }
 
-    private void ChangeUIMode(Usable usable)
+    public void ChangeUIMode(InputAction.CallbackContext context)
+    {
+        ChangeMovementState();
+
+        m_isUIBlocked = !m_isUIBlocked;
+    }
+
+    private void ChangeMovementState()
     {
         m_playerController.enabled = !m_playerController.enabled;
         m_cameraMovement.enabled = !m_cameraMovement.enabled;
 
+        ChangeCursorState();
+    }
+
+    private void ChangeCursorState()
+    {
+        if (m_isUIBlocked)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+    }
+
+    private void ChangeDrawingMode(Usable usable)
+    {
+        ChangeMovementState();
+
         if (m_isUIBlocked)
         {
             m_camera.transform.localPosition = Vector3.zero;
-            Cursor.lockState = CursorLockMode.Locked;
 
             m_uiController.ShowFigureText(false, "");
         }
@@ -84,9 +118,6 @@ public class ItemsActivations : MonoBehaviour
 
             Vector3 cameraPos = m_camera.transform.position;
             m_camera.transform.position = new Vector3(cameraPos.x, newPos.y, cameraPos.z);
-
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
         }
 
         m_isUIBlocked = !m_isUIBlocked;

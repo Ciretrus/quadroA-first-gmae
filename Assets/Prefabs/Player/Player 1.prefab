@@ -244,17 +244,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   m_characterController: {fileID: 4996030113193046766}
+  m_itemsActivations: {fileID: 3288200315212206338}
   m_head: {fileID: 6347477311793302738}
+  _groundCheckerPivot: {fileID: 8907035525854142530}
   m_walkSpeed: 10
   m_sprintSpeed: 25
   m_sneakSpeed: 3
   m_jumpForce: 5
-  m_sneakHeight: 0.5
-  _groundCheckerPivot: {fileID: 8907035525854142530}
   _checkGroundRadius: 0.3
   _groundMask:
     serializedVersion: 2
     m_Bits: 8
+  m_diary: {fileID: 0}
 --- !u!114 &3288200315212206338
 MonoBehaviour:
   m_ObjectHideFlags: 0
