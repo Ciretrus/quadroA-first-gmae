@@ -884,6 +884,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UIController
   m_objectActivationText: {fileID: 57704391}
   m_figureText: {fileID: 0}
+  m_notificationSystem: {fileID: 0}
 --- !u!114 &655146100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7499,6 +7500,7 @@ Transform:
   - {fileID: 8976682774643242059}
   - {fileID: 8976682774752841220}
   - {fileID: 8976682773382761663}
+  - {fileID: 5399865485476380187}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &1780452264
@@ -13313,16 +13315,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   m_characterController: {fileID: 8575918310154925580}
+  m_itemsActivations: {fileID: 0}
   m_head: {fileID: 7568001212831524304}
+  _groundCheckerPivot: {fileID: 1230060246}
   m_walkSpeed: 10
   m_sprintSpeed: 25
   m_sneakSpeed: 3
   m_jumpForce: 5
-  _groundCheckerPivot: {fileID: 1230060246}
   _checkGroundRadius: 0.3
   _groundMask:
     serializedVersion: 2
     m_Bits: 8
+  m_diary: {fileID: 0}
 --- !u!33 &2641456204282843022
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -18688,8 +18692,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4062907414322924773}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 48.7, y: -0.00000023841858, z: -10.43}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 50.69195, y: 0, z: -1.3173504}
   m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -18816,7 +18820,7 @@ Transform:
   - {fileID: 580285041}
   - {fileID: 2431677044356328773}
   - {fileID: 63016066731164176}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1759891583}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5403531413605129812
 MeshFilter:
@@ -27287,4 +27291,3 @@ SceneRoots:
   - {fileID: 1803325877}
   - {fileID: 1759891583}
   - {fileID: 95168679}
-  - {fileID: 5399865485476380187}
