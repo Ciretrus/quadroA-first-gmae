@@ -261,6 +261,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ThiefEye"",
+                    ""type"": ""Button"",
+                    ""id"": ""a07b0779-4a68-4c82-9fbe-35caafdeaee7"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -283,6 +292,17 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0e3cf985-1b98-4bf7-83c7-f582c510652d"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ThiefEye"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -319,6 +339,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Diary = m_UI.FindAction("Diary", throwIfNotFound: true);
         m_UI_Interact = m_UI.FindAction("Interact", throwIfNotFound: true);
+        m_UI_ThiefEye = m_UI.FindAction("ThiefEye", throwIfNotFound: true);
     }
 
     ~@PlayerInput()
@@ -542,6 +563,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private List<IUIActions> m_UIActionsCallbackInterfaces = new List<IUIActions>();
     private readonly InputAction m_UI_Diary;
     private readonly InputAction m_UI_Interact;
+    private readonly InputAction m_UI_ThiefEye;
     /// <summary>
     /// Provides access to input actions defined in input action map "UI".
     /// </summary>
@@ -561,6 +583,10 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "UI/Interact".
         /// </summary>
         public InputAction @Interact => m_Wrapper.m_UI_Interact;
+        /// <summary>
+        /// Provides access to the underlying input action "UI/ThiefEye".
+        /// </summary>
+        public InputAction @ThiefEye => m_Wrapper.m_UI_ThiefEye;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -593,6 +619,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Interact.started += instance.OnInteract;
             @Interact.performed += instance.OnInteract;
             @Interact.canceled += instance.OnInteract;
+            @ThiefEye.started += instance.OnThiefEye;
+            @ThiefEye.performed += instance.OnThiefEye;
+            @ThiefEye.canceled += instance.OnThiefEye;
         }
 
         /// <summary>
@@ -610,6 +639,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Interact.started -= instance.OnInteract;
             @Interact.performed -= instance.OnInteract;
             @Interact.canceled -= instance.OnInteract;
+            @ThiefEye.started -= instance.OnThiefEye;
+            @ThiefEye.performed -= instance.OnThiefEye;
+            @ThiefEye.canceled -= instance.OnThiefEye;
         }
 
         /// <summary>
@@ -720,5 +752,12 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnInteract(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "ThiefEye" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnThiefEye(InputAction.CallbackContext context);
     }
 }

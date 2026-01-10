@@ -5,6 +5,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private CharacterController m_characterController;
     [SerializeField] private ItemsActivations m_itemsActivations;
+    [SerializeField] private ThiefEye m_thiefEye;
     [SerializeField] private GameObject m_head;
     [SerializeField] private Transform _groundCheckerPivot;
     [SerializeField] private float m_walkSpeed = 10f;
@@ -39,6 +40,7 @@ public class PlayerController : MonoBehaviour
 
         m_input.UI.Diary.performed += m_diary.ChangeState;
         m_input.UI.Diary.performed += m_itemsActivations.ChangeUIMode;
+        m_input.UI.ThiefEye.performed += m_thiefEye.ActivateThiefEye;
     }
 
     private void OnDestroy()
