@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(PlayerController))]
 public class ItemsActivations : MonoBehaviour
@@ -28,12 +29,11 @@ public class ItemsActivations : MonoBehaviour
 
         if (hit.collider != null)
         {
-            m_usable = hit.collider.gameObject.GetComponent<Usable>();
-
-            if (m_usable != null)
+            if (hit.collider.gameObject.TryGetComponent(out m_usable))
             {
                 m_uiController.ShowObjectActivationText(true);
                 m_usable.GetComponent<Outline>().enabled = true;
+                // TODO Switch to new input system
                 if (Input.GetKeyDown(KeyCode.E))
                 {
                     switch (m_usable.type)
@@ -41,17 +41,24 @@ public class ItemsActivations : MonoBehaviour
                         case UsableType.NonBlocking: Debug.Log("Interacted with Non-Blocking UI thing"); break;
                         case UsableType.Blocking:
                             {
-                                ChangeUIMode(m_usable);
+                                ChangeDrawingMode(m_usable);
                                 break;
                             }
                     }
                     m_usable.Use();
                 }
             }
+            else if (hit.collider.gameObject.TryGetComponent(out DiaryInteractable interactable))
+            {
+                // TODO Add single, non-repetitive notification
+                interactable.TriggerDiaryRecord();
+                m_uiController.ShowDiaryNotification(true);
+            }
         }
         else
         {
             m_uiController.ShowObjectActivationText(false);
+            m_uiController.ShowDiaryNotification(false);
             if (m_usable != null)
             {
                 m_usable.GetComponent<Outline>().enabled = false;
@@ -59,15 +66,41 @@ public class ItemsActivations : MonoBehaviour
         }
     }
 
-    private void ChangeUIMode(Usable usable)
+    public void ChangeUIMode(InputAction.CallbackContext context)
+    {
+        ChangeMovementState();
+    }
+
+    private void ChangeMovementState()
     {
         m_playerController.enabled = !m_playerController.enabled;
         m_cameraMovement.enabled = !m_cameraMovement.enabled;
 
+        ChangeCursorState();
+
+        m_isUIBlocked = !m_isUIBlocked;
+    }
+
+    private void ChangeCursorState()
+    {
+        if (m_isUIBlocked)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+    }
+
+    private void ChangeDrawingMode(Usable usable)
+    {
+        ChangeMovementState();
+
         if (m_isUIBlocked)
         {
             m_camera.transform.localPosition = Vector3.zero;
-            Cursor.lockState = CursorLockMode.Locked;
 
             m_uiController.ShowFigureText(false, "");
         }
@@ -84,11 +117,6 @@ public class ItemsActivations : MonoBehaviour
 
             Vector3 cameraPos = m_camera.transform.position;
             m_camera.transform.position = new Vector3(cameraPos.x, newPos.y, cameraPos.z);
-
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
         }
-
-        m_isUIBlocked = !m_isUIBlocked;
     }
 }

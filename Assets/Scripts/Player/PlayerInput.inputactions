@@ -3,7 +3,7 @@
     "name": "PlayerInput",
     "maps": [
         {
-            "name": "Player",
+            "name": "Movement",
             "id": "8a3b5439-7c6c-436a-a80c-8028c4043fad",
             "actions": [
                 {
@@ -149,6 +149,34 @@
                     "processors": "",
                     "groups": "",
                     "action": "Point",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "UI",
+            "id": "99c6c7b7-86a8-41cd-930d-5afff2193bfe",
+            "actions": [
+                {
+                    "name": "Diary",
+                    "type": "Button",
+                    "id": "ed067995-9944-42fa-b6a2-ce9dc606644f",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "11c5056b-bac6-4b7e-a316-e7dfc9674a7d",
+                    "path": "<Keyboard>/v",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Diary",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

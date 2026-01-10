@@ -1,0 +1,118 @@
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.UI;
+
+public class Diary : MonoBehaviour
+{
+    [SerializeField] private GameObject m_pagePrefab;
+    [SerializeField] private Dictionary<string, Sprite> m_pages = new Dictionary<string, Sprite>();
+    [SerializeField] private DiaryInteractable[] m_interactables;
+    [SerializeField] private Button m_buttonBack;
+    [SerializeField] private Button m_buttonForward;
+    private List<GameObject> m_spreads;
+    private GameObject m_lastSpread;
+    [Min(1)] private int m_currentSpread = 1;
+    private int m_pageAmount;
+    private bool m_isFull;
+
+    private void Awake()
+    {
+        m_spreads = new List<GameObject>();
+        // TODO Bring to a new method
+        m_lastSpread = Instantiate(m_pagePrefab, transform);
+        m_spreads.Add(m_lastSpread);
+
+        foreach (var interactable in m_interactables)
+        {
+            interactable.Triggered += SetPage;
+        }
+        m_buttonBack.onClick.AddListener(TurnPageBackward);
+        m_buttonForward.onClick.AddListener(TurnPageForward);
+
+        gameObject.SetActive(false);
+    }
+
+    private void OnDestroy()
+    {
+        foreach (var interactable in m_interactables)
+        {
+            interactable.Triggered -= SetPage;
+        }
+        m_buttonBack.onClick.RemoveListener(TurnPageBackward);
+        m_buttonForward.onClick.RemoveListener(TurnPageForward);
+    }
+
+    public void SetPage(Sprite sprite, string fileName)
+    {
+        if (!m_pages.ContainsKey(fileName))
+        {
+            m_pages.Add(fileName, sprite);
+            AddPage(sprite);
+            if (m_isFull)
+            {
+                m_lastSpread.SetActive(false);
+                m_spreads[m_currentSpread - 1].SetActive(false);
+                m_lastSpread = Instantiate(m_pagePrefab, transform);
+                m_spreads.Add(m_lastSpread);
+                m_currentSpread = m_spreads.Count;
+                AddPage(sprite);
+            }
+            m_pageAmount++;
+        }
+    }
+
+    public void ChangeState(InputAction.CallbackContext context)
+    {
+        gameObject.SetActive(!gameObject.activeSelf);
+    }
+
+    private void AddPage(Sprite sprite)
+    {
+        Image[] images = m_lastSpread.GetComponentsInChildren<Image>();
+        foreach (Image image in images)
+        {
+            if (image.sprite != null)
+            {
+                m_isFull = true;
+                continue;
+            }
+            m_isFull = false;
+            image.sprite = sprite;
+            break;
+        }
+    }
+
+    private void TurnPageForward()
+    {
+        if (m_currentSpread >= (m_pageAmount % 2 != 0 ? (m_pageAmount + 1) / 2 : m_pageAmount / 2))
+        {
+            return;
+        }
+
+        m_spreads[m_currentSpread - 1].SetActive(false);
+        m_currentSpread++;
+        m_spreads[m_currentSpread - 1].SetActive(true);
+    }
+
+    private void TurnPageBackward()
+    {
+        if (m_currentSpread == 1)
+        {
+            return;
+        }
+
+        m_spreads[m_currentSpread - 1].SetActive(false);
+        m_currentSpread--;
+        m_spreads[m_currentSpread - 1].SetActive(true);
+    }
+
+    private void SwitchPage()
+    {
+        // 3 5 7 9...
+        int n = m_currentSpread;
+        n++;
+        m_spreads[(n / 2) - 1].SetActive(true);
+        //m_currentSpread.SetActive(false);
+    }
+}

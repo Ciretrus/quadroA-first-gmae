@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private CharacterController m_characterController;
+    [SerializeField] private ItemsActivations m_itemsActivations;
     [SerializeField] private GameObject m_head;
     [SerializeField] private float m_walkSpeed = 10f;
     [SerializeField] private float m_sprintSpeed = 20f;
@@ -12,6 +13,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform _groundCheckerPivot;
     [SerializeField] private float _checkGroundRadius = 0.3f;
     [SerializeField] private LayerMask _groundMask;
+    [SerializeField] private Diary m_diary;
     private PlayerInput m_input;
     private Vector3 m_velocity;
     private float m_currentSpeed;
@@ -24,18 +26,21 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         m_input = new PlayerInput();
-        m_input.Player.Enable();
+        m_input.Enable();
 
-        m_input.Player.Jump.performed += Jump;
-        m_input.Player.Sprint.performed += Sprint;
-        m_input.Player.Sprint.canceled += StopSprint;
-        m_input.Player.Sneak.performed += Sneak;
-        m_input.Player.Sneak.canceled += StopSneak;
+        m_input.Movement.Jump.performed += Jump;
+        m_input.Movement.Sprint.performed += Sprint;
+        m_input.Movement.Sprint.canceled += StopSprint;
+        m_input.Movement.Sneak.performed += Sneak;
+        m_input.Movement.Sneak.canceled += StopSneak;
+
+        m_input.UI.Diary.performed += m_diary.ChangeState;
+        m_input.UI.Diary.performed += m_itemsActivations.ChangeUIMode;
     }
 
     private void OnDestroy()
     {
-        m_input.Player.Disable();
+        m_input.Disable();
     }
 
     private void Update()
@@ -50,7 +55,7 @@ public class PlayerController : MonoBehaviour
             m_velocity.y = 0f;
         }
 
-        Vector2 inputVector = m_input.Player.Walk.ReadValue<Vector2>();
+        Vector2 inputVector = m_input.Movement.Walk.ReadValue<Vector2>();
 
         if (inputVector == Vector2.zero)
         {
