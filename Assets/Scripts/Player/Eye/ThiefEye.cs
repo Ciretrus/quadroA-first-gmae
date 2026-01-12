@@ -15,7 +15,7 @@ public class ThiefEye : MonoBehaviour
     private Volume m_standardVolume;
     private Volume m_thiefEyeVolume;
     
-    private bool m_isStarted = false;
+    private bool m_hasStarted = false;
     private int m_originalCullingMask;
 
     private void Awake()
@@ -28,25 +28,25 @@ public class ThiefEye : MonoBehaviour
 
     public void ActivateThiefEye(InputAction.CallbackContext context)
     {
-        if (!m_isStarted)
+        if (!m_hasStarted)
         {
-            StartCoroutine(ThiefEyeSkill(m_durationTime));
+            StartCoroutine(CastThiefEyeSkill(m_durationTime));
         }
     }
 
-    private IEnumerator ThiefEyeSkill(float duration)
+    private IEnumerator CastThiefEyeSkill(float duration)
     {
-        yield return StartCoroutine(ActivationThiefEyeEffect(true));
+        yield return StartCoroutine(ActivateThiefEyeEffect(true));
         m_camera.cullingMask |= m_layerThiefEye;
 
         yield return new WaitForSeconds(duration);
         m_camera.cullingMask = m_originalCullingMask;
-        yield return StartCoroutine(ActivationThiefEyeEffect(false));
+        yield return StartCoroutine(ActivateThiefEyeEffect(false));
     }
 
-    private IEnumerator ActivationThiefEyeEffect(bool turnOn)
+    private IEnumerator ActivateThiefEyeEffect(bool turnOn)
     {
-        m_isStarted = true;
+        m_hasStarted = true;
 
         for (float i = 0; i < 1; i += Time.deltaTime / m_activationTime)
         {
@@ -75,6 +75,6 @@ public class ThiefEye : MonoBehaviour
             m_standardVolume.weight = 1;
         }
 
-        m_isStarted = turnOn;
+        m_hasStarted = turnOn;
     }
 }
