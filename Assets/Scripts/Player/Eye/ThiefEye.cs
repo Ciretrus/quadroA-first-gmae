@@ -18,6 +18,9 @@ public class ThiefEye : MonoBehaviour
     private bool m_hasStarted = false;
     private int m_originalCullingMask;
 
+    public LayerMask layerThiefEye => m_layerThiefEye;
+    public bool hasStarted => m_hasStarted;
+
     private void Awake()
     {
         m_originalCullingMask = m_camera.cullingMask;

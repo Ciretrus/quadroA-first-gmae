@@ -7,6 +7,7 @@ public class ItemsActivations : MonoBehaviour
     [SerializeField] private PlayerController m_playerController;
     [SerializeField] private Camera m_camera;
     [SerializeField] private UIController m_uiController;
+    [SerializeField] private ThiefEye m_thiefEye;
     [SerializeField] private float m_rayDistance = 1f;
 
     private CameraMovement m_cameraMovement;
@@ -83,6 +84,11 @@ public class ItemsActivations : MonoBehaviour
     {
         if (collider.gameObject.TryGetComponent(out m_interactable))
         {
+            int layerMask = 1 << m_interactable.gameObject.layer;
+            if ((layerMask & m_thiefEye.layerThiefEye) != 0 && m_thiefEye.hasStarted)
+            {
+                // TODO
+            }
             if (!m_interactable.wasTriggered)
             {
                 m_uiController.ShowDiaryNotification();
