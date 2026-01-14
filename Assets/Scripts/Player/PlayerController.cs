@@ -11,7 +11,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float m_walkSpeed = 10f;
     [SerializeField] private float m_sprintSpeed = 20f;
     [SerializeField] private float m_sneakSpeed = 5f;
-    [SerializeField] private float m_jumpForce = 5f; 
+    [SerializeField] private float m_jumpForce = 5f;
+    [SerializeField] private float m_gravity = 9.8f;
     [SerializeField] private float _checkGroundRadius = 0.3f;
     [SerializeField] private LayerMask _groundMask;
     [SerializeField] private Diary m_diary;
@@ -20,7 +21,6 @@ public class PlayerController : MonoBehaviour
     private float m_currentSpeed;
     private bool m_isSprinting;
     private bool m_isSneaking;
-    private float m_gravity = 9.8f;
     private PlayerInput m_input;
 
     public PlayerInput input => m_input;

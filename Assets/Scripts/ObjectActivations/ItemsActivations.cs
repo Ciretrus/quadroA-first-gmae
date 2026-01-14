@@ -85,9 +85,9 @@ public class ItemsActivations : MonoBehaviour
         if (collider.gameObject.TryGetComponent(out m_interactable))
         {
             int layerMask = 1 << m_interactable.gameObject.layer;
-            if ((layerMask & m_thiefEye.layerThiefEye) != 0 && m_thiefEye.hasStarted)
+            if ((layerMask & m_thiefEye.layerThiefEye) != 0 && !m_thiefEye.hasStarted)
             {
-                // TODO
+                return;
             }
             if (!m_interactable.wasTriggered)
             {
