@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private ThiefEye m_thiefEye;
     [SerializeField] private GameObject m_head;
     [SerializeField] private Transform _groundCheckerPivot;
+    [SerializeField] private float m_smoothInputSpeed = 0.2f;
     [SerializeField] private float m_walkSpeed = 10f;
     [SerializeField] private float m_sprintSpeed = 20f;
     [SerializeField] private float m_sneakSpeed = 5f;
@@ -18,6 +19,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Diary m_diary;
 
     private Vector3 m_velocity;
+    private Vector2 m_smoothVector;
+    private Vector2 m_smoothVelocity;
     private float m_currentSpeed;
     private bool m_isSprinting;
     private bool m_isSneaking;
@@ -71,7 +74,8 @@ public class PlayerController : MonoBehaviour
             isMoving = true;
         }
 
-        Vector3 moveDirection = new Vector3(inputVector.x, 0f, inputVector.y);
+        m_smoothVector = Vector2.SmoothDamp(m_smoothVector, inputVector, ref m_smoothVelocity, m_smoothInputSpeed);
+        Vector3 moveDirection = new Vector3(m_smoothVector.x, 0f, m_smoothVector.y);
 
         if (moveDirection.magnitude >= 1f)
         {
