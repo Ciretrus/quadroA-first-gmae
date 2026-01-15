@@ -5,21 +5,25 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private CharacterController m_characterController;
     [SerializeField] private ItemsActivations m_itemsActivations;
+    [SerializeField] private ThiefEye m_thiefEye;
     [SerializeField] private GameObject m_head;
     [SerializeField] private Transform _groundCheckerPivot;
+    [SerializeField] private float m_smoothInputSpeed = 0.2f;
     [SerializeField] private float m_walkSpeed = 10f;
     [SerializeField] private float m_sprintSpeed = 20f;
     [SerializeField] private float m_sneakSpeed = 5f;
-    [SerializeField] private float m_jumpForce = 5f; 
+    [SerializeField] private float m_jumpForce = 5f;
+    [SerializeField] private float m_gravity = 9.8f;
     [SerializeField] private float _checkGroundRadius = 0.3f;
     [SerializeField] private LayerMask _groundMask;
     [SerializeField] private Diary m_diary;
 
     private Vector3 m_velocity;
+    private Vector2 m_smoothVector;
+    private Vector2 m_smoothVelocity;
     private float m_currentSpeed;
     private bool m_isSprinting;
     private bool m_isSneaking;
-    private float m_gravity = 9.8f;
     private PlayerInput m_input;
 
     public PlayerInput input => m_input;
@@ -39,6 +43,7 @@ public class PlayerController : MonoBehaviour
 
         m_input.UI.Diary.performed += m_diary.ChangeState;
         m_input.UI.Diary.performed += m_itemsActivations.ChangeUIMode;
+        m_input.UI.ThiefEye.performed += m_thiefEye.ActivateThiefEye;
     }
 
     private void OnDestroy()
@@ -69,7 +74,8 @@ public class PlayerController : MonoBehaviour
             isMoving = true;
         }
 
-        Vector3 moveDirection = new Vector3(inputVector.x, 0f, inputVector.y);
+        m_smoothVector = Vector2.SmoothDamp(m_smoothVector, inputVector, ref m_smoothVelocity, m_smoothInputSpeed);
+        Vector3 moveDirection = new Vector3(m_smoothVector.x, 0f, m_smoothVector.y);
 
         if (moveDirection.magnitude >= 1f)
         {

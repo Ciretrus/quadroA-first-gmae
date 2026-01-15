@@ -7,11 +7,13 @@ public class ItemsActivations : MonoBehaviour
     [SerializeField] private PlayerController m_playerController;
     [SerializeField] private Camera m_camera;
     [SerializeField] private UIController m_uiController;
+    [SerializeField] private ThiefEye m_thiefEye;
     [SerializeField] private float m_rayDistance = 1f;
 
     private CameraMovement m_cameraMovement;
     private Vector3 m_screenCenter;
     private Usable m_usable;
+    private DiaryInteractable m_interactable;
     private bool m_isUIBlocked;
 
     private void Awake()
@@ -48,13 +50,9 @@ public class ItemsActivations : MonoBehaviour
                     m_usable.Use();
                 }
             }
-            else if (hit.collider.gameObject.TryGetComponent(out DiaryInteractable interactable))
+            else
             {
-                if (!interactable.wasTriggered)
-                {
-                    m_uiController.ShowDiaryNotification();
-                    interactable.TriggerDiaryRecord();
-                }
+                TryDiaryNotif(hit.collider);
             }
         }
         else
@@ -67,11 +65,36 @@ public class ItemsActivations : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other != null)
+        {
+            TryDiaryNotif(other);
+        }
+    }
+
     public void ChangeUIMode(InputAction.CallbackContext context)
     {
         ChangeMovementState();
 
         m_isUIBlocked = !m_isUIBlocked;
+    }
+
+    private void TryDiaryNotif(Collider collider)
+    {
+        if (collider.gameObject.TryGetComponent(out m_interactable))
+        {
+            int layerMask = 1 << m_interactable.gameObject.layer;
+            if ((layerMask & m_thiefEye.layerThiefEye) != 0 && !m_thiefEye.hasStarted)
+            {
+                return;
+            }
+            if (!m_interactable.wasTriggered)
+            {
+                m_uiController.ShowDiaryNotification();
+                m_interactable.TriggerDiaryRecord();
+            }
+        }
     }
 
     private void ChangeMovementState()
