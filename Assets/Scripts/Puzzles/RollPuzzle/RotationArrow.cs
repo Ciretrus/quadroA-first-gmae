@@ -16,7 +16,6 @@ public class RotationArrow : Usable
     {
         Debug.Log("activated");
         m_roll.Rotate(m_direction);
-        
     }
-    }
+}
 
