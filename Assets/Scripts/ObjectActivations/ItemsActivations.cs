@@ -9,12 +9,15 @@ public class ItemsActivations : MonoBehaviour
     [SerializeField] private UIController m_uiController;
     [SerializeField] private ThiefEye m_thiefEye;
     [SerializeField] private float m_rayDistance = 1f;
+    [SerializeField] private OutlineFader m_outlineFader;
+    [SerializeField] private AudioSource m_audioSource;
 
     private CameraMovement m_cameraMovement;
     private Vector3 m_screenCenter;
     private Usable m_usable;
     private DiaryInteractable m_interactable;
     private bool m_isUIBlocked;
+    private Outline m_lastOutlineObject;
 
     private void Awake()
     {
@@ -26,6 +29,7 @@ public class ItemsActivations : MonoBehaviour
         m_screenCenter = new Vector3(Screen.width / 2, Screen.height / 2, 0);
         Ray ray = m_camera.ScreenPointToRay(m_screenCenter);
         RaycastHit hit;
+        Outline outlineObject;
 
         Physics.Raycast(ray, out hit, m_rayDistance);
 
@@ -34,7 +38,10 @@ public class ItemsActivations : MonoBehaviour
             if (hit.collider.gameObject.TryGetComponent(out m_usable))
             {
                 m_uiController.ShowObjectActivationText(true);
-                m_usable.GetComponent<Outline>().enabled = true;
+                outlineObject = m_usable.GetComponent<Outline>();
+                //outlineObject.enabled = true;                
+                m_outlineFader.Enable(outlineObject);
+                m_lastOutlineObject = outlineObject;
 
                 if (m_playerController.input.UI.Interact.WasPerformedThisFrame())
                 {
@@ -48,20 +55,24 @@ public class ItemsActivations : MonoBehaviour
                             }
                     }
                     m_usable.Use();
+
+                    PlayInteractionSound(m_usable);
                 }
             }
             else
             {
                 TryDiaryNotif(hit.collider);
+                DisableLastOutlineObject();
             }
         }
         else
         {
             m_uiController.ShowObjectActivationText(false);
-            if (m_usable != null)
-            {
-                m_usable.GetComponent<Outline>().enabled = false;
-            }
+            //if (m_usable != null)
+            //{
+            //    m_usable.GetComponent<Outline>().enabled = false;
+            //}
+            DisableLastOutlineObject();
         }
     }
 
@@ -144,5 +155,23 @@ public class ItemsActivations : MonoBehaviour
         }
 
         m_isUIBlocked = !m_isUIBlocked;
+    }
+
+    private void PlayInteractionSound(Usable usable)
+    {
+        if (usable.audioclip.Length == 0)
+            return;
+
+        AudioClip clip = usable.audioclip[Random.Range(0, usable.audioclip.Length)];
+        m_audioSource.PlayOneShot(clip);
+    }
+
+    private void DisableLastOutlineObject()
+    {
+        if (m_lastOutlineObject)
+        {
+            //m_lastOutlineObject.enabled = false;
+            m_outlineFader.Disable(m_lastOutlineObject);
+        }
     }
 }
