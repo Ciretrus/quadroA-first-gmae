@@ -12,6 +12,6 @@ public class DiaryInteractable : MonoBehaviour
     public void TriggerDiaryRecord()
     {
         m_diaryInteractable.wasTriggered = true;
-        Triggered?.Invoke(m_diaryInteractable.sprite, m_diaryInteractable.filename);
+        Diary.instance.SetPage(m_diaryInteractable.sprite, m_diaryInteractable.filename);
     }
 }

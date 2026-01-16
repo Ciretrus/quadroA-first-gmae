@@ -5,11 +5,12 @@ using UnityEngine.UI;
 
 public class Diary : MonoBehaviour
 {
-    [SerializeField] private Dictionary<string, Sprite> m_pages = new Dictionary<string, Sprite>();
-    [SerializeField] private GameObject m_pagePrefab;
-    [SerializeField] private DiaryInteractable[] m_interactables;
+    public static Diary instance { get; private set; }
+
+    [SerializeField] private GameObject m_spreadPrefab;
     [SerializeField] private Button m_buttonBack;
     [SerializeField] private Button m_buttonForward;
+    private Dictionary<string, Sprite> m_pages = new Dictionary<string, Sprite>();
     private List<GameObject> m_spreads;
     private GameObject m_lastSpread;
     [Min(1)] private int m_currentSpread = 1;
@@ -18,13 +19,18 @@ public class Diary : MonoBehaviour
 
     private void Awake()
     {
+        if (instance != null && instance != this) 
+        {
+            Destroy(gameObject);
+            return;
+        }
+        instance = this;
+
+        DontDestroyOnLoad(gameObject);
+
         m_spreads = new List<GameObject>();
         AddSpread();
 
-        foreach (var interactable in m_interactables)
-        {
-            interactable.Triggered += SetPage;
-        }
         m_buttonBack.onClick.AddListener(TurnPageBackward);
         m_buttonForward.onClick.AddListener(TurnPageForward);
 
@@ -33,10 +39,6 @@ public class Diary : MonoBehaviour
 
     private void OnDestroy()
     {
-        foreach (var interactable in m_interactables)
-        {
-            interactable.Triggered -= SetPage;
-        }
         m_buttonBack.onClick.RemoveListener(TurnPageBackward);
         m_buttonForward.onClick.RemoveListener(TurnPageForward);
     }
@@ -106,7 +108,7 @@ public class Diary : MonoBehaviour
 
     private void AddSpread()
     {
-        m_lastSpread = Instantiate(m_pagePrefab, transform);
+        m_lastSpread = Instantiate(m_spreadPrefab, transform);
         m_spreads.Add(m_lastSpread);
     }
 }
