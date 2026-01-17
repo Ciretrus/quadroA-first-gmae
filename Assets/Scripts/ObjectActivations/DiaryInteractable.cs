@@ -3,8 +3,6 @@ using UnityEngine;
 
 public class DiaryInteractable : MonoBehaviour
 {
-    public event Action<Sprite, string> Triggered;
-
     [SerializeField] private DiaryInteractableBase m_diaryInteractable;
 
     public bool wasTriggered => m_diaryInteractable.wasTriggered;

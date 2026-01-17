@@ -7,6 +7,7 @@ public class ItemsActivations : MonoBehaviour
     [SerializeField] private PlayerController m_playerController;
     [SerializeField] private Camera m_camera;
     [SerializeField] private UIController m_uiController;
+    [SerializeField] private PlateController m_plateController;
     [SerializeField] private ThiefEye m_thiefEye;
     [SerializeField] private float m_rayDistance = 1f;
 
@@ -70,6 +71,11 @@ public class ItemsActivations : MonoBehaviour
         if (other != null)
         {
             TryDiaryNotif(other);
+        }
+
+        if (other.TryGetComponent(out Pushable pushable) && !m_plateController.isSolved)
+        {
+            m_plateController.AddToSequence(pushable);
         }
     }
 

@@ -1,47 +1,54 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlateController : MonoBehaviour
 {
     [SerializeField] Material m_inactiveMaterial;
     [SerializeField] Material m_activeMaterial;
-    [SerializeField] List<Pushable> m_plates;
+    [SerializeField] Pushable[] m_plates;
 
-    private int[] m_correctSequence = { 1, 1, 3, 5 };
-    private List<int> m_currentSequence = new List<int>();
-    private int m_currentStep;
     private Renderer[] m_renderers;
+    private int[] m_correctSequence = { 1, 1, 3, 5 };
+    private int m_currentStep = 0;
+    private bool m_isSolved = false;
 
-    private void OnEnable()
+    public bool isSolved => m_isSolved;
+
+    private void Awake()
     {
-        for (int i = 0; i < m_plates.Count; i++)
+        m_renderers = new Renderer[m_plates.Length];
+
+        for (int i = 0; i < m_plates.Length; i++)
         {
             m_renderers[i] = m_plates[i].GetComponent<Renderer>();
         }
     }
 
-    private void AddToSequence(Pushable plate)
+    public void AddToSequence(Pushable plate)
     {
-        if (m_currentSequence.Count >= m_correctSequence.Length)
+        int correctIndex = m_correctSequence[m_currentStep] - 1;
+        if (plate == m_plates[correctIndex])
         {
-            ChangeMaterials(m_inactiveMaterial);
+            m_renderers[correctIndex].material = m_activeMaterial;
+            m_currentStep++;
+        }
+        else
+        {
+            ResetPlates();
             return;
         }
 
-        m_currentStep = m_plates.IndexOf(plate) + 1;
-        m_currentSequence.Add(m_currentStep);
-
-        if (CheckCorrectSequence())
+        if (m_currentStep == m_correctSequence.Length)
         {
             ChangeMaterials(m_activeMaterial);
             // TODO Play the complete compostion
-            enabled = false;
+            m_isSolved = true;
         }
     }
 
-    private bool CheckCorrectSequence()
+    private void ResetPlates()
     {
-        return (m_currentSequence.Equals(m_correctSequence));
+        ChangeMaterials(m_inactiveMaterial);
+        m_currentStep = 0;
     }
 
     private void ChangeMaterials(Material material)

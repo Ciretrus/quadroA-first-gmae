@@ -26,8 +26,6 @@ public class Diary : MonoBehaviour
         }
         instance = this;
 
-        DontDestroyOnLoad(gameObject);
-
         m_spreads = new List<GameObject>();
         AddSpread();
 
