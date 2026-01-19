@@ -17,7 +17,9 @@ public class FigureDrawing : MonoBehaviour
     private List<List<Vector3>> m_originals;
     private List<Vector3> m_dotsList;
     private bool m_canDraw;
+    private bool m_hasBrush;
 
+    public bool hasBrush => m_hasBrush;
     public bool canDraw
     {
         get => m_canDraw; 
@@ -33,7 +35,7 @@ public class FigureDrawing : MonoBehaviour
 
     private void Update()
     {
-        if (m_canDraw) DrawLine();
+        if (m_canDraw && m_hasBrush) DrawLine();
     }
 
     private void DrawLine()
