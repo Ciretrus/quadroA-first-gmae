@@ -52,12 +52,12 @@ public class PlateController : MonoBehaviour
 
         if (m_currentStep == m_correctSequence.Length)
         {
-            StartCoroutine(PlaySoundWithDelay());
             m_isSolved = true;
+            StartCoroutine(WinPuzzle());
         }
     }
 
-    private IEnumerator PlaySoundWithDelay()
+    private IEnumerator WinPuzzle()
     {
         yield return new WaitForSeconds(m_delay + 1);
         foreach (AudioClip audio in m_composition)

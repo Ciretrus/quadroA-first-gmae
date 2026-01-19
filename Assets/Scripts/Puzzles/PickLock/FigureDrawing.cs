@@ -17,9 +17,8 @@ public class FigureDrawing : MonoBehaviour
     private List<List<Vector3>> m_originals;
     private List<Vector3> m_dotsList;
     private bool m_canDraw;
-    private bool m_hasBrush;
+    private bool m_hasBrush => Inventory.instance.HasItem(GlobalConstants.RollBrush);
 
-    public bool hasBrush => m_hasBrush;
     public bool canDraw
     {
         get => m_canDraw; 
