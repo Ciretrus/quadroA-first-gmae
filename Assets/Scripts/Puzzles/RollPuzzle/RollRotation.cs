@@ -1,14 +1,16 @@
 using System.Collections;
 using UnityEngine;
-namespace Puzzles {
+
+namespace Puzzles 
+{
     public class RollRotation : MonoBehaviour
     {
         [SerializeField] private float m_angleRotation = 72f;
         [SerializeField] private float m_rotationTime = 0.2f;
         [SerializeField] private BasePuzzle m_puzzle;
+        [SerializeField] private int m_rightNmber = 0;
 
         private int m_currentNumber = 1;
-        [SerializeField] private int m_rightNmber = 0;
 
         public bool isRightNumber
         {
@@ -23,7 +25,6 @@ namespace Puzzles {
             //StopCoroutine(coroutine);
             m_coroutine = getPosition(direction);
             StartCoroutine(m_coroutine);
-
         }
 
         IEnumerator getPosition(int direction)

@@ -11,14 +11,14 @@ public class PortalActivation : MonoBehaviour
     {
         if (m_puzzle != null)
         {
-            m_puzzle.m_onSolved += ActivatePortal;
+            m_puzzle.onSolved += ActivatePortal;
         }
     }
     private void OnDisable()
     {
         if (m_puzzle != null)
         {
-            m_puzzle.m_onSolved -= ActivatePortal;
+            m_puzzle.onSolved -= ActivatePortal;
         }
     }
 

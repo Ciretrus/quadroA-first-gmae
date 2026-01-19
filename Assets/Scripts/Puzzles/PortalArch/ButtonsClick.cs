@@ -4,11 +4,11 @@ using Puzzles;
 
 public class ButtonsClick : Usable
 {
-
     [SerializeField] private RuneSwitch[] m_runeActivations;
     [SerializeField] private Vector3 m_clickedShiftPosition;
     [SerializeField] private float m_timeClick = 0.3f;
     [SerializeField] private BasePuzzle m_puzzle;
+    
     private bool m_clicked = false;
     private Vector3 m_startPosition;
     private Vector3 m_newPosition;
@@ -42,9 +42,9 @@ public class ButtonsClick : Usable
         yield return coroutine;
         m_clicked = false;
     }
+
     IEnumerator ChangePosition(Vector3 newPosition)
     {
-        
         float t = 0;
         Vector3 startPosition = transform.position;
         while (t < 1)
@@ -53,6 +53,5 @@ public class ButtonsClick : Usable
             yield return new WaitForSeconds(Time.deltaTime);
             transform.position = Vector3.Lerp(startPosition, newPosition, t);
         }
-        
     }
 }

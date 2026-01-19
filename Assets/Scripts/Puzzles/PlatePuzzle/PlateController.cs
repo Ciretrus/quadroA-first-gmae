@@ -12,7 +12,7 @@ public class PlateController : MonoBehaviour
 
     private Renderer[] m_renderers;
     private AudioClip[] m_composition;
-    private int[] m_correctSequence = { 1, 1, 3, 5, 1 };
+    private int[] m_correctSequence = { 1, 1, 3, 5, 7 };
     private int m_currentStep = 0;
     private bool m_isSolved = false;
 
@@ -53,7 +53,6 @@ public class PlateController : MonoBehaviour
 
         if (m_currentStep == m_correctSequence.Length)
         {
-            ChangeMaterials(m_activeMaterial);
             StartCoroutine(PlaySoundWithDelay());
             m_isSolved = true;
         }
@@ -61,11 +60,13 @@ public class PlateController : MonoBehaviour
 
     private IEnumerator PlaySoundWithDelay()
     {
-        foreach(AudioClip audio in m_composition)
+        yield return new WaitForSeconds(m_delay + 1);
+        foreach (AudioClip audio in m_composition)
         {
             m_audioSource.PlayOneShot(audio);
             yield return new WaitForSeconds(m_delay);
         }
+        ChangeMaterials(m_activeMaterial);
     }
 
     private void ChangeMaterials(Material material)

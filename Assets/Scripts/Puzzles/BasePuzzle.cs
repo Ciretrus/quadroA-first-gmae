@@ -4,7 +4,7 @@ namespace Puzzles
 {
     abstract public class BasePuzzle : MonoBehaviour
     {
-        public event Action m_onSolved;
+        public event Action onSolved;
         protected bool m_isSolved = false;
 
         protected void NotifySolved()
@@ -12,10 +12,9 @@ namespace Puzzles
             if (m_isSolved) return;
 
             m_isSolved = true;
-            m_onSolved?.Invoke();
+            onSolved?.Invoke();
             Debug.Log("solved");
         }
         public abstract void CheckCondition();
     }
-
 }

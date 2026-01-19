@@ -1,11 +1,9 @@
 using UnityEngine;
-using System.Collections;
 namespace Puzzles
 {
     public class RuneCheck: BasePuzzle
     {
         [SerializeField] private RuneSwitch[] m_runes;
-
 
         public override void CheckCondition()
         {
@@ -17,7 +15,6 @@ namespace Puzzles
                 }
             }
             NotifySolved();
-
         }
     }
 }

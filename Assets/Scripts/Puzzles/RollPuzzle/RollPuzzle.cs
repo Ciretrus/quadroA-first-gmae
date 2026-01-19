@@ -1,4 +1,5 @@
 using UnityEngine;
+
 namespace Puzzles
 {
     public class RollPuzzle : BasePuzzle

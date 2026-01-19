@@ -13,7 +13,7 @@ namespace Puzzles {
             if (m_puzzle != null)
             {
                 print("sub");
-                m_puzzle.m_onSolved += OpenDoor;
+                m_puzzle.onSolved += OpenDoor;
             }
         }
         private void OnDisable()
@@ -21,7 +21,7 @@ namespace Puzzles {
             if (m_puzzle != null)
             {
                 print("unsub");
-                m_puzzle.m_onSolved -= OpenDoor;
+                m_puzzle.onSolved -= OpenDoor;
             }
         }
         private void OpenDoor()
