@@ -14,6 +14,7 @@ public class ItemsActivations : MonoBehaviour
     private CameraMovement m_cameraMovement;
     private Vector3 m_screenCenter;
     private Usable m_usable;
+    private Usable m_lastUsable;
     private DiaryInteractable m_interactable;
     private bool m_isUIBlocked;
 
@@ -34,6 +35,8 @@ public class ItemsActivations : MonoBehaviour
         {
             if (hit.collider.gameObject.TryGetComponent(out m_usable))
             {
+                Debug.Log(m_usable);
+                
                 m_uiController.ShowObjectActivationText(true);
                 m_usable.GetComponent<Outline>().enabled = true;
 
@@ -55,13 +58,20 @@ public class ItemsActivations : MonoBehaviour
             {
                 TryDiaryNotif(hit.collider);
             }
+
+            if (m_usable != m_lastUsable && m_lastUsable != null)
+            {
+                m_lastUsable.GetComponent<Outline>().enabled = false;
+            }
+            m_lastUsable = m_usable;
         }
         else
         {
-            m_uiController.ShowObjectActivationText(false);
-            if (m_usable != null)
+            m_uiController.ShowObjectActivationText(false); 
+
+            if (m_lastUsable != null)
             {
-                m_usable.GetComponent<Outline>().enabled = false;
+                m_lastUsable.GetComponent<Outline>().enabled = false;
             }
         }
     }
