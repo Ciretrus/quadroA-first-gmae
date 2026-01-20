@@ -9,8 +9,7 @@ public class ItemsActivations : MonoBehaviour
     [SerializeField] private UIController m_uiController;
     [SerializeField] private ThiefEye m_thiefEye;
     [SerializeField] private float m_rayDistance = 1f;
-    [SerializeField] private OutlineFader m_outlineFader;
-    [SerializeField] private AudioSource m_audioSource;
+    [SerializeField] private OutlineFader m_outlineFader;    
 
     private CameraMovement m_cameraMovement;
     private Vector3 m_screenCenter;
@@ -159,11 +158,10 @@ public class ItemsActivations : MonoBehaviour
 
     private void PlayInteractionSound(Usable usable)
     {
-        if (usable.audioclip.Length == 0)
+        if (usable.interactableSound == null)
             return;
-
-        AudioClip clip = usable.audioclip[Random.Range(0, usable.audioclip.Length)];
-        m_audioSource.PlayOneShot(clip);
+                
+        usable.interactableSound.PlayPitchedSound();
     }
 
     private void DisableLastOutlineObject()

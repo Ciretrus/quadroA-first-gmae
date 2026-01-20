@@ -3,9 +3,8 @@ using UnityEngine;
 [RequireComponent(typeof(Outline))]
 public abstract class Usable: MonoBehaviour
 {
-    [SerializeField] protected AudioClip[] m_audioclip;
-
-    public AudioClip[] audioclip => m_audioclip;
+    [SerializeField] protected InteractableSound m_interactableSound;
+    public InteractableSound interactableSound => m_interactableSound;
 
     private UsableType m_type;
 
