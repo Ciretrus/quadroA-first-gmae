@@ -35,8 +35,6 @@ public class ItemsActivations : MonoBehaviour
         {
             if (hit.collider.gameObject.TryGetComponent(out m_usable))
             {
-                Debug.Log(m_usable);
-                
                 m_uiController.ShowObjectActivationText(true);
                 m_usable.GetComponent<Outline>().enabled = true;
 
