@@ -158,6 +158,8 @@ public class ItemsActivations : MonoBehaviour
 
     private void PlayInteractionSound(Usable usable)
     {
+        Debug.LogWarning(usable.interactableSound);
+
         if (usable.interactableSound == null)
             return;
                 
