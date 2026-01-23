@@ -1,15 +1,14 @@
-using System;
 using UnityEngine;
 
 public class DiaryInteractable : MonoBehaviour
 {
-    [SerializeField] private DiaryInteractableBase m_diaryInteractable;
+    [SerializeField] private DiaryInteractableSO m_diaryInteractable;
 
-    public bool wasTriggered => m_diaryInteractable.wasTriggered;
+    public bool wasTriggered { get; private set; }
 
     public void TriggerDiaryRecord()
     {
-        m_diaryInteractable.wasTriggered = true;
+        wasTriggered = true;
         Diary.instance.SetPage(m_diaryInteractable.sprite, m_diaryInteractable.filename);
     }
 }
