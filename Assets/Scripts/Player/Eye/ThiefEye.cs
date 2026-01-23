@@ -43,10 +43,10 @@ public class ThiefEye : MonoBehaviour
     private IEnumerator CastThiefEyeSkill(float duration)
     {
         yield return StartCoroutine(ActivateThiefEyeEffect(true));
-        m_camera.cullingMask |= m_layerThiefEye;
+       // m_camera.cullingMask |= m_layerThiefEye;
 
         yield return new WaitForSeconds(duration);
-        m_camera.cullingMask = m_originalCullingMask;
+       // m_camera.cullingMask = m_originalCullingMask;
         yield return StartCoroutine(ActivateThiefEyeEffect(false));
     }
 
@@ -60,7 +60,8 @@ public class ThiefEye : MonoBehaviour
             {
                 materialValue = Mathf.InverseLerp(0, 1f, i);
                 materialValue = Mathf.Lerp(-1f,1f, materialValue);
-                m_material.SetFloat("value", materialValue);
+                print(materialValue);
+                m_material.SetFloat("_value", materialValue);
                 m_standardVolume.weight = 1f - i;
                 m_thiefEyeVolume.weight = i;
             }
@@ -68,7 +69,7 @@ public class ThiefEye : MonoBehaviour
             {
                 materialValue = Mathf.InverseLerp(0, 1f, i);
                 materialValue = Mathf.Lerp(-1f, 1f, materialValue);
-                m_material.SetFloat("value", -materialValue);
+                m_material.SetFloat("_value", -materialValue);
                 m_thiefEyeVolume.weight = 1f - i;
                 m_standardVolume.weight = i;
             }

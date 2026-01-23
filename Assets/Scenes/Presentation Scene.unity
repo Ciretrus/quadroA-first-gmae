@@ -10893,8 +10893,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6478536213147159724, guid: f0624672581fc1d4eb1e9af6985b4f8c, type: 3}
-  - {fileID: 2100000, guid: da5b9d9d97ed0c24690f23f54b9e3f79, type: 2}
+  - {fileID: 2100000, guid: 3ac62f416dc835343bb771453a4ea69a, type: 2}
+  - {fileID: 2100000, guid: 3ac62f416dc835343bb771453a4ea69a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -17141,7 +17141,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 63
+    m_Bits: 4294967295
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -17877,7 +17877,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: -6478536213147159724, guid: f0624672581fc1d4eb1e9af6985b4f8c, type: 3}
-  - {fileID: 2100000, guid: 0628207d785782441934f90609638e8b, type: 2}
+  - {fileID: 2100000, guid: 3ac62f416dc835343bb771453a4ea69a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -18761,7 +18761,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3756d2af5bceee04a8392b6cce2147e5, type: 2}
+  - {fileID: 2100000, guid: 3ac62f416dc835343bb771453a4ea69a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -23201,7 +23201,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -8274133419916619345, guid: 48a5a4115775f474d9cb1ca0c0971e47, type: 3}
+  - {fileID: 2100000, guid: 3ac62f416dc835343bb771453a4ea69a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -25430,7 +25430,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: -6478536213147159724, guid: f0624672581fc1d4eb1e9af6985b4f8c, type: 3}
-  - {fileID: 2100000, guid: e9ced004af345ad4f82d05a016e2e788, type: 2}
+  - {fileID: 2100000, guid: 3ac62f416dc835343bb771453a4ea69a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -28085,9 +28085,9 @@ MonoBehaviour:
   m_layerThiefEye:
     serializedVersion: 2
     m_Bits: 64
-  m_activationTime: 0.3
+  m_activationTime: 1
   m_durationTime: 3
-  m_material: {fileID: 0}
+  m_material: {fileID: 2100000, guid: 3ac62f416dc835343bb771453a4ea69a, type: 2}
 --- !u!33 &8578776536930302424
 MeshFilter:
   m_ObjectHideFlags: 0
