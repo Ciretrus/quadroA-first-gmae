@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
+using UnityEngine.Windows;
 
 public class ThiefEye : MonoBehaviour
 {
@@ -9,8 +10,10 @@ public class ThiefEye : MonoBehaviour
     [SerializeField] private LayerMask m_layerThiefEye;
     [SerializeField] private float m_activationTime = 0.3f;
     [SerializeField] private float m_durationTime =3f;
+    [SerializeField] private Material m_material;
 
-    [Header("PostProcessing")]
+
+    
     private Volume[] m_volumes;
     private Volume m_standardVolume;
     private Volume m_thiefEyeVolume;
@@ -50,16 +53,22 @@ public class ThiefEye : MonoBehaviour
     private IEnumerator ActivateThiefEyeEffect(bool turnOn)
     {
         m_hasStarted = true;
-
+        float materialValue = 0f;
         for (float i = 0; i < 1; i += Time.deltaTime / m_activationTime)
         {
             if (turnOn)
             {
+                materialValue = Mathf.InverseLerp(0, 1f, i);
+                materialValue = Mathf.Lerp(-1f,1f, materialValue);
+                m_material.SetFloat("value", materialValue);
                 m_standardVolume.weight = 1f - i;
                 m_thiefEyeVolume.weight = i;
             }
             else
             {
+                materialValue = Mathf.InverseLerp(0, 1f, i);
+                materialValue = Mathf.Lerp(-1f, 1f, materialValue);
+                m_material.SetFloat("value", -materialValue);
                 m_thiefEyeVolume.weight = 1f - i;
                 m_standardVolume.weight = i;
             }

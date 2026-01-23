@@ -756,17 +756,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6142269426102862664, guid: d21e81dba8adde2488f6574cb75e245f, type: 3}
   m_PrefabInstance: {fileID: 792153294}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &397788036 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2626526345088092328, guid: d21e81dba8adde2488f6574cb75e245f, type: 3}
-  m_PrefabInstance: {fileID: 792153294}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 397788035}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5caf7784fdb51814dbc2e51f8e9698fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerController
 --- !u!114 &397788039
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -785,6 +774,7 @@ MonoBehaviour:
     m_Bits: 64
   m_activationTime: 0.3
   m_durationTime: 3
+  m_material: {fileID: 2100000, guid: 3ac62f416dc835343bb771453a4ea69a, type: 2}
 --- !u!1 &528503551 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7144460679145531692, guid: 626b26cc758ae4c43bd720627ff886f6, type: 3}
@@ -1082,6 +1072,10 @@ PrefabInstance:
       propertyPath: _groundCheckerPivot
       value: 
       objectReference: {fileID: 642053921}
+    - target: {fileID: 2692429926697468120, guid: d21e81dba8adde2488f6574cb75e245f, type: 3}
+      propertyPath: m_RenderPostProcessing
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6142269426102862664, guid: d21e81dba8adde2488f6574cb75e245f, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1126,7 +1120,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2626526345088092328, guid: d21e81dba8adde2488f6574cb75e245f, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -1136,6 +1131,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6158033491349386886, guid: d21e81dba8adde2488f6574cb75e245f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 855674040}
+    - targetCorrespondingSourceObject: {fileID: 6158033491349386886, guid: d21e81dba8adde2488f6574cb75e245f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 855674047}
     - targetCorrespondingSourceObject: {fileID: 6158033491349386886, guid: d21e81dba8adde2488f6574cb75e245f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 855674041}
@@ -1403,7 +1401,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c85f8aedc10102841b8a863c8c854c13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemsActivations
-  m_playerController: {fileID: 397788036}
+  m_playerController: {fileID: 0}
   m_camera: {fileID: 855674039}
   m_uiController: {fileID: 259056741}
   m_thiefEye: {fileID: 397788039}
@@ -1423,7 +1421,7 @@ MonoBehaviour:
   m_IsGlobal: 1
   priority: 0
   blendDistance: 0
-  weight: 0.575
+  weight: 0
   sharedProfile: {fileID: 11400000, guid: 9763d5d31eda1964b921e975d6d0c7c8, type: 2}
 --- !u!114 &855674042
 MonoBehaviour:
@@ -1453,6 +1451,23 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   m_diary: {fileID: 0}
+--- !u!114 &855674047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 855674034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Core.Runtime::UnityEngine.Rendering.Volume
+  m_IsGlobal: 1
+  priority: 0
+  blendDistance: 0
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: 05b9afd017a231d4882ccd01ebdd95a7, type: 2}
 --- !u!1 &886552018 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4666376646799773685, guid: 626b26cc758ae4c43bd720627ff886f6, type: 3}
