@@ -21,6 +21,10 @@ public class ThiefEye : MonoBehaviour
     private bool m_hasStarted = false;
     private int m_originalCullingMask;
 
+    private const float m_maxMaterialValue = 2f;
+    private const float m_minMaterialValue = 0f;
+
+
     public LayerMask layerThiefEye => m_layerThiefEye;
     public bool hasStarted => m_hasStarted;
 
@@ -59,7 +63,7 @@ public class ThiefEye : MonoBehaviour
             if (turnOn)
             {
                 materialValue = Mathf.InverseLerp(0, 1f, i);
-                materialValue = Mathf.Lerp(-1f,1f, materialValue);
+                materialValue = Mathf.Lerp(m_minMaterialValue, m_maxMaterialValue, materialValue);
                 print(materialValue);
                 m_material.SetFloat("_value", materialValue);
                 m_standardVolume.weight = 1f - i;
@@ -68,8 +72,8 @@ public class ThiefEye : MonoBehaviour
             else
             {
                 materialValue = Mathf.InverseLerp(0, 1f, i);
-                materialValue = Mathf.Lerp(-1f, 1f, materialValue);
-                m_material.SetFloat("_value", -materialValue);
+                materialValue = Mathf.Lerp(m_minMaterialValue, m_maxMaterialValue, materialValue);
+                m_material.SetFloat("_value", m_maxMaterialValue - materialValue);
                 m_thiefEyeVolume.weight = 1f - i;
                 m_standardVolume.weight = i;
             }
