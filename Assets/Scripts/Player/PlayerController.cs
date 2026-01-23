@@ -3,6 +3,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    public static PlayerController instance { get; private set; }
+
     [SerializeField] private CharacterController m_characterController;
     [SerializeField] private ItemsActivations m_itemsActivations;
     [SerializeField] private ThiefEye m_thiefEye;
@@ -32,6 +34,15 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
+        if (instance != null && instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        instance = this;
+
+        DontDestroyOnLoad(gameObject);
+
         m_input = new PlayerInput();
         m_input.Enable();
 
@@ -54,6 +65,11 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         Move();
+    }
+
+    public void SetPosition(Vector3 position)
+    {
+        m_characterController.Move(position);
     }
 
     private void Move()
