@@ -11019,7 +11019,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
+  m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
@@ -11031,7 +11031,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -876546973899608171, guid: c1ec80024579dc24db615d0c3480557a, type: 3}
+  - {fileID: 2100000, guid: 3ac62f416dc835343bb771453a4ea69a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -15264,7 +15264,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -876546973899608171, guid: c1ec80024579dc24db615d0c3480557a, type: 3}
+  - {fileID: 2100000, guid: 3ac62f416dc835343bb771453a4ea69a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -18695,7 +18695,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -876546973899608171, guid: c1ec80024579dc24db615d0c3480557a, type: 3}
+  - {fileID: 2100000, guid: 3ac62f416dc835343bb771453a4ea69a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -19139,7 +19139,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -876546973899608171, guid: c1ec80024579dc24db615d0c3480557a, type: 3}
+  - {fileID: 2100000, guid: 3ac62f416dc835343bb771453a4ea69a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -22152,7 +22152,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -876546973899608171, guid: c1ec80024579dc24db615d0c3480557a, type: 3}
+  - {fileID: 2100000, guid: 3ac62f416dc835343bb771453a4ea69a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -28087,6 +28087,7 @@ MonoBehaviour:
     m_Bits: 64
   m_activationTime: 0.3
   m_durationTime: 3
+  m_material: {fileID: 0}
 --- !u!33 &8578776536930302424
 MeshFilter:
   m_ObjectHideFlags: 0
