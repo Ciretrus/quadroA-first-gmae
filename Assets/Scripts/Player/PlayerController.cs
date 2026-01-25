@@ -69,7 +69,12 @@ public class PlayerController : MonoBehaviour
 
     public void SetPosition(Vector3 position)
     {
-        m_characterController.Move(position);
+        m_characterController.enabled = false;
+
+        float playerY = m_characterController.transform.position.y;
+        m_characterController.transform.position = new Vector3(position.x, playerY, position.z);
+
+        m_characterController.enabled = true;
     }
 
     private void Move()

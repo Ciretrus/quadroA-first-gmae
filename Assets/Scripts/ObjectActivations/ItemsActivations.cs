@@ -87,11 +87,23 @@ public class ItemsActivations : MonoBehaviour
         }
     }
 
+    public void ChangeUIMode()
+    {
+        ChangeMovementState();
+    }
+
     public void ChangeUIMode(InputAction.CallbackContext context)
     {
         ChangeMovementState();
+        ChangeCursorState();
 
         m_isUIBlocked = !m_isUIBlocked;
+    }
+
+    private void ChangeMovementState()
+    {
+        m_playerController.enabled = !m_playerController.enabled;
+        m_cameraMovement.enabled = !m_cameraMovement.enabled;
     }
 
     private void TryDiaryNotif(Collider collider)
@@ -111,14 +123,6 @@ public class ItemsActivations : MonoBehaviour
         }
     }
 
-    private void ChangeMovementState()
-    {
-        m_playerController.enabled = !m_playerController.enabled;
-        m_cameraMovement.enabled = !m_cameraMovement.enabled;
-
-        ChangeCursorState();
-    }
-
     private void ChangeCursorState()
     {
         if (m_isUIBlocked)
@@ -135,6 +139,7 @@ public class ItemsActivations : MonoBehaviour
     private void ChangeDrawingMode(Usable usable)
     {
         ChangeMovementState();
+        ChangeCursorState();
 
         if (m_isUIBlocked)
         {

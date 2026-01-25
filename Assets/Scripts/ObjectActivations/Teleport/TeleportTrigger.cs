@@ -1,7 +1,10 @@
+using System;
 using UnityEngine;
 
-public class TeleportationTrigger : Usable
+public class TeleportTrigger : Usable
 {
+    public event Action<Action> OnTrigger;
+
     [SerializeField] private Transform m_teleportPoint;
     private bool m_hasKey => Inventory.instance.HasItem(GlobalConstants.ChestKey);
 
@@ -14,7 +17,7 @@ public class TeleportationTrigger : Usable
     {
         if (m_hasKey)
         {
-            Teleport();
+            OnTrigger.Invoke(Teleport);
         }
     }
 
