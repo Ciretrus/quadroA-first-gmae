@@ -26,10 +26,10 @@ public class TeleportAnimController : MonoBehaviour
 
     public void AnimateTeleportation(Action action)
     {
-        StartCoroutine(AnimationController.AnimateWithPause(
+        StartCoroutine(AnimationController.AnimateMethodWithPause(
             m_animator,
             action,
-            m_itemsActivations.ChangeUIMode,
+            m_itemsActivations.ChangeMovementState,
             "FadeIn",
             "FadeOut",
             m_pauseTimer));

@@ -45,7 +45,10 @@ public class ItemsActivations : MonoBehaviour
                         case UsableType.NonBlocking: Debug.Log("Interacted with Non-Blocking UI thing"); break;
                         case UsableType.Blocking:
                             {
-                                ChangeDrawingMode(m_usable);
+                                if (m_usable.GetComponent<Svitok>())
+                                {
+                                    ChangeDrawingMode(m_usable);
+                                }
                                 break;
                             }
                     }
@@ -87,11 +90,6 @@ public class ItemsActivations : MonoBehaviour
         }
     }
 
-    public void ChangeUIMode()
-    {
-        ChangeMovementState();
-    }
-
     public void ChangeUIMode(InputAction.CallbackContext context)
     {
         ChangeMovementState();
@@ -100,7 +98,7 @@ public class ItemsActivations : MonoBehaviour
         m_isUIBlocked = !m_isUIBlocked;
     }
 
-    private void ChangeMovementState()
+    public void ChangeMovementState()
     {
         m_playerController.enabled = !m_playerController.enabled;
         m_cameraMovement.enabled = !m_cameraMovement.enabled;

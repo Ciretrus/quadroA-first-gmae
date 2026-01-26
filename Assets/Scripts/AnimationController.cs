@@ -4,11 +4,6 @@ using System;
 
 public static class AnimationController
 {
-    public static void Animate(Animator animator, string animationName)
-    {
-        animator.Play(animationName);
-    }
-
     public static IEnumerator AnimateWithPause(
         Animator animator, 
         string firstAnimationName, 
@@ -20,7 +15,7 @@ public static class AnimationController
         animator.Play(secondAnimationName);
     }
 
-    public static IEnumerator AnimateWithPause(
+    public static IEnumerator AnimateMethodWithPause(
         Animator animator,
         Action mainAction,
         Action action,

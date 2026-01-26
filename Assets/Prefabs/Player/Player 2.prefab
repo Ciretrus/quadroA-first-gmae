@@ -197,7 +197,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6928788731215724036}
-  - component: {fileID: 8675232628769893879}
   m_Layer: 0
   m_Name: legs
   m_TagString: Untagged
@@ -220,27 +219,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 35218452212265981}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &8675232628769893879
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1958111524566671423}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3769843117937438718
 GameObject:
   m_ObjectHideFlags: 0
@@ -251,6 +229,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8016919749616387251}
   - component: {fileID: 5853675552676104288}
+  - component: {fileID: 8455801355122627864}
   - component: {fileID: 5338338440695530538}
   - component: {fileID: 144492997145426293}
   - component: {fileID: 7036142899256244154}
@@ -304,6 +283,29 @@ CharacterController:
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0
+  m_Center: {x: 0, y: 1, z: 0}
+--- !u!136 &8455801355122627864
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3769843117937438718}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
 --- !u!114 &5338338440695530538
 MonoBehaviour:

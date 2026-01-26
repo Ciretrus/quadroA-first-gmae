@@ -6,6 +6,10 @@ public class PlayerController : MonoBehaviour
     public static PlayerController instance { get; private set; }
 
     [SerializeField] private CharacterController m_characterController;
+    // [SerializeField] private Rigidbody m_rigidbody;
+    // [SerializeField] private float m_groundDrag;
+    // [SerializeField] private float m_airMultiplier;
+    // [SerializeField] private Transform m_orientation;
     [SerializeField] private ItemsActivations m_itemsActivations;
     [SerializeField] private ThiefEye m_thiefEye;
     [SerializeField] private GameObject m_head;
@@ -30,7 +34,7 @@ public class PlayerController : MonoBehaviour
 
     public PlayerInput input => m_input;
     public bool isMoving { get; private set; } = false;
-    public bool isGrounded => m_characterController.isGrounded;
+    public bool isGrounded => IsGrounded();
 
     private void Awake()
     {
@@ -42,6 +46,8 @@ public class PlayerController : MonoBehaviour
         instance = this;
 
         DontDestroyOnLoad(gameObject);
+
+        // m_rigidbody.freezeRotation = true;
 
         m_input = new PlayerInput();
         m_input.Enable();
@@ -65,6 +71,15 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         Move();
+
+        /*if (isGrounded)
+        {
+            m_rigidbody.drag = m_groundDrag;
+        }
+        else
+        {
+            m_rigidbody.drag = 0;
+        }*/
     }
 
     public void SetPosition(Vector3 position)
@@ -116,9 +131,14 @@ public class PlayerController : MonoBehaviour
             m_currentSpeed = m_walkSpeed;
         }
 
+        // TODO Remove "Move" methods
+        // Don't use CharacterController
+        // Read all comments in this script!
+        // transform.position += transform.TransformDirection(moveDirection) * m_currentSpeed * Time.deltaTime;
+
         m_characterController.Move(transform.TransformDirection(moveDirection) * (m_currentSpeed * Time.deltaTime));
 
-        m_velocity.y -= m_gravity * Time.deltaTime;
+        m_velocity.y -= m_gravity * Time.deltaTime; 
         m_characterController.Move(m_velocity * Time.deltaTime);
     }
 
@@ -173,4 +193,38 @@ public class PlayerController : MonoBehaviour
         bool groundCheck = Physics.CheckSphere(_groundCheckerPivot.position, _checkGroundRadius, _groundMask);
         return groundCheck;
     }
+
+    /*private void MovePlayer()
+    {
+        // calculate movement direction
+        moveDirection = m_orientation.forward * verticalInput + m_orientation.right * horizontalInput;
+
+        // on ground
+        if (grounded)
+            rm_rigidbodyb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
+
+        // in air
+        else if (!grounded)
+            m_rigidbody.AddForce(moveDirection.normalized * moveSpeed * 10f * m_airMultiplier, ForceMode.Force);
+    }
+
+    private void SpeedControl()
+    {
+        Vector3 flatVel = new Vector3(m_rigidbody.velocity.x, 0f, m_rigidbody.velocity.z);
+
+        // limit velocity if needed
+        if (flatVel.magnitude > moveSpeed)
+        {
+            Vector3 limitedVel = flatVel.normalized * moveSpeed;
+            m_rigidbody.velocity = new Vector3(limitedVel.x, m_rigidbody.velocity.y, limitedVel.z);
+        }
+    }
+
+    private void Jump()
+    {
+        // reset y velocity
+        m_rigidbody.velocity = new Vector3(m_rigidbody.velocity.x, 0f, m_rigidbody.velocity.z);
+
+        m_rigidbody.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+    }*/
 }
