@@ -31,7 +31,10 @@ public class Door : Usable
     {
         if (collision.collider.CompareTag("Player"))
         {
-            m_animator.StopPlayback();
+            // TODO Find a way to stop animation
+            //m_animator.PlayInFixedTime("Close", 1, 0.0f);
+            //m_animator.Rebind();
+            //m_animator.StartPlayback();
         }
     }
 }
