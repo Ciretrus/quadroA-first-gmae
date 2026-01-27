@@ -27,13 +27,10 @@ public class Door : Usable
         m_isOpened = !m_isOpened;
     }
 
-    // It will work only after adding Rigidbody to the Player
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("door hit something");
         if (collision.collider.CompareTag("Player"))
         {
-            Debug.Log("door hit player");
             m_animator.StopPlayback();
         }
     }
