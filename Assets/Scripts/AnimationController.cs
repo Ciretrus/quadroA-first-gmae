@@ -15,7 +15,7 @@ public static class AnimationController
         animator.Play(secondAnimationName);
     }
 
-    public static IEnumerator AnimateMethodWithPause(
+    public static IEnumerator AnimateTransitionWithPause(
         Animator animator,
         Action mainAction,
         Action action,

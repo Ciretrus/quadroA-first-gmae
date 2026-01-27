@@ -1,7 +1,11 @@
+using System.Collections;
 using UnityEngine;
 
+[RequireComponent (typeof(Collider))]
 public class Door : Usable
 {
+    [SerializeField] private Collider m_collider;
+    [SerializeField] private float m_timer = 1f;
     private Animator m_animator;
     private bool m_isOpened;
 
@@ -13,6 +17,8 @@ public class Door : Usable
 
     public override void Use()
     {
+        m_collider.enabled = false;
+
         if (m_isOpened)
         {
             transform.Rotate(Vector3.up, 90);
@@ -24,17 +30,13 @@ public class Door : Usable
             m_animator.Play("Open");
         }
 
+        StartCoroutine(EnableCollision());
         m_isOpened = !m_isOpened;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private IEnumerator EnableCollision()
     {
-        if (collision.collider.CompareTag("Player"))
-        {
-            // TODO Find a way to stop animation
-            //m_animator.PlayInFixedTime("Close", 1, 0.0f);
-            //m_animator.Rebind();
-            //m_animator.StartPlayback();
-        }
+        yield return new WaitForSeconds(m_timer);
+        m_collider.enabled = true;
     }
 }

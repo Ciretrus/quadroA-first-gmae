@@ -8,7 +8,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Rigidbody m_rigidbody;
     [SerializeField] private float m_groundDrag;
     [SerializeField] private float m_airMultiplier;
-    // [SerializeField] private Transform m_orientation;
     [SerializeField] private ItemsActivations m_itemsActivations;
     [SerializeField] private ThiefEye m_thiefEye;
     [SerializeField] private GameObject m_head;
