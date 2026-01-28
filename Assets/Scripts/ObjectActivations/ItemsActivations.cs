@@ -45,7 +45,7 @@ public class ItemsActivations : MonoBehaviour
                         case UsableType.NonBlocking: Debug.Log("Interacted with Non-Blocking UI thing"); break;
                         case UsableType.Blocking:
                             {
-                                if (m_usable.GetComponent<Svitok>())
+                                if (m_usable.GetComponent<RuneDraw>())
                                 {
                                     ChangeDrawingMode(m_usable);
                                 }

@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 8848221804441035152}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.65}
+  m_LocalPosition: {x: 0, y: 0, z: 0.45}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -224,7 +224,7 @@ PrefabInstance:
       addedObject: {fileID: 5730834605249410052}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: eae048272617aa74cb2c238b8d5401fe, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 3208512488892076669}
+      addedObject: {fileID: 6452155585954557607}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: eae048272617aa74cb2c238b8d5401fe, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7341383292510911741}
@@ -255,7 +255,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.88232136, y: 1.4635122, z: 0.32505703}
   m_Center: {x: 0.015304625, y: 0.016004562, z: -0.019577026}
---- !u!114 &3208512488892076669
+--- !u!114 &6452155585954557607
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -264,10 +264,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 4722311411028131435}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 430b04d6f031e5949b8b9a1ba21fdba9, type: 3}
+  m_Script: {fileID: 11500000, guid: 991b70b10c19e6c4a95e8ad5969e365d, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Svitok
-  m_figureDrawing: {fileID: 2005325770243645741}
+  m_EditorClassIdentifier: Assembly-CSharp::RuneDraw
+  m_drawableLine: {fileID: 2005325770243645741}
 --- !u!114 &7341383292510911741
 MonoBehaviour:
   m_ObjectHideFlags: 0

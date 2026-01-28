@@ -5,9 +5,9 @@ using Puzzles;
 public class ButtonsClick : Usable
 {
     [SerializeField] private RuneSwitch[] m_runeActivations;
+    [SerializeField] private BasePuzzle m_puzzle;
     [SerializeField] private Vector3 m_clickedShiftPosition;
     [SerializeField] private float m_timeClick = 0.3f;
-    [SerializeField] private BasePuzzle m_puzzle;
     
     private bool m_clicked = false;
     private Vector3 m_startPosition;
@@ -15,9 +15,9 @@ public class ButtonsClick : Usable
 
     public void Awake()
     {
+        Initialize(UsableType.NonBlocking);
         m_startPosition = transform.position;
         m_newPosition = m_startPosition - m_clickedShiftPosition;
-        Initialize(UsableType.NonBlocking);
     }
     
     public override void Use()
@@ -27,7 +27,7 @@ public class ButtonsClick : Usable
             StartCoroutine(Click());
             for (int i = 0; i < m_runeActivations.Length; i++)
             {
-                m_runeActivations[i].changeState();
+                m_runeActivations[i].ChangeState();
             }
             m_puzzle.CheckCondition();
         }

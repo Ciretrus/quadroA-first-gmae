@@ -1,10 +1,11 @@
+using Puzzles;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(LineRenderer))]
-public class FigureDrawing : MonoBehaviour
+public class DrawableLine : BasePuzzle
 {
     public event Action<(string, List<Vector3>)[], List<Vector3>> HasDrawnSymbol;
     public event Action HasStartedDrawing;
@@ -35,6 +36,15 @@ public class FigureDrawing : MonoBehaviour
     private void Update()
     {
         if (m_canDraw && m_hasBrush) DrawLine();
+    }
+
+    public override void CheckCondition()
+    {
+        // TODO: Get a name of a drawn rune and check if it's this rune name
+        if (name == m_originalsTuples[1].Item1)
+        {
+            NotifySolved();
+        }
     }
 
     private void DrawLine()
@@ -82,11 +92,13 @@ public class FigureDrawing : MonoBehaviour
                 else
                 {
                     HasDrawnSymbol?.Invoke(m_originalsTuples, m_dotsList);
+                    CheckCondition();
                 }
             }
 
-            m_dotsList.Clear();
-            m_lineRenderer.positionCount = 0;
+            // TODO: Get originals - Lists of <Vector3>
+            /*m_dotsList.Clear();
+            m_lineRenderer.positionCount = 0;*/
         }
     }
 

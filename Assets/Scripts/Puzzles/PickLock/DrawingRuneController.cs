@@ -1,14 +1,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DrawingFigureController : MonoBehaviour
+public class DrawingRuneController : MonoBehaviour
 {
-    [SerializeField] private FigureDrawing[] m_figuresDrawings;
+    [SerializeField] private DrawableLine[] m_drawableLines;
     [SerializeField] private UIController m_uiController;
 
     private void OnEnable()
     {
-        foreach(var figure in m_figuresDrawings)
+        foreach(var figure in m_drawableLines)
         {
             figure.HasDrawnSymbol += CompareDrawing;
             figure.HasStartedDrawing += HideText;
@@ -17,7 +17,7 @@ public class DrawingFigureController : MonoBehaviour
 
     private void OnDisable()
     {
-        foreach (var figure in m_figuresDrawings)
+        foreach (var figure in m_drawableLines)
         {
             figure.HasDrawnSymbol -= CompareDrawing;
             figure.HasStartedDrawing -= HideText;
@@ -29,6 +29,7 @@ public class DrawingFigureController : MonoBehaviour
         List<Vector3> normalizedPoints = UnistrokeRecognizer.GetNormalizedPoints(points); 
 
         string name = GetProperFigureName(originals, normalizedPoints);
+        // TODO: Send name to a DrawableLine
         m_uiController.ShowFigureText(true, name);
     }
 
