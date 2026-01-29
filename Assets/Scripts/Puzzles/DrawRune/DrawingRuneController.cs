@@ -6,21 +6,30 @@ public class DrawingRuneController : MonoBehaviour
     [SerializeField] private DrawableLine[] m_drawableLines;
     [SerializeField] private UIController m_uiController;
 
+    private string[] m_runeNames;
+
     private void OnEnable()
     {
-        foreach(var figure in m_drawableLines)
+        m_runeNames = new string[m_drawableLines.Length];
+
+        foreach (var line in m_drawableLines)
         {
-            figure.HasDrawnSymbol += CompareDrawing;
-            figure.HasStartedDrawing += HideText;
+            line.HasDrawnSymbol += CompareDrawing;
+            line.HasStartedDrawing += HideText;
+        }
+        
+        for(int i = 0; i < m_drawableLines.Length; i++)
+        {
+            m_runeNames[i] = m_drawableLines[i].runeName;
         }
     }
 
     private void OnDisable()
     {
-        foreach (var figure in m_drawableLines)
+        foreach (var line in m_drawableLines)
         {
-            figure.HasDrawnSymbol -= CompareDrawing;
-            figure.HasStartedDrawing -= HideText;
+            line.HasDrawnSymbol -= CompareDrawing;
+            line.HasStartedDrawing -= HideText;
         }
     }
 

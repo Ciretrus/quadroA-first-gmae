@@ -11,14 +11,24 @@ public class DrawableLine : BasePuzzle
     public event Action HasStartedDrawing;
 
     [SerializeField] private LineRenderer m_lineRenderer;
+    [SerializeField] private string m_runeName;
     [SerializeField] private int m_figuresAmount = 10;
     [SerializeField] private float m_minDistance = 0.1f;
-
-    private (string, List<Vector3>)[] m_originalsTuples;
+    // Fill with original drawings and names
+    // Change List to an array
+    [SerializeField] private (string, List<Vector3>)[] m_originalsTuples;
+    
+    // Remove m_originals
     private List<List<Vector3>> m_originals;
     private List<Vector3> m_dotsList;
     private bool m_canDraw;
     private bool m_hasBrush => Inventory.instance.HasItem(GlobalConstants.RollBrush);
+
+    public string runeName 
+    { 
+        get => m_runeName; 
+        private set => m_runeName = value; 
+    }
 
     public bool canDraw
     {
@@ -41,7 +51,7 @@ public class DrawableLine : BasePuzzle
     public override void CheckCondition()
     {
         // TODO: Get a name of a drawn rune and check if it's this rune name
-        if (name == m_originalsTuples[1].Item1)
+        if (m_runeName == m_originalsTuples[0].Item1)
         {
             NotifySolved();
         }
@@ -82,6 +92,7 @@ public class DrawableLine : BasePuzzle
         {
             if (m_dotsList.Count > 0)
             {
+                // TODO Remove that if statement, it's for adding originals first
                 if (m_originals.Count < m_figuresAmount)
                 {
                     m_originals.Add(UnistrokeRecognizer.GetNormalizedPoints(m_dotsList)); 
