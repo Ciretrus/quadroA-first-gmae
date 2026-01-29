@@ -143,13 +143,13 @@ Material:
     - _DstBlendAlpha: 0
     - _Emmision: 2
     - _EnvironmentReflections: 1
-    - _Frenel: 1
-    - _GlassEffect: 1
+    - _Frenel: 2
+    - _GlassEffect: 0.055
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _Metallic: 0
-    - _NeedPulse: 1
+    - _NeedPulse: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _PulseSpeed: 1
@@ -164,20 +164,20 @@ Material:
     - _SrcBlendAlpha: 1
     - _Steps: 0
     - _Surface: 0
-    - _Transparent: 0.933
+    - _Transparent: 0.95
     - _WorkflowMode: 1
     - _XRMotionVectorsPass: 1
     - _ZWrite: 1
     - _scale: 0
-    - _smooth: 0.762
+    - _smooth: 0.72
     - _t: -0.6
     - _transparent: 1
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _BasicColor: {r: 0.1333332, g: 0, b: 2, a: 1}
+    - _BasicColor: {r: 0.42706108, g: 0, b: 1, a: 1}
     - _Color: {r: 6.084008, g: 1.0044352, b: 3.2721026, a: 1}
     - _CrystalColor: {r: 1, g: 1, b: 1, a: 1}
-    - _EmissionColor: {r: 0, g: 0.46909612, b: 0.040902574, a: 0.7647059}
+    - _EmissionColor: {r: 1, g: 0, b: 0, a: 0.7647059}
     - _Size: {r: 1, g: 1, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
