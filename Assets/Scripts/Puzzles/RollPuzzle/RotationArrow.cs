@@ -13,7 +13,7 @@ public class RotationArrow : Usable
 
     public override void Use()
     {
-        Debug.Log("activated");
+        Debug.Log("rotated");
         m_roll.Rotate(m_direction);
     }
 }

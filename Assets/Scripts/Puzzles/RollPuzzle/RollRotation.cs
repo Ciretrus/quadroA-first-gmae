@@ -5,11 +5,12 @@ namespace Puzzles
 {
     public class RollRotation : MonoBehaviour
     {
+        [SerializeField] private BasePuzzle m_puzzle;
         [SerializeField] private float m_angleRotation = 72f;
         [SerializeField] private float m_rotationTime = 0.2f;
-        [SerializeField] private BasePuzzle m_puzzle;
         [SerializeField] private int m_rightNmber = 0;
 
+        private IEnumerator m_coroutine;
         private int m_currentNumber = 1;
 
         public bool isRightNumber
@@ -17,19 +18,16 @@ namespace Puzzles
             get { return m_currentNumber == m_rightNmber; }
         }
 
-        private IEnumerator m_coroutine;
-        private bool m_finishCoroutine = true;
-
         public void Rotate(int direction)
         {
             //StopCoroutine(coroutine);
-            m_coroutine = getPosition(direction);
+            m_coroutine = GetPosition(direction);
             StartCoroutine(m_coroutine);
         }
 
-        IEnumerator getPosition(int direction)
+        private IEnumerator GetPosition(int direction)
         {
-            Coroutine coroutine = StartCoroutine(rotate(direction));
+            Coroutine coroutine = StartCoroutine(AnimateRotation(direction));
             yield return coroutine;
             m_currentNumber += direction;
             if (m_currentNumber >= 5) m_currentNumber = 0;
@@ -38,9 +36,8 @@ namespace Puzzles
             m_puzzle.CheckCondition();
         }
 
-        IEnumerator rotate(int direction)
+        private IEnumerator AnimateRotation(int direction)
         {
-            m_finishCoroutine = false;
             int countIterations = (int)(m_rotationTime / Time.deltaTime);
             float frecuency = m_rotationTime / countIterations;
 
@@ -50,8 +47,6 @@ namespace Puzzles
                 transform.Rotate(angle);
                 yield return null;
             }
-
-            m_finishCoroutine = true;
         }
     }
 }

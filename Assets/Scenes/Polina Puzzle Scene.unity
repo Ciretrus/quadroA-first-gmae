@@ -562,6 +562,10 @@ MonoBehaviour:
   - {fileID: 1139410937}
   - {fileID: 1968286568}
   m_uiController: {fileID: 1432953372}
+  m_runes:
+  - {fileID: 11400000, guid: 3e71f4315049ffe48a88f87d13d7ec81, type: 2}
+  - {fileID: 11400000, guid: a2543ccd82c3f7e459bfd3179f880c31, type: 2}
+  - {fileID: 11400000, guid: 7a34268d472a11d418ed08b66d40b16a, type: 2}
 --- !u!1 &318247690
 GameObject:
   m_ObjectHideFlags: 0
@@ -1210,12 +1214,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2005325770243645741, guid: 69217d2a59d26844b8f15d82b2c01098, type: 3}
+      propertyPath: m_rune
+      value: 
+      objectReference: {fileID: 11400000, guid: 3e71f4315049ffe48a88f87d13d7ec81, type: 2}
+    - target: {fileID: 2005325770243645741, guid: 69217d2a59d26844b8f15d82b2c01098, type: 3}
       propertyPath: m_runeName
       value: nobility
       objectReference: {fileID: 0}
     - target: {fileID: 2005325770243645741, guid: 69217d2a59d26844b8f15d82b2c01098, type: 3}
       propertyPath: m_figuresAmount
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2005325770243645741, guid: 69217d2a59d26844b8f15d82b2c01098, type: 3}
+      propertyPath: m_runes.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4722311411028131435, guid: 69217d2a59d26844b8f15d82b2c01098, type: 3}
       propertyPath: m_Name
@@ -2157,8 +2169,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2005325770243645741, guid: 69217d2a59d26844b8f15d82b2c01098, type: 3}
+      propertyPath: m_rune
+      value: 
+      objectReference: {fileID: 11400000, guid: a2543ccd82c3f7e459bfd3179f880c31, type: 2}
+    - target: {fileID: 2005325770243645741, guid: 69217d2a59d26844b8f15d82b2c01098, type: 3}
       propertyPath: m_runeName
       value: bravery
+      objectReference: {fileID: 0}
+    - target: {fileID: 2005325770243645741, guid: 69217d2a59d26844b8f15d82b2c01098, type: 3}
+      propertyPath: m_runes.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2005325770243645741, guid: 69217d2a59d26844b8f15d82b2c01098, type: 3}
+      propertyPath: m_originals.Array.size
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3361435535456652778, guid: 69217d2a59d26844b8f15d82b2c01098, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'

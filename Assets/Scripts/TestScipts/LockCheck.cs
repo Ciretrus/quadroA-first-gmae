@@ -13,7 +13,6 @@ namespace Puzzles
         {
             if (m_puzzle != null)
             {
-                print("sub");
                 m_puzzle.onSolved += OpenDoor;
             }
         }
@@ -22,7 +21,6 @@ namespace Puzzles
         {
             if (m_puzzle != null)
             {
-                print("unsub");
                 m_puzzle.onSolved -= OpenDoor;
             }
         }
@@ -32,7 +30,7 @@ namespace Puzzles
             StartCoroutine(OpenDoorCoroutine());
         }
 
-        IEnumerator OpenDoorCoroutine()
+        private IEnumerator OpenDoorCoroutine()
         {
             print("open");
             for (float i = 0; i < m_openingTime; i += Time.deltaTime)

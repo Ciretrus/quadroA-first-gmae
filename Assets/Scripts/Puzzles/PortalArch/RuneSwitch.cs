@@ -6,6 +6,7 @@ public class RuneSwitch : MonoBehaviour
     [SerializeField] private Color m_colorOff = Color.black;
     [SerializeField] private Color m_colorOn = Color.cyan;
     [SerializeField] private float m_glowTime = 1.0f;
+    
     private MaterialPropertyBlock m_emissionMat;
     private MeshRenderer m_meshRenderer;
     private Coroutine m_coroutine;
@@ -47,7 +48,7 @@ public class RuneSwitch : MonoBehaviour
         m_isStarted = true;
         Coroutine coroutine = StartCoroutine(SwitchColor(color, intensity));
         yield return coroutine;
-        m_isStarted=false;
+        m_isStarted = false;
     }
 
     private IEnumerator SwitchColor(Color color,float intensity)

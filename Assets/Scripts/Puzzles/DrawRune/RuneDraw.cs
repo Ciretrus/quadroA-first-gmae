@@ -8,12 +8,18 @@ public class RuneDraw : Usable
     {
         Initialize(UsableType.Blocking);
 
-        m_drawableLine.onSolved += DisableDrawing;
+        if (m_drawableLine != null)
+        {
+            m_drawableLine.onSolved += DisableDrawing;
+        }
     }
 
     private void OnDisable()
     {
-        m_drawableLine.onSolved -= DisableDrawing;
+        if (m_drawableLine != null)
+        {
+            m_drawableLine.onSolved -= DisableDrawing;
+        }
     }
 
     public override void Use()
@@ -24,7 +30,8 @@ public class RuneDraw : Usable
     private void DisableDrawing()
     {
         Use();
-        // TODO: Disable the ability to draw
+        // TODO:
+        // Disable the ability to draw
         // move camera from rune view to normal
         // disable script
     }

@@ -3,15 +3,15 @@ using UnityEngine;
 
 public class PlateController : MonoBehaviour
 {
+    [SerializeField] private AudioSource m_audioSource;
     [SerializeField] private Material m_inactiveMaterial;
     [SerializeField] private Material m_activeMaterial;
     [SerializeField] private Pushable[] m_plates;
-    [SerializeField] private AudioSource m_audioSource;
+    [SerializeField] private int[] m_correctSequence = { 1, 1, 3, 5, 7 };
     [SerializeField] private float m_delay = 0.3f;
 
     private Renderer[] m_renderers;
     private AudioClip[] m_composition;
-    private int[] m_correctSequence = { 1, 1, 3, 5, 7 };
     private int m_currentStep = 0;
     private bool m_isSolved = false;
 

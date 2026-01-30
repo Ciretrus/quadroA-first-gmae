@@ -33,7 +33,7 @@ public class ButtonsClick : Usable
         }
     }
     
-    IEnumerator Click()
+    private IEnumerator Click()
     {
         m_clicked = true;
         Coroutine coroutine = StartCoroutine(ChangePosition(m_newPosition));
@@ -43,13 +43,14 @@ public class ButtonsClick : Usable
         m_clicked = false;
     }
 
-    IEnumerator ChangePosition(Vector3 newPosition)
+    private IEnumerator ChangePosition(Vector3 newPosition)
     {
         float t = 0;
         Vector3 startPosition = transform.position;
+        
         while (t < 1)
         {
-            t+= Time.deltaTime / m_timeClick;
+            t += Time.deltaTime / m_timeClick;
             yield return new WaitForSeconds(Time.deltaTime);
             transform.position = Vector3.Lerp(startPosition, newPosition, t);
         }

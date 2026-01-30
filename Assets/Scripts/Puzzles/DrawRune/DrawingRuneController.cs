@@ -5,22 +5,14 @@ public class DrawingRuneController : MonoBehaviour
 {
     [SerializeField] private DrawableLine[] m_drawableLines;
     [SerializeField] private UIController m_uiController;
-
-    private string[] m_runeNames;
+    [SerializeField] private RuneData[] m_runes;
 
     private void OnEnable()
     {
-        m_runeNames = new string[m_drawableLines.Length];
-
         foreach (var line in m_drawableLines)
         {
             line.HasDrawnSymbol += CompareDrawing;
             line.HasStartedDrawing += HideText;
-        }
-        
-        for(int i = 0; i < m_drawableLines.Length; i++)
-        {
-            m_runeNames[i] = m_drawableLines[i].runeName;
         }
     }
 
@@ -33,13 +25,22 @@ public class DrawingRuneController : MonoBehaviour
         }
     }
 
-    private void CompareDrawing((string, List<Vector3>)[] originals, List<Vector3> points)
+    private void CompareDrawing(List<Vector3> points)
     {
         List<Vector3> normalizedPoints = UnistrokeRecognizer.GetNormalizedPoints(points); 
 
-        string name = GetProperFigureName(originals, normalizedPoints);
-        // TODO: Send name to a DrawableLine
-        m_uiController.ShowFigureText(true, name);
+        string name = GetDrawnRuneName(normalizedPoints);
+
+        foreach (var rune in m_runes)
+        {
+            if (rune.runeName == name)
+            {
+                rune.solved = true;
+                m_uiController.ShowFigureText(true, name);
+                return;
+            }
+        }
+        Debug.Log("no such a rune");
     }
 
     private void HideText()
@@ -47,18 +48,19 @@ public class DrawingRuneController : MonoBehaviour
         m_uiController.ShowFigureText(false, "");
     }
 
-    private string GetProperFigureName((string, List<Vector3>)[] originals, List<Vector3> points)
+    private string GetDrawnRuneName(List<Vector3> points)
     {
         string result = "";
         float previousDistance = 1f;
 
-        for (int i = 0; i < originals.Length; i++)
+        for (int i = 0; i < m_runes.Length; i++)
         {
-            float current = UnistrokeRecognizer.GetDistanceBetweenDraws(originals[i].Item2, points);
+            var normalizedOriginal = UnistrokeRecognizer.GetNormalizedPoints(m_runes[i].original);
+            float current = UnistrokeRecognizer.GetDistanceBetweenDraws(normalizedOriginal, points);
 
             if (current < previousDistance)
             {
-                result = originals[i].Item1;
+                result = m_runes[i].runeName;
                 previousDistance = current;
             }
         }

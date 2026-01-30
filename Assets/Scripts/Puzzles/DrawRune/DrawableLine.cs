@@ -7,28 +7,16 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(LineRenderer))]
 public class DrawableLine : BasePuzzle
 {
-    public event Action<(string, List<Vector3>)[], List<Vector3>> HasDrawnSymbol;
+    public event Action<List<Vector3>> HasDrawnSymbol;
     public event Action HasStartedDrawing;
 
     [SerializeField] private LineRenderer m_lineRenderer;
-    [SerializeField] private string m_runeName;
-    [SerializeField] private int m_figuresAmount = 10;
+    [SerializeField] private RuneData m_rune;
     [SerializeField] private float m_minDistance = 0.1f;
-    // Fill with original drawings and names
-    // Change List to an array
-    [SerializeField] private (string, List<Vector3>)[] m_originalsTuples;
     
-    // Remove m_originals
-    private List<List<Vector3>> m_originals;
     private List<Vector3> m_dotsList;
     private bool m_canDraw;
     private bool m_hasBrush => Inventory.instance.HasItem(GlobalConstants.RollBrush);
-
-    public string runeName 
-    { 
-        get => m_runeName; 
-        private set => m_runeName = value; 
-    }
 
     public bool canDraw
     {
@@ -38,8 +26,6 @@ public class DrawableLine : BasePuzzle
 
     private void Start()
     {
-        m_originalsTuples = new (string, List<Vector3>)[m_figuresAmount];
-        m_originals = new List<List<Vector3>>();
         m_dotsList = new List<Vector3>();
     }
 
@@ -50,8 +36,7 @@ public class DrawableLine : BasePuzzle
 
     public override void CheckCondition()
     {
-        // TODO: Get a name of a drawn rune and check if it's this rune name
-        if (m_runeName == m_originalsTuples[0].Item1)
+        if (m_rune.solved)
         {
             NotifySolved();
         }
@@ -92,24 +77,12 @@ public class DrawableLine : BasePuzzle
         {
             if (m_dotsList.Count > 0)
             {
-                // TODO Remove that if statement, it's for adding originals first
-                if (m_originals.Count < m_figuresAmount)
-                {
-                    m_originals.Add(UnistrokeRecognizer.GetNormalizedPoints(m_dotsList)); 
-
-                    int index = m_originals.Count - 1;
-                    m_originalsTuples[index] = (Convert.ToString(index), m_originals[index]);
-                }
-                else
-                {
-                    HasDrawnSymbol?.Invoke(m_originalsTuples, m_dotsList);
-                    CheckCondition();
-                }
+                HasDrawnSymbol?.Invoke(m_dotsList);
+                CheckCondition();
             }
 
-            // TODO: Get originals - Lists of <Vector3>
-            /*m_dotsList.Clear();
-            m_lineRenderer.positionCount = 0;*/
+            m_dotsList.Clear();
+            m_lineRenderer.positionCount = 0;
         }
     }
 

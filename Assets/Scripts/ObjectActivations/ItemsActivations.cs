@@ -7,15 +7,14 @@ public class ItemsActivations : MonoBehaviour
     [SerializeField] private PlayerController m_playerController;
     [SerializeField] private Camera m_camera;
     [SerializeField] private UIController m_uiController;
-    [SerializeField] private PlateController m_plateController;
     [SerializeField] private ThiefEye m_thiefEye;
+    [SerializeField] private PlateController m_plateController;
     [SerializeField] private float m_rayDistance = 1f;
 
     private CameraMovement m_cameraMovement;
+    private DiaryInteractable m_diaryInteractable;
     private Vector3 m_screenCenter;
-    private Usable m_usable;
-    private Usable m_lastUsable;
-    private DiaryInteractable m_interactable;
+    private Usable m_usable, m_lastUsable;
     private bool m_isUIBlocked;
 
     private void Awake()
@@ -33,7 +32,7 @@ public class ItemsActivations : MonoBehaviour
 
         if (hit.collider != null)
         {
-            if (hit.collider.gameObject.TryGetComponent(out m_usable))
+            if (hit.collider.TryGetComponent(out m_usable))
             {
                 m_uiController.ShowObjectActivationText(true);
                 m_usable.GetComponent<Outline>().enabled = true;
@@ -55,9 +54,9 @@ public class ItemsActivations : MonoBehaviour
                     m_usable.Use();
                 }
             }
-            else
+            else if (hit.collider.TryGetComponent(out m_diaryInteractable))
             {
-                TryDiaryNotif(hit.collider);
+                DiaryNotif(m_diaryInteractable);
             }
 
             if (m_usable != m_lastUsable && m_lastUsable != null)
@@ -79,9 +78,9 @@ public class ItemsActivations : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other != null)
+        if (other.TryGetComponent(out m_diaryInteractable))
         {
-            TryDiaryNotif(other);
+            DiaryNotif(m_diaryInteractable);
         }
 
         if (other.TryGetComponent(out Pushable pushable) && !m_plateController.isSolved)
@@ -104,20 +103,17 @@ public class ItemsActivations : MonoBehaviour
         m_cameraMovement.enabled = !m_cameraMovement.enabled;
     }
 
-    private void TryDiaryNotif(Collider collider)
+    private void DiaryNotif(DiaryInteractable m_interactable)
     {
-        if (collider.gameObject.TryGetComponent(out m_interactable))
+        int layerMask = 1 << m_interactable.gameObject.layer;
+        if ((layerMask & m_thiefEye.layerThiefEye) != 0 && !m_thiefEye.hasStarted)
         {
-            int layerMask = 1 << m_interactable.gameObject.layer;
-            if ((layerMask & m_thiefEye.layerThiefEye) != 0 && !m_thiefEye.hasStarted)
-            {
-                return;
-            }
-            if (!m_interactable.wasTriggered)
-            {
-                m_uiController.ShowDiaryNotification();
-                m_interactable.TriggerDiaryRecord();
-            }
+            return;
+        }
+        if (!m_interactable.wasTriggered)
+        {
+            m_uiController.ShowDiaryNotification();
+            m_interactable.TriggerDiaryRecord();
         }
     }
 
