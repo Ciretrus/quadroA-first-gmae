@@ -75,7 +75,7 @@ public class DrawableLine : BasePuzzle
         }
         else
         {
-            if (m_dotsList.Count > 0)
+            if (m_dotsList.Count > 1)
             {
                 HasDrawnSymbol?.Invoke(m_dotsList);
                 CheckCondition();

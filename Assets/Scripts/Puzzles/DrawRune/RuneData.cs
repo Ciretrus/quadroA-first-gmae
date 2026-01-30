@@ -9,7 +9,7 @@ public class RuneData : ScriptableObject
     [SerializeField] private string m_name;
     [SerializeField] private List<Vector3> m_original;
 
-    private bool m_solved;
+    [NonSerialized] private bool m_solved = false;
 
     public string runeName { get { return m_name; } }
     public List<Vector3> original { get { return m_original; } }
