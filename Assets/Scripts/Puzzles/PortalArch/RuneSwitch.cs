@@ -59,7 +59,7 @@ namespace Puzzles{
                 differentColor = Color.Lerp(lastColor, expectedColor, t);
                 m_emissionMat.SetColor("_EmissionColor", differentColor * intensity);
                 m_meshRenderer.SetPropertyBlock(m_emissionMat, 1);
-                yield return new WaitForSeconds(Time.deltaTime);
+                yield return null;
             }
 
 
