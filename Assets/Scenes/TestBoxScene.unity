@@ -5522,17 +5522,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06dba59b62b824744941bc490ed90dd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Puzzles.RuneCheck
-  m_runes:
-  - {fileID: 8771326707269181347}
-  - {fileID: 8402174703719011481}
-  - {fileID: 4666376646089382089}
-  - {fileID: 7144460678182272530}
-  - {fileID: 7718907606065657929}
-  - {fileID: 8600477010501478027}
-  - {fileID: 4901641121965899880}
-  - {fileID: 7828030942740653084}
-  - {fileID: 8821012495862168921}
-  - {fileID: 4895857963231599340}
+  m_onSolvedUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &930999953
 PrefabInstance:
   m_ObjectHideFlags: 0

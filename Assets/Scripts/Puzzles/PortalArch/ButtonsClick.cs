@@ -1,58 +1,59 @@
 using System.Collections;
 using UnityEngine;
-using Puzzles;
-
-public class ButtonsClick : Usable
+namespace Puzzles
 {
-
-    [SerializeField] private RuneSwitch[] m_runeActivations;
-    [SerializeField] private Vector3 m_clickedShiftPosition;
-    [SerializeField] private float m_timeClick = 0.3f;
-    [SerializeField] private BasePuzzle m_puzzle;
-    private bool m_clicked = false;
-    private Vector3 m_startPosition;
-    private Vector3 m_newPosition;
-
-    public void Awake()
+    public class ButtonsClick : Usable
     {
-        m_startPosition = transform.position;
-        m_newPosition = m_startPosition - m_clickedShiftPosition;
-        Initialize(UsableType.NonBlocking);
-    }
-    
-    public override void Use()
-    {
-        if (!m_clicked)
+
+        [SerializeField] private RuneSwitch[] m_runeActivations;
+        [SerializeField] private Vector3 m_clickedShiftPosition;
+        [SerializeField] private float m_timeClick = 0.3f;
+        [SerializeField] private BasePuzzle m_puzzle;
+        private bool m_clicked = false;
+        private Vector3 m_startPosition;
+        private Vector3 m_newPosition;
+
+        public void Awake()
         {
-            StartCoroutine(Click());
-            for (int i = 0; i < m_runeActivations.Length; i++)
+            m_startPosition = transform.position;
+            m_newPosition = m_startPosition - m_clickedShiftPosition;
+            Initialize(UsableType.NonBlocking);
+        }
+
+        public override void Use()
+        {
+            if (!m_clicked)
             {
-                m_runeActivations[i].changeState();
+                StartCoroutine(Click());
+                for (int i = 0; i < m_runeActivations.Length; i++)
+                {
+                    m_runeActivations[i].changeState();
+                }
+                m_puzzle.CheckCondition();
             }
-            m_puzzle.CheckCondition();
         }
-    }
-    
-    IEnumerator Click()
-    {
-        m_clicked = true;
-        Coroutine coroutine = StartCoroutine(ChangePosition(m_newPosition));
-        yield return coroutine;
-        coroutine = StartCoroutine(ChangePosition(m_startPosition));
-        yield return coroutine;
-        m_clicked = false;
-    }
-    IEnumerator ChangePosition(Vector3 newPosition)
-    {
-        
-        float t = 0;
-        Vector3 startPosition = transform.position;
-        while (t < 1)
+
+        IEnumerator Click()
         {
-            t+= Time.deltaTime / m_timeClick;
-            yield return new WaitForSeconds(Time.deltaTime);
-            transform.position = Vector3.Lerp(startPosition, newPosition, t);
+            m_clicked = true;
+            Coroutine coroutine = StartCoroutine(ChangePosition(m_newPosition));
+            yield return coroutine;
+            coroutine = StartCoroutine(ChangePosition(m_startPosition));
+            yield return coroutine;
+            m_clicked = false;
         }
-        
+        IEnumerator ChangePosition(Vector3 newPosition)
+        {
+
+            float t = 0;
+            Vector3 startPosition = transform.position;
+            while (t < 1)
+            {
+                t += Time.deltaTime / m_timeClick;
+                yield return new WaitForSeconds(Time.deltaTime);
+                transform.position = Vector3.Lerp(startPosition, newPosition, t);
+            }
+
+        }
     }
 }

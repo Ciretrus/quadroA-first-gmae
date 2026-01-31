@@ -4,13 +4,14 @@ namespace Puzzles
 {
     public class RuneCheck: BasePuzzle
     {
-        [SerializeField] private RuneSwitch[] m_runes;
+        [SerializeField] private ICondition[] m_runes;
 
+      
         public override void CheckCondition()
         {
-            foreach (RuneSwitch rune in m_runes)
+            foreach (ICondition rune in m_runes)
             {
-                if (rune.isActive == false)
+                if (rune.IsSolved == false)
                 {
                     return;
                 }
