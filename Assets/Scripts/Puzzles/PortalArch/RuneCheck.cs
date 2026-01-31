@@ -6,7 +6,6 @@ namespace Puzzles
     {
         [SerializeField] private RuneSwitch[] m_runes;
 
-
         public override void CheckCondition()
         {
             foreach (RuneSwitch rune in m_runes)
