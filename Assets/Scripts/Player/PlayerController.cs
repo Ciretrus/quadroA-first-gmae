@@ -3,35 +3,49 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private CharacterController m_characterController;
+    public static PlayerController instance { get; private set; }
+
+    [SerializeField] private Rigidbody m_rigidbody;
+    [SerializeField] private float m_groundDrag;
+    [SerializeField] private float m_airMultiplier;
     [SerializeField] private ItemsActivations m_itemsActivations;
     [SerializeField] private ThiefEye m_thiefEye;
     [SerializeField] private GameObject m_head;
-    [SerializeField] private Transform _groundCheckerPivot;
+    [SerializeField] private Transform m_groundCheckerPivot;
     [SerializeField] private float m_smoothInputSpeed = 0.2f;
     [SerializeField] private float m_walkSpeed = 10f;
     [SerializeField] private float m_sprintSpeed = 20f;
     [SerializeField] private float m_sneakSpeed = 5f;
     [SerializeField] private float m_jumpForce = 5f;
     [SerializeField] private float m_gravity = 9.8f;
-    [SerializeField] private float _checkGroundRadius = 0.3f;
-    [SerializeField] private LayerMask _groundMask;
+    [SerializeField] private float m_checkGroundRadius = 0.3f;
+    [SerializeField] private LayerMask m_groundMask;
     [SerializeField] private Diary m_diary;
 
-    private Vector3 m_velocity;
+    private PlayerInput m_input;
     private Vector2 m_smoothVector;
     private Vector2 m_smoothVelocity;
     private float m_currentSpeed;
     private bool m_isSprinting;
     private bool m_isSneaking;
-    private PlayerInput m_input;
 
     public PlayerInput input => m_input;
     public bool isMoving { get; private set; } = false;
-    public bool isGrounded => m_characterController.isGrounded;
+    public bool isGrounded => IsGrounded();
 
     private void Awake()
     {
+        if (instance != null && instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        instance = this;
+
+        DontDestroyOnLoad(gameObject);
+
+        m_rigidbody.freezeRotation = true;
+
         m_input = new PlayerInput();
         m_input.Enable();
 
@@ -51,18 +65,29 @@ public class PlayerController : MonoBehaviour
         m_input.Disable();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         Move();
+        ControlSpeed();
+
+        if (IsGrounded())
+        {
+            m_rigidbody.linearDamping = m_groundDrag;
+        }
+        else
+        {
+            m_rigidbody.linearDamping = 0;
+        }
+    }
+
+    public void SetPosition(Vector3 position)
+    {
+        float playerY = transform.position.y;
+        transform.position = new Vector3(position.x, playerY, position.z);
     }
 
     private void Move()
     {
-        if (IsGrounded() && m_velocity.y < 0)
-        {
-            m_velocity.y = 0f;
-        }
-
         Vector2 inputVector = m_input.Movement.Walk.ReadValue<Vector2>();
 
         if (inputVector == Vector2.zero)
@@ -95,10 +120,27 @@ public class PlayerController : MonoBehaviour
             m_currentSpeed = m_walkSpeed;
         }
 
-        m_characterController.Move(transform.TransformDirection(moveDirection) * (m_currentSpeed * Time.deltaTime));
+        if (IsGrounded())
+        {
+            m_rigidbody.AddForce(transform.TransformDirection(moveDirection) * m_currentSpeed * 10f, ForceMode.Force);
+        }
 
-        m_velocity.y -= m_gravity * Time.deltaTime;
-        m_characterController.Move(m_velocity * Time.deltaTime);
+        if (!IsGrounded())
+        {
+            m_rigidbody.AddForce(transform.TransformDirection(moveDirection) * m_currentSpeed * 10f * m_airMultiplier, ForceMode.Force);
+            m_rigidbody.AddForce(- Vector3.up * m_gravity, ForceMode.Force);
+        }
+    }
+
+    private void ControlSpeed()
+    {
+        Vector3 flatVelocity = new Vector3(m_rigidbody.linearVelocity.x, 0f, m_rigidbody.linearVelocity.z);
+
+        if (flatVelocity.magnitude > m_currentSpeed)
+        {
+            Vector3 limitedVelocity = flatVelocity.normalized * m_currentSpeed;
+            m_rigidbody.linearVelocity = new Vector3(limitedVelocity.x, m_rigidbody.linearVelocity.y, limitedVelocity.z);
+        }
     }
 
     private void Jump(InputAction.CallbackContext context)
@@ -110,7 +152,9 @@ public class PlayerController : MonoBehaviour
 
         if (IsGrounded())
         {
-            m_velocity.y += m_jumpForce;
+            m_rigidbody.linearVelocity = new Vector3(m_rigidbody.linearVelocity.x, 0f, m_rigidbody.linearVelocity.z);
+
+            m_rigidbody.AddForce(transform.up * m_jumpForce * 2f, ForceMode.Impulse);
         }
     }
 
@@ -149,7 +193,7 @@ public class PlayerController : MonoBehaviour
 
     private bool IsGrounded()
     {
-        bool groundCheck = Physics.CheckSphere(_groundCheckerPivot.position, _checkGroundRadius, _groundMask);
+        bool groundCheck = Physics.CheckSphere(m_groundCheckerPivot.position, m_checkGroundRadius, m_groundMask);
         return groundCheck;
     }
 }

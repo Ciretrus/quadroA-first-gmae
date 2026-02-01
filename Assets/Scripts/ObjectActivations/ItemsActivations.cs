@@ -8,17 +8,34 @@ public class ItemsActivations : MonoBehaviour
     [SerializeField] private Camera m_camera;
     [SerializeField] private UIController m_uiController;
     [SerializeField] private ThiefEye m_thiefEye;
+    [SerializeField] private PlateController m_plateController;
+    [SerializeField] private DrawingRuneController m_drawingRuneController;
+    [SerializeField] private RuneDraw[] m_runes;
     [SerializeField] private float m_rayDistance = 1f;
 
     private CameraMovement m_cameraMovement;
     private Vector3 m_screenCenter;
-    private Usable m_usable;
-    private DiaryInteractable m_interactable;
+    private Usable m_usable, m_lastUsable;
+    private DiaryInteractable m_diaryInteractable;
+    private RuneDraw m_runeDraw;
     private bool m_isUIBlocked;
 
     private void Awake()
     {
         m_cameraMovement = m_camera.GetComponent<CameraMovement>();
+
+        foreach (RuneDraw rune in m_runes)
+        {
+            rune.OnDisableDrawing += ChangeDrawingMode;
+        }
+    }
+
+    private void OnDisable()
+    {
+        foreach (RuneDraw rune in m_runes)
+        {
+            rune.OnDisableDrawing -= ChangeDrawingMode;
+        }
     }
 
     private void Update()
@@ -31,7 +48,7 @@ public class ItemsActivations : MonoBehaviour
 
         if (hit.collider != null)
         {
-            if (hit.collider.gameObject.TryGetComponent(out m_usable))
+            if (hit.collider.TryGetComponent(out m_usable) && m_usable.enabled)
             {
                 m_uiController.ShowObjectActivationText(true);
                 m_usable.GetComponent<Outline>().enabled = true;
@@ -43,66 +60,77 @@ public class ItemsActivations : MonoBehaviour
                         case UsableType.NonBlocking: Debug.Log("Interacted with Non-Blocking UI thing"); break;
                         case UsableType.Blocking:
                             {
-                                ChangeDrawingMode(m_usable);
+                                if (m_usable.TryGetComponent(out m_runeDraw))
+                                {
+                                    ChangeDrawingMode(m_usable);
+                                }
                                 break;
                             }
                     }
                     m_usable.Use();
                 }
             }
-            else
+            else if (hit.collider.TryGetComponent(out m_diaryInteractable))
             {
-                TryDiaryNotif(hit.collider);
+                DiaryNotif(m_diaryInteractable);
             }
+
+            if (m_usable != m_lastUsable && m_lastUsable != null)
+            {
+                m_lastUsable.GetComponent<Outline>().enabled = false;
+            }
+            m_lastUsable = m_usable;
         }
         else
         {
-            m_uiController.ShowObjectActivationText(false);
-            if (m_usable != null)
+            m_uiController.ShowObjectActivationText(false); 
+
+            if (m_lastUsable != null)
             {
-                m_usable.GetComponent<Outline>().enabled = false;
+                m_lastUsable.GetComponent<Outline>().enabled = false;
             }
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other != null)
+        if (other.TryGetComponent(out m_diaryInteractable))
         {
-            TryDiaryNotif(other);
+            DiaryNotif(m_diaryInteractable);
+        }
+
+        if (other.TryGetComponent(out Pushable pushable) && !m_plateController.isSolved)
+        {
+            m_plateController.AddToSequence(pushable);
         }
     }
 
     public void ChangeUIMode(InputAction.CallbackContext context)
     {
         ChangeMovementState();
+        ChangeCursorState();
 
         m_isUIBlocked = !m_isUIBlocked;
     }
 
-    private void TryDiaryNotif(Collider collider)
-    {
-        if (collider.gameObject.TryGetComponent(out m_interactable))
-        {
-            int layerMask = 1 << m_interactable.gameObject.layer;
-            if ((layerMask & m_thiefEye.layerThiefEye) != 0 && !m_thiefEye.hasStarted)
-            {
-                return;
-            }
-            if (!m_interactable.wasTriggered)
-            {
-                m_uiController.ShowDiaryNotification();
-                m_interactable.TriggerDiaryRecord();
-            }
-        }
-    }
-
-    private void ChangeMovementState()
+    public void ChangeMovementState()
     {
         m_playerController.enabled = !m_playerController.enabled;
         m_cameraMovement.enabled = !m_cameraMovement.enabled;
+    }
 
-        ChangeCursorState();
+    private void DiaryNotif(DiaryInteractable m_interactable)
+    {
+        int layerMask = 1 << m_interactable.gameObject.layer;
+        if ((layerMask & m_thiefEye.layerThiefEye) != 0 && !m_thiefEye.hasStarted)
+        {
+            return;
+        }
+        if (!m_interactable.wasTriggered)
+        {
+            m_uiController.ShowDiaryNotification();
+            m_interactable.TriggerDiaryRecord();
+        }
     }
 
     private void ChangeCursorState()
@@ -121,12 +149,14 @@ public class ItemsActivations : MonoBehaviour
     private void ChangeDrawingMode(Usable usable)
     {
         ChangeMovementState();
+        ChangeCursorState();
 
         if (m_isUIBlocked)
         {
             m_camera.transform.localPosition = Vector3.zero;
 
-            m_uiController.ShowFigureText(false, "");
+            m_uiController.ShowFigureText(false, ""); 
+            m_drawingRuneController.currentRune = null;
         }
         else
         {
@@ -141,6 +171,8 @@ public class ItemsActivations : MonoBehaviour
 
             Vector3 cameraPos = m_camera.transform.position;
             m_camera.transform.position = new Vector3(cameraPos.x, newPos.y, cameraPos.z);
+
+            m_drawingRuneController.currentRune = m_runeDraw.drawableLine.rune;
         }
 
         m_isUIBlocked = !m_isUIBlocked;

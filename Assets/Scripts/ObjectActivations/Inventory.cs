@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public class Inventory : MonoBehaviour
 {
     public static Inventory instance { get; private set; }
@@ -48,7 +47,7 @@ public class Inventory : MonoBehaviour
         }
         else 
         {
-            Debug.LogError($"thing didnt found, cant delete it - {itemName}");   
+            Debug.LogError($"thing didnt found, can't delete it - {itemName}");   
         }
     }
 

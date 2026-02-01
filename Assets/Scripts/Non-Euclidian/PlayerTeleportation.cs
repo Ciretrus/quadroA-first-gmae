@@ -5,7 +5,7 @@ namespace NonEuclidian
     public class PlayerTeleportation : MonoBehaviour
     {
         [SerializeField] private CharacterController m_characterController;
-        [SerializeField] private Transform m_reciever;
+        [SerializeField] private Transform m_receiver;
 
         private void OnTriggerEnter(Collider other)
         {
@@ -25,11 +25,11 @@ namespace NonEuclidian
 
             // перенос в другой портал
             player.position =
-                m_reciever.TransformPoint(localPos);
+                m_receiver.TransformPoint(localPos);
 
             // поворот относительно другого портала
             player.rotation =
-                m_reciever.rotation * localRot;
+                m_receiver.rotation * localRot;
 
             m_characterController.enabled = true;
         }
