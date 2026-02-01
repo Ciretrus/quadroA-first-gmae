@@ -12,6 +12,7 @@ public class ItemsActivations : MonoBehaviour
     [SerializeField] private DrawingRuneController m_drawingRuneController;
     [SerializeField] private RuneDraw[] m_runes;
     [SerializeField] private float m_rayDistance = 1f;
+    [SerializeField] private OutlineFader m_outlineFader;    
 
     private CameraMovement m_cameraMovement;
     private Vector3 m_screenCenter;
@@ -19,6 +20,7 @@ public class ItemsActivations : MonoBehaviour
     private DiaryInteractable m_diaryInteractable;
     private RuneDraw m_runeDraw;
     private bool m_isUIBlocked;
+    private Outline m_lastOutlineObject;
 
     private void Awake()
     {
@@ -43,6 +45,7 @@ public class ItemsActivations : MonoBehaviour
         m_screenCenter = new Vector3(Screen.width / 2, Screen.height / 2, 0);
         Ray ray = m_camera.ScreenPointToRay(m_screenCenter);
         RaycastHit hit;
+        Outline outlineObject;
 
         Physics.Raycast(ray, out hit, m_rayDistance);
 
@@ -51,7 +54,10 @@ public class ItemsActivations : MonoBehaviour
             if (hit.collider.TryGetComponent(out m_usable) && m_usable.enabled)
             {
                 m_uiController.ShowObjectActivationText(true);
-                m_usable.GetComponent<Outline>().enabled = true;
+                outlineObject = m_usable.GetComponent<Outline>();
+                //outlineObject.enabled = true;                
+                m_outlineFader.Enable(outlineObject);
+                m_lastOutlineObject = outlineObject;
 
                 if (m_playerController.input.UI.Interact.WasPerformedThisFrame())
                 {
@@ -68,6 +74,8 @@ public class ItemsActivations : MonoBehaviour
                             }
                     }
                     m_usable.Use();
+
+                    PlayInteractionSound(m_usable);
                 }
             }
             else if (hit.collider.TryGetComponent(out m_diaryInteractable))
@@ -176,5 +184,24 @@ public class ItemsActivations : MonoBehaviour
         }
 
         m_isUIBlocked = !m_isUIBlocked;
+    }
+
+    private void PlayInteractionSound(Usable usable)
+    {
+        Debug.LogWarning(usable.interactableSound);
+
+        if (usable.interactableSound == null)
+            return;
+                
+        usable.interactableSound.PlayPitchedSound();
+    }
+
+    private void DisableLastOutlineObject()
+    {
+        if (m_lastOutlineObject)
+        {
+            //m_lastOutlineObject.enabled = false;
+            m_outlineFader.Disable(m_lastOutlineObject);
+        }
     }
 }
