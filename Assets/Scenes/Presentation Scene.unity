@@ -2174,6 +2174,7 @@ MonoBehaviour:
   m_onSolvedUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  m_runes: []
 --- !u!1 &845843175
 GameObject:
   m_ObjectHideFlags: 0
@@ -3573,9 +3574,109 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 169651536176739301, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
+      propertyPath: m_puzzle
+      value: 
+      objectReference: {fileID: 1869598869}
+    - target: {fileID: 169651536176739301, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
+      propertyPath: m_timeClick
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 169651536176739301, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
+      propertyPath: m_clickedShiftPosition.y
+      value: -0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 169651536176739301, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
+      propertyPath: m_clickedShiftPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 385603958597991335, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
+      propertyPath: m_colorOff.b
+      value: 0.26415092
+      objectReference: {fileID: 0}
+    - target: {fileID: 385603958597991335, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
+      propertyPath: m_colorOff.g
+      value: 0.26415092
+      objectReference: {fileID: 0}
+    - target: {fileID: 385603958597991335, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
+      propertyPath: m_colorOff.r
+      value: 0.26415092
+      objectReference: {fileID: 0}
+    - target: {fileID: 585558869975502872, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
+      propertyPath: m_colorOff.b
+      value: 0.26415092
+      objectReference: {fileID: 0}
+    - target: {fileID: 585558869975502872, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
+      propertyPath: m_colorOff.g
+      value: 0.26415092
+      objectReference: {fileID: 0}
+    - target: {fileID: 585558869975502872, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
+      propertyPath: m_colorOff.r
+      value: 0.26415092
+      objectReference: {fileID: 0}
+    - target: {fileID: 800683287091249298, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
+      propertyPath: m_colorOff.b
+      value: 0.26415092
+      objectReference: {fileID: 0}
+    - target: {fileID: 800683287091249298, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
+      propertyPath: m_colorOff.g
+      value: 0.26415092
+      objectReference: {fileID: 0}
+    - target: {fileID: 800683287091249298, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
+      propertyPath: m_colorOff.r
+      value: 0.26415092
+      objectReference: {fileID: 0}
+    - target: {fileID: 2374461022351109952, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
+      propertyPath: m_colorOff.b
+      value: 0.26415092
+      objectReference: {fileID: 0}
+    - target: {fileID: 2374461022351109952, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
+      propertyPath: m_colorOff.g
+      value: 0.26415092
+      objectReference: {fileID: 0}
+    - target: {fileID: 2374461022351109952, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
+      propertyPath: m_colorOff.r
+      value: 0.26415092
+      objectReference: {fileID: 0}
+    - target: {fileID: 2441865514637211911, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
+      propertyPath: m_colorOff.b
+      value: 0.26415092
+      objectReference: {fileID: 0}
+    - target: {fileID: 2441865514637211911, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
+      propertyPath: m_colorOff.g
+      value: 0.26415092
+      objectReference: {fileID: 0}
+    - target: {fileID: 2441865514637211911, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
+      propertyPath: m_colorOff.r
+      value: 0.26415092
+      objectReference: {fileID: 0}
     - target: {fileID: 3195403763711510321, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
       propertyPath: m_Name
       value: RunePortalPuzzle
+      objectReference: {fileID: 0}
+    - target: {fileID: 4037041542910075733, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
+      propertyPath: m_colorOff.b
+      value: 0.26415092
+      objectReference: {fileID: 0}
+    - target: {fileID: 4037041542910075733, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
+      propertyPath: m_colorOff.g
+      value: 0.26415092
+      objectReference: {fileID: 0}
+    - target: {fileID: 4037041542910075733, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
+      propertyPath: m_colorOff.r
+      value: 0.26415092
+      objectReference: {fileID: 0}
+    - target: {fileID: 4174464794791698471, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
+      propertyPath: m_colorOff.b
+      value: 0.26415092
+      objectReference: {fileID: 0}
+    - target: {fileID: 4174464794791698471, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
+      propertyPath: m_colorOff.g
+      value: 0.26415092
+      objectReference: {fileID: 0}
+    - target: {fileID: 4174464794791698471, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
+      propertyPath: m_colorOff.r
+      value: 0.26415092
       objectReference: {fileID: 0}
     - target: {fileID: 4348617306999116061, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3615,6 +3716,158 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4348617306999116061, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4429511219896328984, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
+      propertyPath: m_puzzle
+      value: 
+      objectReference: {fileID: 1869598869}
+    - target: {fileID: 4429511219896328984, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
+      propertyPath: m_timeClick
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4429511219896328984, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
+      propertyPath: m_clickedShiftPosition.y
+      value: -0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 4429511219896328984, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
+      propertyPath: m_clickedShiftPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5030306323752483282, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
+      propertyPath: m_colorOff.b
+      value: 0.26415092
+      objectReference: {fileID: 0}
+    - target: {fileID: 5030306323752483282, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
+      propertyPath: m_colorOff.g
+      value: 0.26415092
+      objectReference: {fileID: 0}
+    - target: {fileID: 5030306323752483282, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
+      propertyPath: m_colorOff.r
+      value: 0.26415092
+      objectReference: {fileID: 0}
+    - target: {fileID: 6097304961903528400, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
+      propertyPath: m_puzzle
+      value: 
+      objectReference: {fileID: 1869598869}
+    - target: {fileID: 6097304961903528400, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
+      propertyPath: m_timeClick
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6097304961903528400, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
+      propertyPath: m_clickedShiftPosition.y
+      value: -0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 6097304961903528400, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
+      propertyPath: m_clickedShiftPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7337110147368321255, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
+      propertyPath: m_puzzle
+      value: 
+      objectReference: {fileID: 1869598869}
+    - target: {fileID: 7337110147368321255, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
+      propertyPath: m_timeClick
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7337110147368321255, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
+      propertyPath: m_clickedShiftPosition.y
+      value: -0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 7337110147368321255, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
+      propertyPath: m_clickedShiftPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7415466969477643563, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
+      propertyPath: m_colorOff.b
+      value: 0.26415092
+      objectReference: {fileID: 0}
+    - target: {fileID: 7415466969477643563, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
+      propertyPath: m_colorOff.g
+      value: 0.26415092
+      objectReference: {fileID: 0}
+    - target: {fileID: 7415466969477643563, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
+      propertyPath: m_colorOff.r
+      value: 0.26415092
+      objectReference: {fileID: 0}
+    - target: {fileID: 8247832333345030059, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
+      propertyPath: m_colorOff.b
+      value: 0.26415092
+      objectReference: {fileID: 0}
+    - target: {fileID: 8247832333345030059, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
+      propertyPath: m_colorOff.g
+      value: 0.26415092
+      objectReference: {fileID: 0}
+    - target: {fileID: 8247832333345030059, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
+      propertyPath: m_colorOff.r
+      value: 0.26415092
+      objectReference: {fileID: 0}
+    - target: {fileID: 8767610369794379302, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
+      propertyPath: m_runes.Array.size
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8767610369794379302, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
+      propertyPath: 'm_runes.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2046013453}
+    - target: {fileID: 8767610369794379302, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
+      propertyPath: 'm_runes.Array.data[1]'
+      value: 
+      objectReference: {fileID: 896248076}
+    - target: {fileID: 8767610369794379302, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
+      propertyPath: 'm_runes.Array.data[2]'
+      value: 
+      objectReference: {fileID: 30011980}
+    - target: {fileID: 8767610369794379302, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
+      propertyPath: 'm_runes.Array.data[3]'
+      value: 
+      objectReference: {fileID: 455340905}
+    - target: {fileID: 8767610369794379302, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
+      propertyPath: 'm_runes.Array.data[4]'
+      value: 
+      objectReference: {fileID: 1475925079}
+    - target: {fileID: 8767610369794379302, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
+      propertyPath: 'm_runes.Array.data[5]'
+      value: 
+      objectReference: {fileID: 1060321652}
+    - target: {fileID: 8767610369794379302, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
+      propertyPath: 'm_runes.Array.data[6]'
+      value: 
+      objectReference: {fileID: 717816784}
+    - target: {fileID: 8767610369794379302, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
+      propertyPath: 'm_runes.Array.data[7]'
+      value: 
+      objectReference: {fileID: 1323758352}
+    - target: {fileID: 8767610369794379302, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
+      propertyPath: 'm_runes.Array.data[8]'
+      value: 
+      objectReference: {fileID: 1016541931}
+    - target: {fileID: 8767610369794379302, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
+      propertyPath: 'm_runes.Array.data[9]'
+      value: 
+      objectReference: {fileID: 1898380942}
+    - target: {fileID: 8767610369794379302, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
+      propertyPath: m_onSolvedUnityEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8767610369794379302, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
+      propertyPath: m_onSolvedUnityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9137411053335158488, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
+      propertyPath: m_puzzle
+      value: 
+      objectReference: {fileID: 1869598869}
+    - target: {fileID: 9137411053335158488, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
+      propertyPath: m_timeClick
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9137411053335158488, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
+      propertyPath: m_clickedShiftPosition.y
+      value: -0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 9137411053335158488, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
+      propertyPath: m_clickedShiftPosition.z
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -4876,17 +5129,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3195403763711510321, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
   m_PrefabInstance: {fileID: 1456866385}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1869598865 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8767610369794379302, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
-  m_PrefabInstance: {fileID: 1456866385}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1869598864}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06dba59b62b824744941bc490ed90dd9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Puzzles.RuneCheck
 --- !u!114 &1869598867
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4899,8 +5141,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee39181370055394e8b23fb60c4af08b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PortalActivation
-  m_puzzle: {fileID: 1869598865}
+  m_puzzle: {fileID: 1869598869}
   m_particle: {fileID: 8613972860893864458}
+--- !u!114 &1869598869 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8767610369794379302, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
+  m_PrefabInstance: {fileID: 1456866385}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1869598864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06dba59b62b824744941bc490ed90dd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Puzzles.RuneCheck
 --- !u!1 &1876498899
 GameObject:
   m_ObjectHideFlags: 0

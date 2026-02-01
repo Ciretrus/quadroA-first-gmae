@@ -4,20 +4,24 @@ namespace Puzzles
 {
     public class RuneCheck: BasePuzzle
     {
-        [SerializeField] private Object[] m_runes;
-
-      
+        [SerializeField] private GameObject[] m_runes;
         public override void CheckCondition()
         {
-            foreach (Object rune in m_runes)
+            foreach (GameObject rune in m_runes)
             {
-                if (TryGetComponent<ICondition>(out ICondition condition))
+                if (rune.TryGetComponent<ICondition>(out ICondition condition))
                 {
                     if (condition.IsSolved == false)
                     {
                         return;
                     }
                 }
+                else 
+                {
+                    Debug.LogWarning($"No ICondition on {rune.name}");
+                    return; 
+                }
+
             }
             NotifySolved();
 
