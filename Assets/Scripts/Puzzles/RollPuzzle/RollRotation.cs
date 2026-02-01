@@ -8,14 +8,14 @@ namespace Puzzles
         [SerializeField] private BasePuzzle m_puzzle;
         [SerializeField] private float m_angleRotation = 72f;
         [SerializeField] private float m_rotationTime = 0.2f;
-        [SerializeField] private int m_rightNmber = 0;
+        [SerializeField] private int m_rightNumber = 0;
 
         private IEnumerator m_coroutine;
         private int m_currentNumber = 1;
 
         public bool isRightNumber
         {
-            get { return m_currentNumber == m_rightNmber; }
+            get { return m_currentNumber == m_rightNumber; }
         }
 
         public void Rotate(int direction)

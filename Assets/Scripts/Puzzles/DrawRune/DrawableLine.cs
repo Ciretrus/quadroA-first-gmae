@@ -18,6 +18,8 @@ public class DrawableLine : BasePuzzle
     private bool m_canDraw;
     private bool m_hasBrush => Inventory.instance.HasItem(GlobalConstants.RollBrush);
 
+    public RuneData rune {  get { return m_rune; } }
+
     public bool canDraw
     {
         get => m_canDraw; 

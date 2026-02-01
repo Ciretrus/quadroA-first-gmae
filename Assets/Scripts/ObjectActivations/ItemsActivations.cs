@@ -9,17 +9,33 @@ public class ItemsActivations : MonoBehaviour
     [SerializeField] private UIController m_uiController;
     [SerializeField] private ThiefEye m_thiefEye;
     [SerializeField] private PlateController m_plateController;
+    [SerializeField] private DrawingRuneController m_drawingRuneController;
+    [SerializeField] private RuneDraw[] m_runes;
     [SerializeField] private float m_rayDistance = 1f;
 
     private CameraMovement m_cameraMovement;
-    private DiaryInteractable m_diaryInteractable;
     private Vector3 m_screenCenter;
     private Usable m_usable, m_lastUsable;
+    private DiaryInteractable m_diaryInteractable;
+    private RuneDraw m_runeDraw;
     private bool m_isUIBlocked;
 
     private void Awake()
     {
         m_cameraMovement = m_camera.GetComponent<CameraMovement>();
+
+        foreach (RuneDraw rune in m_runes)
+        {
+            rune.OnDisableDrawing += ChangeDrawingMode;
+        }
+    }
+
+    private void OnDisable()
+    {
+        foreach (RuneDraw rune in m_runes)
+        {
+            rune.OnDisableDrawing -= ChangeDrawingMode;
+        }
     }
 
     private void Update()
@@ -32,7 +48,7 @@ public class ItemsActivations : MonoBehaviour
 
         if (hit.collider != null)
         {
-            if (hit.collider.TryGetComponent(out m_usable))
+            if (hit.collider.TryGetComponent(out m_usable) && m_usable.enabled)
             {
                 m_uiController.ShowObjectActivationText(true);
                 m_usable.GetComponent<Outline>().enabled = true;
@@ -44,7 +60,7 @@ public class ItemsActivations : MonoBehaviour
                         case UsableType.NonBlocking: Debug.Log("Interacted with Non-Blocking UI thing"); break;
                         case UsableType.Blocking:
                             {
-                                if (m_usable.GetComponent<RuneDraw>())
+                                if (m_usable.TryGetComponent(out m_runeDraw))
                                 {
                                     ChangeDrawingMode(m_usable);
                                 }
@@ -139,7 +155,8 @@ public class ItemsActivations : MonoBehaviour
         {
             m_camera.transform.localPosition = Vector3.zero;
 
-            m_uiController.ShowFigureText(false, "");
+            m_uiController.ShowFigureText(false, ""); 
+            m_drawingRuneController.currentRune = null;
         }
         else
         {
@@ -154,6 +171,8 @@ public class ItemsActivations : MonoBehaviour
 
             Vector3 cameraPos = m_camera.transform.position;
             m_camera.transform.position = new Vector3(cameraPos.x, newPos.y, cameraPos.z);
+
+            m_drawingRuneController.currentRune = m_runeDraw.drawableLine.rune;
         }
 
         m_isUIBlocked = !m_isUIBlocked;

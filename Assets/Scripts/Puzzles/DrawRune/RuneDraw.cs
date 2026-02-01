@@ -1,8 +1,13 @@
+using System;
 using UnityEngine;
 
 public class RuneDraw : Usable
 {
+    public event Action<RuneDraw> OnDisableDrawing;
+
     [SerializeField] private DrawableLine m_drawableLine;
+
+    public DrawableLine drawableLine { get { return m_drawableLine; } }
 
     private void OnEnable()
     {
@@ -29,10 +34,7 @@ public class RuneDraw : Usable
 
     private void DisableDrawing()
     {
-        Use();
-        // TODO:
-        // Disable the ability to draw
-        // move camera from rune view to normal
-        // disable script
+        OnDisableDrawing.Invoke(this); 
+        enabled = false;
     }
 }

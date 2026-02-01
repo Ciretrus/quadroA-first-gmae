@@ -7,6 +7,10 @@ public class DrawingRuneController : MonoBehaviour
     [SerializeField] private UIController m_uiController;
     [SerializeField] private RuneData[] m_runes;
 
+    private RuneData m_currentRune;
+
+    public RuneData currentRune { set { m_currentRune = value; } }
+
     private void OnEnable()
     {
         foreach (var line in m_drawableLines)
@@ -35,8 +39,11 @@ public class DrawingRuneController : MonoBehaviour
         {
             if (rune.runeName == name)
             {
-                rune.solved = true;
                 m_uiController.ShowFigureText(true, name);
+                if (rune == m_currentRune) 
+                { 
+                    rune.solved = true; 
+                }
                 return;
             }
         }
@@ -55,8 +62,7 @@ public class DrawingRuneController : MonoBehaviour
 
         for (int i = 0; i < m_runes.Length; i++)
         {
-            var normalizedOriginal = UnistrokeRecognizer.GetNormalizedPoints(m_runes[i].original);
-            float current = UnistrokeRecognizer.GetDistanceBetweenDraws(normalizedOriginal, points);
+            float current = UnistrokeRecognizer.GetDistanceBetweenDraws(m_runes[i].original, points);
 
             if (current < previousDistance)
             {

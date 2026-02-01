@@ -13,5 +13,5 @@ public class RuneData : ScriptableObject
 
     public string runeName { get { return m_name; } }
     public List<Vector3> original { get { return m_original; } }
-    public bool solved {get { return m_solved; } set { m_solved = value; } }
+    public bool solved { get { return m_solved; } set { m_solved = value; } }
 }
