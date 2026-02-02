@@ -1,21 +1,30 @@
 using UnityEngine;
-
+using System.Collections;
 namespace Puzzles
 {
     public class RuneCheck: BasePuzzle
     {
-        [SerializeField] private RuneSwitch[] m_runes;
-
+        [SerializeField] private GameObject[] m_runes;
         public override void CheckCondition()
         {
-            foreach (RuneSwitch rune in m_runes)
+            foreach (GameObject rune in m_runes)
             {
-                if (rune.isActive == false)
+                if (rune.TryGetComponent<ICondition>(out ICondition condition))
                 {
-                    return;
+                    if (condition.IsSolved == false)
+                    {
+                        return;
+                    }
                 }
+                else 
+                {
+                    Debug.LogWarning($"No ICondition on {rune.name}");
+                    return; 
+                }
+
             }
             NotifySolved();
+
         }
     }
 }

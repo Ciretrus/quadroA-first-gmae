@@ -573,6 +573,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UIController
   m_objectActivationText: {fileID: 0}
   m_figureText: {fileID: 0}
+  m_notificationSystem: {fileID: 0}
 --- !u!4 &259056742
 Transform:
   m_ObjectHideFlags: 0
@@ -750,6 +751,30 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1510990478}
   m_SourcePrefab: {fileID: 100100000, guid: c1ec80024579dc24db615d0c3480557a, type: 3}
+--- !u!1 &397788035 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6142269426102862664, guid: d21e81dba8adde2488f6574cb75e245f, type: 3}
+  m_PrefabInstance: {fileID: 792153294}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &397788039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 397788035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 447a984c2e4369b40a7a47123666dff4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ThiefEye
+  m_camera: {fileID: 855674039}
+  m_layerThiefEye:
+    serializedVersion: 2
+    m_Bits: 64
+  m_activationTime: 0.3
+  m_durationTime: 3
+  m_material: {fileID: 2100000, guid: 3ac62f416dc835343bb771453a4ea69a, type: 2}
 --- !u!1 &528503551 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7144460679145531692, guid: 626b26cc758ae4c43bd720627ff886f6, type: 3}
@@ -1047,6 +1072,10 @@ PrefabInstance:
       propertyPath: _groundCheckerPivot
       value: 
       objectReference: {fileID: 642053921}
+    - target: {fileID: 2692429926697468120, guid: d21e81dba8adde2488f6574cb75e245f, type: 3}
+      propertyPath: m_RenderPostProcessing
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6142269426102862664, guid: d21e81dba8adde2488f6574cb75e245f, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1091,13 +1120,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2626526345088092328, guid: d21e81dba8adde2488f6574cb75e245f, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6142269426102862664, guid: d21e81dba8adde2488f6574cb75e245f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 397788039}
     - targetCorrespondingSourceObject: {fileID: 6158033491349386886, guid: d21e81dba8adde2488f6574cb75e245f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 855674040}
+    - targetCorrespondingSourceObject: {fileID: 6158033491349386886, guid: d21e81dba8adde2488f6574cb75e245f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 855674047}
     - targetCorrespondingSourceObject: {fileID: 6158033491349386886, guid: d21e81dba8adde2488f6574cb75e245f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 855674041}
@@ -1368,6 +1404,7 @@ MonoBehaviour:
   m_playerController: {fileID: 0}
   m_camera: {fileID: 855674039}
   m_uiController: {fileID: 259056741}
+  m_thiefEye: {fileID: 397788039}
   m_rayDistance: 1
 --- !u!114 &855674041
 MonoBehaviour:
@@ -1384,8 +1421,8 @@ MonoBehaviour:
   m_IsGlobal: 1
   priority: 0
   blendDistance: 0
-  weight: 1
-  sharedProfile: {fileID: 11400000, guid: 846daa475e0e61b488c649f2fb927e39, type: 2}
+  weight: 0
+  sharedProfile: {fileID: 11400000, guid: 9763d5d31eda1964b921e975d6d0c7c8, type: 2}
 --- !u!114 &855674042
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1399,16 +1436,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   m_characterController: {fileID: 0}
+  m_itemsActivations: {fileID: 0}
+  m_thiefEye: {fileID: 0}
   m_head: {fileID: 0}
+  _groundCheckerPivot: {fileID: 0}
+  m_smoothInputSpeed: 0.2
   m_walkSpeed: 10
   m_sprintSpeed: 20
   m_sneakSpeed: 5
   m_jumpForce: 5
-  _groundCheckerPivot: {fileID: 0}
+  m_gravity: 9.8
   _checkGroundRadius: 0.3
   _groundMask:
     serializedVersion: 2
     m_Bits: 0
+  m_diary: {fileID: 0}
+--- !u!114 &855674047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 855674034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Core.Runtime::UnityEngine.Rendering.Volume
+  m_IsGlobal: 1
+  priority: 0
+  blendDistance: 0
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: 05b9afd017a231d4882ccd01ebdd95a7, type: 2}
 --- !u!1 &886552018 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4666376646799773685, guid: 626b26cc758ae4c43bd720627ff886f6, type: 3}
@@ -1737,6 +1796,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 227493707682095852, guid: 626b26cc758ae4c43bd720627ff886f6, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 3ac62f416dc835343bb771453a4ea69a, type: 2}
+    - target: {fileID: 588013625951961768, guid: 626b26cc758ae4c43bd720627ff886f6, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 3ac62f416dc835343bb771453a4ea69a, type: 2}
     - target: {fileID: 3884202253256963021, guid: 626b26cc758ae4c43bd720627ff886f6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.48
@@ -1777,6 +1844,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3939257533242969851, guid: 626b26cc758ae4c43bd720627ff886f6, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 3ac62f416dc835343bb771453a4ea69a, type: 2}
+    - target: {fileID: 7718907605223042933, guid: 626b26cc758ae4c43bd720627ff886f6, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 3ac62f416dc835343bb771453a4ea69a, type: 2}
     - target: {fileID: 8178478553838674467, guid: 626b26cc758ae4c43bd720627ff886f6, type: 3}
       propertyPath: m_Name
       value: stone rune portal

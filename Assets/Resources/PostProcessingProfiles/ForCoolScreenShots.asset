@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-1411551124786755340
+--- !u!114 &-2023595289505849294
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9,16 +9,31 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 221518ef91623a7438a71fef23660601, type: 3}
-  m_Name: WhiteBalance
-  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.WhiteBalance
+  m_Script: {fileID: 11500000, guid: 558a8e2b6826cf840aae193990ba9f2e, type: 3}
+  m_Name: ShadowsMidtonesHighlights
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.ShadowsMidtonesHighlights
   active: 1
-  temperature:
+  shadows:
     m_OverrideState: 1
-    m_Value: -100
-  tint:
-    m_OverrideState: 1
-    m_Value: 59
+    m_Value: {x: 0.90327835, y: 1, z: 0.9554338, w: 0.047125287}
+  midtones:
+    m_OverrideState: 0
+    m_Value: {x: 0.5701287, y: 0.88147724, z: 1, w: 0}
+  highlights:
+    m_OverrideState: 0
+    m_Value: {x: 1, y: 0.48707977, z: 0.27737385, w: 0}
+  shadowsStart:
+    m_OverrideState: 0
+    m_Value: 0.09
+  shadowsEnd:
+    m_OverrideState: 0
+    m_Value: 3.16
+  highlightsStart:
+    m_OverrideState: 0
+    m_Value: 0.55
+  highlightsEnd:
+    m_OverrideState: 0
+    m_Value: 1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29,15 +44,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d7fd9488000d3734a9e00ee676215985, type: 3}
-  m_Name: ThiefEyeEffect
+  m_Name: ForCoolScreenShots
   m_EditorClassIdentifier: Unity.RenderPipelines.Core.Runtime::UnityEngine.Rendering.VolumeProfile
   components:
-  - {fileID: 4717027044681711230}
-  - {fileID: 6607674592791909564}
-  - {fileID: 5498844645563331311}
-  - {fileID: 2156266516260332923}
-  - {fileID: -1411551124786755340}
---- !u!114 &2156266516260332923
+  - {fileID: 2289404543065636656}
+  - {fileID: 8491266785064847927}
+  - {fileID: 6294062183551523014}
+  - {fileID: -2023595289505849294}
+  - {fileID: 1002501019202828625}
+--- !u!114 &1002501019202828625
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -46,26 +61,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 899c54efeace73346a0a16faa3afe726, type: 3}
-  m_Name: Vignette
-  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.Vignette
+  m_Script: {fileID: 11500000, guid: 70afe9e12c7a7ed47911bb608a23a8ff, type: 3}
+  m_Name: SplitToning
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.SplitToning
   active: 1
-  color:
+  shadows:
     m_OverrideState: 1
-    m_Value: {r: 0, g: 0, b: 0, a: 1}
-  center:
-    m_OverrideState: 1
-    m_Value: {x: 0.5, y: 0.5}
-  intensity:
-    m_OverrideState: 1
-    m_Value: 0.209
-  smoothness:
-    m_OverrideState: 1
-    m_Value: 0.69
-  rounded:
+    m_Value: {r: 0.5566038, g: 0.5566038, b: 0.5566038, a: 1}
+  highlights:
+    m_OverrideState: 0
+    m_Value: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  balance:
     m_OverrideState: 0
     m_Value: 0
---- !u!114 &4717027044681711230
+--- !u!114 &2289404543065636656
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -83,13 +92,13 @@ MonoBehaviour:
     m_Value: 1
   threshold:
     m_OverrideState: 1
-    m_Value: 0.3
+    m_Value: 0.54
   intensity:
     m_OverrideState: 1
-    m_Value: 5
+    m_Value: 2.08
   scatter:
     m_OverrideState: 1
-    m_Value: 0.147
+    m_Value: 0.024
   clamp:
     m_OverrideState: 0
     m_Value: 65472
@@ -112,7 +121,7 @@ MonoBehaviour:
   dirtIntensity:
     m_OverrideState: 0
     m_Value: 0
---- !u!114 &5498844645563331311
+--- !u!114 &6294062183551523014
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -121,14 +130,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81180773991d8724ab7f2d216912b564, type: 3}
-  m_Name: ChromaticAberration
-  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.ChromaticAberration
+  m_Script: {fileID: 11500000, guid: 29fa0085f50d5e54f8144f766051a691, type: 3}
+  m_Name: FilmGrain
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.FilmGrain
   active: 1
+  type:
+    m_OverrideState: 1
+    m_Value: 5
   intensity:
     m_OverrideState: 1
+    m_Value: 0.118
+  response:
+    m_OverrideState: 1
     m_Value: 1
---- !u!114 &6607674592791909564
+  texture:
+    m_OverrideState: 0
+    m_Value: {fileID: 0}
+--- !u!114 &8491266785064847927
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -137,22 +155,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5e1dc532bcb41949b58bc4f2abfbb7e, type: 3}
-  m_Name: LensDistortion
-  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.LensDistortion
+  m_Script: {fileID: 11500000, guid: 899c54efeace73346a0a16faa3afe726, type: 3}
+  m_Name: Vignette
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.Vignette
   active: 1
-  intensity:
-    m_OverrideState: 1
-    m_Value: -0.7
-  xMultiplier:
+  color:
     m_OverrideState: 0
-    m_Value: 1
-  yMultiplier:
-    m_OverrideState: 0
-    m_Value: 1
+    m_Value: {r: 0, g: 0, b: 0, a: 1}
   center:
     m_OverrideState: 0
     m_Value: {x: 0.5, y: 0.5}
-  scale:
+  intensity:
+    m_OverrideState: 1
+    m_Value: 0.536
+  smoothness:
+    m_OverrideState: 1
+    m_Value: 0.126
+  rounded:
     m_OverrideState: 0
-    m_Value: 1
+    m_Value: 0
