@@ -13,7 +13,7 @@ namespace Puzzles
         {
             if (m_puzzle != null)
             {
-                m_puzzle.onSolved += OpenDoor;
+                m_puzzle.m_onSolved += OpenDoor;
             }
         }
 
@@ -21,7 +21,7 @@ namespace Puzzles
         {
             if (m_puzzle != null)
             {
-                m_puzzle.onSolved -= OpenDoor;
+                m_puzzle.m_onSolved -= OpenDoor;
             }
         }
 
