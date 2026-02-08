@@ -1,6 +1,6 @@
 using Puzzles;
 using System.Collections;
-using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 namespace Puzzles{
@@ -9,61 +9,66 @@ namespace Puzzles{
 
         private MaterialPropertyBlock m_emissionMat;
         private MeshRenderer m_meshRenderer;
+        private bool m_isStarted = false;
+        private bool m_isActive = false;
+        private Tween m_currentTween;
+
+        private Color m_tempColor;
+
         [SerializeField] private float m_glowTime = 1.0f;
         [SerializeField] private Color m_colorOff = Color.black;
         [SerializeField] private Color m_colorOn = Color.cyan;
-        private bool m_isStarted = false;
-        private bool m_isActive = false;
-        private Coroutine coroutine;
+        [SerializeField] private int m_materialIndex = 1;
+
+        
         public bool IsSolved
         {
             get { return m_isActive; }
         }
-        void Start()
+        void Awake()
         {
             m_meshRenderer = GetComponent<MeshRenderer>();
             m_emissionMat = new MaterialPropertyBlock();
         }
 
         public bool changeState()
-        { if (coroutine != null) StopCoroutine(coroutine);
-            m_isStarted = true;
-            if (m_isActive)
+        {
+            m_isActive = !m_isActive;
+
+            if (m_currentTween != null)
             {
-                m_isActive = false;
-                coroutine = StartCoroutine(StartGlowing(m_colorOff, 1));
+                m_currentTween.Kill();
             }
-            else
-            {
-                m_isActive = true;
-                coroutine = StartCoroutine(StartGlowing(m_colorOn, 1));
-            }
+
+            Color targetColor;
+
+            if (m_isActive == true) { targetColor = m_colorOn; }
+            else { targetColor = m_colorOff; }
+            
+
+            m_meshRenderer.GetPropertyBlock(m_emissionMat, m_materialIndex);
+            m_tempColor = m_emissionMat.GetColor("_EmissionColor");
+
+
+            m_currentTween = DOTween.To(GetColor, SetNewColor, targetColor, m_glowTime);
+
+            m_currentTween.SetEase(Ease.InOutQuad);
+
             return true;
 
         }
-        IEnumerator StartGlowing(Color color, float intensity)
-        { m_isStarted = true;
-            Coroutine coroutine = StartCoroutine(switchColor(color, intensity));
-            yield return coroutine;
-            m_isStarted = false;
-        }
-        private IEnumerator switchColor(Color color, float intensity)
+
+
+        private Color GetColor()
         {
-            Color lastColor = m_emissionMat.GetColor("_EmissionColor");
-            Color expectedColor = color;
-            Color differentColor = new Color(0, 0, 0);
-            float t = 0;
-            while (t < 1)
-            {
-                t += Time.deltaTime / m_glowTime;
-                differentColor = Color.Lerp(lastColor, expectedColor, t);
-                m_emissionMat.SetColor("_EmissionColor", differentColor * intensity);
-                m_meshRenderer.SetPropertyBlock(m_emissionMat, 1);
-                yield return null;
-            }
+            return m_tempColor;
+        }
 
-
-
+        private void SetNewColor(Color val)
+        {
+            m_tempColor = val;
+            m_emissionMat.SetColor("_EmissionColor", m_tempColor);
+            m_meshRenderer.SetPropertyBlock(m_emissionMat, m_materialIndex);
         }
     }
 }
