@@ -20,7 +20,7 @@ public static class UnistrokeRecognizer
 
         for (int i = 0; i < originalDots.Count; i++)
         {   
-            sum += Mathf.Abs(originalDots[i].magnitude - newDots[i].magnitude);
+            sum += Vector3.Distance(originalDots[i], newDots[i]);
         }
 
         return sum;

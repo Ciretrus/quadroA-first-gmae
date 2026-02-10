@@ -11,16 +11,17 @@ public class ItemsActivations : MonoBehaviour
     [SerializeField] private PlateController m_plateController;
     [SerializeField] private DrawingRuneController m_drawingRuneController;
     [SerializeField] private RuneDraw[] m_runes;
+    [SerializeField] private OutlineFader m_outlineFader;
     [SerializeField] private float m_rayDistance = 1f;
-    [SerializeField] private OutlineFader m_outlineFader;    
+    [SerializeField] private float m_offset = 1.5f;
 
     private CameraMovement m_cameraMovement;
     private Vector3 m_screenCenter;
     private Usable m_usable, m_lastUsable;
+    private Outline m_lastOutlineObject;
     private DiaryInteractable m_diaryInteractable;
     private RuneDraw m_runeDraw;
     private bool m_isUIBlocked;
-    private Outline m_lastOutlineObject;
 
     private void Awake()
     {
@@ -175,7 +176,7 @@ public class ItemsActivations : MonoBehaviour
             Vector3 newPos = usable.transform.position;
             Vector3 position = transform.position;
             transform.position = new Vector3(newPos.x, position.y, newPos.z);
-            transform.position -= transform.forward;
+            transform.position -= transform.forward * m_offset;
 
             Vector3 cameraPos = m_camera.transform.position;
             m_camera.transform.position = new Vector3(cameraPos.x, newPos.y, cameraPos.z);
