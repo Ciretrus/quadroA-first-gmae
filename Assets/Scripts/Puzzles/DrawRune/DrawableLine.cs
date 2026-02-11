@@ -12,6 +12,7 @@ public class DrawableLine : BasePuzzle
 
     [SerializeField] private LineRenderer m_lineRenderer;
     [SerializeField] private RuneData m_rune;
+    [SerializeField] private float m_maxLength = 0.35f;
     [SerializeField] private float m_minDistance = 0.1f;
     
     private List<Vector3> m_dotsList;
@@ -59,6 +60,11 @@ public class DrawableLine : BasePuzzle
             mouseWorldPos.y -= 0.5f;
             mouseWorldPos.z = 0f;
 
+            if (Math.Abs(mouseWorldPos.x) > m_maxLength || Math.Abs(mouseWorldPos.y) > m_maxLength)
+            {
+                ResetDrawing();
+            }
+
             if (m_dotsList.Count > 0)
             {
                 float distance = Vector3.Distance(m_dotsList[m_dotsList.Count - 1], mouseWorldPos);
@@ -77,14 +83,7 @@ public class DrawableLine : BasePuzzle
         }
         else
         {
-            if (m_dotsList.Count > 1)
-            {
-                HasDrawnSymbol?.Invoke(m_dotsList);
-                CheckCondition();
-            }
-
-            m_dotsList.Clear();
-            m_lineRenderer.positionCount = 0;
+            ResetDrawing();
         }
     }
 
@@ -92,5 +91,17 @@ public class DrawableLine : BasePuzzle
     {
         m_lineRenderer.positionCount = points.ToArray().Length;
         m_lineRenderer.SetPositions(points.ToArray());
+    }
+
+    private void ResetDrawing()
+    {
+        if (m_dotsList.Count > 1)
+        {
+            HasDrawnSymbol?.Invoke(m_dotsList);
+            CheckCondition();
+        }
+
+        m_dotsList.Clear();
+        m_lineRenderer.positionCount = 0;
     }
 }
