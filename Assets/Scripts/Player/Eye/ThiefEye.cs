@@ -47,10 +47,10 @@ public class ThiefEye : MonoBehaviour
     private IEnumerator CastThiefEyeSkill(float duration)
     {
         yield return StartCoroutine(ActivateThiefEyeEffect(true));
-       // m_camera.cullingMask |= m_layerThiefEye;
+       m_camera.cullingMask |= m_layerThiefEye;
 
         yield return new WaitForSeconds(duration);
-       // m_camera.cullingMask = m_originalCullingMask;
+       m_camera.cullingMask = m_originalCullingMask;
         yield return StartCoroutine(ActivateThiefEyeEffect(false));
     }
 
