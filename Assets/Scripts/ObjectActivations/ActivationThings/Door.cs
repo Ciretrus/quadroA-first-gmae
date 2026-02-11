@@ -5,14 +5,13 @@ using UnityEngine;
 public class Door : Usable
 {
     [SerializeField] private Collider m_collider;
+    [SerializeField] private Animator m_animator;
     [SerializeField] private float m_timer = 1f;
-    private Animator m_animator;
     private bool m_isOpened;
 
     private void OnEnable()
     {
         Initialize(UsableType.NonBlocking);
-        m_animator = GetComponent<Animator>();
     }
 
     public override void Use()
@@ -21,12 +20,10 @@ public class Door : Usable
 
         if (m_isOpened)
         {
-            transform.Rotate(Vector3.up, 90);
             m_animator.Play("Close");
         }
         else
         {
-            transform.Rotate(Vector3.up, -90);
             m_animator.Play("Open");
         }
 

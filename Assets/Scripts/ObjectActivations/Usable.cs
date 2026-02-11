@@ -21,5 +21,5 @@ public abstract class Usable: MonoBehaviour
         m_type = type;
     }
 
-    public virtual void Use() { }
+    public abstract void Use();
 }
