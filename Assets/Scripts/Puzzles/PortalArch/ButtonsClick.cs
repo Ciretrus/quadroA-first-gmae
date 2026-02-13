@@ -27,7 +27,7 @@ namespace Puzzles
                 StartCoroutine(Click());
                 for (int i = 0; i < m_runeActivations.Length; i++)
                 {
-                    m_runeActivations[i].changeState();
+                    m_runeActivations[i].ChangeState();
                 }
                 m_puzzle.CheckCondition();
             }

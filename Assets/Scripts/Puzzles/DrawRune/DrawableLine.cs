@@ -7,8 +7,7 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(LineRenderer))]
 public class DrawableLine : BasePuzzle
 {
-    public event Action<List<Vector3>> HasDrawnSymbol;
-    public event Action HasStartedDrawing;
+    public event Action<List<Vector3>, Transform> HasDrawnSymbol;
 
     [SerializeField] private LineRenderer m_lineRenderer;
     [SerializeField] private RuneData m_rune;
@@ -49,8 +48,6 @@ public class DrawableLine : BasePuzzle
     {
         if (Mouse.current.leftButton.isPressed)
         {
-            HasStartedDrawing?.Invoke();
-
             Vector3 mousePixelPos = Input.mousePosition;
             mousePixelPos.z = Camera.main.nearClipPlane + Camera.main.nearClipPlane * 0.01f;
 
@@ -99,7 +96,7 @@ public class DrawableLine : BasePuzzle
         {
             if (!m_rune.solved)
             {
-                HasDrawnSymbol?.Invoke(m_dotsList);
+                HasDrawnSymbol?.Invoke(m_dotsList, transform);
             }
             CheckCondition();
         }

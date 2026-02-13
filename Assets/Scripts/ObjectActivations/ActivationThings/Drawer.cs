@@ -3,7 +3,6 @@ using UnityEngine;
 public class Drawer : Usable
 {
     [SerializeField] private Animator m_animator;
-    [SerializeField] private float m_timer = 1f;
     private bool m_isOpened;
 
     private void OnEnable()

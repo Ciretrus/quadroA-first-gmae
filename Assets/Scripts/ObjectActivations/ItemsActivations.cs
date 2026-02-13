@@ -164,7 +164,6 @@ public class ItemsActivations : MonoBehaviour
         {
             m_camera.transform.localPosition = Vector3.zero;
 
-            m_uiController.ShowFigureText(false, ""); 
             m_drawingRuneController.currentRune = null;
         }
         else
