@@ -15,7 +15,7 @@ public class RuneDraw : Usable
 
         if (m_drawableLine != null)
         {
-            m_drawableLine.onSolved += DisableDrawing;
+            m_drawableLine.m_onSolved += DisableDrawing;
         }
     }
 
@@ -23,7 +23,7 @@ public class RuneDraw : Usable
     {
         if (m_drawableLine != null)
         {
-            m_drawableLine.onSolved -= DisableDrawing;
+            m_drawableLine.m_onSolved -= DisableDrawing;
         }
     }
 
