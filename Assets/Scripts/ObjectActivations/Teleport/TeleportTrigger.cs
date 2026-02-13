@@ -6,7 +6,8 @@ public class TeleportTrigger : Usable
     public event Action<Action> OnTrigger;
 
     [SerializeField] private Transform m_teleportPoint;
-    private bool m_hasKey => Inventory.instance.HasItem(GlobalConstants.ChestKey);
+    [SerializeField] private string m_objectName;
+    [SerializeField] private string m_conditionName;
 
     private void OnEnable()
     {
@@ -15,9 +16,21 @@ public class TeleportTrigger : Usable
 
     public override void Use()
     {
-        if (m_hasKey)
+        if (m_objectName != "" || m_conditionName != "")
         {
-            OnTrigger.Invoke(Teleport);
+            if (m_objectName != "" && m_conditionName != "")
+            {
+                if (Inventory.instance.HasItem(m_objectName) && Conditions.instance.HasCondition(m_conditionName))
+                {
+                    OnTrigger.Invoke(Teleport);
+                    return;
+                }
+            }
+            if (Inventory.instance.HasItem(m_objectName) || Conditions.instance.HasCondition(m_conditionName))
+            {
+                OnTrigger.Invoke(Teleport);
+                return;
+            }
         }
     }
 

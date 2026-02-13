@@ -21,7 +21,8 @@ public class FloorLock :Usable
         if (m_isUnlocked) return;
         m_isUnlocked = true;
         m_lock.isKinematic = false;
-        
-        m_rotateObjectl.DORotate(m_angleRotation, m_openTimer);
+        Vector3 rotation = m_rotateObjectl.eulerAngles;
+        rotation += m_angleRotation;
+        m_rotateObjectl.DORotate(rotation, m_openTimer);
     }
 }
