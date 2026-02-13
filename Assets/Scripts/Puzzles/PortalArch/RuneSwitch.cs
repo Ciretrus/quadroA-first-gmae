@@ -1,7 +1,8 @@
 using DG.Tweening;
 using UnityEngine;
 
-namespace Puzzles{
+namespace Puzzles
+{
     public class RuneSwitch : MonoBehaviour, ICondition
     {
         [SerializeField] private Material m_runeMaterial;

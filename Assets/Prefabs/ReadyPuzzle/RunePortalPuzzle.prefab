@@ -104,9 +104,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06e9cd1709b13eb49b4d9f0017292dd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RuneSwitch
-  m_glowTime: 1
-  m_colorOff: {r: 0, g: 0, b: 0, a: 1}
+  m_runeMaterial: {fileID: 2100000, guid: e9ced004af345ad4f82d05a016e2e788, type: 2}
+  m_colorOff: {r: 0.40392157, g: 0.40392157, b: 0.40392157, a: 1}
   m_colorOn: {r: 0, g: 1, b: 1, a: 1}
+  m_glowTime: 1
+  m_materialIndex: 1
 --- !u!1 &413818159971525904
 GameObject:
   m_ObjectHideFlags: 0
@@ -211,9 +213,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06e9cd1709b13eb49b4d9f0017292dd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RuneSwitch
-  m_glowTime: 1
-  m_colorOff: {r: 0, g: 0, b: 0, a: 1}
+  m_runeMaterial: {fileID: 0}
+  m_colorOff: {r: 0.40392157, g: 0.40392157, b: 0.40392157, a: 1}
   m_colorOn: {r: 0, g: 1, b: 1, a: 1}
+  m_glowTime: 1
+  m_materialIndex: 1
 --- !u!65 &2570366376514206553
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -370,7 +374,7 @@ MonoBehaviour:
   - {fileID: 800683287091249298}
   m_clickedShiftPosition: {x: 0, y: 0, z: -0.01}
   m_timeClick: 0.3
-  m_puzzle: {fileID: 0}
+  m_puzzle: {fileID: 8767610369794379302}
 --- !u!114 &4171778004659927636
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -572,6 +576,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RuneDraw
   m_interactableSound: {fileID: 0}
   m_drawableLine: {fileID: 925182731156944298}
+  m_rune: {fileID: 3205706870293813891}
 --- !u!114 &5529304719879226004
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -805,9 +810,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06e9cd1709b13eb49b4d9f0017292dd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RuneSwitch
-  m_glowTime: 1
-  m_colorOff: {r: 0, g: 0, b: 0, a: 1}
+  m_runeMaterial: {fileID: 0}
+  m_colorOff: {r: 0.40392157, g: 0.40392157, b: 0.40392157, a: 1}
   m_colorOn: {r: 0, g: 1, b: 1, a: 1}
+  m_glowTime: 1
+  m_materialIndex: 1
 --- !u!65 &1308920745679294011
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -933,9 +940,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06e9cd1709b13eb49b4d9f0017292dd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RuneSwitch
-  m_glowTime: 1
-  m_colorOff: {r: 0, g: 0, b: 0, a: 1}
+  m_runeMaterial: {fileID: 2100000, guid: 223df23f14a1cba418498f686d58ea5b, type: 2}
+  m_colorOff: {r: 0.40392157, g: 0.40392157, b: 0.40392157, a: 1}
   m_colorOn: {r: 0, g: 1, b: 1, a: 1}
+  m_glowTime: 1
+  m_materialIndex: 1
 --- !u!1 &2552309388832547694
 GameObject:
   m_ObjectHideFlags: 0
@@ -1074,7 +1083,17 @@ MonoBehaviour:
   onSolvedUnityEvent:
     m_PersistentCalls:
       m_Calls: []
-  m_runes: []
+  m_runes:
+  - {fileID: 3999461702249134656}
+  - {fileID: 341547546105113941}
+  - {fileID: 2157157731424754768}
+  - {fileID: 5507983008860951946}
+  - {fileID: 6981471881700653869}
+  - {fileID: 3864054918372562426}
+  - {fileID: 7902635828443357576}
+  - {fileID: 413818159971525904}
+  - {fileID: 8668069069808417919}
+  - {fileID: 2288544654433956552}
 --- !u!1 &3864054918372562426
 GameObject:
   m_ObjectHideFlags: 0
@@ -1179,9 +1198,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06e9cd1709b13eb49b4d9f0017292dd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RuneSwitch
-  m_glowTime: 1
-  m_colorOff: {r: 0, g: 0, b: 0, a: 1}
+  m_runeMaterial: {fileID: 0}
+  m_colorOff: {r: 0.40392157, g: 0.40392157, b: 0.40392157, a: 1}
   m_colorOn: {r: 0, g: 1, b: 1, a: 1}
+  m_glowTime: 1
+  m_materialIndex: 1
 --- !u!65 &692267612067228064
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1307,9 +1328,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06e9cd1709b13eb49b4d9f0017292dd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RuneSwitch
-  m_glowTime: 1
-  m_colorOff: {r: 0, g: 0, b: 0, a: 1}
+  m_runeMaterial: {fileID: 0}
+  m_colorOff: {r: 0.40392157, g: 0.40392157, b: 0.40392157, a: 1}
   m_colorOn: {r: 0, g: 1, b: 1, a: 1}
+  m_glowTime: 1
+  m_materialIndex: 1
 --- !u!65 &1257100208960957230
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1664,10 +1687,10 @@ MonoBehaviour:
   m_runeActivations:
   - {fileID: 2374461022351109952}
   - {fileID: 7415466969477643563}
-  - {fileID: 0}
+  - {fileID: 3205706870293813891}
   m_clickedShiftPosition: {x: 0, y: 0, z: -0.01}
   m_timeClick: 0.3
-  m_puzzle: {fileID: 0}
+  m_puzzle: {fileID: 8767610369794379302}
 --- !u!114 &1369141802204411714
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2061,9 +2084,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06e9cd1709b13eb49b4d9f0017292dd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RuneSwitch
-  m_glowTime: 1
-  m_colorOff: {r: 0, g: 0, b: 0, a: 1}
+  m_runeMaterial: {fileID: 0}
+  m_colorOff: {r: 0.40392157, g: 0.40392157, b: 0.40392157, a: 1}
   m_colorOn: {r: 0, g: 1, b: 1, a: 1}
+  m_glowTime: 1
+  m_materialIndex: 1
 --- !u!65 &4029626843746728055
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2215,12 +2240,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ButtonsClick
   m_interactableSound: {fileID: 0}
   m_runeActivations:
-  - {fileID: 0}
+  - {fileID: 2954287447716395430}
   - {fileID: 585558869975502872}
   - {fileID: 800683287091249298}
   m_clickedShiftPosition: {x: 0, y: 0, z: -0.01}
   m_timeClick: 0.3
-  m_puzzle: {fileID: 0}
+  m_puzzle: {fileID: 8767610369794379302}
 --- !u!114 &7702837118563089458
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2486,7 +2511,7 @@ MonoBehaviour:
   - {fileID: 8247832333345030059}
   m_clickedShiftPosition: {x: 0, y: 0, z: -0.01}
   m_timeClick: 0.3
-  m_puzzle: {fileID: 0}
+  m_puzzle: {fileID: 8767610369794379302}
 --- !u!114 &2769006426259732175
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2720,9 +2745,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06e9cd1709b13eb49b4d9f0017292dd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RuneSwitch
-  m_glowTime: 1
-  m_colorOff: {r: 0, g: 0, b: 0, a: 1}
+  m_runeMaterial: {fileID: 0}
+  m_colorOff: {r: 0.40392157, g: 0.40392157, b: 0.40392157, a: 1}
   m_colorOn: {r: 0, g: 1, b: 1, a: 1}
+  m_glowTime: 1
+  m_materialIndex: 1
 --- !u!65 &6818255146670638070
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2816,6 +2843,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RuneDraw
   m_interactableSound: {fileID: 0}
   m_drawableLine: {fileID: 7398189375588442554}
+  m_rune: {fileID: 2954287447716395430}
 --- !u!114 &1543357944049142090
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3076,12 +3104,12 @@ MonoBehaviour:
   m_interactableSound: {fileID: 0}
   m_runeActivations:
   - {fileID: 4174464794791698471}
-  - {fileID: 0}
+  - {fileID: 2954287447716395430}
   - {fileID: 2374461022351109952}
   - {fileID: 8247832333345030059}
   m_clickedShiftPosition: {x: 0, y: 0, z: -0.01}
   m_timeClick: 0.3
-  m_puzzle: {fileID: 0}
+  m_puzzle: {fileID: 8767610369794379302}
 --- !u!114 &6613197614800483941
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3464,9 +3492,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06e9cd1709b13eb49b4d9f0017292dd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RuneSwitch
-  m_glowTime: 1
-  m_colorOff: {r: 0, g: 0, b: 0, a: 1}
+  m_runeMaterial: {fileID: 0}
+  m_colorOff: {r: 0.40392157, g: 0.40392157, b: 0.40392157, a: 1}
   m_colorOn: {r: 0, g: 1, b: 1, a: 1}
+  m_glowTime: 1
+  m_materialIndex: 1
 --- !u!65 &4653788596950135473
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3592,9 +3622,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06e9cd1709b13eb49b4d9f0017292dd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RuneSwitch
-  m_glowTime: 1
-  m_colorOff: {r: 0, g: 0, b: 0, a: 1}
+  m_runeMaterial: {fileID: 0}
+  m_colorOff: {r: 0.40392157, g: 0.40392157, b: 0.40392157, a: 1}
   m_colorOn: {r: 0, g: 1, b: 1, a: 1}
+  m_glowTime: 1
+  m_materialIndex: 1
 --- !u!65 &4750166896406961687
 BoxCollider:
   m_ObjectHideFlags: 0
