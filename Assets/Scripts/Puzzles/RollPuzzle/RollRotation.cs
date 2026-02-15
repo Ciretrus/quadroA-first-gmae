@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Puzzles 
 {
-    public class RollRotation : MonoBehaviour
+    public class RollRotation : MonoBehaviour,ICondition
     {
         [SerializeField] private BasePuzzle m_puzzle;
         [SerializeField] private float m_angleRotation = 72f;
@@ -13,7 +13,7 @@ namespace Puzzles
         private IEnumerator m_coroutine;
         private int m_currentNumber = 1;
 
-        public bool isRightNumber
+        public bool IsSolved
         {
             get { return m_currentNumber == m_rightNumber; }
         }
