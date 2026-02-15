@@ -18,6 +18,8 @@ public class DrawingRuneController : MonoBehaviour
         {
             line.HasDrawnSymbol += CompareDrawing;
         }
+
+        m_flashParticleSystem = Instantiate(m_flashParticleSystem);
     }
 
     private void OnDisable()
@@ -43,7 +45,7 @@ public class DrawingRuneController : MonoBehaviour
             }
         }
 
-        Instantiate(m_flashParticleSystem, transform.position, transform.rotation);
+        m_flashParticleSystem.transform.position = transform.position;
         m_flashParticleSystem.Play();
     }
 
