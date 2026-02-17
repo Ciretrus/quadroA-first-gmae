@@ -26,7 +26,7 @@ public class TeleportTrigger : Usable
 
     private void Teleport()
     {
-        Vector3 position = m_teleportPoint.position;
-        PlayerController.instance.SetPosition(position);
+        Transform transform = m_teleportPoint.transform;
+        PlayerController.instance.SetPosition(transform);
     }
 }
