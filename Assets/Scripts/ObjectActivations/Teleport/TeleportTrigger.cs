@@ -9,6 +9,8 @@ public class TeleportTrigger : Usable
 
     protected bool m_conditionMet;
 
+    public bool conditionMet { set { m_conditionMet = value; } }
+
     private void OnEnable()
     {
         Initialize(UsableType.NonBlocking);
