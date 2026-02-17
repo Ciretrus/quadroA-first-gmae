@@ -10,9 +10,8 @@ public class FloorLock : Usable
     [SerializeField] private float m_openTimer = 0.3f;
 
     private bool m_hasKey => Inventory.instance.HasItem(GlobalConstants.LockKey);
+    private bool m_isUnlocked;
     private Tweener m_tween;
-
-    public bool m_isUnlocked = false;
 
     private void Awake()
     {
