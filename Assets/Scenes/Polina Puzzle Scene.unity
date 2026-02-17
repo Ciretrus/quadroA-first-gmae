@@ -2134,9 +2134,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 958763507}
-  - component: {fileID: 958763508}
   m_Layer: 5
-  m_Name: Diary
+  m_Name: DiaryUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2163,21 +2162,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &958763508
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 958763506}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 284073209ec6af14294e9a70d4015f10, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Diary
-  m_spreadPrefab: {fileID: 5610828299643801323, guid: 1a2dff546118e174685321181bab2816, type: 3}
-  m_buttonBack: {fileID: 1239720326}
-  m_buttonForward: {fileID: 69413054}
 --- !u!1 &972364386
 GameObject:
   m_ObjectHideFlags: 0
@@ -2693,7 +2677,7 @@ MonoBehaviour:
   m_animator: {fileID: 704664668}
   m_pauseTimer: 2
   m_triggers:
-  - {fileID: 0}
+  - {fileID: 178724768}
 --- !u!1 &1352380357
 GameObject:
   m_ObjectHideFlags: 0
@@ -3016,7 +3000,6 @@ MonoBehaviour:
   m_angleRotation: {x: 0, y: 0, z: 45}
   m_rotateObject: {fileID: 2051432056}
   m_openTimer: 0.3
-  m_isUnlocked: 0
 --- !u!54 &1415458454
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3327,7 +3310,7 @@ PrefabInstance:
     - target: {fileID: 5338338440695530538, guid: 6901c9bc146e4e04aa63563dd7a6bdfe, type: 3}
       propertyPath: m_diary
       value: 
-      objectReference: {fileID: 958763508}
+      objectReference: {fileID: 2033425273}
     - target: {fileID: 5338338440695530538, guid: 6901c9bc146e4e04aa63563dd7a6bdfe, type: 3}
       propertyPath: m_characterController
       value: 
@@ -3689,6 +3672,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c85f8aedc10102841b8a863c8c854c13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemsActivations
+--- !u!1 &2033425272
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2033425274}
+  - component: {fileID: 2033425273}
+  m_Layer: 0
+  m_Name: Diary
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2033425273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2033425272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 284073209ec6af14294e9a70d4015f10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Diary
+  m_diaryUI: {fileID: 958763506}
+  m_spreadPrefab: {fileID: 5610828299643801323, guid: 1a2dff546118e174685321181bab2816, type: 3}
+  m_buttonBack: {fileID: 1239720326}
+  m_buttonForward: {fileID: 69413054}
+--- !u!4 &2033425274
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2033425272}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2051432055
 GameObject:
   m_ObjectHideFlags: 0
@@ -4204,3 +4235,4 @@ SceneRoots:
   - {fileID: 4720347404421355365}
   - {fileID: 195186238}
   - {fileID: 331237573}
+  - {fileID: 2033425274}

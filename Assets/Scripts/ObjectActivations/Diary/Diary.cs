@@ -7,6 +7,7 @@ public class Diary : MonoBehaviour
 {
     public static Diary instance { get; private set; }
 
+    [SerializeField] private GameObject m_diaryUI;
     [SerializeField] private GameObject m_spreadPrefab;
     [SerializeField] private Button m_buttonBack;
     [SerializeField] private Button m_buttonForward;
@@ -26,7 +27,7 @@ public class Diary : MonoBehaviour
         }
         instance = this;
 
-        // DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(gameObject);
 
         m_spreads = new List<GameObject>();
         AddSpread();
@@ -34,7 +35,7 @@ public class Diary : MonoBehaviour
         m_buttonBack.onClick.AddListener(TurnPageBackward);
         m_buttonForward.onClick.AddListener(TurnPageForward);
 
-        gameObject.SetActive(false);
+        m_diaryUI.SetActive(false);
     }
 
     private void OnDestroy()
@@ -63,7 +64,7 @@ public class Diary : MonoBehaviour
 
     public void ChangeState(InputAction.CallbackContext context)
     {
-        gameObject.SetActive(!gameObject.activeSelf);
+        m_diaryUI.SetActive(!m_diaryUI.activeSelf);
     }
 
     private void AddSprite(Sprite sprite)
@@ -108,7 +109,7 @@ public class Diary : MonoBehaviour
 
     private void AddSpread()
     {
-        m_lastSpread = Instantiate(m_spreadPrefab, transform);
+        m_lastSpread = Instantiate(m_spreadPrefab, m_diaryUI.transform);
         m_spreads.Add(m_lastSpread);
     }
 }
