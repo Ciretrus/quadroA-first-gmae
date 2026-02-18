@@ -10,7 +10,7 @@ public class FooterEnter : Usable
     }
 
     
-    void Use()
+    public override void Use()
     {
         
     }
