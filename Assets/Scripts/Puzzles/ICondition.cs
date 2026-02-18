@@ -1,4 +1,3 @@
-using UnityEngine;
 namespace Puzzles
 {
     interface ICondition
@@ -7,6 +6,5 @@ namespace Puzzles
         {
             get;
         }
-
     }
 }

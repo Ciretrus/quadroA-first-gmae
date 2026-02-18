@@ -213,7 +213,7 @@ Transform:
   m_GameObject: {fileID: 1958111524566671423}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.7, z: 0}
+  m_LocalPosition: {x: 0, y: -0.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -307,7 +307,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 2
 --- !u!114 &5338338440695530538
 MonoBehaviour:
@@ -334,7 +334,7 @@ MonoBehaviour:
   m_sneakSpeed: 4
   m_jumpForce: 5
   m_gravity: 9.8
-  m_checkGroundRadius: 0.3
+  m_checkGroundRadius: 0.25
   m_groundMask:
     serializedVersion: 2
     m_Bits: 8
@@ -360,7 +360,9 @@ MonoBehaviour:
   m_runes:
   - {fileID: 0}
   - {fileID: 0}
+  m_outlineFader: {fileID: 0}
   m_rayDistance: 1.5
+  m_offset: 1.5
 --- !u!114 &7036142899256244154
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -377,6 +379,7 @@ MonoBehaviour:
   m_layerThiefEye:
     serializedVersion: 2
     m_Bits: 64
+  m_material: {fileID: 2100000, guid: 3ac62f416dc835343bb771453a4ea69a, type: 2}
   m_activationTime: 0.3
   m_durationTime: 3
 --- !u!82 &1998252404663274538

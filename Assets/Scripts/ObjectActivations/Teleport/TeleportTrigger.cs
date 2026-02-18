@@ -6,7 +6,10 @@ public class TeleportTrigger : Usable
     public event Action<Action> OnTrigger;
 
     [SerializeField] private Transform m_teleportPoint;
-    private bool m_hasKey => Inventory.instance.HasItem(GlobalConstants.ChestKey);
+
+    protected bool m_conditionMet;
+
+    public bool conditionMet { set { m_conditionMet = value; } }
 
     private void OnEnable()
     {
@@ -15,7 +18,7 @@ public class TeleportTrigger : Usable
 
     public override void Use()
     {
-        if (m_hasKey)
+        if (m_conditionMet)
         {
             OnTrigger.Invoke(Teleport);
         }
@@ -23,7 +26,7 @@ public class TeleportTrigger : Usable
 
     private void Teleport()
     {
-        Vector3 position = m_teleportPoint.position;
-        PlayerController.instance.SetPosition(position);
+        Transform transform = m_teleportPoint.transform;
+        PlayerController.instance.SetPosition(transform);
     }
 }

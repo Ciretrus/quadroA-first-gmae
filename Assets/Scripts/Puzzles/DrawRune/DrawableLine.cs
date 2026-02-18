@@ -7,16 +7,16 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(LineRenderer))]
 public class DrawableLine : BasePuzzle
 {
-    public event Action<List<Vector3>> HasDrawnSymbol;
-    public event Action HasStartedDrawing;
+    public event Action<List<Vector3>, Transform> HasDrawnSymbol;
 
     [SerializeField] private LineRenderer m_lineRenderer;
     [SerializeField] private RuneData m_rune;
+    [SerializeField] private float m_maxLength = 0.35f;
     [SerializeField] private float m_minDistance = 0.1f;
     
     private List<Vector3> m_dotsList;
     private bool m_canDraw;
-    private bool m_hasBrush => Inventory.instance.HasItem(GlobalConstants.RollBrush);
+    private bool m_hasBrush => Inventory.instance.HasItem(GlobalConstants.DrawingBrush);
 
     public RuneData rune {  get { return m_rune; } }
 
@@ -48,8 +48,6 @@ public class DrawableLine : BasePuzzle
     {
         if (Mouse.current.leftButton.isPressed)
         {
-            HasStartedDrawing?.Invoke();
-
             Vector3 mousePixelPos = Input.mousePosition;
             mousePixelPos.z = Camera.main.nearClipPlane + Camera.main.nearClipPlane * 0.01f;
 
@@ -58,6 +56,11 @@ public class DrawableLine : BasePuzzle
             mouseWorldPos.x += 0.5f;
             mouseWorldPos.y -= 0.5f;
             mouseWorldPos.z = 0f;
+
+            if (Math.Abs(mouseWorldPos.x) > m_maxLength || Math.Abs(mouseWorldPos.y) > m_maxLength)
+            {
+                ResetDrawing();
+            }
 
             if (m_dotsList.Count > 0)
             {
@@ -77,14 +80,7 @@ public class DrawableLine : BasePuzzle
         }
         else
         {
-            if (m_dotsList.Count > 1)
-            {
-                HasDrawnSymbol?.Invoke(m_dotsList);
-                CheckCondition();
-            }
-
-            m_dotsList.Clear();
-            m_lineRenderer.positionCount = 0;
+            ResetDrawing();
         }
     }
 
@@ -92,5 +88,20 @@ public class DrawableLine : BasePuzzle
     {
         m_lineRenderer.positionCount = points.ToArray().Length;
         m_lineRenderer.SetPositions(points.ToArray());
+    }
+
+    private void ResetDrawing()
+    {
+        if (m_dotsList.Count > 1)
+        {
+            if (!m_rune.solved)
+            {
+                HasDrawnSymbol?.Invoke(m_dotsList, transform);
+            }
+            CheckCondition();
+        }
+
+        m_dotsList.Clear();
+        m_lineRenderer.positionCount = 0;
     }
 }

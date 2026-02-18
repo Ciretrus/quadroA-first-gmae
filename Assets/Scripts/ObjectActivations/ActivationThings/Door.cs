@@ -1,33 +1,34 @@
 using System.Collections;
 using UnityEngine;
+using DG.Tweening;
 
 [RequireComponent (typeof(Collider))]
 public class Door : Usable
 {
+    [SerializeField] private Vector3 m_angleRotation = new Vector3(0, -90, 0);
     [SerializeField] private Collider m_collider;
-    [SerializeField] private float m_timer = 1f;
-    private Animator m_animator;
+    [SerializeField] private float m_timer = 0.5f;
+
+    private Tweener m_tween;
     private bool m_isOpened;
 
     private void OnEnable()
     {
         Initialize(UsableType.NonBlocking);
-        m_animator = GetComponent<Animator>();
     }
 
     public override void Use()
     {
-        m_collider.enabled = false;
+        m_collider.enabled = false; 
+        m_tween?.Kill();
 
         if (m_isOpened)
         {
-            transform.Rotate(Vector3.up, 90);
-            m_animator.Play("Close");
+            m_tween = transform.DORotate(Vector3.zero, m_timer);
         }
         else
         {
-            transform.Rotate(Vector3.up, -90);
-            m_animator.Play("Open");
+            m_tween = transform.DORotate(m_angleRotation, m_timer);
         }
 
         StartCoroutine(EnableCollision());

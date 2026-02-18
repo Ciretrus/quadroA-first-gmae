@@ -1,15 +1,16 @@
 using UnityEngine;
-using System.Collections;
+
 namespace Puzzles
 {
     public class RuneCheck: BasePuzzle
     {
         [SerializeField] private GameObject[] m_runes;
+
         public override void CheckCondition()
         {
             foreach (GameObject rune in m_runes)
             {
-                if (rune.TryGetComponent<ICondition>(out ICondition condition))
+                if (rune.TryGetComponent(out ICondition condition))
                 {
                     if (condition.IsSolved == false)
                     {
@@ -21,10 +22,8 @@ namespace Puzzles
                     Debug.LogWarning($"No ICondition on {rune.name}");
                     return; 
                 }
-
             }
             NotifySolved();
-
         }
     }
 }

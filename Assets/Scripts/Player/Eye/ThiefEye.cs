@@ -2,18 +2,15 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
-using UnityEngine.Windows;
 
 public class ThiefEye : MonoBehaviour
 {
     [SerializeField] private Camera m_camera;
     [SerializeField] private LayerMask m_layerThiefEye;
+    [SerializeField] private Material m_material;
     [SerializeField] private float m_activationTime = 0.3f;
     [SerializeField] private float m_durationTime =3f;
-    [SerializeField] private Material m_material;
 
-
-    
     private Volume[] m_volumes;
     private Volume m_standardVolume;
     private Volume m_thiefEyeVolume;
@@ -23,7 +20,6 @@ public class ThiefEye : MonoBehaviour
 
     private const float m_maxMaterialValue = 2f;
     private const float m_minMaterialValue = 0f;
-
 
     public LayerMask layerThiefEye => m_layerThiefEye;
     public bool hasStarted => m_hasStarted;

@@ -80,10 +80,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void SetPosition(Vector3 position)
+    public void SetPosition(Transform newTransform)
     {
-        float playerY = transform.position.y;
-        transform.position = new Vector3(position.x, playerY, position.z);
+        float playerPosY = transform.position.y;
+        transform.position = new Vector3(newTransform.position.x, playerPosY, newTransform.position.z);
+        transform.rotation = Quaternion.Euler(transform.rotation.x, newTransform.rotation.y, transform.rotation.z);
     }
 
     private void Move()

@@ -1,3 +1,4 @@
+using Puzzles;
 using System;
 using UnityEngine;
 
@@ -6,6 +7,7 @@ public class RuneDraw : Usable
     public event Action<RuneDraw> OnDisableDrawing;
 
     [SerializeField] private DrawableLine m_drawableLine;
+    [SerializeField] private RuneSwitch m_rune;
 
     public DrawableLine drawableLine { get { return m_drawableLine; } }
 
@@ -15,7 +17,7 @@ public class RuneDraw : Usable
 
         if (m_drawableLine != null)
         {
-            m_drawableLine.m_onSolved += DisableDrawing;
+            m_drawableLine.onSolved += SolveDrawing;
         }
     }
 
@@ -23,7 +25,7 @@ public class RuneDraw : Usable
     {
         if (m_drawableLine != null)
         {
-            m_drawableLine.m_onSolved -= DisableDrawing;
+            m_drawableLine.onSolved -= SolveDrawing;
         }
     }
 
@@ -32,8 +34,9 @@ public class RuneDraw : Usable
         m_drawableLine.canDraw = !m_drawableLine.canDraw;
     }
 
-    private void DisableDrawing()
+    private void SolveDrawing()
     {
+        m_rune.ColorIn();
         OnDisableDrawing.Invoke(this); 
         enabled = false;
     }

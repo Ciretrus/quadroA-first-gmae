@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class DrawingRuneController : MonoBehaviour
 {
+    [SerializeField] private ParticleSystem m_flashParticleSystem;
     [SerializeField] private DrawableLine[] m_drawableLines;
     [SerializeField] private UIController m_uiController;
     [SerializeField] private RuneData[] m_runes;
@@ -16,8 +17,9 @@ public class DrawingRuneController : MonoBehaviour
         foreach (var line in m_drawableLines)
         {
             line.HasDrawnSymbol += CompareDrawing;
-            line.HasStartedDrawing += HideText;
         }
+
+        m_flashParticleSystem = Instantiate(m_flashParticleSystem);
     }
 
     private void OnDisable()
@@ -25,11 +27,10 @@ public class DrawingRuneController : MonoBehaviour
         foreach (var line in m_drawableLines)
         {
             line.HasDrawnSymbol -= CompareDrawing;
-            line.HasStartedDrawing -= HideText;
         }
     }
 
-    private void CompareDrawing(List<Vector3> points)
+    private void CompareDrawing(List<Vector3> points, Transform transform)
     {
         List<Vector3> normalizedPoints = UnistrokeRecognizer.GetNormalizedPoints(points); 
 
@@ -37,22 +38,15 @@ public class DrawingRuneController : MonoBehaviour
 
         foreach (var rune in m_runes)
         {
-            if (rune.runeName == name)
+            if (rune.runeName == name && rune == m_currentRune)
             {
-                m_uiController.ShowFigureText(true, name);
-                if (rune == m_currentRune) 
-                { 
-                    rune.solved = true; 
-                }
+                rune.solved = true;
                 return;
             }
         }
-        Debug.Log("no such a rune");
-    }
 
-    private void HideText()
-    {
-        m_uiController.ShowFigureText(false, "");
+        m_flashParticleSystem.transform.position = transform.position;
+        m_flashParticleSystem.Play();
     }
 
     private string GetDrawnRuneName(List<Vector3> points)

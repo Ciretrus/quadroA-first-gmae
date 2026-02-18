@@ -6,13 +6,13 @@ public class CameraMovement : MonoBehaviour
     [SerializeField] private Transform m_player;
     private float m_rotationX = 0f;
 
-    void Start()
+    private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
 
-    void Update()
+    private void LateUpdate()
     {
         // new input system
         // couldn't get it to work
