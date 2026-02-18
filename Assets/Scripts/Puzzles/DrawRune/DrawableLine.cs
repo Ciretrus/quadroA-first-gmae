@@ -16,7 +16,7 @@ public class DrawableLine : BasePuzzle
     
     private List<Vector3> m_dotsList;
     private bool m_canDraw;
-    private bool m_hasBrush => Inventory.instance.HasItem(GlobalConstants.DrawingBrush);
+    private bool m_hasBrush => Inventory.instance.HasItem(GlobalConstants.DrawingChalk);
 
     public RuneData rune {  get { return m_rune; } }
 

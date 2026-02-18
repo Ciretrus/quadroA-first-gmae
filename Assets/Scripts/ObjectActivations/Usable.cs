@@ -1,6 +1,5 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Outline))]
 [RequireComponent(typeof(InteractableSound))]
 public abstract class Usable: MonoBehaviour
 {

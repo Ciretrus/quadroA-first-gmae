@@ -11,7 +11,6 @@ public class ItemsActivations : MonoBehaviour
     [SerializeField] private PlateController m_plateController;
     [SerializeField] private DrawingRuneController m_drawingRuneController;
     [SerializeField] private RuneDraw[] m_runes;
-    [SerializeField] private OutlineFader m_outlineFader;
     [SerializeField] private float m_rayDistance = 1f;
     [SerializeField] private float m_offset = 1.5f;
 
@@ -55,9 +54,8 @@ public class ItemsActivations : MonoBehaviour
             if (hit.collider.TryGetComponent(out m_usable) && m_usable.enabled)
             {
                 m_uiController.ShowObjectActivationText(true);
-                outlineObject = m_usable.GetComponent<Outline>();
-                //outlineObject.enabled = true;                
-                m_outlineFader.Enable(outlineObject);
+                outlineObject = m_usable.GetComponent<Outline>(); 
+                outlineObject.enabled = true;
                 m_lastOutlineObject = outlineObject;
 
                 if (m_playerController.input.UI.Interact.WasPerformedThisFrame())
@@ -194,14 +192,5 @@ public class ItemsActivations : MonoBehaviour
             return;
                 
         usable.interactableSound.PlayPitchedSound();
-    }
-
-    private void DisableLastOutlineObject()
-    {
-        if (m_lastOutlineObject)
-        {
-            //m_lastOutlineObject.enabled = false;
-            m_outlineFader.Disable(m_lastOutlineObject);
-        }
     }
 }
