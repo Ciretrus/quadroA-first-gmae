@@ -4,7 +4,7 @@ namespace Puzzles
 {
     public class RollPuzzle : BasePuzzle
     {
-        [SerializeField] private RollRotation[] m_rolls;
+        [SerializeField] private ICondition[] m_rolls;
 
         public override void CheckCondition()
         {
@@ -18,7 +18,7 @@ namespace Puzzles
         {
             for (int i = 0; i < m_rolls.Length; i++) 
             {   
-                if (!m_rolls[i].isRightNumber) return false;
+                if (!m_rolls[i].IsSolved) return false;
             }
             return true;
         }
