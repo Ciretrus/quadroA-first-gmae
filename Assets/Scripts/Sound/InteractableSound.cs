@@ -6,7 +6,7 @@ public class InteractableSound : MonoBehaviour
     [SerializeField] protected AudioClip[] m_sounds;
     [SerializeField] protected AudioSource m_source;
 
-    private void OnEnable()
+    private void OnValidate()
     {
         m_source = GetComponent<AudioSource>();
     }
