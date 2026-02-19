@@ -18,7 +18,7 @@ namespace Puzzles
             SolvedUnityEvent?.Invoke();
             Debug.Log("solved");
         }
+
         public abstract void CheckCondition();
     }
-
 }

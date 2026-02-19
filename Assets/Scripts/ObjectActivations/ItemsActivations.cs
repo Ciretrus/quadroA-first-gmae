@@ -16,8 +16,7 @@ public class ItemsActivations : MonoBehaviour
 
     private CameraMovement m_cameraMovement;
     private Vector3 m_screenCenter;
-    private Usable m_usable, m_lastUsable;
-    private Outline m_lastOutlineObject;
+    private Usable m_usable;
     private DiaryInteractable m_diaryInteractable;
     private RuneDraw m_runeDraw;
     private bool m_isUIBlocked;
@@ -45,7 +44,6 @@ public class ItemsActivations : MonoBehaviour
         m_screenCenter = new Vector3(Screen.width / 2, Screen.height / 2, 0);
         Ray ray = m_camera.ScreenPointToRay(m_screenCenter);
         RaycastHit hit;
-        Outline outlineObject;
 
         Physics.Raycast(ray, out hit, m_rayDistance);
 
@@ -54,9 +52,6 @@ public class ItemsActivations : MonoBehaviour
             if (hit.collider.TryGetComponent(out m_usable) && m_usable.enabled)
             {
                 m_uiController.ShowObjectActivationText(true);
-                outlineObject = m_usable.GetComponent<Outline>(); 
-                outlineObject.enabled = true;
-                m_lastOutlineObject = outlineObject;
 
                 if (m_playerController.input.UI.Interact.WasPerformedThisFrame())
                 {
@@ -81,21 +76,10 @@ public class ItemsActivations : MonoBehaviour
             {
                 DiaryNotif(m_diaryInteractable);
             }
-
-            if (m_usable != m_lastUsable && m_lastUsable != null)
-            {
-                m_lastUsable.GetComponent<Outline>().enabled = false;
-            }
-            m_lastUsable = m_usable;
         }
         else
         {
-            m_uiController.ShowObjectActivationText(false); 
-
-            if (m_lastUsable != null)
-            {
-                m_lastUsable.GetComponent<Outline>().enabled = false;
-            }
+            m_uiController.ShowObjectActivationText(false);
         }
     }
 

@@ -2,9 +2,6 @@ namespace Puzzles
 {
     interface ICondition
     {
-        public bool IsSolved
-        {
-            get;
-        }
+        public bool IsSolved { get; }
     }
 }

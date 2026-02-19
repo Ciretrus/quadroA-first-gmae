@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Puzzles 
 {
-    public class RollRotation : MonoBehaviour,ICondition
+    public class RollRotation : MonoBehaviour, ICondition
     {
         [SerializeField] private BasePuzzle m_puzzle;
         [SerializeField] private float m_angleRotation = 72f;

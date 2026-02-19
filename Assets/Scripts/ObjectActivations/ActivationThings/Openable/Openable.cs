@@ -1,11 +1,11 @@
 using UnityEngine;
 using DG.Tweening;
 
-public class Drawer : Usable
+public class Openable : Usable
 {
     [SerializeField] private Vector3 m_newPosition = new Vector3(0, 0, -0.7f);
     [SerializeField] private Vector3 m_newRotation = new Vector3(0, 97, 0);
-    [SerializeField] private float m_timer = 1f;
+    [SerializeField] protected float m_timer = 1f;
 
     private Vector3 m_initialPosition;
     private Vector3 m_initialRotation;
@@ -19,7 +19,9 @@ public class Drawer : Usable
         m_initialRotation = transform.eulerAngles;
     }
 
-    public override void Use()
+    public override void Use() { }
+
+    protected void Open()
     {
         m_tween?.Kill();
 
@@ -31,7 +33,7 @@ public class Drawer : Usable
         else
         {
             m_tween = transform.DOLocalMove(m_initialPosition - m_newPosition, m_timer);
-            m_tween = transform.DOBlendableRotateBy(- m_newRotation, m_timer);
+            m_tween = transform.DOBlendableRotateBy(-m_newRotation, m_timer);
         }
 
         m_isOpened = !m_isOpened;

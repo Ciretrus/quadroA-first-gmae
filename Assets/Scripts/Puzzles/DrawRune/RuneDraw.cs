@@ -2,14 +2,17 @@ using Puzzles;
 using System;
 using UnityEngine;
 
-public class RuneDraw : Usable
+public class RuneDraw : Usable, ICondition
 {
     public event Action<RuneDraw> DisableDrawing;
 
+    [SerializeField] private BasePuzzle m_puzzle;
     [SerializeField] private DrawableLine m_drawableLine;
     [SerializeField] private RuneSwitch m_rune;
 
     public DrawableLine drawableLine { get { return m_drawableLine; } }
+
+    public bool IsSolved => !enabled;
 
     private void OnEnable()
     {
@@ -39,5 +42,6 @@ public class RuneDraw : Usable
         m_rune.ColorIn();
         DisableDrawing.Invoke(this); 
         enabled = false;
+        m_puzzle.CheckCondition();
     }
 }
