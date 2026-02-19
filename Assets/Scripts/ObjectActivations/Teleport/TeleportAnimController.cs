@@ -12,7 +12,7 @@ public class TeleportAnimController : MonoBehaviour
     {
         foreach(var trigger in m_triggers)
         {
-            trigger.OnTrigger += AnimateTeleportation;
+            trigger.Trigger += AnimateTeleportation;
         }
     }
 
@@ -20,7 +20,7 @@ public class TeleportAnimController : MonoBehaviour
     {
         foreach (var trigger in m_triggers)
         {
-            trigger.OnTrigger -= AnimateTeleportation;
+            trigger.Trigger -= AnimateTeleportation;
         }
     }
 

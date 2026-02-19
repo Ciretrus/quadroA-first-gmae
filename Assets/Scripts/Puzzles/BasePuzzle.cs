@@ -5,8 +5,8 @@ namespace Puzzles
 {
     abstract public class BasePuzzle : MonoBehaviour
     {
-        public event Action onSolved;
-        public UnityEvent onSolvedUnityEvent;
+        public event Action Solved;
+        public UnityEvent SolvedUnityEvent;
         protected bool m_isSolved = false;
 
         protected void NotifySolved()
@@ -14,8 +14,8 @@ namespace Puzzles
             if (m_isSolved) return;
 
             m_isSolved = true;
-            onSolved?.Invoke();
-            onSolvedUnityEvent?.Invoke();
+            Solved?.Invoke();
+            SolvedUnityEvent?.Invoke();
             Debug.Log("solved");
         }
         public abstract void CheckCondition();

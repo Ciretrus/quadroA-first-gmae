@@ -28,7 +28,7 @@ public class ItemsActivations : MonoBehaviour
 
         foreach (RuneDraw rune in m_runes)
         {
-            rune.OnDisableDrawing += ChangeDrawingMode;
+            rune.DisableDrawing += ChangeDrawingMode;
         }
     }
 
@@ -36,7 +36,7 @@ public class ItemsActivations : MonoBehaviour
     {
         foreach (RuneDraw rune in m_runes)
         {
-            rune.OnDisableDrawing -= ChangeDrawingMode;
+            rune.DisableDrawing -= ChangeDrawingMode;
         }
     }
 

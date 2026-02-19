@@ -10,7 +10,7 @@ public class PortalActivation : MonoBehaviour
     {
         if (m_puzzle != null)
         {
-            m_puzzle.onSolved += ActivatePortal;
+            m_puzzle.Solved += ActivatePortal;
         }
     }
 
@@ -18,7 +18,7 @@ public class PortalActivation : MonoBehaviour
     {
         if (m_puzzle != null)
         {
-            m_puzzle.onSolved -= ActivatePortal;
+            m_puzzle.Solved -= ActivatePortal;
         }
     }
 

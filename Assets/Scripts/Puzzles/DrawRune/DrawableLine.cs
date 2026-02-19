@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(LineRenderer))]
 public class DrawableLine : BasePuzzle
 {
-    public event Action<List<Vector3>, Transform> HasDrawnSymbol;
+    public event Action<List<Vector3>, Transform> DrawnSymbol;
 
     [SerializeField] private LineRenderer m_lineRenderer;
     [SerializeField] private RuneData m_rune;
@@ -96,7 +96,7 @@ public class DrawableLine : BasePuzzle
         {
             if (!m_rune.solved)
             {
-                HasDrawnSymbol?.Invoke(m_dotsList, transform);
+                DrawnSymbol?.Invoke(m_dotsList, transform);
             }
             CheckCondition();
         }

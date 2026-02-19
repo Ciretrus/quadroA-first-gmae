@@ -16,7 +16,7 @@ public class DrawingRuneController : MonoBehaviour
     {
         foreach (var line in m_drawableLines)
         {
-            line.HasDrawnSymbol += CompareDrawing;
+            line.DrawnSymbol += CompareDrawing;
         }
 
         m_flashParticleSystem = Instantiate(m_flashParticleSystem);
@@ -26,7 +26,7 @@ public class DrawingRuneController : MonoBehaviour
     {
         foreach (var line in m_drawableLines)
         {
-            line.HasDrawnSymbol -= CompareDrawing;
+            line.DrawnSymbol -= CompareDrawing;
         }
     }
 
