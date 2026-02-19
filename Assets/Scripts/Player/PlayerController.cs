@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour
     public PlayerInput input => m_input;
     public bool isMoving { get; private set; } = false;
     public bool isGrounded => IsGrounded();
+    public bool isSprinting => m_isSprinting;
 
     private void Awake()
     {
