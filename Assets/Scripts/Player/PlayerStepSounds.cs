@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(PlayerController))]
-[RequireComponent (typeof(AudioSource))]
+[RequireComponent(typeof(AudioSource))]
 public class PlayerStepSounds : MonoBehaviour
 {
     [SerializeField] private PlayerController m_controller;
@@ -11,7 +11,9 @@ public class PlayerStepSounds : MonoBehaviour
 
     [SerializeField] private List<AudioClip> m_sounds;    
     [SerializeField] private float m_delay = 0.5f;
+    [SerializeField] private float m_sprintDelay = 0.3f;
 
+    private float m_currentDelay;
     private bool m_isPlaying = false;
     private AudioClip m_currentClip;
     private float m_currentVolume = 1.0f;
@@ -20,12 +22,22 @@ public class PlayerStepSounds : MonoBehaviour
     {
         m_controller = GetComponent<PlayerController>();
         m_audioSource = GetComponent<AudioSource>();
+        m_currentDelay = m_delay;
     }
 
     private void Update()
-    {        
-        // TODO: Fix bug with Y player velocity
-        if (m_controller.isGrounded && m_controller.isMoving)
+    {
+        if (m_controller.isSprinting)
+        {
+            Debug.Log("IsSprinting");
+            m_currentDelay = m_sprintDelay;
+        }
+        else
+        {
+            m_currentDelay = m_delay;
+        }
+
+        if (m_controller.isGrounded && m_controller.isMoving && !m_isPlaying)
         {
             int randomIndex = Random.Range(0, m_sounds.Count);
             AudioClip sound = m_sounds[randomIndex];
@@ -33,22 +45,19 @@ public class PlayerStepSounds : MonoBehaviour
         }
     }
 
-    public void PlaySound(AudioClip sound, float volume = 1f, bool destroyed = false, float minPitch = 0.9f, float maxPitch = 1.1f)
+    public void PlaySound(AudioClip sound, float volume = 0.1f, bool destroyed = false, float minPitch = 0.9f, float maxPitch = 1.1f)
     {
-        if (!m_isPlaying)
-        {
-            m_currentClip = sound;
-            m_currentVolume = volume;
-            m_audioSource.pitch = Random.Range(minPitch, maxPitch);
-            StartCoroutine(PlaySoundWithDelay());
-        }        
+        m_currentClip = sound;
+        m_currentVolume = volume;
+        m_audioSource.pitch = Random.Range(minPitch, maxPitch);
+        StartCoroutine(PlaySoundWithDelay());
     }
 
     private IEnumerator PlaySoundWithDelay()
     {
         m_isPlaying = true;
         m_audioSource.PlayOneShot(m_currentClip, m_currentVolume);
-        yield return new WaitForSeconds(m_delay);
+        yield return new WaitForSeconds(m_currentDelay);
         m_isPlaying = false;
     }
 }
