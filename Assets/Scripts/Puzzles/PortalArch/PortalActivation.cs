@@ -4,7 +4,7 @@ using UnityEngine;
 public class PortalActivation : MonoBehaviour
 {
     [SerializeField] private BasePuzzle m_puzzle;
-    [SerializeField] private GameObject m_particle;
+    [SerializeField] private GameObject m_shield;
 
     private void OnEnable()
     {
@@ -24,6 +24,6 @@ public class PortalActivation : MonoBehaviour
 
     private void ActivatePortal()
     {
-        m_particle.SetActive(true);
+        m_shield.SetActive(false);
     }
 }
