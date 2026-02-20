@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+[RequireComponent(typeof(ItemsActivations), typeof(ThiefEye))]
 public class PlayerController : MonoBehaviour
 {
     public static PlayerController instance { get; private set; }
