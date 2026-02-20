@@ -175,6 +175,7 @@ MonoBehaviour:
   m_angleRotation: {x: 0, y: 0, z: 45}
   m_rotateObject: {fileID: 2043735846164217494}
   m_openTimer: 0.3
+  m_force: {x: 0, y: 1, z: 0}
 --- !u!114 &5644516210969631427
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -339,7 +340,6 @@ GameObject:
   - component: {fileID: 7558276535056685204}
   - component: {fileID: 1248601387469212935}
   - component: {fileID: 9017763775406703272}
-  - component: {fileID: 3116380356690082489}
   - component: {fileID: 50558160834382109}
   - component: {fileID: 8553693219946708855}
   m_Layer: 0
@@ -457,24 +457,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TeleportTrigger
   m_interactableSound: {fileID: 0}
   m_teleportPoint: {fileID: 0}
---- !u!114 &3116380356690082489
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2425234027644275247}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Outline
-  outlineMode: 0
-  outlineColor: {r: 1, g: 1, b: 1, a: 1}
-  outlineWidth: 0
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
 --- !u!82 &50558160834382109
 AudioSource:
   m_ObjectHideFlags: 0
