@@ -1,7 +1,8 @@
+using Puzzles;
 using System.Collections;
 using UnityEngine;
 
-public class PlateController : MonoBehaviour
+public class PlateController : BasePuzzle
 {
     [SerializeField] private AudioSource m_audioSource;
     [SerializeField] private Material m_inactiveMaterial;
@@ -13,7 +14,6 @@ public class PlateController : MonoBehaviour
     private Renderer[] m_renderers;
     private AudioClip[] m_composition;
     private int m_currentStep = 0;
-    private bool m_isSolved = false;
 
     public bool isSolved => m_isSolved;
 
@@ -50,9 +50,14 @@ public class PlateController : MonoBehaviour
             return;
         }
 
+        CheckCondition();
+    }
+
+    public override void CheckCondition()
+    {
         if (m_currentStep == m_correctSequence.Length)
         {
-            m_isSolved = true;
+            NotifySolved();
             StartCoroutine(WinPuzzle());
         }
     }
