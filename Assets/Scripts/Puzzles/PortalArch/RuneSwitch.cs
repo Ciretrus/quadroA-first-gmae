@@ -13,7 +13,6 @@ namespace Puzzles
 
         private MaterialPropertyBlock m_emissionMat;
         private MeshRenderer m_meshRenderer;
-        private bool m_isStarted = false;
         private bool m_isActive = false;
         private Tween m_currentTween;
         private Color m_tempColor;

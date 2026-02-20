@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class TeleportTrigger : Usable
 {
-    public event Action<Action> OnTrigger;
+    public event Action<Action> Trigger;
 
     [SerializeField] private Transform m_teleportPoint;
 
@@ -20,7 +20,7 @@ public class TeleportTrigger : Usable
     {
         if (m_conditionMet)
         {
-            OnTrigger.Invoke(Teleport);
+            Trigger.Invoke(Teleport);
         }
     }
 

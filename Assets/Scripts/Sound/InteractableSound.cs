@@ -26,6 +26,7 @@ public class InteractableSound : MonoBehaviour
         m_source.PlayOneShot(GetRandomSound());
     }
 
+#nullable enable
     protected AudioClip? GetRandomSound()
     {
         if (m_sounds.Length == 0)

@@ -8,22 +8,31 @@ namespace Puzzles
         [SerializeField] private RuneSwitch[] m_runeActivations;
         [SerializeField] private Vector3 m_clickedShiftPosition;
         [SerializeField] private float m_timeClick = 0.3f;
+        [SerializeField] private BasePuzzle m_prerequisitePuzzle;
         [SerializeField] private BasePuzzle m_puzzle;
 
+        private bool m_canClick = false;
         private bool m_clicked = false;
         private Vector3 m_startPosition;
         private Vector3 m_newPosition;
 
         public void Awake()
         {
+            Initialize(UsableType.NonBlocking);
+            m_prerequisitePuzzle.Solved += EnableButtons;
+
             m_startPosition = transform.position;
             m_newPosition = m_startPosition - m_clickedShiftPosition;
-            Initialize(UsableType.NonBlocking);
+        }
+
+        private void OnDisable()
+        {
+            m_prerequisitePuzzle.Solved -= EnableButtons;
         }
 
         public override void Use()
         {
-            if (!m_clicked)
+            if (!m_clicked && m_canClick)
             {
                 StartCoroutine(Click());
 
@@ -34,6 +43,11 @@ namespace Puzzles
 
                 m_puzzle.CheckCondition();
             }
+        }
+
+        private void EnableButtons()
+        {
+            m_canClick = true;
         }
 
         private IEnumerator Click()

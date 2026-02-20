@@ -29,7 +29,6 @@ public class Conditions : MonoBehaviour
         {
             Debug.Log(itemName + " already here");
         }
-       
     }
 
     public void RemoveCondition(string itemName)
@@ -40,7 +39,7 @@ public class Conditions : MonoBehaviour
         }
         else 
         {
-            Debug.LogError($"thing didnt found, can't delete it - {itemName}");   
+            Debug.LogError($"thing wasn't found, can't delete it - {itemName}");   
         }
     }
 

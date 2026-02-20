@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour
     public PlayerInput input => m_input;
     public bool isMoving { get; private set; } = false;
     public bool isGrounded => IsGrounded();
+    public bool isSprinting => m_isSprinting;
 
     private void Awake()
     {
@@ -82,9 +83,10 @@ public class PlayerController : MonoBehaviour
 
     public void SetPosition(Transform newTransform)
     {
-        float playerPosY = transform.position.y;
-        transform.position = new Vector3(newTransform.position.x, playerPosY, newTransform.position.z);
-        transform.rotation = Quaternion.Euler(transform.rotation.x, newTransform.rotation.y, transform.rotation.z);
+        transform.position = newTransform.position;
+
+        float newRotY = newTransform.localRotation.eulerAngles.y;
+        transform.rotation = Quaternion.Euler(transform.rotation.x, newRotY, transform.rotation.z);
     }
 
     private void Move()

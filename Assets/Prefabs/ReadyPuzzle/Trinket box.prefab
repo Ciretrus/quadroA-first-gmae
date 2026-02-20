@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 8234046663584077105}
   - component: {fileID: 6420263357922747672}
   m_Layer: 0
-  m_Name: "\u043A\u0440\u0443\u0442\u0438\u043B\u043A\u0430 (1)"
+  m_Name: roller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -115,7 +115,7 @@ MonoBehaviour:
   m_puzzle: {fileID: 7482857650162262543}
   m_angleRotation: 72
   m_rotationTime: 0.2
-  m_rightNumber: 3
+  m_rightNumber: 4
 --- !u!114 &7326325090331161377
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -145,7 +145,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Outline
   outlineMode: 0
   outlineColor: {r: 1, g: 1, b: 1, a: 1}
-  outlineWidth: 2
+  outlineWidth: 0
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
@@ -385,8 +385,9 @@ GameObject:
   - component: {fileID: 1313747735384643006}
   - component: {fileID: 4130065470175093848}
   - component: {fileID: 640634093231662935}
+  - component: {fileID: 232055028105759272}
   m_Layer: 0
-  m_Name: "\u043A\u0440\u044B\u0448\u043A\u0430"
+  m_Name: Cap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -400,16 +401,16 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1738757716606896004}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.004363274, y: 0, z: 0, w: 0.9999905}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.0084360605, y: 0.11836188, z: -0.14543723}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 776105887477870433}
-  - {fileID: 2675983484197652143}
   - {fileID: 1261414045309525929}
+  - {fileID: 2675983484197652143}
   m_Father: {fileID: 8213938234256204613}
-  m_LocalEulerAnglesHint: {x: 0.5, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1313747735384643006
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -488,6 +489,21 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.44215715, y: 0.11, z: 0.29787543}
   m_Center: {x: 0.0006759162, y: 0.059056178, z: 0.14538266}
+--- !u!114 &232055028105759272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1738757716606896004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c4ecf0dd16a9f046b74f26cae9dc1f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TrinketBoxCap
+  m_puzzle: {fileID: 7482857650162262543}
+  m_newRotation: {x: -60, y: 0, z: 0}
+  m_timer: 1.5
 --- !u!1 &6251412806610448359
 GameObject:
   m_ObjectHideFlags: 0
@@ -506,7 +522,7 @@ GameObject:
   - component: {fileID: 7525807720876607244}
   - component: {fileID: 825369377286769734}
   m_Layer: 0
-  m_Name: "\u043A\u0440\u0443\u0442\u0438\u043B\u043A\u0430 (2)"
+  m_Name: roller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -603,7 +619,7 @@ MonoBehaviour:
   m_puzzle: {fileID: 7482857650162262543}
   m_angleRotation: 72
   m_rotationTime: 0.2
-  m_rightNumber: 4
+  m_rightNumber: 3
 --- !u!114 &9028459793502254281
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -633,7 +649,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Outline
   outlineMode: 0
   outlineColor: {r: 1, g: 1, b: 1, a: 1}
-  outlineWidth: 2
+  outlineWidth: 0
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
@@ -781,7 +797,7 @@ GameObject:
   - component: {fileID: 8213938234256204613}
   - component: {fileID: 7482857650162262543}
   m_Layer: 0
-  m_Name: "\u0428\u043A\u0430\u0442\u0443\u043B\u043A\u0430 1"
+  m_Name: Trinket box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -817,21 +833,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06dba59b62b824744941bc490ed90dd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Puzzles.RuneCheck
-  m_onSolvedUnityEvent:
+  SolvedUnityEvent:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1738757716606896004}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_runes:
   - {fileID: 8716860584871276455}
   - {fileID: 127348365364717497}
@@ -976,12 +980,11 @@ GameObject:
   - component: {fileID: 838679968741850830}
   - component: {fileID: 3886535760186583617}
   - component: {fileID: 4018720307990373739}
-  - component: {fileID: 3544587061970683746}
   - component: {fileID: 4434819072263360468}
   - component: {fileID: 2548293572325082846}
   - component: {fileID: 5301167401823157603}
   m_Layer: 0
-  m_Name: "\u043A\u0440\u0443\u0442\u0438\u043B\u043A\u0430"
+  m_Name: roller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1094,24 +1097,6 @@ MonoBehaviour:
   m_interactableSound: {fileID: 0}
   m_roll: {fileID: 3886535760186583617}
   m_direction: 1
---- !u!114 &3544587061970683746
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8716860584871276455}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Outline
-  outlineMode: 0
-  outlineColor: {r: 1, g: 1, b: 1, a: 1}
-  outlineWidth: 2
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
 --- !u!82 &4434819072263360468
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1295,7 +1280,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: d92ca24b26d3acd45938acdbc0687055, type: 3}
       propertyPath: m_Name
-      value: "\u041C\u0435\u043B\u043E\u043A"
+      value: Chalk
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: d92ca24b26d3acd45938acdbc0687055, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -1310,23 +1295,20 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d92ca24b26d3acd45938acdbc0687055, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 855710467589431592}
+      addedObject: {fileID: 6518679199155480729}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d92ca24b26d3acd45938acdbc0687055, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2390988517294728045}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d92ca24b26d3acd45938acdbc0687055, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8703703443974435643}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d92ca24b26d3acd45938acdbc0687055, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 6518679199155480729}
   m_SourcePrefab: {fileID: 100100000, guid: d92ca24b26d3acd45938acdbc0687055, type: 3}
 --- !u!1 &1241998076708363612 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: d92ca24b26d3acd45938acdbc0687055, type: 3}
   m_PrefabInstance: {fileID: 2160918007099334669}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &855710467589431592
+--- !u!114 &6518679199155480729
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1335,15 +1317,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1241998076708363612}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Script: {fileID: 11500000, guid: e1c3fc2de0058424ea30437f20b8a5ba, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Outline
-  outlineMode: 0
-  outlineColor: {r: 1, g: 1, b: 1, a: 1}
-  outlineWidth: 2
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
+  m_EditorClassIdentifier: Assembly-CSharp::TakeableObject
+  m_interactableSound: {fileID: 0}
+  m_objectName: chalk
 --- !u!82 &2390988517294728045
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1455,20 +1433,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::InteractableSound
   m_sounds: []
   m_source: {fileID: 0}
---- !u!114 &6518679199155480729
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1241998076708363612}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1c3fc2de0058424ea30437f20b8a5ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TakeableObject
-  m_interactableSound: {fileID: 0}
-  m_objectName: Chalk
 --- !u!4 &1907175516333131750 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d92ca24b26d3acd45938acdbc0687055, type: 3}
