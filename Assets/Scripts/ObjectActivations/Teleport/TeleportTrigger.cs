@@ -6,10 +6,9 @@ public class TeleportTrigger : Usable
     public event Action<Action> Trigger;
 
     [SerializeField] private Transform m_teleportPoint;
+    [SerializeField] private bool m_requiresCondition = false;
 
-    protected bool m_conditionMet;
-
-    public bool conditionMet { set { m_conditionMet = value; } }
+    public bool conditionMet { set { m_requiresCondition = !value; } }
 
     private void OnEnable()
     {
@@ -18,7 +17,7 @@ public class TeleportTrigger : Usable
 
     public override void Use()
     {
-        if (m_conditionMet)
+        if (!m_requiresCondition)
         {
             Trigger.Invoke(Teleport);
         }

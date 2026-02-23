@@ -9,7 +9,7 @@ public class FloorLock : Usable
     [SerializeField] private Vector3 m_angleRotation = new Vector3(0, 0, 45);
     [SerializeField] private Transform m_rotateObject;
     [SerializeField] private float m_openTimer = 0.3f;
-    [SerializeField] private Vector3 m_force = new Vector3(0,1f,0);
+    [SerializeField] private Vector3 m_force = new Vector3(0, 1f, 0);
 
     private bool m_hasKey => Inventory.instance.HasItem(GlobalConstants.LockKey);
     private bool m_isUnlocked;

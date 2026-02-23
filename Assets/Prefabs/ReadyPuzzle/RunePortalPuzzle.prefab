@@ -516,7 +516,6 @@ GameObject:
   - component: {fileID: 3177195300025190147}
   - component: {fileID: 4229799257181756352}
   - component: {fileID: 203565783602678662}
-  - component: {fileID: 5529304719879226004}
   - component: {fileID: 8661138741314927792}
   - component: {fileID: 5055605522879883868}
   m_Layer: 0
@@ -576,26 +575,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RuneDraw
   m_interactableSound: {fileID: 0}
+  m_puzzle: {fileID: 0}
   m_drawableLine: {fileID: 925182731156944298}
   m_rune: {fileID: 3205706870293813891}
---- !u!114 &5529304719879226004
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1171603506788291904}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Outline
-  outlineMode: 0
-  outlineColor: {r: 0.23921569, g: 0.5882353, b: 0.7529412, a: 1}
-  outlineWidth: 10
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
 --- !u!82 &8661138741314927792
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1045,6 +1027,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4348617306999116061}
   - component: {fileID: 8767610369794379302}
+  - component: {fileID: 5317814278253581657}
   m_Layer: 0
   m_Name: RunePortalPuzzle
   m_TagString: Untagged
@@ -1095,6 +1078,20 @@ MonoBehaviour:
   - {fileID: 413818159971525904}
   - {fileID: 8668069069808417919}
   - {fileID: 2288544654433956552}
+--- !u!114 &5317814278253581657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3195403763711510321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee39181370055394e8b23fb60c4af08b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PortalActivation
+  m_puzzle: {fileID: 8767610369794379302}
+  m_shield: {fileID: 0}
 --- !u!1 &3864054918372562426
 GameObject:
   m_ObjectHideFlags: 0
@@ -2786,7 +2783,6 @@ GameObject:
   - component: {fileID: 3552445299807263149}
   - component: {fileID: 5468608945784689925}
   - component: {fileID: 7642438362343755823}
-  - component: {fileID: 1543357944049142090}
   - component: {fileID: 1253208543868461228}
   - component: {fileID: 3115341165289684924}
   m_Layer: 0
@@ -2846,26 +2842,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RuneDraw
   m_interactableSound: {fileID: 0}
+  m_puzzle: {fileID: 0}
   m_drawableLine: {fileID: 7398189375588442554}
   m_rune: {fileID: 2954287447716395430}
---- !u!114 &1543357944049142090
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7139174494118952280}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Outline
-  outlineMode: 0
-  outlineColor: {r: 0.23921569, g: 0.5882353, b: 0.7529412, a: 1}
-  outlineWidth: 10
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
 --- !u!82 &1253208543868461228
 AudioSource:
   m_ObjectHideFlags: 0
