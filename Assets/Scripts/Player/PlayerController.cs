@@ -6,24 +6,33 @@ public class PlayerController : MonoBehaviour
 {
     public static PlayerController instance { get; private set; }
 
+    [Header("Movement")]
     [SerializeField] private Rigidbody m_rigidbody;
-    [SerializeField] private float m_groundDrag;
-    [SerializeField] private float m_airMultiplier;
-    [SerializeField] private ItemsActivations m_itemsActivations;
-    [SerializeField] private ThiefEye m_thiefEye;
     [SerializeField] private GameObject m_head;
     [SerializeField] private Transform m_groundCheckerPivot;
+    [SerializeField] private float m_gravity = 9.8f;
+    [SerializeField] private float m_groundDrag;
+    [SerializeField] private float m_airMultiplier;
+    [Header("Speed settings")]
     [SerializeField] private float m_smoothInputSpeed = 0.2f;
     [SerializeField] private float m_walkSpeed = 10f;
     [SerializeField] private float m_sprintSpeed = 20f;
     [SerializeField] private float m_sneakSpeed = 5f;
     [SerializeField] private float m_jumpForce = 5f;
-    [SerializeField] private float m_gravity = 9.8f;
-    [SerializeField] private float m_checkGroundRadius = 0.3f;
+    [Header("Ground settings")]
     [SerializeField] private LayerMask m_groundMask;
+    [SerializeField] private float m_checkGroundRadius = 0.3f;
+    [Header("Slope settings")]
+    [SerializeField] private float m_maxSlopeAngle = 50f;
+    [SerializeField] private float m_minSlopeAngle = 3f;
+
+    [Header("Dependencies")]
+    [SerializeField] private ItemsActivations m_itemsActivations;
+    [SerializeField] private ThiefEye m_thiefEye;
     [SerializeField] private Diary m_diary;
 
     private PlayerInput m_input;
+    private RaycastHit m_slopeHit;
     private Vector2 m_smoothVector;
     private Vector2 m_smoothVelocity;
     private float m_currentSpeed;
@@ -72,7 +81,7 @@ public class PlayerController : MonoBehaviour
         Move();
         ControlSpeed();
 
-        if (IsGrounded())
+        if (IsGrounded() || IsOnSlope())
         {
             m_rigidbody.linearDamping = m_groundDrag;
         }
@@ -92,6 +101,8 @@ public class PlayerController : MonoBehaviour
 
     private void Move()
     {
+        m_rigidbody.useGravity = !IsOnSlope();
+
         Vector2 inputVector = m_input.Movement.Walk.ReadValue<Vector2>();
 
         if (inputVector == Vector2.zero)
@@ -124,14 +135,20 @@ public class PlayerController : MonoBehaviour
             m_currentSpeed = m_walkSpeed;
         }
 
+        if (IsOnSlope())
+        {
+            moveDirection = SlopeMoveDirection(moveDirection);
+            m_rigidbody.AddForce(transform.TransformDirection(moveDirection) * (m_currentSpeed * 10f), ForceMode.Force);
+        }
+
         if (IsGrounded())
         {
-            m_rigidbody.AddForce(transform.TransformDirection(moveDirection) * m_currentSpeed * 10f, ForceMode.Force);
+            m_rigidbody.AddForce(transform.TransformDirection(moveDirection) * (m_currentSpeed * 10f), ForceMode.Force);
         }
 
         if (!IsGrounded())
         {
-            m_rigidbody.AddForce(transform.TransformDirection(moveDirection) * m_currentSpeed * 10f * m_airMultiplier, ForceMode.Force);
+            m_rigidbody.AddForce(transform.TransformDirection(moveDirection) * (m_currentSpeed * 10f * m_airMultiplier), ForceMode.Force);
             m_rigidbody.AddForce(- Vector3.up * m_gravity, ForceMode.Force);
         }
     }
@@ -199,5 +216,25 @@ public class PlayerController : MonoBehaviour
     {
         bool groundCheck = Physics.CheckSphere(m_groundCheckerPivot.position, m_checkGroundRadius, m_groundMask);
         return groundCheck;
+    }
+
+    private bool IsOnSlope()
+    {
+        bool slopeCheck = Physics.Raycast(m_groundCheckerPivot.position, Vector3.down, out m_slopeHit, m_checkGroundRadius);
+        if (slopeCheck)
+        {
+            float angle = Vector3.Angle(Vector3.up, m_slopeHit.normal);
+            if (angle > m_minSlopeAngle && angle < m_maxSlopeAngle)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private Vector3 SlopeMoveDirection(Vector3 moveDir)
+    {
+        Vector3 slopeDir = Vector3.ProjectOnPlane(moveDir, m_slopeHit.normal);
+        return slopeDir;
     }
 }

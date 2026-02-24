@@ -15,7 +15,6 @@ public class CameraMovement : MonoBehaviour
     private void LateUpdate()
     {
         // new input system
-        // couldn't get it to work
         /*Vector2 mousePosition = m_input.Movement.Point.ReadValue<Vector2>();
         float mouseX = mousePosition.x * m_sensivity * Time.deltaTime;
         float mouseY = mousePosition.y * m_sensivity * Time.deltaTime;*/
