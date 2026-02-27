@@ -14,11 +14,12 @@ public class ItemsActivations : MonoBehaviour
     [SerializeField] private float m_rayDistance = 1f;
     [SerializeField] private float m_offset = 1.5f;
 
+    private Vector3 m_cameraPos = new Vector3(0f, 1.5f, 0f);
     private CameraMovement m_cameraMovement;
-    private Vector3 m_screenCenter;
-    private Usable m_usable;
     private DiaryInteractable m_diaryInteractable;
     private RuneDraw m_runeDraw;
+    private Usable m_usable;
+    private Vector3 m_screenCenter;
     private bool m_isUIBlocked;
 
     private void Awake()
@@ -75,6 +76,10 @@ public class ItemsActivations : MonoBehaviour
             else if (hit.collider.TryGetComponent(out m_diaryInteractable))
             {
                 DiaryNotif(m_diaryInteractable);
+            }
+            else
+            {
+                m_uiController.ShowObjectActivationText(false);
             }
         }
         else
@@ -139,12 +144,12 @@ public class ItemsActivations : MonoBehaviour
 
     private void ChangeDrawingMode(Usable usable)
     {
+        ChangeMovementState();
+        ChangeCursorState();
+
         if (m_isUIBlocked)
         {
-            // TODO CameraMovement overrides it
-            m_camera.transform.rotation = Quaternion.Euler(new Vector3(180f, 0f, 0f));
-
-            m_playerController.cameraPos.transform.localPosition = new Vector3(0f, 1.5f, 0f); 
+            m_playerController.cameraPos.transform.localPosition = m_cameraPos; 
 
             m_drawingRuneController.currentRune = null;
         }
@@ -158,15 +163,11 @@ public class ItemsActivations : MonoBehaviour
             Vector3 newPos = new Vector3(usablePos.x, transform.position.y, usablePos.z);
             transform.position = newPos - (transform.forward * m_offset);
             m_playerController.cameraPos.transform.position = new Vector3(transform.position.x, usablePos.y, transform.position.z);
-            // TODO Should change m_camera.transform.position in CameraMovement
-            // but it's being disabled before it can happen cause of ChangeMovementState();
+            // TODO Remove (CameraMovement being disabled in ChangeMovementState())
             m_camera.transform.position = m_playerController.cameraPos.transform.position;
 
             m_drawingRuneController.currentRune = m_runeDraw.drawableLine.rune;
         }
-
-        ChangeMovementState();
-        ChangeCursorState();
 
         m_isUIBlocked = !m_isUIBlocked;
     }
@@ -176,7 +177,9 @@ public class ItemsActivations : MonoBehaviour
         Debug.LogWarning(usable.interactableSound);
 
         if (usable.interactableSound == null)
+        {
             return;
+        }
                 
         usable.interactableSound.PlayPitchedSound();
     }

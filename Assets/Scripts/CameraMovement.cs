@@ -8,7 +8,6 @@ public class CameraMovement : MonoBehaviour
     [SerializeField] private Transform m_cameraPos;
 
     private float m_rotationX = 0f;
-    private float m_rotationY = 0f;
     private Vector3 m_velocity;
 
     private void Start()
@@ -19,7 +18,7 @@ public class CameraMovement : MonoBehaviour
 
     private void LateUpdate()
     {
-        // new input system
+        // TODO Move to new input system
         /*Vector2 mousePosition = m_input.Movement.Point.ReadValue<Vector2>();
         float mouseX = mousePosition.x * m_sensivity * Time.deltaTime;
         float mouseY = mousePosition.y * m_sensivity * Time.deltaTime;*/
@@ -27,14 +26,12 @@ public class CameraMovement : MonoBehaviour
         float mouseX = Input.GetAxis("Mouse X") * m_sensivity * Time.deltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * m_sensivity * Time.deltaTime;
 
-        m_rotationY += mouseX;
-
         m_rotationX -= mouseY;
         m_rotationX = Mathf.Clamp(m_rotationX, -90f, 90f);
 
-        transform.rotation = Quaternion.Euler(m_rotationX, m_rotationY, 0f);
         m_player.Rotate(Vector3.up * mouseX);
-        
+        transform.rotation = Quaternion.Euler(m_rotationX, m_player.eulerAngles.y, 0f);
+
         transform.position = Vector3.SmoothDamp(transform.position, m_cameraPos.position, ref m_velocity, m_smoothTime);
     }
 }
