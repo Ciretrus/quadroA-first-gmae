@@ -1,12 +1,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+public class InventoryItem
+{
+    public string itemName;
+    public Sprite image;
+    public int count;
+
+    public InventoryItem(string itemName, Sprite image, int count = 1)
+    {
+        this.itemName = itemName;
+        this.image = image;
+        this.count = count;
+    }
+    
+}
 public class Inventory : MonoBehaviour
 {
     public static Inventory instance { get; private set; }
 
-    private Dictionary<string, int> inventory = new Dictionary<string, int>();
-
+    private List<InventoryItem> inventory = new List<InventoryItem>();
+    public int Counter { get { return inventory.Count; }}
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -19,30 +34,33 @@ public class Inventory : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    public void AddItem(string itemName)
+    public void AddItem(InventoryItem item)
     {
-        if (inventory.ContainsKey(itemName))
+        if (ContainsItem(item.itemName))
         {
-            inventory[itemName]++;
+            for (int i = 0; i < inventory.Count; i++)
+            {
+                if (inventory[i].itemName == item.itemName) inventory[i].count++;
+            }
         }
         else
         {
-            inventory.Add(itemName, 1);
+            inventory.Add(item);
         }
-        Debug.Log(itemName + inventory[itemName]);
+        Debug.Log(item.itemName + item.count);
     }
 
     public void RemoveItem(string itemName)
     {
-        if (inventory.ContainsKey(itemName))
+        if (ContainsItem(itemName))
         {
-            if (inventory[itemName] > 0)
+            for (int i = 0; i < inventory.Count; i++)
             {
-                inventory[itemName]--;
-            }
-            else
-            {
-                inventory.Remove(itemName);
+                if (inventory[i].itemName == itemName)
+                {   
+                    if (inventory[i].count > 1) { inventory[i].count--; }
+                    else { inventory.Remove(inventory[i]); }
+                }
             }
         }
         else 
@@ -50,9 +68,15 @@ public class Inventory : MonoBehaviour
             Debug.LogError($"thing didnt found, can't delete it - {itemName}");   
         }
     }
-
-    public bool HasItem(string itemName) 
+    
+    public bool ContainsItem(string itemName) 
     {
-        return inventory.ContainsKey(itemName);
+        for (int i = 0; i < inventory.Count; i++) 
+        {
+            if (inventory[i].itemName == itemName) return true;
+        }
+        return false;
     }
+    public InventoryItem GetItem(int index) { return inventory[index]; }
+    
 }

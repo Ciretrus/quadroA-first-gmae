@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float m_checkGroundRadius = 0.3f;
     [SerializeField] private LayerMask m_groundMask;
     [SerializeField] private Diary m_diary;
+    [SerializeField] private UIController m_UIController;
 
     private PlayerInput m_input;
     private Vector2 m_smoothVector;
@@ -60,6 +61,7 @@ public class PlayerController : MonoBehaviour
         m_input.UI.Diary.performed += m_diary.ChangeState;
         m_input.UI.Diary.performed += m_itemsActivations.ChangeUIMode;
         m_input.UI.ThiefEye.performed += m_thiefEye.ActivateThiefEye;
+        m_input.UI.Inventory.performed += m_UIController.ShowInventory;
     }
 
     private void OnDestroy()

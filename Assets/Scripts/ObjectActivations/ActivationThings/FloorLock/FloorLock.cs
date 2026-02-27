@@ -11,7 +11,7 @@ public class FloorLock : Usable
     [SerializeField] private float m_openTimer = 0.3f;
     [SerializeField] private Vector3 m_force = new Vector3(0, 1f, 0);
 
-    private bool m_hasKey => Inventory.instance.HasItem(GlobalConstants.LockKey);
+    private bool m_hasKey => Inventory.instance.ContainsItem(GlobalConstants.LockKey);
     private bool m_isUnlocked;
     private Tweener m_tween;
 

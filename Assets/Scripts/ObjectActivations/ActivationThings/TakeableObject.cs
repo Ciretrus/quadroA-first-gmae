@@ -4,6 +4,7 @@ public class TakeableObject : Usable
 {
     [Header("Enter in lowercase!")]
     [SerializeField] private string m_objectName;
+    [SerializeField] private Sprite m_image;
 
     private void OnEnable()
     {
@@ -12,7 +13,8 @@ public class TakeableObject : Usable
 
     public override void Use() 
     {
-        Inventory.instance.AddItem(m_objectName);
+        InventoryItem item = new InventoryItem(m_objectName, m_image);
+        Inventory.instance.AddItem(item);
         Destroy(gameObject);
     }
 }
