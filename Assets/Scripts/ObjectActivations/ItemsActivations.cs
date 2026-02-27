@@ -139,31 +139,34 @@ public class ItemsActivations : MonoBehaviour
 
     private void ChangeDrawingMode(Usable usable)
     {
-        ChangeMovementState();
-        ChangeCursorState();
-
         if (m_isUIBlocked)
         {
-            m_camera.transform.localPosition = Vector3.zero;
+            // TODO CameraMovement overrides it
+            m_camera.transform.rotation = Quaternion.Euler(new Vector3(180f, 0f, 0f));
+
+            m_playerController.cameraPos.transform.localPosition = new Vector3(0f, 1.5f, 0f); 
 
             m_drawingRuneController.currentRune = null;
         }
         else
         {
-            Quaternion newRot = usable.gameObject.transform.rotation;
-            transform.rotation = Quaternion.Euler(0f, newRot.eulerAngles.y + 180, 0f);
-            m_camera.transform.localRotation = Quaternion.identity;
+            Quaternion usableRot = usable.gameObject.transform.rotation;
+            transform.rotation = Quaternion.Euler(0f, usableRot.eulerAngles.y + 180f, 0f);
+            m_camera.transform.rotation = transform.rotation;
 
-            Vector3 newPos = usable.transform.position;
-            Vector3 position = transform.position;
-            transform.position = new Vector3(newPos.x, position.y, newPos.z);
-            transform.position -= transform.forward * m_offset;
-
-            Vector3 cameraPos = m_camera.transform.position;
-            m_camera.transform.position = new Vector3(cameraPos.x, newPos.y, cameraPos.z);
+            Vector3 usablePos = usable.transform.position;
+            Vector3 newPos = new Vector3(usablePos.x, transform.position.y, usablePos.z);
+            transform.position = newPos - (transform.forward * m_offset);
+            m_playerController.cameraPos.transform.position = new Vector3(transform.position.x, usablePos.y, transform.position.z);
+            // TODO Should change m_camera.transform.position in CameraMovement
+            // but it's being disabled before it can happen cause of ChangeMovementState();
+            m_camera.transform.position = m_playerController.cameraPos.transform.position;
 
             m_drawingRuneController.currentRune = m_runeDraw.drawableLine.rune;
         }
+
+        ChangeMovementState();
+        ChangeCursorState();
 
         m_isUIBlocked = !m_isUIBlocked;
     }

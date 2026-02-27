@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Movement")]
     [SerializeField] private Rigidbody m_rigidbody;
-    [SerializeField] private GameObject m_head;
+    [SerializeField] private Transform m_cameraPos;
     [SerializeField] private Transform m_groundCheckerPivot;
     [SerializeField] private float m_gravity = 9.8f;
     [SerializeField] private float m_groundDrag;
@@ -39,6 +39,8 @@ public class PlayerController : MonoBehaviour
     private bool m_isSprinting;
     private bool m_isSneaking;
 
+
+    public Transform cameraPos => m_cameraPos;
     public PlayerInput input => m_input;
     public bool isMoving { get; private set; } = false;
     public bool isGrounded => IsGrounded();
@@ -198,7 +200,7 @@ public class PlayerController : MonoBehaviour
         {
             m_isSneaking = true;
 
-            m_head.transform.position -= new Vector3(0f, 0.5f, 0f);
+            m_cameraPos.transform.position -= new Vector3(0f, 0.5f, 0f);
         }
     }
 
@@ -208,7 +210,7 @@ public class PlayerController : MonoBehaviour
         {
             m_isSneaking = false;
 
-            m_head.transform.position += new Vector3(0f, 0.5f, 0f);
+            m_cameraPos.transform.position += new Vector3(0f, 0.5f, 0f);
         }
     }
 
