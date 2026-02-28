@@ -28,7 +28,7 @@ public class SceneController : MonoBehaviour
 
     public void StartNewGame()
     {
-        SceneManager.LoadScene(GlobalConstants.NewGameScene);
+        SceneManager.LoadScene(GlobalConstants.Scenes.NewGameScene);
     }
 
     private void ChangeSettingsState()

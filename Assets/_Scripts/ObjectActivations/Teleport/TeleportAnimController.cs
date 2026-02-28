@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class TeleportAnimController : MonoBehaviour
 {
-    [SerializeField] private ItemsActivations m_itemsActivations;
     [SerializeField] private Animator m_animator;
     [SerializeField] private float m_pauseTimer = 1f;
     [SerializeField] private TeleportTrigger[] m_triggers;
@@ -29,7 +28,7 @@ public class TeleportAnimController : MonoBehaviour
         StartCoroutine(AnimationController.AnimateTransitionWithPause(
             m_animator,
             action,
-            m_itemsActivations.ChangeMovementState,
+            ServiceLocator.Resolve<ItemsActivations>().ChangeMovementState,
             "FadeIn",
             "FadeOut",
             m_pauseTimer));

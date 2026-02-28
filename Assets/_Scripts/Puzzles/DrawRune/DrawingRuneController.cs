@@ -5,7 +5,6 @@ public class DrawingRuneController : MonoBehaviour
 {
     [SerializeField] private ParticleSystem m_flashParticleSystem;
     [SerializeField] private DrawableLine[] m_drawableLines;
-    [SerializeField] private UIController m_uiController;
     [SerializeField] private RuneData[] m_runes;
 
     private RuneData m_currentRune;

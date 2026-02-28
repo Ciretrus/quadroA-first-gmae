@@ -16,7 +16,7 @@ public class DrawableLine : BasePuzzle
     
     private List<Vector3> m_dotsList;
     private bool m_canDraw;
-    private bool m_hasBrush => Inventory.instance.HasItem(GlobalConstants.DrawingChalk);
+    private bool m_hasChalk => Inventory.instance.HasItem(GlobalConstants.Collectables.DrawingChalk);
 
     public RuneData rune {  get { return m_rune; } }
 
@@ -33,7 +33,7 @@ public class DrawableLine : BasePuzzle
 
     private void Update()
     {
-        if (m_canDraw && m_hasBrush) DrawLine();
+        if (m_canDraw && m_hasChalk) DrawLine();
     }
 
     public override void CheckCondition()

@@ -7,7 +7,6 @@ public class ItemsActivations : MonoBehaviour
     [SerializeField] private PlayerController m_playerController;
     [SerializeField] private Camera m_camera;
     [SerializeField] private UIController m_uiController;
-    [SerializeField] private ThiefEye m_thiefEye;
     [SerializeField] private PlateController m_plateController;
     [SerializeField] private DrawingRuneController m_drawingRuneController;
     [SerializeField] private RuneDraw[] m_runes;
@@ -30,6 +29,8 @@ public class ItemsActivations : MonoBehaviour
         {
             rune.DisableDrawing += ChangeDrawingMode;
         }
+
+        ServiceLocator.Register(m_camera);
     }
 
     private void OnDisable()
@@ -118,7 +119,9 @@ public class ItemsActivations : MonoBehaviour
     private void DiaryNotif(DiaryInteractable m_interactable)
     {
         int layerMask = 1 << m_interactable.gameObject.layer;
-        if ((layerMask & m_thiefEye.layerThiefEye) != 0 && !m_thiefEye.hasStarted)
+        if ((layerMask 
+            & ServiceLocator.Resolve<ThiefEye>().layerThiefEye) != 0 
+            && !ServiceLocator.Resolve<ThiefEye>().hasStarted)
         {
             return;
         }

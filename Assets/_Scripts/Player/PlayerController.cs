@@ -57,8 +57,6 @@ public class PlayerController : MonoBehaviour
 
         DontDestroyOnLoad(gameObject);
 
-        m_rigidbody.freezeRotation = true;
-
         m_input = new PlayerInput();
         m_input.Enable();
 
@@ -71,6 +69,9 @@ public class PlayerController : MonoBehaviour
         m_input.UI.Diary.performed += m_diary.ChangeState;
         m_input.UI.Diary.performed += m_itemsActivations.ChangeUIMode;
         m_input.UI.ThiefEye.performed += m_thiefEye.ActivateThiefEye;
+
+        ServiceLocator.Register(m_thiefEye);
+        ServiceLocator.Register(m_itemsActivations);
     }
 
     private void OnDestroy()

@@ -2499,7 +2499,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16dacb599a530d04182a7a66df2d4c33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TeleportAnimation
-  m_itemsActivations: {fileID: 144492997681120794}
   m_animator: {fileID: 1914851649}
   m_pauseTimer: 1
   m_triggers:
@@ -6643,7 +6642,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3978224637858427402, guid: 48b61cdb7179764458c0152a626df3ea, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10906,7 +10905,6 @@ MonoBehaviour:
   m_drawableLines:
   - {fileID: 1271288459916078337}
   - {fileID: 1271288459916078334}
-  m_uiController: {fileID: 1957070203}
   m_runes:
   - {fileID: 11400000, guid: 3e71f4315049ffe48a88f87d13d7ec81, type: 2}
   - {fileID: 11400000, guid: a2543ccd82c3f7e459bfd3179f880c31, type: 2}
@@ -19084,7 +19082,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4578474268040354424, guid: ccc6044b03ea22744aa472d4349e8fae, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5415968576776474459, guid: ccc6044b03ea22744aa472d4349e8fae, type: 3}
       propertyPath: m_LocalPosition.x
@@ -51354,7 +51352,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7494705779525073143, guid: ee58e024b2d44294bbe31a80fca77de8, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -56683,7 +56681,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1750917399
 Transform:
   m_ObjectHideFlags: 0
@@ -69291,17 +69289,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
   m_IsActive: 1
---- !u!114 &144492997681120794 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 144492997145426293, guid: 6901c9bc146e4e04aa63563dd7a6bdfe, type: 3}
-  m_PrefabInstance: {fileID: 540213103}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c85f8aedc10102841b8a863c8c854c13, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ItemsActivations
 --- !u!1 &152955309775428246
 GameObject:
   m_ObjectHideFlags: 0
