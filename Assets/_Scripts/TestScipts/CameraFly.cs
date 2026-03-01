@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.IO;
 
 public class CameraFly : MonoBehaviour
 {
@@ -13,7 +12,6 @@ public class CameraFly : MonoBehaviour
 
     void Start()
     {
-        
         Cursor.lockState = CursorLockMode.Locked; // скрываем курсор
     }
 

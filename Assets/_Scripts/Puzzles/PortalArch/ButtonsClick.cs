@@ -1,28 +1,31 @@
 using System.Collections;
 using UnityEngine;
 
-namespace Puzzles
+namespace Puzzles.PortalArch
 {
     public class ButtonsClick : Usable
     {
-        [SerializeField] private RuneSwitch[] m_runeActivations;
-        [SerializeField] private Vector3 m_clickedShiftPosition;
-        [SerializeField] private float m_timeClick = 0.3f;
+        [SerializeField] private ButtonData m_buttonData;
         [SerializeField] private BasePuzzle m_prerequisitePuzzle;
         [SerializeField] private BasePuzzle m_puzzle;
+        [SerializeField] private RuneSwitch[] m_activatedRunes;
 
         private bool m_canClick = false;
         private bool m_clicked = false;
         private Vector3 m_startPosition;
         private Vector3 m_newPosition;
 
-        public void Awake()
+        private void Awake()
         {
             Initialize(UsableType.NonBlocking);
-            m_prerequisitePuzzle.Solved += EnableButtons;
 
             m_startPosition = transform.position;
-            m_newPosition = m_startPosition - m_clickedShiftPosition;
+            m_newPosition = m_startPosition - m_buttonData.clickedShiftPosition;
+        }
+
+        public void OnEnable()
+        {
+            m_prerequisitePuzzle.Solved += EnableButtons;
         }
 
         private void OnDisable()
@@ -36,9 +39,9 @@ namespace Puzzles
             {
                 StartCoroutine(Click());
 
-                for (int i = 0; i < m_runeActivations.Length; i++)
+                for (int i = 0; i < m_activatedRunes.Length; i++)
                 {
-                    m_runeActivations[i].ChangeState();
+                    m_activatedRunes[i].ChangeState();
                 }
 
                 m_puzzle.CheckCondition();
@@ -67,7 +70,7 @@ namespace Puzzles
 
             while (t < 1)
             {
-                t += Time.deltaTime / m_timeClick;
+                t += Time.deltaTime / m_buttonData.timeClick;
                 yield return new WaitForSeconds(Time.deltaTime);
                 transform.position = Vector3.Lerp(startPosition, newPosition, t);
             }

@@ -14,10 +14,13 @@ public class RuneDraw : Usable, ICondition
 
     public bool IsSolved => !enabled;
 
-    private void OnEnable()
+    private void Awake()
     {
         Initialize(UsableType.Blocking);
+    }
 
+    private void OnEnable()
+    {
         if (m_drawableLine != null)
         {
             m_drawableLine.Solved += SolveDrawing;

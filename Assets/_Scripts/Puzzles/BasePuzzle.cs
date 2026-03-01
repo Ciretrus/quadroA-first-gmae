@@ -16,7 +16,6 @@ namespace Puzzles
             m_isSolved = true;
             Solved?.Invoke();
             SolvedUnityEvent?.Invoke();
-            Debug.Log("solved");
         }
 
         public abstract void CheckCondition();

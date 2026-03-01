@@ -11,9 +11,9 @@ namespace Puzzles
             if (CheckRolls()) 
             {
                 NotifySolved();
-                Debug.Log("PuzzleSolved");
             }
         }
+
         private bool CheckRolls()
         {
             for (int i = 0; i < m_rolls.Length; i++) 

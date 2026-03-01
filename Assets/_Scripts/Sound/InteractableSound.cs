@@ -6,13 +6,13 @@ public class InteractableSound : MonoBehaviour
     [SerializeField] protected AudioClip[] m_sounds;
     [SerializeField] protected AudioSource m_source;
 
-    private void OnEnable()
+    public AudioClip[] sounds => m_sounds;
+    public AudioSource source => m_source;
+
+    private void Awake()
     {
         m_source = GetComponent<AudioSource>();
     }
-
-    public AudioClip[] sounds => m_sounds;
-    public AudioSource source => m_source;
 
     public void PlaySound()
     {

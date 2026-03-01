@@ -6,14 +6,13 @@ public class RotationArrow : Usable
     [SerializeField] private RollRotation m_roll;
     [SerializeField][Range(-1, 1)] private int m_direction;
 
-    private void OnEnable()
+    private void Awake()
     {
         Initialize(UsableType.NonBlocking);
     }
 
     public override void Use()
     {
-        Debug.Log("rotated");
         m_roll.Rotate(m_direction);
     }
 }

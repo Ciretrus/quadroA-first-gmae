@@ -12,7 +12,7 @@ public class Openable : Usable
     private Tweener m_tween;
     private bool m_isOpened;
 
-    private void OnEnable()
+    private void Awake()
     {
         Initialize(UsableType.NonBlocking);
         m_initialPosition = transform.localPosition;

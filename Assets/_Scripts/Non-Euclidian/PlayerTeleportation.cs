@@ -9,6 +9,7 @@ namespace NonEuclidian
 
         private void OnTriggerEnter(Collider other)
         {
+            // TODO Change to layer check
             if (!other.CompareTag("Player")) return;
 
             Transform player = m_characterController.transform;

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "RuneData")]
+[CreateAssetMenu]
 [Serializable]
 public class RuneData : ScriptableObject
 {

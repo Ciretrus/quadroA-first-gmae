@@ -13,7 +13,8 @@ public class DrawableLine : BasePuzzle
     [SerializeField] private RuneData m_rune;
     [SerializeField] private float m_maxLength = 0.35f;
     [SerializeField] private float m_minDistance = 0.1f;
-    
+
+    private Camera m_camera;
     private List<Vector3> m_dotsList;
     private bool m_canDraw;
     private bool m_hasChalk => Inventory.instance.HasItem(GlobalConstants.Collectables.DrawingChalk);
@@ -26,9 +27,14 @@ public class DrawableLine : BasePuzzle
         set => m_canDraw = value;
     }
 
-    private void Start()
+    private void Awake()
     {
         m_dotsList = new List<Vector3>();
+    }
+
+    private void Start()
+    {
+        m_camera = ServiceLocator.Resolve<Camera>();
     }
 
     private void Update()
@@ -49,9 +55,9 @@ public class DrawableLine : BasePuzzle
         if (Mouse.current.leftButton.isPressed)
         {
             Vector3 mousePixelPos = Input.mousePosition;
-            mousePixelPos.z = Camera.main.nearClipPlane + Camera.main.nearClipPlane * 0.01f;
+            mousePixelPos.z = m_camera.nearClipPlane + m_camera.nearClipPlane * 0.01f;
 
-            Vector3 mouseWorldPos = Camera.main.ScreenToViewportPoint(mousePixelPos);
+            Vector3 mouseWorldPos = m_camera.ScreenToViewportPoint(mousePixelPos);
             mouseWorldPos.x = - mouseWorldPos.x;
             mouseWorldPos.x += 0.5f;
             mouseWorldPos.y -= 0.5f;

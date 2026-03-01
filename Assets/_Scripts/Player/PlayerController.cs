@@ -25,7 +25,6 @@ public class PlayerController : MonoBehaviour
     [Header("Slope settings")]
     [SerializeField] private float m_maxSlopeAngle = 50f;
     [SerializeField] private float m_minSlopeAngle = 3f;
-
     [Header("Dependencies")]
     [SerializeField] private ItemsActivations m_itemsActivations;
     [SerializeField] private ThiefEye m_thiefEye;
@@ -38,7 +37,6 @@ public class PlayerController : MonoBehaviour
     private float m_currentSpeed;
     private bool m_isSprinting;
     private bool m_isSneaking;
-
 
     public Transform cameraPos => m_cameraPos;
     public PlayerInput input => m_input;
@@ -60,6 +58,12 @@ public class PlayerController : MonoBehaviour
         m_input = new PlayerInput();
         m_input.Enable();
 
+        ServiceLocator.Register(m_thiefEye);
+        ServiceLocator.Register(m_itemsActivations);
+    }
+
+    private void OnEnable()
+    {
         m_input.Movement.Jump.performed += Jump;
         m_input.Movement.Sprint.performed += Sprint;
         m_input.Movement.Sprint.canceled += StopSprint;
@@ -69,9 +73,19 @@ public class PlayerController : MonoBehaviour
         m_input.UI.Diary.performed += m_diary.ChangeState;
         m_input.UI.Diary.performed += m_itemsActivations.ChangeUIMode;
         m_input.UI.ThiefEye.performed += m_thiefEye.ActivateThiefEye;
+    }
 
-        ServiceLocator.Register(m_thiefEye);
-        ServiceLocator.Register(m_itemsActivations);
+    private void OnDisable()
+    {
+        m_input.Movement.Jump.performed -= Jump;
+        m_input.Movement.Sprint.performed -= Sprint;
+        m_input.Movement.Sprint.canceled -= StopSprint;
+        m_input.Movement.Sneak.performed -= Sneak;
+        m_input.Movement.Sneak.canceled -= StopSneak;
+
+        m_input.UI.Diary.performed -= m_diary.ChangeState;
+        m_input.UI.Diary.performed -= m_itemsActivations.ChangeUIMode;
+        m_input.UI.ThiefEye.performed -= m_thiefEye.ActivateThiefEye;
     }
 
     private void OnDestroy()
@@ -100,6 +114,18 @@ public class PlayerController : MonoBehaviour
 
         float newRotY = newTransform.localRotation.eulerAngles.y;
         transform.rotation = Quaternion.Euler(transform.rotation.x, newRotY, transform.rotation.z);
+    }
+
+    public void ChangeMovementState()
+    {
+        if (m_input.Movement.enabled)
+        {
+            m_input.Movement.Disable();
+        }
+        else
+        {
+            m_input.Movement.Enable();
+        }
     }
 
     private void Move()

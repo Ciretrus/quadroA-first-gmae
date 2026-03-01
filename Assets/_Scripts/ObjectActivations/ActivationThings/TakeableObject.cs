@@ -6,7 +6,7 @@ public class TakeableObject : Usable
     [SerializeField] private string m_objectName;
     [SerializeField] private Sprite m_image;
 
-    private void OnEnable()
+    private void Awake()
     {
         Initialize(UsableType.NonBlocking);
     }
