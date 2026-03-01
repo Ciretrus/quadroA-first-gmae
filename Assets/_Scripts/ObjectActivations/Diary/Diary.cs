@@ -32,13 +32,16 @@ public class Diary : MonoBehaviour
         m_spreads = new List<GameObject>();
         AddSpread();
 
-        m_buttonBack.onClick.AddListener(TurnPageBackward);
-        m_buttonForward.onClick.AddListener(TurnPageForward);
-
         m_diaryUI.SetActive(false);
     }
 
-    private void OnDestroy()
+    private void OnEnable()
+    {
+        m_buttonBack.onClick.AddListener(TurnPageBackward);
+        m_buttonForward.onClick.AddListener(TurnPageForward);
+    }
+
+    private void OnDisable()
     {
         m_buttonBack.onClick.RemoveListener(TurnPageBackward);
         m_buttonForward.onClick.RemoveListener(TurnPageForward);

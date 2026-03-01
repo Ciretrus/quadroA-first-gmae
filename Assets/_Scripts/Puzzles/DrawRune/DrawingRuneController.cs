@@ -5,11 +5,13 @@ public class DrawingRuneController : MonoBehaviour
 {
     [SerializeField] private ParticleSystem m_flashParticleSystem;
     [SerializeField] private DrawableLine[] m_drawableLines;
-    [SerializeField] private RuneData[] m_runes;
+    [SerializeField] private RuneData[] m_runesData;
+    [SerializeField] private RuneDraw[] m_runes;
 
     private RuneData m_currentRune;
 
     public RuneData currentRune { set { m_currentRune = value; } }
+    public RuneDraw[] runes => m_runes;
 
     private void OnEnable()
     {
@@ -35,7 +37,7 @@ public class DrawingRuneController : MonoBehaviour
 
         string name = GetDrawnRuneName(normalizedPoints);
 
-        foreach (var rune in m_runes)
+        foreach (var rune in m_runesData)
         {
             if (rune.runeName == name && rune == m_currentRune)
             {
@@ -53,13 +55,13 @@ public class DrawingRuneController : MonoBehaviour
         string result = "";
         float previousDistance = 1f;
 
-        for (int i = 0; i < m_runes.Length; i++)
+        for (int i = 0; i < m_runesData.Length; i++)
         {
-            float current = UnistrokeRecognizer.GetDistanceBetweenDraws(m_runes[i].original, points);
+            float current = UnistrokeRecognizer.GetDistanceBetweenDraws(m_runesData[i].original, points);
 
             if (current < previousDistance)
             {
-                result = m_runes[i].runeName;
+                result = m_runesData[i].runeName;
                 previousDistance = current;
             }
         }

@@ -8,7 +8,6 @@ public class PlayerStepSounds : MonoBehaviour
 {
     [SerializeField] private PlayerController m_controller;
     [SerializeField] private AudioSource m_audioSource;
-
     [SerializeField] private List<AudioClip> m_sounds;    
     [SerializeField] private float m_delay = 0.5f;
     [SerializeField] private float m_sprintDelay = 0.3f;
@@ -29,7 +28,6 @@ public class PlayerStepSounds : MonoBehaviour
     {
         if (m_controller.isSprinting)
         {
-            Debug.Log("IsSprinting");
             m_currentDelay = m_sprintDelay;
         }
         else

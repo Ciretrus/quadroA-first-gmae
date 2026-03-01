@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class DiaryInteractable : MonoBehaviour
 {
-    [SerializeField] private DiaryInteractableSO m_diaryInteractable;
+    [SerializeField] private DiaryInteractableData m_diaryInteractable;
 
     public bool wasTriggered { get; private set; }
 

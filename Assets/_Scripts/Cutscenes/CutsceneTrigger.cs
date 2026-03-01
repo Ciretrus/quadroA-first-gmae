@@ -5,21 +5,21 @@ public class CutsceneTrigger : MonoBehaviour
 {
     [SerializeField] private PlayableDirector m_cutsceneDirector;
     [SerializeField] private bool m_playOnce = true;
+
     private bool m_hasPlayed = false;    
 
     private void Start()
     {
         if (m_cutsceneDirector == null)
         {
-            Debug.LogError("Братан, ты директора катсцен забыл назначить...");
+            Debug.LogError("Cutscene Director is null");
             enabled = false;
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        PlayerController pc;
-        if (other.TryGetComponent<PlayerController>(out pc) && (!m_playOnce || !m_hasPlayed))
+        if (other.TryGetComponent(out PlayerController playerController) && (!m_playOnce || !m_hasPlayed))
         {
             m_cutsceneDirector.Play();
             m_hasPlayed = true;

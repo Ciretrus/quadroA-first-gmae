@@ -10,7 +10,7 @@ public class TeleportTrigger : Usable
 
     public bool conditionMet { set { m_requiresCondition = !value; } }
 
-    private void OnEnable()
+    private void Awake()
     {
         Initialize(UsableType.NonBlocking);
     }

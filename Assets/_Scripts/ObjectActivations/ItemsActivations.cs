@@ -4,14 +4,16 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(PlayerController))]
 public class ItemsActivations : MonoBehaviour
 {
+    [Header("Dependencies")]
     [SerializeField] private PlayerController m_playerController;
     [SerializeField] private Camera m_camera;
     [SerializeField] private UIController m_uiController;
     [SerializeField] private PlateController m_plateController;
     [SerializeField] private DrawingRuneController m_drawingRuneController;
-    [SerializeField] private RuneDraw[] m_runes;
+    [Header("Raycast settings")]
     [SerializeField] private float m_rayDistance = 1f;
-    [SerializeField] private float m_offset = 1.5f;
+    [Header("Rune-drawing settings")]
+    [SerializeField] private float m_runeOffset = 1.5f;
 
     private Vector3 m_cameraPos = new Vector3(0f, 1.5f, 0f);
     private CameraMovement m_cameraMovement;
@@ -25,17 +27,20 @@ public class ItemsActivations : MonoBehaviour
     {
         m_cameraMovement = m_camera.GetComponent<CameraMovement>();
 
-        foreach (RuneDraw rune in m_runes)
+        ServiceLocator.Register(m_camera);
+    }
+
+    private void OnEnable()
+    {
+        foreach (RuneDraw rune in m_drawingRuneController.runes)
         {
             rune.DisableDrawing += ChangeDrawingMode;
         }
-
-        ServiceLocator.Register(m_camera);
     }
 
     private void OnDisable()
     {
-        foreach (RuneDraw rune in m_runes)
+        foreach (RuneDraw rune in m_drawingRuneController.runes)
         {
             rune.DisableDrawing -= ChangeDrawingMode;
         }
@@ -55,6 +60,7 @@ public class ItemsActivations : MonoBehaviour
             {
                 m_uiController.ShowObjectActivationText(true);
 
+                // TODO Rework
                 if (m_playerController.input.UI.Interact.WasPerformedThisFrame())
                 {
                     switch (m_usable.type)
@@ -112,19 +118,20 @@ public class ItemsActivations : MonoBehaviour
 
     public void ChangeMovementState()
     {
-        m_playerController.enabled = !m_playerController.enabled;
+        m_playerController.ChangeMovementState();
         m_cameraMovement.enabled = !m_cameraMovement.enabled;
     }
 
     private void DiaryNotif(DiaryInteractable m_interactable)
     {
+        ThiefEye thiefEye = ServiceLocator.Resolve<ThiefEye>();
         int layerMask = 1 << m_interactable.gameObject.layer;
-        if ((layerMask 
-            & ServiceLocator.Resolve<ThiefEye>().layerThiefEye) != 0 
-            && !ServiceLocator.Resolve<ThiefEye>().hasStarted)
+
+        if ((layerMask & thiefEye.layerThiefEye) != 0 && !thiefEye.hasStarted)
         {
             return;
         }
+
         if (!m_interactable.wasTriggered)
         {
             m_uiController.ShowDiaryNotification();
@@ -164,7 +171,7 @@ public class ItemsActivations : MonoBehaviour
 
             Vector3 usablePos = usable.transform.position;
             Vector3 newPos = new Vector3(usablePos.x, transform.position.y, usablePos.z);
-            transform.position = newPos - (transform.forward * m_offset);
+            transform.position = newPos - (transform.forward * m_runeOffset);
             m_playerController.cameraPos.transform.position = new Vector3(transform.position.x, usablePos.y, transform.position.z);
             // TODO Remove (CameraMovement being disabled in ChangeMovementState())
             m_camera.transform.position = m_playerController.cameraPos.transform.position;

@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu]
-public class DiaryInteractableSO : ScriptableObject
+public class DiaryInteractableData : ScriptableObject
 {
     [SerializeField] private Sprite m_sprite;
     [SerializeField] private string m_filename;

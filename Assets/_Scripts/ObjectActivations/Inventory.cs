@@ -47,7 +47,7 @@ public class Inventory : MonoBehaviour
         }
         else 
         {
-            Debug.LogError($"thing didnt found, can't delete it - {itemName}");   
+            Debug.LogError($"thing wasn't found, can't delete it - {itemName}");   
         }
     }
 
