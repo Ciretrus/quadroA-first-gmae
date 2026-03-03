@@ -4,6 +4,8 @@ using UnityEngine.UI;
 
 public class SceneController : MonoBehaviour
 {
+    [SerializeField] private 
+
     [SerializeField] private Button m_resumeButton;
     [SerializeField] private Button m_newGameButton;
     [SerializeField] private Button m_settingsButton;

@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public class InventoryItem
 {
     public string itemName;
@@ -20,11 +19,6 @@ public class Inventory : MonoBehaviour
     private List<InventoryItem> inventory = new List<InventoryItem>();
 
     public int Counter { get { return inventory.Count; }}
-
-    private void Awake()
-    {
-        ServiceLocator.Register(this);
-    }
 
     public void AddItem(InventoryItem item)
     {
@@ -50,8 +44,14 @@ public class Inventory : MonoBehaviour
             {
                 if (inventory[i].itemName == itemName)
                 {   
-                    if (inventory[i].count > 1) { inventory[i].count--; }
-                    else { inventory.Remove(inventory[i]); }
+                    if (inventory[i].count > 1) 
+                    { 
+                        inventory[i].count--; 
+                    }
+                    else 
+                    { 
+                        inventory.Remove(inventory[i]); 
+                    }
                 }
             }
         }

@@ -5,7 +5,6 @@ using UnityEngine.InputSystem;
 public class ItemsActivations : MonoBehaviour
 {
     [Header("Dependencies")]
-    [SerializeField] private Camera m_camera;
     [SerializeField] private UIController m_uiController;
     [SerializeField] private PlateController m_plateController;
     [SerializeField] private DrawingRuneController m_drawingRuneController;
@@ -13,7 +12,8 @@ public class ItemsActivations : MonoBehaviour
     [SerializeField] private float m_rayDistance = 1f;
     [Header("Rune-drawing settings")]
     [SerializeField] private float m_runeOffset = 1.5f;
-    
+
+    private Camera m_camera;
     private PlayerController m_playerController;
     private CameraMovement m_cameraMovement;
     private DiaryInteractable m_diaryInteractable;
@@ -23,16 +23,12 @@ public class ItemsActivations : MonoBehaviour
     private Vector3 m_screenCenter;
     private bool m_isUIBlocked;
 
-    private void Awake()
-    {
-        m_cameraMovement = m_camera.GetComponent<CameraMovement>();
-
-        ServiceLocator.Register(m_camera);
-    }
-
     private void Start()
     {
-        m_playerController = ServiceLocator.Resolve<PlayerController>();
+        m_playerController = ServiceLocator.Resolve<PlayerController>(); 
+        m_camera = ServiceLocator.Resolve<Camera>();
+
+        m_cameraMovement = m_camera.GetComponent<CameraMovement>();
     }
 
     private void OnEnable()
