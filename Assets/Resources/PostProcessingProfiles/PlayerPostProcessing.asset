@@ -43,13 +43,13 @@ MonoBehaviour:
     m_Value: 1
   threshold:
     m_OverrideState: 1
-    m_Value: 15.69
+    m_Value: 0.5
   intensity:
     m_OverrideState: 1
-    m_Value: 19.86
+    m_Value: 3.54
   scatter:
     m_OverrideState: 1
-    m_Value: 0.392
+    m_Value: 0
   clamp:
     m_OverrideState: 0
     m_Value: 65472
@@ -108,6 +108,53 @@ MonoBehaviour:
   - {fileID: -1576788835700205441}
   - {fileID: -7876946308758843103}
   - {fileID: 5790794570011125711}
+  - {fileID: 613521212044222345}
+--- !u!114 &613521212044222345
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c01700fd266d6914ababb731e09af2eb, type: 3}
+  m_Name: DepthOfField
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.DepthOfField
+  active: 0
+  mode:
+    m_OverrideState: 1
+    m_Value: 2
+  gaussianStart:
+    m_OverrideState: 1
+    m_Value: 15.78
+  gaussianEnd:
+    m_OverrideState: 1
+    m_Value: 25.54
+  gaussianMaxRadius:
+    m_OverrideState: 1
+    m_Value: 1.108
+  highQualitySampling:
+    m_OverrideState: 1
+    m_Value: 1
+  focusDistance:
+    m_OverrideState: 1
+    m_Value: 1.99
+  aperture:
+    m_OverrideState: 1
+    m_Value: 5.6
+  focalLength:
+    m_OverrideState: 1
+    m_Value: 50
+  bladeCount:
+    m_OverrideState: 1
+    m_Value: 5
+  bladeCurvature:
+    m_OverrideState: 1
+    m_Value: 1
+  bladeRotation:
+    m_OverrideState: 1
+    m_Value: 0
 --- !u!114 &5790794570011125711
 MonoBehaviour:
   m_ObjectHideFlags: 3
