@@ -11,7 +11,7 @@ public class FloorLock : Usable
     [SerializeField] private float m_openTimer = 0.3f;
     [SerializeField] private Vector3 m_force = new Vector3(0, 1f, 0);
 
-    private bool m_hasKey => Inventory.instance.HasItem(GlobalConstants.Collectables.LockKey);
+    private bool m_hasKey => ServiceLocator.Resolve<Inventory>().ContainsItem(GlobalConstants.Collectables.LockKey);
     private bool m_isUnlocked;
     private Tweener m_tween;
 
@@ -32,7 +32,7 @@ public class FloorLock : Usable
         m_lock.isKinematic = false;
         m_lock.AddForce(m_force,ForceMode.Impulse);
         m_tween = m_rotateObject.DOLocalRotate(m_angleRotation, m_openTimer);
-        Inventory.instance.RemoveItem(GlobalConstants.Collectables.LockKey);
+        ServiceLocator.Resolve<Inventory>().RemoveItem(GlobalConstants.Collectables.LockKey);
 
         m_teleportTrigger.conditionMet = true;
     }

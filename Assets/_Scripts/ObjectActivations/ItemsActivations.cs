@@ -5,7 +5,6 @@ using UnityEngine.InputSystem;
 public class ItemsActivations : MonoBehaviour
 {
     [Header("Dependencies")]
-    [SerializeField] private PlayerController m_playerController;
     [SerializeField] private Camera m_camera;
     [SerializeField] private UIController m_uiController;
     [SerializeField] private PlateController m_plateController;
@@ -14,12 +13,13 @@ public class ItemsActivations : MonoBehaviour
     [SerializeField] private float m_rayDistance = 1f;
     [Header("Rune-drawing settings")]
     [SerializeField] private float m_runeOffset = 1.5f;
-
-    private Vector3 m_cameraPos = new Vector3(0f, 1.5f, 0f);
+    
+    private PlayerController m_playerController;
     private CameraMovement m_cameraMovement;
     private DiaryInteractable m_diaryInteractable;
     private RuneDraw m_runeDraw;
     private Usable m_usable;
+    private Vector3 m_cameraPos = new Vector3(0f, 1.5f, 0f);
     private Vector3 m_screenCenter;
     private bool m_isUIBlocked;
 
@@ -28,6 +28,11 @@ public class ItemsActivations : MonoBehaviour
         m_cameraMovement = m_camera.GetComponent<CameraMovement>();
 
         ServiceLocator.Register(m_camera);
+    }
+
+    private void Start()
+    {
+        m_playerController = ServiceLocator.Resolve<PlayerController>();
     }
 
     private void OnEnable()

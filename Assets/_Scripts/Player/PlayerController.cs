@@ -4,8 +4,6 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(ItemsActivations), typeof(ThiefEye))]
 public class PlayerController : MonoBehaviour
 {
-    public static PlayerController instance { get; private set; }
-
     [Header("Movement")]
     [SerializeField] private Rigidbody m_rigidbody;
     [SerializeField] private Transform m_cameraPos;
@@ -46,20 +44,13 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        if (instance != null && instance != this)
-        {
-            Destroy(gameObject);
-            return;
-        }
-        instance = this;
-
-        DontDestroyOnLoad(gameObject);
-
         m_input = new PlayerInput();
         m_input.Enable();
 
-        ServiceLocator.Register(m_thiefEye);
         ServiceLocator.Register(m_itemsActivations);
+        ServiceLocator.Register(m_thiefEye);
+        ServiceLocator.Register(m_diary);
+        ServiceLocator.Register(this);
     }
 
     private void OnEnable()

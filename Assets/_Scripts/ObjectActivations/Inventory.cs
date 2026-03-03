@@ -14,24 +14,16 @@ public class InventoryItem
         this.image = image;
         this.count = count;
     }
-    
 }
 public class Inventory : MonoBehaviour
 {
-    public static Inventory instance { get; private set; }
-
     private List<InventoryItem> inventory = new List<InventoryItem>();
+
     public int Counter { get { return inventory.Count; }}
+
     private void Awake()
     {
-        if (instance != null && instance != this)
-        {
-            Destroy(gameObject);
-            return;
-        }
-        instance = this;
-
-        DontDestroyOnLoad(gameObject);
+        ServiceLocator.Register(this);
     }
 
     public void AddItem(InventoryItem item)

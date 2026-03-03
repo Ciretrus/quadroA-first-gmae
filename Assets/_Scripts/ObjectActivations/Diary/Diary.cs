@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class Diary : MonoBehaviour
 {
-    public static Diary instance { get; private set; }
-
     [SerializeField] private GameObject m_diaryUI;
     [SerializeField] private GameObject m_spreadPrefab;
     [SerializeField] private Button m_buttonBack;
@@ -20,15 +18,6 @@ public class Diary : MonoBehaviour
 
     private void Awake()
     {
-        if (instance != null && instance != this) 
-        {
-            Destroy(gameObject);
-            return;
-        }
-        instance = this;
-
-        DontDestroyOnLoad(gameObject);
-
         m_spreads = new List<GameObject>();
         AddSpread();
 

@@ -14,7 +14,7 @@ public class TakeableObject : Usable
     public override void Use() 
     {
         InventoryItem item = new InventoryItem(m_objectName, m_image);
-        Inventory.instance.AddItem(item);
+        ServiceLocator.Resolve<Inventory>().AddItem(item);
         Destroy(gameObject);
     }
 }
