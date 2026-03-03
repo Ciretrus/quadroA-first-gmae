@@ -348,9 +348,9 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -876546973899608171, guid: 1069494199857984aa55bbc7e6ddf8f4, type: 3}
-  - {fileID: 9185737683893222716, guid: 1069494199857984aa55bbc7e6ddf8f4, type: 3}
-  - {fileID: -8274133419916619345, guid: 1069494199857984aa55bbc7e6ddf8f4, type: 3}
+  - {fileID: 2100000, guid: 7b16ed01a8660e640b9dc16c768ca18e, type: 2}
+  - {fileID: 2100000, guid: 434dfb892b358be40a136475a09bdf20, type: 2}
+  - {fileID: 2100000, guid: 3c35d03d5d527164da568376605ea8fb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -444,8 +444,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -876546973899608171, guid: 1069494199857984aa55bbc7e6ddf8f4, type: 3}
-  - {fileID: 9185737683893222716, guid: 1069494199857984aa55bbc7e6ddf8f4, type: 3}
+  - {fileID: 2100000, guid: 7b16ed01a8660e640b9dc16c768ca18e, type: 2}
+  - {fileID: 2100000, guid: 434dfb892b358be40a136475a09bdf20, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -867,7 +867,7 @@ Transform:
   m_GameObject: {fileID: 8640188618845897270}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5169973, y: -0.48240426, z: -0.48240426, w: 0.5169973}
-  m_LocalPosition: {x: 0.07925565, y: 0.16392802, z: -0.0039134435}
+  m_LocalPosition: {x: 0.1112, y: 0.1661, z: -0.0039134435}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -883,7 +883,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 11
   m_Type: 2
-  m_Color: {r: 0, g: 0.68485904, b: 1, a: 1}
+  m_Color: {r: 0, g: 0.6862745, b: 1, a: 1}
   m_Intensity: 0.1
   m_Range: 0.2
   m_SpotAngle: 179
@@ -923,7 +923,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 0.11981791, y: 0.05000116}
   m_BounceIntensity: 1
@@ -1295,6 +1295,9 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d92ca24b26d3acd45938acdbc0687055, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 8761959592788165041}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d92ca24b26d3acd45938acdbc0687055, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 6518679199155480729}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d92ca24b26d3acd45938acdbc0687055, type: 3}
       insertIndex: -1
@@ -1308,6 +1311,27 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: d92ca24b26d3acd45938acdbc0687055, type: 3}
   m_PrefabInstance: {fileID: 2160918007099334669}
   m_PrefabAsset: {fileID: 0}
+--- !u!65 &8761959592788165041
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1241998076708363612}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.06852969, y: 0.27442557, z: 0.07913126}
+  m_Center: {x: 0.00000023739447, y: 0.13745388, z: 0.0000038146973}
 --- !u!114 &6518679199155480729
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1322,6 +1346,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TakeableObject
   m_interactableSound: {fileID: 0}
   m_objectName: chalk
+  m_image: {fileID: 21300000, guid: 3826d91a8d0af2f4bb50e703932353a9, type: 3}
 --- !u!82 &2390988517294728045
 AudioSource:
   m_ObjectHideFlags: 0
