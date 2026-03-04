@@ -150,9 +150,6 @@ MonoBehaviour:
   m_checkGroundRadius: 0.3
   m_maxSlopeAngle: 50
   m_minSlopeAngle: 3
-  m_itemsActivations: {fileID: 144492997145426293}
-  m_thiefEye: {fileID: 7036142899256244154}
-  m_diary: {fileID: 0}
 --- !u!114 &144492997145426293
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -165,7 +162,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c85f8aedc10102841b8a863c8c854c13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemsActivations
-  m_camera: {fileID: 0}
   m_uiController: {fileID: 0}
   m_plateController: {fileID: 0}
   m_drawingRuneController: {fileID: 0}

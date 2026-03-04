@@ -4,8 +4,6 @@ using UnityEngine.UI;
 
 public class SceneController : MonoBehaviour
 {
-    [SerializeField] private 
-
     [SerializeField] private Button m_resumeButton;
     [SerializeField] private Button m_newGameButton;
     [SerializeField] private Button m_settingsButton;
@@ -13,7 +11,7 @@ public class SceneController : MonoBehaviour
     [SerializeField] private Button m_exitButton;
     [SerializeField] private GameObject m_settings;
 
-    private void Awake()
+    private void OnEnable()
     {
         m_resumeButton.onClick.AddListener(ResumeGame);
         m_newGameButton.onClick.AddListener(StartNewGame);

@@ -23,11 +23,10 @@ public class PlayerController : MonoBehaviour
     [Header("Slope settings")]
     [SerializeField] private float m_maxSlopeAngle = 50f;
     [SerializeField] private float m_minSlopeAngle = 3f;
-    [Header("Dependencies")]
-    [SerializeField] private ItemsActivations m_itemsActivations;
-    [SerializeField] private ThiefEye m_thiefEye;
-    [SerializeField] private Diary m_diary;
 
+    private ItemsActivations m_itemsActivations;
+    private Diary m_diary;
+    private ThiefEye m_thiefEye;
     private PlayerInput m_input;
     private RaycastHit m_slopeHit;
     private Vector2 m_smoothVector;
@@ -46,23 +45,22 @@ public class PlayerController : MonoBehaviour
     {
         m_input = new PlayerInput();
         m_input.Enable();
-
-        ServiceLocator.Register(m_itemsActivations);
-        ServiceLocator.Register(m_thiefEye);
-        ServiceLocator.Register(m_diary);
-        ServiceLocator.Register(this);
     }
 
     private void OnEnable()
     {
+        m_itemsActivations = ServiceLocator.Resolve<ItemsActivations>();
+        m_diary = ServiceLocator.Resolve<Diary>();
+        m_thiefEye = ServiceLocator.Resolve<ThiefEye>();
+
         m_input.Movement.Jump.performed += Jump;
         m_input.Movement.Sprint.performed += Sprint;
         m_input.Movement.Sprint.canceled += StopSprint;
         m_input.Movement.Sneak.performed += Sneak;
         m_input.Movement.Sneak.canceled += StopSneak;
 
-        m_input.UI.Diary.performed += m_diary.ChangeState;
         m_input.UI.Diary.performed += m_itemsActivations.ChangeUIMode;
+        m_input.UI.Diary.performed += m_diary.ChangeState;
         m_input.UI.ThiefEye.performed += m_thiefEye.ActivateThiefEye;
     }
 
@@ -74,8 +72,8 @@ public class PlayerController : MonoBehaviour
         m_input.Movement.Sneak.performed -= Sneak;
         m_input.Movement.Sneak.canceled -= StopSneak;
 
-        m_input.UI.Diary.performed -= m_diary.ChangeState;
         m_input.UI.Diary.performed -= m_itemsActivations.ChangeUIMode;
+        m_input.UI.Diary.performed -= m_diary.ChangeState;
         m_input.UI.ThiefEye.performed -= m_thiefEye.ActivateThiefEye;
     }
 

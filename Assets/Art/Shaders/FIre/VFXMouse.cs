@@ -3,18 +3,13 @@ using UnityEngine.VFX;
 
 public class VFXMouse : MonoBehaviour
 {
+    [SerializeField] private Camera m_camera;
     [SerializeField] private VisualEffect m_vfx;
     [SerializeField] private Transform m_spherePosition;
     [SerializeField] private Transform m_firePosition;
     [SerializeField] private float m_distanceActivation = 1f;
     
-    private Camera m_camera;
     private float m_force = 1f;
-
-    private void Start()
-    {
-        m_camera = ServiceLocator.Resolve<Camera>();
-    }
 
     private void Update()
     {
