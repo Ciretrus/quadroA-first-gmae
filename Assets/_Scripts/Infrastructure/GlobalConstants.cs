@@ -2,7 +2,7 @@ public static class GlobalConstants
 {
     public static class Scenes
     {
-        public const string NewGameScene = "Presentation Scene";
+        public const string NewGameScene = "TestBoxSceneEgor";
     }
 
     public static class Collectables

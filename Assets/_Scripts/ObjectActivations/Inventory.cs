@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public class InventoryItem
 {
     public string itemName;
@@ -14,25 +13,12 @@ public class InventoryItem
         this.image = image;
         this.count = count;
     }
-    
 }
 public class Inventory : MonoBehaviour
 {
-    public static Inventory instance { get; private set; }
-
     private List<InventoryItem> inventory = new List<InventoryItem>();
-    public int Counter { get { return inventory.Count; }}
-    private void Awake()
-    {
-        if (instance != null && instance != this)
-        {
-            Destroy(gameObject);
-            return;
-        }
-        instance = this;
 
-        DontDestroyOnLoad(gameObject);
-    }
+    public int Counter { get { return inventory.Count; }}
 
     public void AddItem(InventoryItem item)
     {
@@ -58,8 +44,14 @@ public class Inventory : MonoBehaviour
             {
                 if (inventory[i].itemName == itemName)
                 {   
-                    if (inventory[i].count > 1) { inventory[i].count--; }
-                    else { inventory.Remove(inventory[i]); }
+                    if (inventory[i].count > 1) 
+                    { 
+                        inventory[i].count--; 
+                    }
+                    else 
+                    { 
+                        inventory.Remove(inventory[i]); 
+                    }
                 }
             }
         }

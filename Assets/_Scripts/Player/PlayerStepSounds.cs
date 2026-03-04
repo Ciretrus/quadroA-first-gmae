@@ -6,21 +6,20 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class PlayerStepSounds : MonoBehaviour
 {
-    [SerializeField] private PlayerController m_controller;
     [SerializeField] private AudioSource m_audioSource;
     [SerializeField] private List<AudioClip> m_sounds;    
     [SerializeField] private float m_delay = 0.5f;
     [SerializeField] private float m_sprintDelay = 0.3f;
 
-    private float m_currentDelay;
-    private bool m_isPlaying = false;
+    private PlayerController m_controller;
     private AudioClip m_currentClip;
     private float m_currentVolume = 1.0f;
+    private float m_currentDelay;
+    private bool m_isPlaying = false;
 
-    private void OnValidate()
+    private void Start()
     {
-        m_controller = GetComponent<PlayerController>();
-        m_audioSource = GetComponent<AudioSource>();
+        m_controller = ServiceLocator.Resolve<PlayerController>();
         m_currentDelay = m_delay;
     }
 

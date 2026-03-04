@@ -26,6 +26,6 @@ public class TeleportTrigger : Usable
     private void Teleport()
     {
         Transform transform = m_teleportPoint.transform;
-        PlayerController.instance.SetPosition(transform);
+        ServiceLocator.Resolve<PlayerController>().SetPosition(transform);
     }
 }

@@ -9,6 +9,6 @@ public class DiaryInteractable : MonoBehaviour
     public void TriggerDiaryRecord()
     {
         wasTriggered = true;
-        Diary.instance.SetPage(m_diaryInteractable.sprite, m_diaryInteractable.filename);
+        ServiceLocator.Resolve<Diary>().SetPage(m_diaryInteractable.sprite, m_diaryInteractable.filename);
     }
 }

@@ -17,7 +17,7 @@ public class DrawableLine : BasePuzzle
     private Camera m_camera;
     private List<Vector3> m_dotsList;
     private bool m_canDraw;
-    private bool m_hasChalk => Inventory.instance.HasItem(GlobalConstants.Collectables.DrawingChalk);
+    private bool m_hasChalk => ServiceLocator.Resolve<Inventory>().ContainsItem(GlobalConstants.Collectables.DrawingChalk);
 
     public RuneData rune {  get { return m_rune; } }
 
