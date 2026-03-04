@@ -21,17 +21,18 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Bush3
-  m_Shader: {fileID: -6465566751694194690, guid: c69279ad91869bc4cae9338e5f49d0b9, type: 3}
+  m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
-  m_InvalidKeywords:
-  - _EMISSION
-  m_LightmapFlags: 6
+  m_ValidKeywords:
+  - _ALPHATEST_ON
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
+  m_CustomRenderQueue: 2450
+  stringTagMap:
+    RenderType: TransparentCutout
   disabledShaderPasses:
   - MOTIONVECTORS
   m_LockedProperties: 
@@ -140,12 +141,13 @@ Material:
     - _Wind_Strength: 0.1
     - _Wind_strength: 0.4
     - _WorkflowMode: 1
+    - _XRMotionVectorsPass: 1
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 0.112896055, g: 0.4056604, b: 0.21815962, a: 1}
     - _Color: {r: 0.11289603, g: 0.40566036, b: 0.21815959, a: 1}
     - _Direction: {r: -1.06, g: -0.15, b: 0.06, a: 0}
-    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _EmissionColor: {r: 0.012286487, g: 0.082282715, b: 0.027320892, a: 1}
     - _Main_Color: {r: 0.27777773, g: 0.3019608, b: 0.066666655, a: 0}
     - _Main_color: {r: 0.125478, g: 0.2924528, b: 0.11449803, a: 0}
     - _Normal_Color: {r: 0, g: 0, b: 1, a: 0.003921569}
