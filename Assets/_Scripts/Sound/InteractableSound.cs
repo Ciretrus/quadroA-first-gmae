@@ -9,6 +9,14 @@ public class InteractableSound : MonoBehaviour
     public AudioClip[] sounds => m_sounds;
     public AudioSource source => m_source;
 
+    private void OnValidate()
+    {
+        if (m_source == null)
+        {
+            TryGetComponent<AudioSource>(out m_source);
+        }
+    }
+
     private void Awake()
     {
         m_source = GetComponent<AudioSource>();
