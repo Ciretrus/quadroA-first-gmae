@@ -1,15 +1,28 @@
 using Puzzles;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class ActionEventSound : InteractableSound
 {
-    [SerializeField] private BasePuzzle m_puzzle;
+    private ISoundEvent m_soundEvent;
 
-    private void Start()
-    {
-        if (m_puzzle != null)
+    private void OnValidate()
+    {        
+        ISoundEvent soundEvent;
+        if (gameObject.TryGetComponent<ISoundEvent>(out soundEvent))
         {
-
+            m_soundEvent = soundEvent;
         }
+    }
+
+    private void OnEnable()
+    {
+        m_soundEvent.DiaryTrigger += PlaySound;
+    }
+
+    private void OnDisable()
+    {
+        m_soundEvent.DiaryTrigger -= PlaySound;
     }
 }
