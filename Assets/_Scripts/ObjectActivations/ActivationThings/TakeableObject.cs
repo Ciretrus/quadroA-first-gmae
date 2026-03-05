@@ -13,6 +13,7 @@ public class TakeableObject : Usable
 
     public override void Use() 
     {
+        m_interactableSound.PlayPitchedSound();
         InventoryItem item = new InventoryItem(m_objectName, m_image);
         ServiceLocator.Resolve<Inventory>().AddItem(item);
         Destroy(gameObject);
