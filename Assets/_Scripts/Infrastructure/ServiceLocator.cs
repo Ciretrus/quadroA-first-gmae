@@ -7,9 +7,14 @@ public class ServiceLocator
 
     private Dictionary<Type, object> m_services = new();
 
-    public static void Register<T>(T instance)
+    public static void ClearServices()
     {
         m_serviceLocator ??= new ServiceLocator();
+        m_serviceLocator.m_services.Clear();
+    }
+
+    public static void Register<T>(T instance)
+    {
         m_serviceLocator.m_services.Add(typeof(T), instance);
     }
 
