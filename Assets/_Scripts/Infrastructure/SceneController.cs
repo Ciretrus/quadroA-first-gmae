@@ -20,6 +20,15 @@ public class SceneController : MonoBehaviour
         m_exitButton.onClick.AddListener(ExitGame);
     }
 
+    private void OnDisable()
+    {
+        m_resumeButton.onClick.RemoveListener(ResumeGame);
+        m_newGameButton.onClick.RemoveListener(StartNewGame);
+        m_settingsButton.onClick.RemoveListener(ChangeSettingsState);
+        m_backToMenuButton.onClick.RemoveListener(ChangeSettingsState);
+        m_exitButton.onClick.RemoveListener(ExitGame);
+    }
+
     private void ResumeGame()
     {
         // TODO Create save system
