@@ -20,7 +20,7 @@ public class UIController : MonoBehaviour
 
     private void OnEnable()
     {
-        m_continueButton.onClick.AddListener(ContinueGame);
+        m_continueButton.onClick.AddListener(Pause);
         m_settingsButton.onClick.AddListener(ChangeSettingsState);
         m_backToPauseButton.onClick.AddListener(ChangeSettingsState);
         m_backToMenuButton.onClick.AddListener(GoToMenu);
@@ -29,7 +29,7 @@ public class UIController : MonoBehaviour
 
     private void OnDisable()
     {
-        m_continueButton.onClick.RemoveListener(ContinueGame);
+        m_continueButton.onClick.RemoveListener(Pause);
         m_settingsButton.onClick.RemoveListener(ChangeSettingsState);
         m_backToPauseButton.onClick.RemoveListener(ChangeSettingsState);
         m_backToMenuButton.onClick.RemoveListener(GoToMenu);
@@ -58,21 +58,17 @@ public class UIController : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
             m_pauseMenu.SetActive(false);
-            //Time.timeScale = 1f;
+            Time.timeScale = 1f;
         }
         else
         {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             m_pauseMenu.SetActive(true);
-            //Time.timeScale = 0f;
+            Time.timeScale = 0f;
         }
-        m_onPause = !m_onPause;
-    }
 
-    private void ContinueGame()
-    {
-        Pause();
+        m_onPause = !m_onPause;
     }
 
     private void ChangeSettingsState()
@@ -83,6 +79,7 @@ public class UIController : MonoBehaviour
 
     private void GoToMenu()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene(GlobalConstants.Scenes.MainMenuScene);
     }
 

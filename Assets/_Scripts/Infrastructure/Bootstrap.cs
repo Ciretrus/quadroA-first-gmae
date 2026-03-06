@@ -15,6 +15,8 @@ namespace Infrastructure
 
         private void Awake()
         {
+            ServiceLocator.ClearServices();
+
             ServiceLocator.Register(m_playerController);
             ServiceLocator.Register(m_itemsActivations);
             ServiceLocator.Register(m_camera);

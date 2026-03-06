@@ -9,6 +9,7 @@ public class SceneController : MonoBehaviour
     [SerializeField] private Button m_settingsButton;
     [SerializeField] private Button m_backToMenuButton;
     [SerializeField] private Button m_exitButton;
+    [SerializeField] private GameObject m_mainMenu;
     [SerializeField] private GameObject m_settings;
 
     private void OnEnable()
@@ -43,7 +44,7 @@ public class SceneController : MonoBehaviour
     private void ChangeSettingsState()
     {
         m_settings.SetActive(!m_settings.activeSelf);
-        gameObject.SetActive(!gameObject.activeSelf);
+        m_mainMenu.SetActive(!m_mainMenu.activeSelf);
     }
 
     private void ExitGame()
