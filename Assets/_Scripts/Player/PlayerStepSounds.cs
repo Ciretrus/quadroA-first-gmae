@@ -7,9 +7,10 @@ using UnityEngine;
 public class PlayerStepSounds : MonoBehaviour
 {
     [SerializeField] private AudioSource m_audioSource;
-    [SerializeField] private List<AudioClip> m_sounds;    
+    [SerializeField] private List<AudioClip> m_sounds;
     [SerializeField] private float m_delay = 0.5f;
     [SerializeField] private float m_sprintDelay = 0.3f;
+    [SerializeField] private float m_sneakDelay = 0.7f;
 
     private PlayerController m_controller;
     private AudioClip m_currentClip;
@@ -28,6 +29,10 @@ public class PlayerStepSounds : MonoBehaviour
         if (m_controller.isSprinting)
         {
             m_currentDelay = m_sprintDelay;
+        }
+        else if (m_controller.isSneaking)
+        {
+            m_currentDelay = m_sneakDelay;
         }
         else
         {

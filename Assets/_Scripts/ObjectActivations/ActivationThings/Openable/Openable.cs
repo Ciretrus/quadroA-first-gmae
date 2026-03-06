@@ -7,6 +7,8 @@ public class Openable : Usable
     [SerializeField] private Vector3 m_newRotation = new Vector3(0, 97, 0);
     [SerializeField] protected float m_timer = 1f;
 
+    public bool IsOpened => m_isOpened;
+
     private Vector3 m_initialPosition;
     private Vector3 m_initialRotation;
     private Tweener m_tween;
@@ -27,7 +29,7 @@ public class Openable : Usable
 
         if (m_isOpened)
         {
-            m_tween = transform.DOLocalMove(m_initialPosition, m_timer);
+            m_tween = transform.DOLocalMove(m_initialPosition, m_timer);            
             m_tween = transform.DORotate(m_initialRotation, m_timer);
         }
         else

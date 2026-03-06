@@ -20,5 +20,10 @@ public abstract class Usable: MonoBehaviour
         m_type = type;
     }
 
+    private void OnValidate()
+    {
+        gameObject.TryGetComponent<InteractableSound>(out m_interactableSound);
+    }
+
     public abstract void Use();
 }

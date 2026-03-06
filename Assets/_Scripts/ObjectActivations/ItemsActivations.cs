@@ -192,6 +192,6 @@ public class ItemsActivations : MonoBehaviour
             return;
         }
                 
-        usable.interactableSound.PlayPitchedSound();
+        usable.interactableSound.PlaySound();
     }
 }

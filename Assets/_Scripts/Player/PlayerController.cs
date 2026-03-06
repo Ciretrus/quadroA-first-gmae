@@ -40,6 +40,7 @@ public class PlayerController : MonoBehaviour
     public bool isMoving { get; private set; } = false;
     public bool isGrounded => IsGrounded();
     public bool isSprinting => m_isSprinting;
+    public bool isSneaking => m_isSneaking;
 
     private void Awake()
     {
