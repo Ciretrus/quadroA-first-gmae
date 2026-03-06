@@ -9,6 +9,7 @@ public class SceneController : MonoBehaviour
     [SerializeField] private Button m_settingsButton;
     [SerializeField] private Button m_backToMenuButton;
     [SerializeField] private Button m_exitButton;
+    [SerializeField] private GameObject m_mainMenu;
     [SerializeField] private GameObject m_settings;
 
     private void OnEnable()
@@ -18,6 +19,15 @@ public class SceneController : MonoBehaviour
         m_settingsButton.onClick.AddListener(ChangeSettingsState);
         m_backToMenuButton.onClick.AddListener(ChangeSettingsState);
         m_exitButton.onClick.AddListener(ExitGame);
+    }
+
+    private void OnDisable()
+    {
+        m_resumeButton.onClick.RemoveListener(ResumeGame);
+        m_newGameButton.onClick.RemoveListener(StartNewGame);
+        m_settingsButton.onClick.RemoveListener(ChangeSettingsState);
+        m_backToMenuButton.onClick.RemoveListener(ChangeSettingsState);
+        m_exitButton.onClick.RemoveListener(ExitGame);
     }
 
     private void ResumeGame()
@@ -34,7 +44,7 @@ public class SceneController : MonoBehaviour
     private void ChangeSettingsState()
     {
         m_settings.SetActive(!m_settings.activeSelf);
-        gameObject.SetActive(!gameObject.activeSelf);
+        m_mainMenu.SetActive(!m_mainMenu.activeSelf);
     }
 
     private void ExitGame()
