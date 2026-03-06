@@ -2,7 +2,6 @@ public static class GlobalConstants
 {
     public static class Scenes
     {
-        public const string MainMenuScene = "Main Menu";
         public const string NewGameScene = "TestBoxSceneEgor";
     }
 

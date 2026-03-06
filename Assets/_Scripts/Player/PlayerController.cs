@@ -27,7 +27,6 @@ public class PlayerController : MonoBehaviour
     private ItemsActivations m_itemsActivations;
     private Diary m_diary;
     private ThiefEye m_thiefEye;
-    private UIController m_uiController;
     private PlayerInput m_input;
     private RaycastHit m_slopeHit;
     private Vector2 m_smoothVector;
@@ -54,7 +53,6 @@ public class PlayerController : MonoBehaviour
         m_itemsActivations = ServiceLocator.Resolve<ItemsActivations>();
         m_diary = ServiceLocator.Resolve<Diary>();
         m_thiefEye = ServiceLocator.Resolve<ThiefEye>();
-        m_uiController = ServiceLocator.Resolve<UIController>();
 
         m_input.Movement.Jump.performed += Jump;
         m_input.Movement.Sprint.performed += Sprint;
@@ -65,7 +63,6 @@ public class PlayerController : MonoBehaviour
         m_input.UI.Diary.performed += m_itemsActivations.ChangeUIMode;
         m_input.UI.Diary.performed += m_diary.ChangeState;
         m_input.UI.ThiefEye.performed += m_thiefEye.ActivateThiefEye;
-        m_input.UI.Pause.performed += m_uiController.Pause;
     }
 
     private void OnDisable()
@@ -79,7 +76,6 @@ public class PlayerController : MonoBehaviour
         m_input.UI.Diary.performed -= m_itemsActivations.ChangeUIMode;
         m_input.UI.Diary.performed -= m_diary.ChangeState;
         m_input.UI.ThiefEye.performed -= m_thiefEye.ActivateThiefEye;
-        m_input.UI.Pause.performed -= m_uiController.Pause;
     }
 
     private void OnDestroy()
