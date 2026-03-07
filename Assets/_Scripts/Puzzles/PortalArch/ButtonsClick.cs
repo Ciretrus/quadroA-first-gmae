@@ -19,7 +19,7 @@ namespace Puzzles.PortalArch
         {
             Initialize(UsableType.NonBlocking);
 
-            m_startPosition = transform.position;
+            m_startPosition = transform.localPosition;
             m_newPosition = m_startPosition - m_buttonData.clickedShiftPosition;
         }
 
@@ -66,13 +66,13 @@ namespace Puzzles.PortalArch
         private IEnumerator ChangePosition(Vector3 newPosition)
         {
             float t = 0;
-            Vector3 startPosition = transform.position;
+            Vector3 startPosition = transform.localPosition;
 
             while (t < 1)
             {
                 t += Time.deltaTime / m_buttonData.timeClick;
-                yield return new WaitForSeconds(Time.deltaTime);
-                transform.position = Vector3.Lerp(startPosition, newPosition, t);
+                transform.localPosition = Vector3.Lerp(startPosition, newPosition, t);
+                yield return null;
             }
         }
     }

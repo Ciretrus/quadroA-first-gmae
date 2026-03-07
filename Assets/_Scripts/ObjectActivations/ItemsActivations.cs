@@ -66,7 +66,7 @@ public class ItemsActivations : MonoBehaviour
                 {
                     switch (m_usable.type)
                     {
-                        case UsableType.NonBlocking: Debug.Log("Interacted with Non-Blocking UI thing"); break;
+                        case UsableType.NonBlocking: break;
                         case UsableType.Blocking:
                             {
                                 if (m_usable.TryGetComponent(out m_runeDraw))
