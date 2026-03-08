@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using DG.Tweening;
 
 namespace Puzzles.PortalArch
 {
@@ -31,13 +32,14 @@ namespace Puzzles.PortalArch
         private void OnDisable()
         {
             m_prerequisitePuzzle.Solved -= EnableButtons;
+            transform.DOKill();
         }
 
         public override void Use()
         {
             if (!m_clicked && m_canClick)
             {
-                StartCoroutine(Click());
+                ClickAnimation();
 
                 for (int i = 0; i < m_activatedRunes.Length; i++)
                 {
@@ -53,27 +55,14 @@ namespace Puzzles.PortalArch
             m_canClick = true;
         }
 
-        private IEnumerator Click()
+        private void ClickAnimation()
         {
             m_clicked = true;
-            Coroutine coroutine = StartCoroutine(ChangePosition(m_newPosition));
-            yield return coroutine;
-            coroutine = StartCoroutine(ChangePosition(m_startPosition));
-            yield return coroutine;
-            m_clicked = false;
+            Sequence s = DOTween.Sequence();
+            s.Append(transform.DOLocalMove(m_newPosition, m_buttonData.timeClick).SetEase(Ease.InQuad));
+            s.Append(transform.DOLocalMove(m_startPosition, m_buttonData.timeClick).SetEase(Ease.OutBack));
+            s.OnComplete(() => m_clicked = false);
         }
 
-        private IEnumerator ChangePosition(Vector3 newPosition)
-        {
-            float t = 0;
-            Vector3 startPosition = transform.localPosition;
-
-            while (t < 1)
-            {
-                t += Time.deltaTime / m_buttonData.timeClick;
-                transform.localPosition = Vector3.Lerp(startPosition, newPosition, t);
-                yield return null;
-            }
-        }
     }
 }

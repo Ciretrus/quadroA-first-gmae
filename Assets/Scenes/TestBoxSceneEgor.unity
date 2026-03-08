@@ -88329,17 +88329,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1944303098}
   m_Mesh: {fileID: -5495902117074765545, guid: b407fefb9634c014b9dc43400b9cd50b, type: 3}
---- !u!114 &1948759906 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8767610369794379302, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
-  m_PrefabInstance: {fileID: 1271288459916078332}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06dba59b62b824744941bc490ed90dd9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Puzzles.RuneCheck
 --- !u!1 &1949335100
 GameObject:
   m_ObjectHideFlags: 0
@@ -99008,10 +98997,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 765176603}
     m_Modifications:
     - target: {fileID: 169651536176739301, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
-      propertyPath: m_puzzle
-      value: 
-      objectReference: {fileID: 1948759906}
-    - target: {fileID: 169651536176739301, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
       propertyPath: m_prerequisitePuzzle
       value: 
       objectReference: {fileID: 428192445}
@@ -99019,66 +99004,10 @@ PrefabInstance:
       propertyPath: m_puzzle
       value: 
       objectReference: {fileID: 428192445}
-    - target: {fileID: 341547546105113941, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 413818159971525904, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 941219018599987695, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 1171603506788291904, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 2157157731424754768, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 2288544654433956552, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 2369648365475838478, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
-      propertyPath: 'm_Materials.Array.data[1]'
-      value: 
-      objectReference: {fileID: 2100000, guid: cc5fe3c06d0aa6f40a7504ac809156f3, type: 2}
-    - target: {fileID: 2552309388832547694, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
     - target: {fileID: 3195403763711510321, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
       propertyPath: m_Name
       value: RunePortalPuzzle
       objectReference: {fileID: 0}
-    - target: {fileID: 3195403763711510321, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 3600879820250672794, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -4.095
-      objectReference: {fileID: 0}
-    - target: {fileID: 3600879820250672794, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.011390209
-      objectReference: {fileID: 0}
-    - target: {fileID: 3864054918372562426, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 3999461702249134656, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 4067015023577405888, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
-      propertyPath: 'm_Materials.Array.data[1]'
-      value: 
-      objectReference: {fileID: 2100000, guid: e728459561bb03947a96fe8f552ebd10, type: 2}
     - target: {fileID: 4348617306999116061, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -99120,161 +99049,25 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4429511219896328984, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
-      propertyPath: m_puzzle
-      value: 
-      objectReference: {fileID: 1948759906}
-    - target: {fileID: 4429511219896328984, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
       propertyPath: m_prerequisitePuzzle
       value: 
       objectReference: {fileID: 428192445}
-    - target: {fileID: 4777204932864395011, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 4802292071829747726, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
-      propertyPath: 'm_Materials.Array.data[1]'
-      value: 
-      objectReference: {fileID: 2100000, guid: e9ced004af345ad4f82d05a016e2e788, type: 2}
-    - target: {fileID: 4840585100940591937, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 5009876699522314990, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
     - target: {fileID: 5317814278253581657, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
       propertyPath: m_shield
       value: 
       objectReference: {fileID: 656944963}
-    - target: {fileID: 5496199845999061743, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 5507983008860951946, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 5738204866595929725, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 6020380389827379336, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
-      propertyPath: m_pitch
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6020380389827379336, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
-      propertyPath: m_sounds.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6020380389827379336, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
-      propertyPath: 'm_sounds.Array.data[0]'
-      value: 
-      objectReference: {fileID: 8300000, guid: ad36a26c995de124a9194d67f9d48e04, type: 3}
-    - target: {fileID: 6097304961903528400, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
-      propertyPath: m_puzzle
-      value: 
-      objectReference: {fileID: 1948759906}
     - target: {fileID: 6097304961903528400, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
       propertyPath: m_prerequisitePuzzle
       value: 
       objectReference: {fileID: 428192445}
-    - target: {fileID: 6327283243750682451, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 6426878551535913375, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
-      propertyPath: m_pitch
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6426878551535913375, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
-      propertyPath: m_sounds.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6426878551535913375, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
-      propertyPath: 'm_sounds.Array.data[0]'
-      value: 
-      objectReference: {fileID: 8300000, guid: 00175d41ab23f4e489d30c89fcd992a3, type: 3}
-    - target: {fileID: 6748957287473752755, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
-      propertyPath: m_pitch
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6748957287473752755, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
-      propertyPath: m_sounds.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6748957287473752755, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
-      propertyPath: 'm_sounds.Array.data[0]'
-      value: 
-      objectReference: {fileID: 8300000, guid: 08f4ce194c8924642843d83c755745b1, type: 3}
-    - target: {fileID: 6981471881700653869, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 7055693944444458801, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
-      propertyPath: m_pitch
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7055693944444458801, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
-      propertyPath: m_sounds.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7055693944444458801, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
-      propertyPath: 'm_sounds.Array.data[0]'
-      value: 
-      objectReference: {fileID: 8300000, guid: 069b1b80bc9648843aa78af497d8d0de, type: 3}
-    - target: {fileID: 7112149440128038492, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
-      propertyPath: m_pitch
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7112149440128038492, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
-      propertyPath: m_sounds.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7112149440128038492, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
-      propertyPath: 'm_sounds.Array.data[0]'
-      value: 
-      objectReference: {fileID: 8300000, guid: 3edbc8c81f28a67489b623e30fbaac08, type: 3}
-    - target: {fileID: 7139174494118952280, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 7337110147368321255, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
-      propertyPath: m_puzzle
-      value: 
-      objectReference: {fileID: 1948759906}
     - target: {fileID: 7337110147368321255, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
       propertyPath: m_prerequisitePuzzle
       value: 
       objectReference: {fileID: 428192445}
-    - target: {fileID: 7388174080226232702, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 7421536638641702116, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
     - target: {fileID: 7642438362343755823, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
       propertyPath: m_puzzle
       value: 
       objectReference: {fileID: 428192445}
-    - target: {fileID: 7827244350033389812, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 7902635828443357576, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 8668069069808417919, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 9137411053335158488, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
-      propertyPath: m_puzzle
-      value: 
-      objectReference: {fileID: 1948759906}
     - target: {fileID: 9137411053335158488, guid: f2286a9ca08f85847b6748874c9bb8cb, type: 3}
       propertyPath: m_prerequisitePuzzle
       value: 

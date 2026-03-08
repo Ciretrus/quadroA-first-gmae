@@ -53,7 +53,7 @@ public class DrawingRuneController : MonoBehaviour
     private string GetDrawnRuneName(List<Vector3> points)
     {
         string result = "";
-        float previousDistance = 1f;
+        float previousDistance = 3f;
 
         for (int i = 0; i < m_runesData.Length; i++)
         {
