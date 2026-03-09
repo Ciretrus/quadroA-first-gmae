@@ -7,6 +7,7 @@ public class UIController : MonoBehaviour
 {
     [SerializeField] private GameObject m_objectActivationText;
     [SerializeField] private DiaryNotificationSystem m_notificationSystem;
+    [SerializeField] private Image m_noteImage;
     [SerializeField] private GameObject m_pauseMenuCanvas;
     [SerializeField] private GameObject m_pauseMenu;
     [SerializeField] private GameObject m_settings;
@@ -45,6 +46,12 @@ public class UIController : MonoBehaviour
     public void ShowDiaryNotification()
     {
         m_notificationSystem.TriggerNotification();
+    }
+
+    public void ShowNote(Sprite sprite)
+    {
+        m_noteImage.sprite = sprite;
+        m_noteImage.gameObject.SetActive(!m_noteImage.gameObject.activeSelf);
     }
 
     public void Pause(InputAction.CallbackContext context)

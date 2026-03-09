@@ -73,6 +73,10 @@ public class ItemsActivations : MonoBehaviour
                                 {
                                     ChangeDrawingMode(m_usable);
                                 }
+                                else if (m_usable.GetComponent<Note>())
+                                {
+                                    ChangeUIMode();
+                                }
                                 break;
                             }
                     }
@@ -110,6 +114,11 @@ public class ItemsActivations : MonoBehaviour
     }
 
     public void ChangeUIMode(InputAction.CallbackContext context)
+    {
+        ChangeUIMode();
+    }
+
+    public void ChangeUIMode()
     {
         ChangeMovementState();
         ChangeCursorState();
