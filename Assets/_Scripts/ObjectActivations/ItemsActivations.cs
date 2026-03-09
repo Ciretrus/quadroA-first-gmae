@@ -4,39 +4,42 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(PlayerController))]
 public class ItemsActivations : MonoBehaviour
 {
-    [Header("Dependencies")]
-    [SerializeField] private UIController m_uiController;
-    [SerializeField] private PlateController m_plateController;
-    [SerializeField] private DrawingRuneController m_drawingRuneController;
     [Header("Raycast settings")]
     [SerializeField] private float m_rayDistance = 1f;
     [Header("Rune-drawing settings")]
     [SerializeField] private float m_runeOffset = 1.5f;
 
-    private Camera m_camera;
     private PlayerController m_playerController;
+    private Camera m_camera;
     private CameraMovement m_cameraMovement;
-    private DiaryInteractable m_diaryInteractable;
+    private UIController m_uiController;
+    private DrawingRuneController m_drawingRuneController;
+    private PlateController m_plateController;
     private RuneDraw m_runeDraw;
+    private DiaryInteractable m_diaryInteractable;
     private Usable m_usable;
     private Vector3 m_cameraPos = new Vector3(0f, 1.5f, 0f);
     private Vector3 m_screenCenter;
     private bool m_isUIBlocked;
 
-    private void Start()
-    {
-        m_playerController = ServiceLocator.Resolve<PlayerController>(); 
-        m_camera = ServiceLocator.Resolve<Camera>();
-
-        m_cameraMovement = m_camera.GetComponent<CameraMovement>();
-    }
-
     private void OnEnable()
     {
+        m_drawingRuneController = ServiceLocator.Resolve<DrawingRuneController>();
+
         foreach (RuneDraw rune in m_drawingRuneController.runes)
         {
             rune.DisableDrawing += ChangeDrawingMode;
         }
+    }
+
+    private void Start()
+    {
+        m_playerController = ServiceLocator.Resolve<PlayerController>();
+        m_camera = ServiceLocator.Resolve<Camera>();
+        m_uiController = ServiceLocator.Resolve<UIController>();
+        m_plateController = ServiceLocator.Resolve<PlateController>();
+
+        m_cameraMovement = m_camera.GetComponent<CameraMovement>();
     }
 
     private void OnDisable()
