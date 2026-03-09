@@ -40,7 +40,7 @@ public class InteractableSound : MonoBehaviour
 
     public void PlayPitchedSound(float minPitch = 0.8f, float maxPitch = 1.2f)
     {
-        Debug.LogWarning("Play Pitched");
+        //Debug.LogWarning("Play Pitched");
         m_source.pitch = Random.Range(minPitch, maxPitch);
         m_source.PlayOneShot(GetRandomSound());
     }

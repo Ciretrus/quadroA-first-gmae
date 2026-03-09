@@ -32,7 +32,7 @@ public class FloorLock : Usable
         m_lock.isKinematic = false;
         m_lock.AddForce(m_force,ForceMode.Impulse);
         m_tween = m_rotateObject.DOLocalRotate(m_angleRotation, m_openTimer);
-        ServiceLocator.Resolve<Inventory>().RemoveItem(GlobalConstants.Collectables.LockKey);
+        //ServiceLocator.Resolve<Inventory>().RemoveItem(GlobalConstants.Collectables.LockKey);
 
         m_teleportTrigger.conditionMet = true;
     }

@@ -66,6 +66,7 @@ public class PlayerController : MonoBehaviour
         m_input.UI.Diary.performed += m_diary.ChangeState;
         m_input.UI.ThiefEye.performed += m_thiefEye.ActivateThiefEye;
         m_input.UI.Pause.performed += m_uiController.Pause;
+        m_input.UI.Inventory.performed += m_uiController.ShowInventory;
     }
 
     private void OnDisable()
