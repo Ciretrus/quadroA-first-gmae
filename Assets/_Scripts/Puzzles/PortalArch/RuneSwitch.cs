@@ -9,10 +9,10 @@ namespace Puzzles
         [SerializeField] private Color m_colorOff = Color.black;
         [SerializeField] private Color m_colorOn = Color.cyan;
         [SerializeField] private float m_glowTime = 1.0f;
-        [SerializeField] private int m_materialIndex = 1;
-
+        
         private MaterialPropertyBlock m_emissionMat;
         private MeshRenderer m_meshRenderer;
+        private int m_materialIndex = 1;
         private bool m_isActive = false;
         private Tween m_currentTween;
         private Color m_tempColor;

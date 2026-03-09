@@ -12,6 +12,9 @@ namespace Infrastructure
         [SerializeField] private Inventory m_inventory;
         [SerializeField] private ThiefEye m_thiefEye;
         [SerializeField] private Diary m_diary;
+        [SerializeField] private DiaryNotificationSystem m_notificationSystem;
+        [SerializeField] private DrawingRuneController m_drawingRuneController;
+        [SerializeField] private PlateController m_plateController;
 
         private void Awake()
         {
@@ -24,6 +27,9 @@ namespace Infrastructure
             ServiceLocator.Register(m_inventory);
             ServiceLocator.Register(m_thiefEye);
             ServiceLocator.Register(m_diary);
+            ServiceLocator.Register(m_notificationSystem);
+            ServiceLocator.Register(m_drawingRuneController);
+            ServiceLocator.Register(m_plateController);
         }
     }
 }

@@ -3,15 +3,12 @@ using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using DG.Tweening;
-using NUnit.Framework;
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 
 public class UIController : MonoBehaviour
 {
     [SerializeField] private Image m_objectActivationCursor;
-    [SerializeField] private DiaryNotificationSystem m_notificationSystem;
     [SerializeField] private Image m_noteImage;
     [SerializeField] private GameObject m_pauseMenuCanvas;
     [SerializeField] private GameObject m_pauseMenu;
@@ -30,13 +27,15 @@ public class UIController : MonoBehaviour
     [SerializeField] private float m_cursorFade = 0.5f;
     [SerializeField] private float m_inventoryShowTime = 1f;
 
-    private List<DG.Tweening.Sequence> m_tweens = new List<DG.Tweening.Sequence>();
-    private bool m_onPause = false;
+    private DiaryNotificationSystem m_notificationSystem;
+    private List<Sequence> m_tweens = new ();
     private Inventory m_inventory;
     private Tween m_cursoreTween;
+    private bool m_onPause = false;
 
     private void Start()
     {
+        m_notificationSystem = ServiceLocator.Resolve<DiaryNotificationSystem>();
         m_inventory = ServiceLocator.Resolve<Inventory>();
     }
     private void OnEnable()
@@ -136,11 +135,11 @@ public class UIController : MonoBehaviour
 
         for (int i = 0; i < m_inventory.Counter; i++)
         {
-            var item = m_inventoryItems[i];
+            GameObject item = m_inventoryItems[i];
             var itemText = item.transform.GetComponentInChildren<TextMeshProUGUI>();
-            var itemImage = item.GetComponent<Image>();
+            Image itemImage = item.GetComponent<Image>();
 
-            var newItem = m_inventory.GetItem(i);
+            InventoryItem newItem = m_inventory.GetItem(i);
 
             if (newItem.count != 1)
             {
@@ -166,8 +165,6 @@ public class UIController : MonoBehaviour
             Debug.Log("TRY DOTWEEN IMAGE");
             m_tweens.Add(sequenceImage);
             m_tweens.Add(sequenceText);
-
         }
-
     }
 }

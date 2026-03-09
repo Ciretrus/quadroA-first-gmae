@@ -69,7 +69,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 991b70b10c19e6c4a95e8ad5969e365d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RuneDraw
-  m_interactableSound: {fileID: 0}
+  m_interactableSound: {fileID: 5699549673646063579}
   m_puzzle: {fileID: 6573022680884408782, guid: 57f4c7465f73fee41bb742fd9912a0e5, type: 3}
   m_drawableLine: {fileID: 182556835636011485}
   m_rune: {fileID: 5538451949640497601}
@@ -183,7 +183,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractableSound
   m_sounds: []
-  m_source: {fileID: 0}
+  m_source: {fileID: 8450862813775159499}
+  m_pitch: 1
 --- !u!1 &2769501431286433636
 GameObject:
   m_ObjectHideFlags: 0
@@ -448,8 +449,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06e9cd1709b13eb49b4d9f0017292dd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RuneSwitch
-  m_runeMaterial: {fileID: 2100000, guid: e9ced004af345ad4f82d05a016e2e788, type: 2}
+  m_runeMaterial: {fileID: 2100000, guid: e728459561bb03947a96fe8f552ebd10, type: 2}
   m_colorOff: {r: 0.40392157, g: 0.40392157, b: 0.40392157, a: 1}
   m_colorOn: {r: 0, g: 1, b: 1, a: 1}
   m_glowTime: 1
-  m_materialIndex: 1

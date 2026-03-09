@@ -10,6 +10,11 @@ public class CameraMovement : MonoBehaviour
     private float m_rotationX = 0f;
     private Vector3 m_velocity;
 
+    private void Awake()
+    {
+        transform.position = m_cameraPos.position;
+    }
+
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
