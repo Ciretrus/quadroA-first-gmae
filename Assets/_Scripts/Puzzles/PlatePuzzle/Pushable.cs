@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class Pushable : MonoBehaviour
+public class Pushable : InteractableSound
 {
-    [SerializeField] private AudioClip m_audioClip;
+    //[SerializeField] private AudioClip m_audioClip;
 
-    public AudioClip audioClip => m_audioClip;
+    //public AudioClip audioClip => m_audioClip;
 }

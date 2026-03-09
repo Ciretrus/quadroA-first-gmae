@@ -109,8 +109,9 @@ public class ItemsActivations : MonoBehaviour
 
         if (other.TryGetComponent(out Pushable pushable) && !m_plateController.isSolved)
         {
+            pushable.PlaySound();
             m_plateController.AddToSequence(pushable);
-        }
+        }        
     }
 
     public void ChangeUIMode(InputAction.CallbackContext context)

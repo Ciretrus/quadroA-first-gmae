@@ -11,6 +11,7 @@ public class PlayerStepSounds : MonoBehaviour
     [SerializeField] private float m_delay = 0.5f;
     [SerializeField] private float m_sprintDelay = 0.3f;
     [SerializeField] private float m_sneakDelay = 0.7f;
+    [SerializeField] float rayDistance = 1.5f;
 
     private PlayerController m_controller;
     private AudioClip m_currentClip;
@@ -40,10 +41,19 @@ public class PlayerStepSounds : MonoBehaviour
         }
 
         if (m_controller.isGrounded && m_controller.isMoving && !m_isPlaying)
-        {
-            int randomIndex = Random.Range(0, m_sounds.Count);
-            AudioClip sound = m_sounds[randomIndex];
-            PlaySound(sound);
+        {            
+            RaycastHit hit;
+            if (Physics.Raycast(transform.position, Vector3.down, out hit, rayDistance))
+            {
+                SoundableFloor floor;
+                if (hit.transform.TryGetComponent<SoundableFloor>(out floor))
+                {
+                    int randomIndex = Random.Range(0, m_sounds.Count);
+                    AudioClip sound = floor.floorAudioClips[randomIndex];
+                    //AudioClip sound = m_sounds[randomIndex];
+                    PlaySound(sound);
+                }
+            }            
         }
     }
 
