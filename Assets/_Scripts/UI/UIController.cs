@@ -10,7 +10,7 @@ using Unity.VisualScripting;
 
 public class UIController : MonoBehaviour
 {
-    [SerializeField] private GameObject m_objectActivationText;
+    [SerializeField] private Image m_objectActivationCursor;
     [SerializeField] private DiaryNotificationSystem m_notificationSystem;
     [SerializeField] private Image m_noteImage;
     [SerializeField] private GameObject m_pauseMenuCanvas;
@@ -26,11 +26,14 @@ public class UIController : MonoBehaviour
     [SerializeField] private GameObject[] m_inventoryItems;
     [SerializeField] private GameObject m_inventoryUI;
     [SerializeField] private float m_inventoryTimeFade = 0.3f;
+    [SerializeField] private float m_cursorTimeFade = 0.3f;
+    [SerializeField] private float m_cursorFade = 0.5f;
     [SerializeField] private float m_inventoryShowTime = 1f;
 
     private List<DG.Tweening.Sequence> m_tweens = new List<DG.Tweening.Sequence>();
     private bool m_onPause = false;
     private Inventory m_inventory;
+    private Tween m_cursoreTween;
 
     private void Start()
     {
@@ -56,7 +59,11 @@ public class UIController : MonoBehaviour
 
     public void ShowObjectActivationText(bool shouldBeActivated)
     {
-        m_objectActivationText.SetActive(shouldBeActivated);
+        float fade = 0f;
+        float time = m_cursorTimeFade;
+        if (shouldBeActivated) { fade = m_cursorFade; time = m_cursorTimeFade * 2; }
+        m_cursoreTween?.Kill();
+        m_cursoreTween = m_objectActivationCursor.DOFade(fade, time);
     }
 
     public void ShowDiaryNotification()

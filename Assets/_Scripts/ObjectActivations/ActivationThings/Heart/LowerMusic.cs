@@ -2,15 +2,10 @@ using UnityEngine;
 
 public class LowerMusic : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] private TakeHeart m_heart;
+    
+    private void OffMusic()
     {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
