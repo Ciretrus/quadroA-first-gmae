@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
@@ -6,6 +7,7 @@ public class InteractableSound : MonoBehaviour
     [SerializeField] protected AudioClip[] m_sounds;
     [SerializeField] protected AudioSource m_source;
     [SerializeField] protected bool m_pitch = true;
+    [SerializeField] protected bool m_delayBetweenSounds = false;     
 
     public AudioClip[] sounds => m_sounds;
     public AudioSource source => m_source;
@@ -28,6 +30,8 @@ public class InteractableSound : MonoBehaviour
 
     public void PlaySound()
     {
+        if (m_delayBetweenSounds && m_source.isPlaying)
+            return;
         if (m_pitch)
         {
             PlayPitchedSound();
@@ -42,8 +46,9 @@ public class InteractableSound : MonoBehaviour
     {
         //Debug.LogWarning("Play Pitched");
         m_source.pitch = Random.Range(minPitch, maxPitch);
-        m_source.PlayOneShot(GetRandomSound());
-    }
+        AudioClip clip = GetRandomSound();
+        m_source.PlayOneShot(clip);
+    }    
 
 #nullable enable
     protected AudioClip? GetRandomSound()
