@@ -11,6 +11,10 @@ public class FloorLock : Usable
     [SerializeField] private float m_openTimer = 0.3f;
     [SerializeField] private Vector3 m_force = new Vector3(0, 1f, 0);
 
+    [Header("Sounds")]
+    [SerializeField] private AudioClip[] m_closedSound;
+    [SerializeField] private AudioClip[] m_openedSound;
+
     private bool m_hasKey => ServiceLocator.Resolve<Inventory>().ContainsItem(GlobalConstants.Collectables.LockKey);
     private bool m_isUnlocked;
     private Tweener m_tween;
@@ -18,15 +22,19 @@ public class FloorLock : Usable
     private void Awake()
     {
         m_lock.isKinematic = true;
+        m_interactableSound.ChangeSounds(m_closedSound);
     }
 
     public override void Use()
     {
         if (m_isUnlocked || !m_hasKey)
         {
+            m_interactableSound.PlaySound();
             return;
         }
-
+        m_interactableSound.ChangeSounds(m_openedSound);
+        m_interactableSound.PlaySound();
+        m_interactableSound.ChangeSounds();
         m_tween?.Kill();
         m_isUnlocked = true;
         m_lock.isKinematic = false;
