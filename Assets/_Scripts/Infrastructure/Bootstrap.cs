@@ -2,6 +2,7 @@
 
 namespace Infrastructure
 {
+    [DefaultExecutionOrder(-2)]
     public class Bootstrap : MonoBehaviour
     {
         [Header("Services")]
