@@ -9,12 +9,12 @@ public class ServiceLocator
 
     public static void ClearServices()
     {
-        m_serviceLocator ??= new ServiceLocator();
-        m_serviceLocator.m_services.Clear();
+        m_serviceLocator?.m_services.Clear();
     }
 
     public static void Register<T>(T instance)
     {
+        m_serviceLocator ??= new ServiceLocator();
         m_serviceLocator.m_services.Add(typeof(T), instance);
     }
 

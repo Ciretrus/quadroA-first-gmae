@@ -13,9 +13,9 @@ public class ItemsActivations : MonoBehaviour
     private Camera m_camera;
     private CameraMovement m_cameraMovement;
     private UIController m_uiController;
-    private DrawingRuneController m_drawingRuneController;
+    private DrawingController m_drawingRuneController;
     private PlateController m_plateController;
-    private RuneDraw m_runeDraw;
+    private DrawCanvas m_runeDraw;
     private DiaryInteractable m_diaryInteractable;
     private Usable m_usable;
     private Vector3 m_cameraPos = new Vector3(0f, 1.5f, 0f);
@@ -24,11 +24,11 @@ public class ItemsActivations : MonoBehaviour
 
     private void OnEnable()
     {
-        m_drawingRuneController = ServiceLocator.Resolve<DrawingRuneController>();
+        m_drawingRuneController = ServiceLocator.Resolve<DrawingController>();
 
-        foreach (RuneDraw rune in m_drawingRuneController.runes)
+        foreach (DrawCanvas canvas in m_drawingRuneController.canvases)
         {
-            rune.DisableDrawing += ChangeDrawingMode;
+            canvas.DisableDrawing += ChangeDrawingMode;
         }
     }
 
@@ -44,9 +44,9 @@ public class ItemsActivations : MonoBehaviour
 
     private void OnDisable()
     {
-        foreach (RuneDraw rune in m_drawingRuneController.runes)
+        foreach (DrawCanvas canvas in m_drawingRuneController.canvases)
         {
-            rune.DisableDrawing -= ChangeDrawingMode;
+            canvas.DisableDrawing -= ChangeDrawingMode;
         }
     }
 
@@ -190,7 +190,7 @@ public class ItemsActivations : MonoBehaviour
             // TODO Remove (CameraMovement being disabled in ChangeMovementState())
             m_camera.transform.position = m_playerController.cameraPos.transform.position;
 
-            m_drawingRuneController.currentRune = m_runeDraw.drawableLine.rune;
+            m_drawingRuneController.currentRune = m_runeDraw.drawableLine.data;
         }
 
         m_isUIBlocked = !m_isUIBlocked;

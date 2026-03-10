@@ -4,7 +4,7 @@ using UnityEngine;
 
 [CreateAssetMenu]
 [Serializable]
-public class RuneData : ScriptableObject
+public class DrawingData : ScriptableObject
 {
     [SerializeField] private string m_name;
     [SerializeField] private List<Vector3> m_original;

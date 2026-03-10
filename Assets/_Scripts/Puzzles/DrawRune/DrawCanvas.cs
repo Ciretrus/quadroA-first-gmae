@@ -2,9 +2,9 @@ using Puzzles;
 using System;
 using UnityEngine;
 
-public class RuneDraw : Usable, ICondition
+public class DrawCanvas : Usable, ICondition
 {
-    public event Action<RuneDraw> DisableDrawing;
+    public event Action<DrawCanvas> DisableDrawing;
 
     [SerializeField] private BasePuzzle m_puzzle;
     [SerializeField] private DrawableLine m_drawableLine;

@@ -2,6 +2,7 @@
 
 namespace Infrastructure
 {
+    [DefaultExecutionOrder(-2)]
     public class Bootstrap : MonoBehaviour
     {
         [Header("Services")]
@@ -13,7 +14,7 @@ namespace Infrastructure
         [SerializeField] private ThiefEye m_thiefEye;
         [SerializeField] private Diary m_diary;
         [SerializeField] private DiaryNotificationSystem m_notificationSystem;
-        [SerializeField] private DrawingRuneController m_drawingRuneController;
+        [SerializeField] private DrawingController m_drawingController;
         [SerializeField] private PlateController m_plateController;
 
         private void Awake()
@@ -28,7 +29,7 @@ namespace Infrastructure
             ServiceLocator.Register(m_thiefEye);
             ServiceLocator.Register(m_diary);
             ServiceLocator.Register(m_notificationSystem);
-            ServiceLocator.Register(m_drawingRuneController);
+            ServiceLocator.Register(m_drawingController);
             ServiceLocator.Register(m_plateController);
         }
     }

@@ -10,7 +10,7 @@ public class DrawableLine : BasePuzzle
     public event Action<List<Vector3>, Transform> DrawnSymbol;
 
     [SerializeField] private LineRenderer m_lineRenderer;
-    [SerializeField] private RuneData m_rune;
+    [SerializeField] private DrawingData m_data;
     [SerializeField] private float m_maxLength = 0.35f;
     [SerializeField] private float m_minDistance = 0.1f;
 
@@ -19,7 +19,7 @@ public class DrawableLine : BasePuzzle
     private bool m_canDraw;
     private bool m_hasChalk => ServiceLocator.Resolve<Inventory>().ContainsItem(GlobalConstants.Collectables.DrawingChalk);
 
-    public RuneData rune {  get { return m_rune; } }
+    public DrawingData data {  get { return m_data; } }
 
     public bool canDraw
     {
@@ -44,7 +44,7 @@ public class DrawableLine : BasePuzzle
 
     public override void CheckCondition()
     {
-        if (m_rune.solved)
+        if (m_data.solved)
         {
             NotifySolved();
         }
@@ -100,7 +100,7 @@ public class DrawableLine : BasePuzzle
     {
         if (m_dotsList.Count > 1)
         {
-            if (!m_rune.solved)
+            if (!m_data.solved)
             {
                 DrawnSymbol?.Invoke(m_dotsList, transform);
             }

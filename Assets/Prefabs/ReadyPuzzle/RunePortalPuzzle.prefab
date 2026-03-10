@@ -142,8 +142,8 @@ GameObject:
   - component: {fileID: 5301733096463968580}
   - component: {fileID: 2680011691792242598}
   - component: {fileID: 6097304961903528400}
-  - component: {fileID: 251099456161061571}
   - component: {fileID: 6020380389827379336}
+  - component: {fileID: 328676045938155661}
   - component: {fileID: 1605888070089390916}
   m_Layer: 0
   m_Name: C_Button
@@ -265,7 +265,24 @@ MonoBehaviour:
   - {fileID: 4174464794791698471}
   - {fileID: 7415466969477643563}
   - {fileID: 800683287091249298}
---- !u!82 &251099456161061571
+--- !u!114 &6020380389827379336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 941219018599987695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c654989c1528fa94b81569aaf5f119ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InteractableSound
+  m_sounds:
+  - {fileID: 8300000, guid: 7eca4d20a3a48a245a076ea4f5b25760, type: 3}
+  m_source: {fileID: 328676045938155661}
+  m_pitch: 1
+  m_delayBetweenSounds: 0
+--- !u!82 &328676045938155661
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -362,22 +379,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &6020380389827379336
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 941219018599987695}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c654989c1528fa94b81569aaf5f119ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::InteractableSound
-  m_sounds:
-  - {fileID: 8300000, guid: 7eca4d20a3a48a245a076ea4f5b25760, type: 3}
-  m_source: {fileID: 251099456161061571}
-  m_pitch: 1
 --- !u!82 &1605888070089390916
 AudioSource:
   m_ObjectHideFlags: 0
@@ -485,7 +486,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3177195300025190147}
   - component: {fileID: 4229799257181756352}
-  - component: {fileID: 203565783602678662}
+  - component: {fileID: 2543685518500602811}
   - component: {fileID: 8661138741314927792}
   - component: {fileID: 5055605522879883868}
   m_Layer: 0
@@ -532,7 +533,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2, y: 2, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &203565783602678662
+--- !u!114 &2543685518500602811
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -541,9 +542,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1171603506788291904}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 991b70b10c19e6c4a95e8ad5969e365d, type: 3}
+  m_Script: {fileID: 11500000, guid: efc6db47be00ef746a9a735f12e7ddd3, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::RuneDraw
+  m_EditorClassIdentifier: Assembly-CSharp::DrawCanvas
   m_interactableSound: {fileID: 5055605522879883868}
   m_puzzle: {fileID: 0}
   m_drawableLine: {fileID: 925182731156944298}
@@ -660,6 +661,7 @@ MonoBehaviour:
   m_sounds: []
   m_source: {fileID: 8661138741314927792}
   m_pitch: 1
+  m_delayBetweenSounds: 0
 --- !u!1 &2124333155828268896
 GameObject:
   m_ObjectHideFlags: 0
@@ -1643,8 +1645,8 @@ GameObject:
   - component: {fileID: 4943026938078365348}
   - component: {fileID: 4264697170905601057}
   - component: {fileID: 169651536176739301}
-  - component: {fileID: 6247925750784286581}
   - component: {fileID: 7055693944444458801}
+  - component: {fileID: 4180860409988509874}
   - component: {fileID: 1497478927418887276}
   m_Layer: 0
   m_Name: D_Button
@@ -1766,7 +1768,24 @@ MonoBehaviour:
   - {fileID: 2374461022351109952}
   - {fileID: 7415466969477643563}
   - {fileID: 3205706870293813891}
---- !u!82 &6247925750784286581
+--- !u!114 &7055693944444458801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5009876699522314990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c654989c1528fa94b81569aaf5f119ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InteractableSound
+  m_sounds:
+  - {fileID: 8300000, guid: 7eca4d20a3a48a245a076ea4f5b25760, type: 3}
+  m_source: {fileID: 4180860409988509874}
+  m_pitch: 1
+  m_delayBetweenSounds: 0
+--- !u!82 &4180860409988509874
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1863,22 +1882,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &7055693944444458801
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5009876699522314990}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c654989c1528fa94b81569aaf5f119ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::InteractableSound
-  m_sounds:
-  - {fileID: 8300000, guid: 7eca4d20a3a48a245a076ea4f5b25760, type: 3}
-  m_source: {fileID: 6247925750784286581}
-  m_pitch: 1
 --- !u!82 &1497478927418887276
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2133,7 +2136,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_lineRenderer: {fileID: 2630074944944485000}
-  m_rune: {fileID: 11400000, guid: 62695b46e79dd0c42bd4c26ba1847e9c, type: 2}
+  m_data: {fileID: 11400000, guid: 62695b46e79dd0c42bd4c26ba1847e9c, type: 2}
   m_maxLength: 0.35
   m_minDistance: 0.01
 --- !u!1 &5507983008860951946
@@ -2278,8 +2281,8 @@ GameObject:
   - component: {fileID: 8066679760763240595}
   - component: {fileID: 9115240442794028337}
   - component: {fileID: 4429511219896328984}
-  - component: {fileID: 1164520045654638638}
   - component: {fileID: 6748957287473752755}
+  - component: {fileID: 3577467788923531214}
   - component: {fileID: 6588488025188429761}
   m_Layer: 0
   m_Name: E_Button
@@ -2401,7 +2404,24 @@ MonoBehaviour:
   - {fileID: 2954287447716395430}
   - {fileID: 585558869975502872}
   - {fileID: 800683287091249298}
---- !u!82 &1164520045654638638
+--- !u!114 &6748957287473752755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5738204866595929725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c654989c1528fa94b81569aaf5f119ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InteractableSound
+  m_sounds:
+  - {fileID: 8300000, guid: 7eca4d20a3a48a245a076ea4f5b25760, type: 3}
+  m_source: {fileID: 3577467788923531214}
+  m_pitch: 1
+  m_delayBetweenSounds: 0
+--- !u!82 &3577467788923531214
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2498,22 +2518,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &6748957287473752755
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5738204866595929725}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c654989c1528fa94b81569aaf5f119ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::InteractableSound
-  m_sounds:
-  - {fileID: 8300000, guid: 7eca4d20a3a48a245a076ea4f5b25760, type: 3}
-  m_source: {fileID: 1164520045654638638}
-  m_pitch: 1
 --- !u!82 &6588488025188429761
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2714,8 +2718,8 @@ GameObject:
   - component: {fileID: 3141800000071023592}
   - component: {fileID: 3336923952338779831}
   - component: {fileID: 7337110147368321255}
-  - component: {fileID: 6776916305661657819}
   - component: {fileID: 7112149440128038492}
+  - component: {fileID: 7104402144319186143}
   - component: {fileID: 8296144286454181200}
   m_Layer: 0
   m_Name: A_Button
@@ -2838,7 +2842,24 @@ MonoBehaviour:
   - {fileID: 4037041542910075733}
   - {fileID: 385603958597991335}
   - {fileID: 8247832333345030059}
---- !u!82 &6776916305661657819
+--- !u!114 &7112149440128038492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6327283243750682451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c654989c1528fa94b81569aaf5f119ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InteractableSound
+  m_sounds:
+  - {fileID: 8300000, guid: 7eca4d20a3a48a245a076ea4f5b25760, type: 3}
+  m_source: {fileID: 7104402144319186143}
+  m_pitch: 1
+  m_delayBetweenSounds: 0
+--- !u!82 &7104402144319186143
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2935,22 +2956,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &7112149440128038492
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6327283243750682451}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c654989c1528fa94b81569aaf5f119ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::InteractableSound
-  m_sounds:
-  - {fileID: 8300000, guid: 7eca4d20a3a48a245a076ea4f5b25760, type: 3}
-  m_source: {fileID: 6776916305661657819}
-  m_pitch: 1
 --- !u!82 &8296144286454181200
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3190,8 +3195,8 @@ GameObject:
   - component: {fileID: 5102405832560506495}
   - component: {fileID: 6803013860688575843}
   - component: {fileID: 9137411053335158488}
-  - component: {fileID: 600446874271711576}
   - component: {fileID: 6426878551535913375}
+  - component: {fileID: 8256089149963334971}
   - component: {fileID: 4752823836038072180}
   m_Layer: 0
   m_Name: B_Button
@@ -3314,7 +3319,24 @@ MonoBehaviour:
   - {fileID: 2954287447716395430}
   - {fileID: 2374461022351109952}
   - {fileID: 8247832333345030059}
---- !u!82 &600446874271711576
+--- !u!114 &6426878551535913375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7388174080226232702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c654989c1528fa94b81569aaf5f119ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InteractableSound
+  m_sounds:
+  - {fileID: 8300000, guid: 7eca4d20a3a48a245a076ea4f5b25760, type: 3}
+  m_source: {fileID: 8256089149963334971}
+  m_pitch: 1
+  m_delayBetweenSounds: 0
+--- !u!82 &8256089149963334971
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3411,22 +3433,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &6426878551535913375
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7388174080226232702}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c654989c1528fa94b81569aaf5f119ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::InteractableSound
-  m_sounds:
-  - {fileID: 8300000, guid: 7eca4d20a3a48a245a076ea4f5b25760, type: 3}
-  m_source: {fileID: 600446874271711576}
-  m_pitch: 1
 --- !u!82 &4752823836038072180
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4034,6 +4040,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2978751925563120938}
     m_Modifications:
+    - target: {fileID: 182556835636011485, guid: 5ba5576c1381f6548b557a55364d7182, type: 3}
+      propertyPath: m_data
+      value: 
+      objectReference: {fileID: 11400000, guid: 469486d919dc6d545accba05e05460de, type: 2}
     - target: {fileID: 182556835636011485, guid: 5ba5576c1381f6548b557a55364d7182, type: 3}
       propertyPath: m_rune
       value: 

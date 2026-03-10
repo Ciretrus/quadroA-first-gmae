@@ -22,7 +22,7 @@ public abstract class Usable: MonoBehaviour
 
     private void OnValidate()
     {
-        gameObject.TryGetComponent<InteractableSound>(out m_interactableSound);
+        gameObject.TryGetComponent(out m_interactableSound);
     }
 
     public abstract void Use();
