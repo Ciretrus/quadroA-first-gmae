@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class TeleportTrigger : Usable
+public class TeleportTrigger : Interactable
 {
     public event Action<Action> Trigger;
 
@@ -12,7 +12,7 @@ public class TeleportTrigger : Usable
 
     private void Awake()
     {
-        Initialize(UsableType.NonBlocking);
+        Initialize(InteractableType.NonBlocking);
     }
 
     public override void Use()

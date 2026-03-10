@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class FooterEnter : Usable
+public class FooterEnter : Interactable
 {
     [SerializeField] private FloorLock m_lock;
 

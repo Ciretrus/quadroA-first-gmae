@@ -1,12 +1,12 @@
 using UnityEngine;
 
-public class Note : Usable
+public class Note : Interactable
 {
     [SerializeField] private NoteData m_noteData;
 
     private void Awake()
     {
-        Initialize(UsableType.Blocking);
+        Initialize(InteractableType.Blocking);
     }
 
     public override void Use()

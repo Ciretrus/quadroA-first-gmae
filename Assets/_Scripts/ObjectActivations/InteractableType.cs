@@ -1,4 +1,4 @@
-public enum UsableType
+public enum InteractableType
 {
     NonBlocking,
     Blocking

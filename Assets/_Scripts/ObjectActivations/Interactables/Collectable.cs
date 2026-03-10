@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class TakeableObject : Usable
+public class Collectable : Interactable
 {
     [Header("Enter in lowercase!")]
     [SerializeField] private string m_objectName;
@@ -8,7 +8,7 @@ public class TakeableObject : Usable
 
     private void Awake()
     {
-        Initialize(UsableType.NonBlocking);
+        Initialize(InteractableType.NonBlocking);
     }
 
     public override void Use() 

@@ -1,14 +1,14 @@
 using UnityEngine;
 using Puzzles;
 
-public class RotationArrow : Usable
+public class RotationArrow : Interactable
 {
     [SerializeField] private RollRotation m_roll;
     [SerializeField][Range(-1, 1)] private int m_direction;
 
     private void Awake()
     {
-        Initialize(UsableType.NonBlocking);
+        Initialize(InteractableType.NonBlocking);
     }
 
     public override void Use()

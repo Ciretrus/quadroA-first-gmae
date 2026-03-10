@@ -2,7 +2,7 @@ using UnityEngine;
 using DG.Tweening;
 
 [RequireComponent(typeof(Rigidbody))]
-public class FloorLock : Usable
+public class FloorLock : Interactable
 {
     [SerializeField] private Rigidbody m_lock;
     [SerializeField] private TeleportTrigger m_teleportTrigger;

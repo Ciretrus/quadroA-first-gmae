@@ -1,7 +1,7 @@
 using UnityEngine;
 using DG.Tweening;
 
-public class Openable : Usable
+public class Openable : Interactable
 {
     [SerializeField] private Vector3 m_newPosition = new Vector3(0, 0, -0.7f);
     [SerializeField] private Vector3 m_newRotation = new Vector3(0, 97, 0);
@@ -16,7 +16,7 @@ public class Openable : Usable
 
     private void Awake()
     {
-        Initialize(UsableType.NonBlocking);
+        Initialize(InteractableType.NonBlocking);
         m_initialPosition = transform.localPosition;
         m_initialRotation = transform.eulerAngles;
     }

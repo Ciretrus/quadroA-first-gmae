@@ -2,7 +2,7 @@ using Puzzles;
 using System;
 using UnityEngine;
 
-public class DrawCanvas : Usable, ICondition
+public class DrawCanvas : Interactable, ICondition
 {
     public event Action<DrawCanvas> DisableDrawing;
 
@@ -16,7 +16,7 @@ public class DrawCanvas : Usable, ICondition
 
     private void Awake()
     {
-        Initialize(UsableType.Blocking);
+        Initialize(InteractableType.Blocking);
     }
 
     private void OnEnable()

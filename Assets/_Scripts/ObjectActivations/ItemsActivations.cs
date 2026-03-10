@@ -17,7 +17,7 @@ public class ItemsActivations : MonoBehaviour
     private PlateController m_plateController;
     private DrawCanvas m_runeDraw;
     private DiaryInteractable m_diaryInteractable;
-    private Usable m_usable;
+    private Interactable m_interactable;
     private Vector3 m_cameraPos = new Vector3(0f, 1.5f, 0f);
     private Vector3 m_screenCenter;
     private bool m_isUIBlocked;
@@ -60,32 +60,32 @@ public class ItemsActivations : MonoBehaviour
 
         if (hit.collider != null)
         {
-            if (hit.collider.TryGetComponent(out m_usable) && m_usable.enabled)
+            if (hit.collider.TryGetComponent(out m_interactable) && m_interactable.enabled)
             {
                 m_uiController.ShowObjectActivationText(true);
 
                 // TODO Rework
                 if (m_playerController.input.UI.Interact.WasPerformedThisFrame())
                 {
-                    switch (m_usable.type)
+                    switch (m_interactable.type)
                     {
-                        case UsableType.NonBlocking: break;
-                        case UsableType.Blocking:
+                        case InteractableType.NonBlocking: break;
+                        case InteractableType.Blocking:
                             {
-                                if (m_usable.TryGetComponent(out m_runeDraw))
+                                if (m_interactable.TryGetComponent(out m_runeDraw))
                                 {
-                                    ChangeDrawingMode(m_usable);
+                                    ChangeDrawingMode(m_interactable);
                                 }
-                                else if (m_usable.GetComponent<Note>())
+                                else if (m_interactable.GetComponent<Note>())
                                 {
                                     ChangeUIMode();
                                 }
                                 break;
                             }
                     }
-                    m_usable.Use();
+                    m_interactable.Use();
 
-                    PlayInteractionSound(m_usable);
+                    PlayInteractionSound(m_interactable);
                 }
             }
             else if (hit.collider.TryGetComponent(out m_diaryInteractable))
@@ -166,7 +166,7 @@ public class ItemsActivations : MonoBehaviour
         }
     }
 
-    private void ChangeDrawingMode(Usable usable)
+    private void ChangeDrawingMode(Interactable interactable)
     {
         ChangeMovementState();
         ChangeCursorState();
@@ -179,11 +179,11 @@ public class ItemsActivations : MonoBehaviour
         }
         else
         {
-            Quaternion usableRot = usable.gameObject.transform.rotation;
-            transform.rotation = Quaternion.Euler(0f, usableRot.eulerAngles.y + 180f, 0f);
+            Quaternion interactableRot = interactable.gameObject.transform.rotation;
+            transform.rotation = Quaternion.Euler(0f, interactableRot.eulerAngles.y + 180f, 0f);
             m_camera.transform.rotation = transform.rotation;
 
-            Vector3 usablePos = usable.transform.position;
+            Vector3 usablePos = interactable.transform.position;
             Vector3 newPos = new Vector3(usablePos.x, transform.position.y, usablePos.z);
             transform.position = newPos - (transform.forward * m_runeOffset);
             m_playerController.cameraPos.transform.position = new Vector3(transform.position.x, usablePos.y, transform.position.z);
@@ -196,15 +196,15 @@ public class ItemsActivations : MonoBehaviour
         m_isUIBlocked = !m_isUIBlocked;
     }
 
-    private void PlayInteractionSound(Usable usable)
+    private void PlayInteractionSound(Interactable interactable)
     {
-        Debug.LogWarning(usable.interactableSound);
+        Debug.LogWarning(interactable.interactableSound);
 
-        if (usable.interactableSound == null)
+        if (interactable.interactableSound == null)
         {
             return;
         }
                 
-        usable.interactableSound.PlaySound();
+        interactable.interactableSound.PlaySound();
     }
 }

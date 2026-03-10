@@ -1,21 +1,21 @@
 using UnityEngine;
 
 [RequireComponent(typeof(InteractableSound))]
-public abstract class Usable: MonoBehaviour
+public abstract class Interactable: MonoBehaviour
 {
     [SerializeField] protected InteractableSound m_interactableSound;
     public InteractableSound interactableSound => m_interactableSound;
 
-    private UsableType m_type;
+    private InteractableType m_type;
 
-    public UsableType type => m_type;
+    public InteractableType type => m_type;
 
     private void Awake()
     {
         m_interactableSound = GetComponent<InteractableSound>();
     }
 
-    public void Initialize(UsableType type)
+    public void Initialize(InteractableType type)
     {
         m_type = type;
     }

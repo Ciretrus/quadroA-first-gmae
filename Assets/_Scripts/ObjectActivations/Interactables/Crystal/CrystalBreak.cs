@@ -1,7 +1,7 @@
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
-public class CrystalBreak : Usable
+public class CrystalBreak : Interactable
 {
     [SerializeField] private GameObject m_particle;
     public override void Use()

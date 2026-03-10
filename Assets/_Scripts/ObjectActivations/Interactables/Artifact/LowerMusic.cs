@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class LowerMusic : MonoBehaviour
 {
-    [SerializeField] private TakeHeart m_heart;
+    [SerializeField] private Artifact m_artifact;
     
     private void OffMusic()
     {

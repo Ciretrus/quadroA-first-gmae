@@ -3,7 +3,7 @@ using DG.Tweening;
 
 namespace Puzzles.PortalArch
 {
-    public class ButtonsClick : Usable
+    public class ButtonsClick : Interactable
     {
         [SerializeField] private ButtonData m_buttonData;
         [SerializeField] private BasePuzzle m_prerequisitePuzzle;
@@ -19,7 +19,7 @@ namespace Puzzles.PortalArch
 
         private void Awake()
         {
-            Initialize(UsableType.NonBlocking);
+            Initialize(InteractableType.NonBlocking);
 
             m_audio = GetComponents<AudioSource>()[1];
 

@@ -112,8 +112,7 @@ MonoBehaviour:
   m_RequiresDepthTextureOption: 2
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0
-  m_Cameras:
-  - {fileID: 0}
+  m_Cameras: []
   m_RendererIndex: -1
   m_VolumeLayerMask:
     serializedVersion: 2
@@ -157,6 +156,10 @@ MonoBehaviour:
   m_sensivity: 400
   m_player: {fileID: 0}
   m_cameraPos: {fileID: 0}
+  m_duration: 4
+  m_strength: 0.1
+  m_frequency: 50
+  m_randomness: 90
 --- !u!114 &5402925289644253763
 MonoBehaviour:
   m_ObjectHideFlags: 0
