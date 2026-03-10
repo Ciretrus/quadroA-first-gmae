@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6156392507197839818}
   - component: {fileID: 3442811351844967778}
-  - component: {fileID: 1021280556315480136}
+  - component: {fileID: 8722767356022171511}
   - component: {fileID: 8450862813775159499}
   - component: {fileID: 5699549673646063579}
   m_Layer: 0
@@ -57,7 +57,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.1259203, y: 2.3316526, z: 2.1037667}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1021280556315480136
+--- !u!114 &8722767356022171511
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -66,11 +66,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 517989905677090111}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 991b70b10c19e6c4a95e8ad5969e365d, type: 3}
+  m_Script: {fileID: 11500000, guid: efc6db47be00ef746a9a735f12e7ddd3, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::RuneDraw
+  m_EditorClassIdentifier: Assembly-CSharp::DrawCanvas
   m_interactableSound: {fileID: 5699549673646063579}
-  m_puzzle: {fileID: 6573022680884408782, guid: 57f4c7465f73fee41bb742fd9912a0e5, type: 3}
+  m_puzzle: {fileID: 0}
   m_drawableLine: {fileID: 182556835636011485}
   m_rune: {fileID: 5538451949640497601}
 --- !u!82 &8450862813775159499
@@ -185,6 +185,7 @@ MonoBehaviour:
   m_sounds: []
   m_source: {fileID: 8450862813775159499}
   m_pitch: 1
+  m_delayBetweenSounds: 0
 --- !u!1 &2769501431286433636
 GameObject:
   m_ObjectHideFlags: 0
@@ -342,7 +343,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_lineRenderer: {fileID: 3710389227536898811}
-  m_rune: {fileID: 11400000, guid: 7a34268d472a11d418ed08b66d40b16a, type: 2}
+  m_data: {fileID: 0}
   m_maxLength: 0.35
   m_minDistance: 0.01
 --- !u!1 &6962107477926325554

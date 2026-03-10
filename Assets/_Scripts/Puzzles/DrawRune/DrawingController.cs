@@ -1,17 +1,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DrawingRuneController : MonoBehaviour
+public class DrawingController : MonoBehaviour
 {
     [SerializeField] private ParticleSystem m_flashParticleSystem;
     [SerializeField] private DrawableLine[] m_drawableLines;
-    [SerializeField] private RuneData[] m_runesData;
-    [SerializeField] private RuneDraw[] m_runes;
+    [SerializeField] private DrawingData[] m_dataArray;
+    [SerializeField] private DrawCanvas[] m_canvases;
 
-    private RuneData m_currentRune;
+    private DrawingData m_currentRune;
 
-    public RuneData currentRune { set { m_currentRune = value; } }
-    public RuneDraw[] runes => m_runes;
+    public DrawingData currentRune { set { m_currentRune = value; } }
+    public DrawCanvas[] canvases => m_canvases;
 
     private void OnEnable()
     {
@@ -37,11 +37,11 @@ public class DrawingRuneController : MonoBehaviour
 
         string name = GetDrawnRuneName(normalizedPoints);
 
-        foreach (var rune in m_runesData)
+        foreach (var data in m_dataArray)
         {
-            if (rune.runeName == name && rune == m_currentRune)
+            if (data.runeName == name && data == m_currentRune)
             {
-                rune.solved = true;
+                data.solved = true;
                 return;
             }
         }
@@ -55,13 +55,13 @@ public class DrawingRuneController : MonoBehaviour
         string result = "";
         float previousDistance = 3f;
 
-        for (int i = 0; i < m_runesData.Length; i++)
+        for (int i = 0; i < m_dataArray.Length; i++)
         {
-            float current = UnistrokeRecognizer.GetDistanceBetweenDraws(m_runesData[i].original, points);
+            float current = UnistrokeRecognizer.GetDistanceBetweenDraws(m_dataArray[i].original, points);
 
             if (current < previousDistance)
             {
-                result = m_runesData[i].runeName;
+                result = m_dataArray[i].runeName;
                 previousDistance = current;
             }
         }
