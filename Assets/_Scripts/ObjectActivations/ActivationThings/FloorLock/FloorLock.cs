@@ -1,0 +1,39 @@
+using UnityEngine;
+using DG.Tweening;
+
+[RequireComponent(typeof(Rigidbody))]
+public class FloorLock : Usable
+{
+    [SerializeField] private Rigidbody m_lock;
+    [SerializeField] private TeleportTrigger m_teleportTrigger;
+    [SerializeField] private Vector3 m_angleRotation = new Vector3(0, 0, 45);
+    [SerializeField] private Transform m_rotateObject;
+    [SerializeField] private float m_openTimer = 0.3f;
+    [SerializeField] private Vector3 m_force = new Vector3(0, 1f, 0);
+
+    private bool m_hasKey => ServiceLocator.Resolve<Inventory>().ContainsItem(GlobalConstants.Collectables.LockKey);
+    private bool m_isUnlocked;
+    private Tweener m_tween;
+
+    private void Awake()
+    {
+        m_lock.isKinematic = true;
+    }
+
+    public override void Use()
+    {
+        if (m_isUnlocked || !m_hasKey)
+        {
+            return;
+        }
+
+        m_tween?.Kill();
+        m_isUnlocked = true;
+        m_lock.isKinematic = false;
+        m_lock.AddForce(m_force,ForceMode.Impulse);
+        m_tween = m_rotateObject.DOLocalRotate(m_angleRotation, m_openTimer);
+        ServiceLocator.Resolve<Inventory>().RemoveItem(GlobalConstants.Collectables.LockKey);
+
+        m_teleportTrigger.conditionMet = true;
+    }
+}
