@@ -4,46 +4,49 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(PlayerController))]
 public class ItemsActivations : MonoBehaviour
 {
-    [Header("Dependencies")]
-    [SerializeField] private UIController m_uiController;
-    [SerializeField] private PlateController m_plateController;
-    [SerializeField] private DrawingRuneController m_drawingRuneController;
     [Header("Raycast settings")]
     [SerializeField] private float m_rayDistance = 1f;
     [Header("Rune-drawing settings")]
     [SerializeField] private float m_runeOffset = 1.5f;
 
-    private Camera m_camera;
     private PlayerController m_playerController;
+    private Camera m_camera;
     private CameraMovement m_cameraMovement;
+    private UIController m_uiController;
+    private DrawingController m_drawingRuneController;
+    private PlateController m_plateController;
+    private DrawCanvas m_runeDraw;
     private DiaryInteractable m_diaryInteractable;
-    private RuneDraw m_runeDraw;
-    private Usable m_usable;
+    private Interactable m_interactable;
     private Vector3 m_cameraPos = new Vector3(0f, 1.5f, 0f);
     private Vector3 m_screenCenter;
     private bool m_isUIBlocked;
 
+    private void OnEnable()
+    {
+        m_drawingRuneController = ServiceLocator.Resolve<DrawingController>();
+
+        foreach (DrawCanvas canvas in m_drawingRuneController.canvases)
+        {
+            canvas.DisableDrawing += ChangeDrawingMode;
+        }
+    }
+
     private void Start()
     {
-        m_playerController = ServiceLocator.Resolve<PlayerController>(); 
+        m_playerController = ServiceLocator.Resolve<PlayerController>();
         m_camera = ServiceLocator.Resolve<Camera>();
+        m_uiController = ServiceLocator.Resolve<UIController>();
+        m_plateController = ServiceLocator.Resolve<PlateController>();
 
         m_cameraMovement = m_camera.GetComponent<CameraMovement>();
     }
 
-    private void OnEnable()
-    {
-        foreach (RuneDraw rune in m_drawingRuneController.runes)
-        {
-            rune.DisableDrawing += ChangeDrawingMode;
-        }
-    }
-
     private void OnDisable()
     {
-        foreach (RuneDraw rune in m_drawingRuneController.runes)
+        foreach (DrawCanvas canvas in m_drawingRuneController.canvases)
         {
-            rune.DisableDrawing -= ChangeDrawingMode;
+            canvas.DisableDrawing -= ChangeDrawingMode;
         }
     }
 
@@ -57,28 +60,32 @@ public class ItemsActivations : MonoBehaviour
 
         if (hit.collider != null)
         {
-            if (hit.collider.TryGetComponent(out m_usable) && m_usable.enabled)
+            if (hit.collider.TryGetComponent(out m_interactable) && m_interactable.enabled)
             {
                 m_uiController.ShowObjectActivationText(true);
 
                 // TODO Rework
                 if (m_playerController.input.UI.Interact.WasPerformedThisFrame())
                 {
-                    switch (m_usable.type)
+                    switch (m_interactable.type)
                     {
-                        case UsableType.NonBlocking: Debug.Log("Interacted with Non-Blocking UI thing"); break;
-                        case UsableType.Blocking:
+                        case InteractableType.NonBlocking: break;
+                        case InteractableType.Blocking:
                             {
-                                if (m_usable.TryGetComponent(out m_runeDraw))
+                                if (m_interactable.TryGetComponent(out m_runeDraw))
                                 {
-                                    ChangeDrawingMode(m_usable);
+                                    ChangeDrawingMode(m_interactable);
+                                }
+                                else if (m_interactable.GetComponent<Note>())
+                                {
+                                    ChangeUIMode();
                                 }
                                 break;
                             }
                     }
-                    m_usable.Use();
+                    m_interactable.Use();
 
-                    PlayInteractionSound(m_usable);
+                    PlayInteractionSound(m_interactable);
                 }
             }
             else if (hit.collider.TryGetComponent(out m_diaryInteractable))
@@ -105,11 +112,17 @@ public class ItemsActivations : MonoBehaviour
 
         if (other.TryGetComponent(out Pushable pushable) && !m_plateController.isSolved)
         {
+            pushable.PlaySound();
             m_plateController.AddToSequence(pushable);
-        }
+        }        
     }
 
     public void ChangeUIMode(InputAction.CallbackContext context)
+    {
+        ChangeUIMode();
+    }
+
+    public void ChangeUIMode()
     {
         ChangeMovementState();
         ChangeCursorState();
@@ -153,7 +166,7 @@ public class ItemsActivations : MonoBehaviour
         }
     }
 
-    private void ChangeDrawingMode(Usable usable)
+    private void ChangeDrawingMode(Interactable interactable)
     {
         ChangeMovementState();
         ChangeCursorState();
@@ -166,32 +179,32 @@ public class ItemsActivations : MonoBehaviour
         }
         else
         {
-            Quaternion usableRot = usable.gameObject.transform.rotation;
-            transform.rotation = Quaternion.Euler(0f, usableRot.eulerAngles.y + 180f, 0f);
+            Quaternion interactableRot = interactable.gameObject.transform.rotation;
+            transform.rotation = Quaternion.Euler(0f, interactableRot.eulerAngles.y + 180f, 0f);
             m_camera.transform.rotation = transform.rotation;
 
-            Vector3 usablePos = usable.transform.position;
+            Vector3 usablePos = interactable.transform.position;
             Vector3 newPos = new Vector3(usablePos.x, transform.position.y, usablePos.z);
             transform.position = newPos - (transform.forward * m_runeOffset);
             m_playerController.cameraPos.transform.position = new Vector3(transform.position.x, usablePos.y, transform.position.z);
             // TODO Remove (CameraMovement being disabled in ChangeMovementState())
             m_camera.transform.position = m_playerController.cameraPos.transform.position;
 
-            m_drawingRuneController.currentRune = m_runeDraw.drawableLine.rune;
+            m_drawingRuneController.currentRune = m_runeDraw.drawableLine.data;
         }
 
         m_isUIBlocked = !m_isUIBlocked;
     }
 
-    private void PlayInteractionSound(Usable usable)
+    private void PlayInteractionSound(Interactable interactable)
     {
-        Debug.LogWarning(usable.interactableSound);
+        Debug.LogWarning(interactable.interactableSound);
 
-        if (usable.interactableSound == null)
+        if (interactable.interactableSound == null)
         {
             return;
         }
                 
-        usable.interactableSound.PlayPitchedSound();
+        interactable.interactableSound.PlaySound();
     }
 }

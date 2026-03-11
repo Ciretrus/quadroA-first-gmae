@@ -1,9 +1,9 @@
-using System.Collections;
 using UnityEngine;
+using DG.Tweening;
 
 namespace Puzzles.PortalArch
 {
-    public class ButtonsClick : Usable
+    public class ButtonsClick : Interactable
     {
         [SerializeField] private ButtonData m_buttonData;
         [SerializeField] private BasePuzzle m_prerequisitePuzzle;
@@ -14,12 +14,16 @@ namespace Puzzles.PortalArch
         private bool m_clicked = false;
         private Vector3 m_startPosition;
         private Vector3 m_newPosition;
+        private Sequence m_tween;
+        private AudioSource m_audio;
 
         private void Awake()
         {
-            Initialize(UsableType.NonBlocking);
+            Initialize(InteractableType.NonBlocking);
 
-            m_startPosition = transform.position;
+            m_audio = GetComponents<AudioSource>()[1];
+
+            m_startPosition = transform.localPosition;
             m_newPosition = m_startPosition - m_buttonData.clickedShiftPosition;
         }
 
@@ -31,20 +35,30 @@ namespace Puzzles.PortalArch
         private void OnDisable()
         {
             m_prerequisitePuzzle.Solved -= EnableButtons;
+            transform.DOKill();
         }
 
         public override void Use()
         {
+            Debug.Log(m_canClick);
+            if (!m_canClick)
+            {
+                return;
+            }
+
             if (!m_clicked && m_canClick)
             {
-                StartCoroutine(Click());
-
+                if (m_tween == null)
+                {
+                    ClickAnimation();
+                }
                 for (int i = 0; i < m_activatedRunes.Length; i++)
                 {
                     m_activatedRunes[i].ChangeState();
                 }
 
                 m_puzzle.CheckCondition();
+                m_audio.Play();
             }
         }
 
@@ -53,27 +67,14 @@ namespace Puzzles.PortalArch
             m_canClick = true;
         }
 
-        private IEnumerator Click()
+        private void ClickAnimation()
         {
             m_clicked = true;
-            Coroutine coroutine = StartCoroutine(ChangePosition(m_newPosition));
-            yield return coroutine;
-            coroutine = StartCoroutine(ChangePosition(m_startPosition));
-            yield return coroutine;
-            m_clicked = false;
-        }
 
-        private IEnumerator ChangePosition(Vector3 newPosition)
-        {
-            float t = 0;
-            Vector3 startPosition = transform.position;
-
-            while (t < 1)
-            {
-                t += Time.deltaTime / m_buttonData.timeClick;
-                yield return new WaitForSeconds(Time.deltaTime);
-                transform.position = Vector3.Lerp(startPosition, newPosition, t);
-            }
+            Sequence m_tween = DOTween.Sequence();
+            m_tween.Append(transform.DOLocalMove(m_newPosition, m_buttonData.timeClick).SetEase(Ease.OutQuad));
+            m_tween.Append(transform.DOLocalMove(m_startPosition, m_buttonData.timeClick).SetEase(Ease.OutBack));
+            m_tween.OnComplete(() => m_clicked = false);
         }
     }
 }

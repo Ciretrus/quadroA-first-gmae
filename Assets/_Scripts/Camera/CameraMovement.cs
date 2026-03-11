@@ -1,4 +1,5 @@
 using UnityEngine;
+using DG.Tweening;
 
 public class CameraMovement : MonoBehaviour
 {
@@ -6,9 +7,27 @@ public class CameraMovement : MonoBehaviour
     [SerializeField][Range(400, 1600)] private int m_sensivity;
     [SerializeField] private Transform m_player;
     [SerializeField] private Transform m_cameraPos;
+    
+    [Header ("CameraShake")]
+    [SerializeField] private float m_duration = 0.5f;
+    [SerializeField] private float m_strength = 1f;
+    [SerializeField] private int m_frequency = 10;
+    [SerializeField] private float m_randomness = 90;
 
+    private Tween m_shakeTween;
     private float m_rotationX = 0f;
     private Vector3 m_velocity;
+    private Transform m_shakerPos;
+    private Vector3 m_shakerStartPos;
+
+    private void Awake()
+    {
+        var shaker = new GameObject();
+        m_shakerPos = shaker.transform;
+        m_shakerPos.position = m_cameraPos.position;
+        m_shakerStartPos = m_shakerPos.position;
+        transform.position = m_cameraPos.position;
+    }
 
     private void Start()
     {
@@ -31,7 +50,13 @@ public class CameraMovement : MonoBehaviour
 
         m_player.Rotate(Vector3.up * mouseX);
         transform.rotation = Quaternion.Euler(m_rotationX, m_player.eulerAngles.y, 0f);
-
+        var shakerShift = m_shakerStartPos - m_shakerPos.position;
         transform.position = Vector3.SmoothDamp(transform.position, m_cameraPos.position, ref m_velocity, m_smoothTime);
+        transform.position += shakerShift;
+    }
+    public void CameraShake()
+    {
+        transform.DOKill(true);
+        m_shakeTween = m_shakerPos.DOShakePosition(m_duration, m_strength, m_frequency, m_randomness, false, true);
     }
 }

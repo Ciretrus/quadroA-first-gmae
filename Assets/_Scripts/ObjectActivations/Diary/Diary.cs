@@ -5,14 +5,15 @@ using UnityEngine.UI;
 
 public class Diary : MonoBehaviour
 {
-    [SerializeField] private GameObject m_diaryUI;
     [SerializeField] private GameObject m_spreadPrefab;
     [SerializeField] private Button m_buttonBack;
     [SerializeField] private Button m_buttonForward;
+    [SerializeField] private Sprite m_clearPage;
+    [Min(1)] private int m_currentSpread = 1;
+
     private Dictionary<string, Sprite> m_pages = new Dictionary<string, Sprite>();
     private List<GameObject> m_spreads;
     private GameObject m_lastSpread;
-    [Min(1)] private int m_currentSpread = 1;
     private int m_pageAmount;
     private bool m_isFull;
 
@@ -21,7 +22,7 @@ public class Diary : MonoBehaviour
         m_spreads = new List<GameObject>();
         AddSpread();
 
-        m_diaryUI.SetActive(false);
+        gameObject.SetActive(false);
     }
 
     private void OnEnable()
@@ -56,7 +57,7 @@ public class Diary : MonoBehaviour
 
     public void ChangeState(InputAction.CallbackContext context)
     {
-        m_diaryUI.SetActive(!m_diaryUI.activeSelf);
+        gameObject.SetActive(!gameObject.activeSelf);
     }
 
     private void AddSprite(Sprite sprite)
@@ -64,7 +65,7 @@ public class Diary : MonoBehaviour
         Image[] images = m_lastSpread.GetComponentsInChildren<Image>();
         foreach (Image image in images)
         {
-            if (image.sprite != null)
+            if (image.sprite != m_clearPage)
             {
                 m_isFull = true;
                 continue;
@@ -101,7 +102,7 @@ public class Diary : MonoBehaviour
 
     private void AddSpread()
     {
-        m_lastSpread = Instantiate(m_spreadPrefab, m_diaryUI.transform);
+        m_lastSpread = Instantiate(m_spreadPrefab, transform);
         m_spreads.Add(m_lastSpread);
     }
 }

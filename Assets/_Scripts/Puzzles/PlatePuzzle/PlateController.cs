@@ -3,8 +3,7 @@ using System.Collections;
 using UnityEngine;
 
 public class PlateController : BasePuzzle
-{
-    [SerializeField] private AudioSource m_audioSource;
+{    
     [SerializeField] private Material m_inactiveMaterial;
     [SerializeField] private Material m_activeMaterial;
     [SerializeField] private Pushable[] m_plates;
@@ -30,9 +29,7 @@ public class PlateController : BasePuzzle
     }
 
     public void AddToSequence(Pushable plate)
-    {
-        m_audioSource.PlayOneShot(plate.audioClip);
-
+    {        
         int correctIndex = m_correctSequence[m_currentStep] - 1;
         if (plate == m_plates[correctIndex])
         {
@@ -42,7 +39,7 @@ public class PlateController : BasePuzzle
             {
                 m_composition[i] = m_composition[i + 1];
             }
-            m_composition[m_composition.Length - 1] = plate.audioClip;
+            //m_composition[m_composition.Length - 1] = plate.audioClip;
         }
         else
         {
@@ -67,7 +64,7 @@ public class PlateController : BasePuzzle
         yield return new WaitForSeconds(m_delay + 1);
         foreach (AudioClip audio in m_composition)
         {
-            m_audioSource.PlayOneShot(audio);
+            //m_audioSource.PlayOneShot(audio);
             yield return new WaitForSeconds(m_delay);
         }
         ChangeMaterials(m_activeMaterial);
