@@ -9,6 +9,7 @@ public class ThiefEye : MonoBehaviour
     [SerializeField] private Material m_material;
     [SerializeField] private float m_activationTime = 0.3f;
     [SerializeField] private float m_durationTime =3f;
+    [SerializeField] private AudioSource m_audio;
     
     private Camera m_camera;
     private Volume[] m_volumes;
@@ -39,6 +40,7 @@ public class ThiefEye : MonoBehaviour
         if (!m_hasStarted)
         {
             StartCoroutine(CastThiefEyeSkill(m_durationTime));
+            m_audio.Play();
         }
     }
 
