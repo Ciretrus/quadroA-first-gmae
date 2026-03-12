@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 6403637563703177918}
   - component: {fileID: 2822284773397415788}
   - component: {fileID: 8610728119305099785}
-  - component: {fileID: 2978698719868659541}
   - component: {fileID: 4486114339979395434}
   - component: {fileID: 4047467958731745717}
   - component: {fileID: 3790688700302448280}
@@ -117,24 +116,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
---- !u!114 &2978698719868659541
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 859481017165230961}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Outline
-  outlineMode: 0
-  outlineColor: {r: 0.23921569, g: 0.5882353, b: 0.7529412, a: 1}
-  outlineWidth: 0
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
 --- !u!114 &4486114339979395434
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,8 +128,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1c3fc2de0058424ea30437f20b8a5ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObjectTake
-  m_interactableSound: {fileID: 0}
+  m_interactableSound: {fileID: 3790688700302448280}
   m_objectName: name
+  m_image: {fileID: 0}
 --- !u!82 &4047467958731745717
 AudioSource:
   m_ObjectHideFlags: 0
@@ -259,4 +241,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractableSound
   m_sounds: []
-  m_source: {fileID: 0}
+  m_source: {fileID: 4047467958731745717}
+  m_pitch: 1
+  m_delayBetweenSounds: 0
