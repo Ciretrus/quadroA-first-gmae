@@ -64,7 +64,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 2.75691, y: 0, z: 33.87}
-  m_LocalScale: {x: 1.1591, y: 1.1591, z: 1.1591}
+  m_LocalScale: {x: 1, y: 1.1591, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8986281972398498060}
@@ -104,7 +104,7 @@ Rigidbody:
   serializedVersion: 5
   m_Mass: 1
   m_LinearDamping: 0
-  m_AngularDamping: 0.05
+  m_AngularDamping: 0
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -162,9 +162,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c85f8aedc10102841b8a863c8c854c13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemsActivations
-  m_uiController: {fileID: 0}
-  m_plateController: {fileID: 0}
-  m_drawingRuneController: {fileID: 0}
   m_rayDistance: 1.5
   m_runeOffset: 1.5
 --- !u!114 &7036142899256244154
@@ -296,10 +293,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerStepSounds
   m_audioSource: {fileID: 1998252404663274538}
   m_sounds:
-  - {fileID: 8300000, guid: 4d02996dc135d2546ac974503ba60433, type: 3}
-  - {fileID: 8300000, guid: 0e71bb1cb5dc260479f220ea21b488f4, type: 3}
+  - {fileID: 8300000, guid: 9835a0939aa31c04cb4c64b29abf35f4, type: 3}
+  - {fileID: 8300000, guid: c8a5f209adcd92143acef45b57ee9b50, type: 3}
+  - {fileID: 8300000, guid: 1d8e5bdd5914dc74fbce908f0b65348f, type: 3}
+  - {fileID: 8300000, guid: da69e7ca65229144dbb0e306afbde5f3, type: 3}
+  - {fileID: 8300000, guid: e792da8ddb31a984e89d44b2bd4ad0a6, type: 3}
+  - {fileID: 8300000, guid: e1033a5cf137bcb46b46dfdd6a37279e, type: 3}
+  - {fileID: 8300000, guid: 200bee750c3fa884aa71e2eedc188bd6, type: 3}
+  - {fileID: 8300000, guid: 760d7e7c56a74bc40a643af86f708945, type: 3}
+  - {fileID: 8300000, guid: 99edebf54f968804db953ed88dcb7591, type: 3}
+  - {fileID: 8300000, guid: 7601d9cda81b094468be983527415da5, type: 3}
+  - {fileID: 8300000, guid: 91e1f1d4d7982ce4e82363d0f90998fa, type: 3}
+  - {fileID: 8300000, guid: 9d3402aae95213548ad437aceaef031e, type: 3}
   m_delay: 0.45
   m_sprintDelay: 0.3
+  m_sneakDelay: 0.7
+  rayDistance: 1.5
 --- !u!1 &6335994445593482671
 GameObject:
   m_ObjectHideFlags: 0
