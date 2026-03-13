@@ -48,7 +48,7 @@ public class PlayerStepSounds : MonoBehaviour
                 SoundableFloor floor;
                 if (hit.transform.TryGetComponent<SoundableFloor>(out floor))
                 {
-                    int randomIndex = Random.Range(0, m_sounds.Count);
+                    int randomIndex = Random.Range(0, floor.floorAudioClips.Count);
                     AudioClip sound = floor.floorAudioClips[randomIndex];
                     //AudioClip sound = m_sounds[randomIndex];
                     PlaySound(sound);
