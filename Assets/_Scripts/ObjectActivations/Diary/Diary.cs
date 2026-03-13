@@ -57,6 +57,15 @@ public class Diary : MonoBehaviour
 
     public void ChangeState(InputAction.CallbackContext context)
     {
+        if (gameObject.activeSelf)
+        {
+            Time.timeScale = 1f;
+        }
+        else
+        {
+            Time.timeScale = 0f;
+        }
+
         gameObject.SetActive(!gameObject.activeSelf);
     }
 

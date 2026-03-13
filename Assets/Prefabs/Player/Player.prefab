@@ -147,7 +147,7 @@ MonoBehaviour:
   m_groundMask:
     serializedVersion: 2
     m_Bits: 8
-  m_checkGroundRadius: 0.3
+  m_checkGroundRadius: 0.35
   m_maxSlopeAngle: 50
   m_minSlopeAngle: 3
 --- !u!114 &144492997145426293
@@ -162,7 +162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c85f8aedc10102841b8a863c8c854c13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemsActivations
-  m_rayDistance: 1.5
+  m_rayDistance: 2
   m_runeOffset: 1.5
 --- !u!114 &7036142899256244154
 MonoBehaviour:
@@ -182,6 +182,7 @@ MonoBehaviour:
   m_material: {fileID: 2100000, guid: 3ac62f416dc835343bb771453a4ea69a, type: 2}
   m_activationTime: 0.3
   m_durationTime: 3
+  m_audio: {fileID: 0}
 --- !u!82 &1998252404663274538
 AudioSource:
   m_ObjectHideFlags: 0

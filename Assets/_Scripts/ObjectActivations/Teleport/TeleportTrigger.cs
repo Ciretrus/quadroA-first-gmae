@@ -8,6 +8,8 @@ public class TeleportTrigger : Interactable
     [SerializeField] private Transform m_teleportPoint;
     [SerializeField] private bool m_requiresCondition = false;
 
+    private bool m_isTeleporting = false;
+
     public bool conditionMet { set { m_requiresCondition = !value; } }
 
     private void Awake()
@@ -17,8 +19,9 @@ public class TeleportTrigger : Interactable
 
     public override void Use()
     {
-        if (!m_requiresCondition)
+        if (!m_requiresCondition && !m_isTeleporting)
         {
+            m_isTeleporting = true;
             Trigger.Invoke(Teleport);
         }
     }
@@ -27,5 +30,6 @@ public class TeleportTrigger : Interactable
     {
         Transform transform = m_teleportPoint.transform;
         ServiceLocator.Resolve<PlayerController>().SetPosition(transform);
+        m_isTeleporting = false;
     }
 }
