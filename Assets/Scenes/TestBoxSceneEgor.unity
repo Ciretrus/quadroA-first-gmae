@@ -9824,7 +9824,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5341963853176063233, guid: da3a2cf3636b0f64cb71fdbe46dfa906, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1356522342}
   m_SourcePrefab: {fileID: 100100000, guid: da3a2cf3636b0f64cb71fdbe46dfa906, type: 3}
 --- !u!1001 &239450515
 PrefabInstance:
@@ -60489,6 +60492,26 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1356140718}
   m_Mesh: {fileID: -8367231247473855917, guid: 81726d04fdeb55b4ca68afa9031d4716, type: 3}
+--- !u!1 &1356522340 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5341963853176063233, guid: da3a2cf3636b0f64cb71fdbe46dfa906, type: 3}
+  m_PrefabInstance: {fileID: 235608043}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1356522342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1356522340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a569fddfa8a57e4686737d84e0fac33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SoundableFloor
+  m_floorAudioClips:
+  - {fileID: 8300000, guid: 4d02996dc135d2546ac974503ba60433, type: 3}
+  - {fileID: 8300000, guid: 0e71bb1cb5dc260479f220ea21b488f4, type: 3}
 --- !u!1 &1358370486
 GameObject:
   m_ObjectHideFlags: 0
