@@ -58,13 +58,13 @@ public class ThiefEye : MonoBehaviour
     {
         m_hasStarted = true;
         float materialValue = 0f;
+
         for (float i = 0; i < 1; i += Time.deltaTime / m_activationTime)
         {
             if (turnOn)
             {
                 materialValue = Mathf.InverseLerp(0, 1f, i);
                 materialValue = Mathf.Lerp(m_minMaterialValue, m_maxMaterialValue, materialValue);
-                print(materialValue);
                 m_material.SetFloat("_value", materialValue);
                 m_standardVolume.weight = 1f - i;
                 m_thiefEyeVolume.weight = i;

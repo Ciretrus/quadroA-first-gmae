@@ -30,6 +30,7 @@ public class DrawableLine : BasePuzzle
     private void Awake()
     {
         m_dotsList = new List<Vector3>();
+        m_data.solved = false;
     }
 
     private void Start()
