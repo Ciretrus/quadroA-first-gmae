@@ -14,10 +14,10 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 10
-  m_Fog: 0
-  m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  m_Fog: 1
+  m_FogColor: {r: 0.09643998, g: 0.12552601, b: 0.16226411, a: 1}
   m_FogMode: 3
-  m_FogDensity: 0.01
+  m_FogDensity: 0.031
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.3584906, g: 0.3584906, b: 0.3584906, a: 1}
@@ -9571,7 +9571,7 @@ PrefabInstance:
     - target: {fileID: 2232453502064735928, guid: da3a2cf3636b0f64cb71fdbe46dfa906, type: 3}
       propertyPath: 'm_Materials.Array.data[1]'
       value: 
-      objectReference: {fileID: 2100000, guid: 679c57b196ec9d14089465f2f519a7c3, type: 2}
+      objectReference: {fileID: 2100000, guid: a5801331120a22545bc77a8197240284, type: 2}
     - target: {fileID: 2687029209208788389, guid: da3a2cf3636b0f64cb71fdbe46dfa906, type: 3}
       propertyPath: 'm_Materials.Array.data[1]'
       value: 
@@ -9611,7 +9611,7 @@ PrefabInstance:
     - target: {fileID: 5728742896765792123, guid: da3a2cf3636b0f64cb71fdbe46dfa906, type: 3}
       propertyPath: 'm_Materials.Array.data[1]'
       value: 
-      objectReference: {fileID: 2100000, guid: a5801331120a22545bc77a8197240284, type: 2}
+      objectReference: {fileID: 2100000, guid: 37c43a8746c6e0b45bb03315ce54de86, type: 2}
     - target: {fileID: 5752615423818510480, guid: da3a2cf3636b0f64cb71fdbe46dfa906, type: 3}
       propertyPath: 'm_Materials.Array.data[2]'
       value: 
@@ -9627,7 +9627,7 @@ PrefabInstance:
     - target: {fileID: 6531075829183986789, guid: da3a2cf3636b0f64cb71fdbe46dfa906, type: 3}
       propertyPath: 'm_Materials.Array.data[1]'
       value: 
-      objectReference: {fileID: 2100000, guid: 679c57b196ec9d14089465f2f519a7c3, type: 2}
+      objectReference: {fileID: 2100000, guid: a5801331120a22545bc77a8197240284, type: 2}
     - target: {fileID: 7187180441253086466, guid: da3a2cf3636b0f64cb71fdbe46dfa906, type: 3}
       propertyPath: m_Name
       value: '[FOREST]'
@@ -9678,15 +9678,15 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: d34f09a3a9feaf04ba9dd33b60a2eda3, type: 2}
     - target: {fileID: 9029771441775038241, guid: da3a2cf3636b0f64cb71fdbe46dfa906, type: 3}
       propertyPath: m_Color.b
-      value: 1
+      value: 0.7411765
       objectReference: {fileID: 0}
     - target: {fileID: 9029771441775038241, guid: da3a2cf3636b0f64cb71fdbe46dfa906, type: 3}
       propertyPath: m_Color.g
-      value: 0.9588756
+      value: 0.89320934
       objectReference: {fileID: 0}
     - target: {fileID: 9029771441775038241, guid: da3a2cf3636b0f64cb71fdbe46dfa906, type: 3}
       propertyPath: m_Color.r
-      value: 0.740566
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -88750,7 +88750,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UIController
   m_tutorialText: {fileID: 1658685960}
   m_tutorialTimeFade: 1.5
-  m_tutorialShowTime: 1
+  m_tutorialShowTime: 0.5
   m_inventoryItems:
   - {fileID: 1931169928}
   - {fileID: 438712528}
