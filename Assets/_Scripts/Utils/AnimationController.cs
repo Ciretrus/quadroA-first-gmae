@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System;
 
+// TODO Remove it completely/rework
 public static class AnimationController
 {
     public static IEnumerator AnimateWithPause(

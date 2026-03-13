@@ -16,7 +16,6 @@ public class ItemsActivations : MonoBehaviour
     private DrawingController m_drawingRuneController;
     private PlateController m_plateController;
     private DrawCanvas m_runeDraw;
-    private DiaryInteractable m_diaryInteractable;
     private Interactable m_interactable;
     private Vector3 m_cameraPos = new Vector3(0f, 1.5f, 0f);
     private Vector3 m_screenCenter;
@@ -62,7 +61,7 @@ public class ItemsActivations : MonoBehaviour
         {
             if (hit.collider.TryGetComponent(out m_interactable) && m_interactable.enabled)
             {
-                m_uiController.ShowObjectActivationText(true);
+                m_uiController.ShowObjectActivationCursor(true);
 
                 // TODO Rework
                 if (m_playerController.input.UI.Interact.WasPerformedThisFrame())
@@ -88,33 +87,38 @@ public class ItemsActivations : MonoBehaviour
                     PlayInteractionSound(m_interactable);
                 }
             }
-            else if (hit.collider.TryGetComponent(out m_diaryInteractable))
+            else if (hit.collider.TryGetComponent(out DiaryInteractable diaryInteractable))
             {
-                DiaryNotif(m_diaryInteractable);
+                DiaryNotif(diaryInteractable);
             }
             else
             {
-                m_uiController.ShowObjectActivationText(false);
+                m_uiController.ShowObjectActivationCursor(false);
             }
         }
         else
         {
-            m_uiController.ShowObjectActivationText(false);
+            m_uiController.ShowObjectActivationCursor(false);
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent(out m_diaryInteractable))
+        if (other.TryGetComponent(out DiaryInteractable diaryInteractable))
         {
-            DiaryNotif(m_diaryInteractable);
+            DiaryNotif(diaryInteractable);
         }
 
         if (other.TryGetComponent(out Pushable pushable) && !m_plateController.isSolved)
         {
             pushable.PlaySound();
             m_plateController.AddToSequence(pushable);
-        }        
+        }
+
+        if (other.TryGetComponent(out PregameTutorialTrigger tutorial))
+        {
+            m_uiController.ShowTutorial(tutorial.hintText);
+        }
     }
 
     public void ChangeUIMode(InputAction.CallbackContext context)
