@@ -9,6 +9,7 @@ namespace Infrastructure
         [SerializeField] private PlayerController m_playerController;
         [SerializeField] private ItemsActivations m_itemsActivations;
         [SerializeField] private Camera m_camera;
+        [SerializeField] private PauseMenuView m_pauseMenuView;
         [SerializeField] private UIController m_uiController;
         [SerializeField] private Inventory m_inventory;
         [SerializeField] private ThiefEye m_thiefEye;
@@ -24,6 +25,7 @@ namespace Infrastructure
             ServiceLocator.Register(m_playerController);
             ServiceLocator.Register(m_itemsActivations);
             ServiceLocator.Register(m_camera);
+            ServiceLocator.Register(m_pauseMenuView);
             ServiceLocator.Register(m_uiController);
             ServiceLocator.Register(m_inventory);
             ServiceLocator.Register(m_thiefEye);

@@ -2,15 +2,17 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class MainMenuController : MonoBehaviour
+public class MainMenuView : MonoBehaviour
 {
+    [Header("Main menu elements")]
+    [SerializeField] private GameObject m_mainMenu;
+    [SerializeField] private GameObject m_settings;
+    [Header("Main menu buttons")]
     [SerializeField] private Button m_resumeButton;
     [SerializeField] private Button m_newGameButton;
     [SerializeField] private Button m_settingsButton;
     [SerializeField] private Button m_backToMenuButton;
     [SerializeField] private Button m_exitButton;
-    [SerializeField] private GameObject m_mainMenu;
-    [SerializeField] private GameObject m_settings;
 
     private void OnEnable()
     {
