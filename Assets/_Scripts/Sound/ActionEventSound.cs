@@ -8,7 +8,11 @@ public class ActionEventSound : InteractableSound
     private ISoundEvent m_soundEvent;
 
     private void OnValidate()
-    {        
+    {
+        if (m_source == null)
+        {
+            TryGetComponent<AudioSource>(out m_source);
+        }
         ISoundEvent soundEvent;
         if (gameObject.TryGetComponent<ISoundEvent>(out soundEvent))
         {
