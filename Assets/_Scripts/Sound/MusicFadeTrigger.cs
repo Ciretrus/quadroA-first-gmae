@@ -1,9 +1,11 @@
 using UnityEngine;
+using System.Collections;
 
 public class MusicFadeTrigger : MonoBehaviour
 {
     [SerializeField] private float fadeDuration = 2f; 
     [SerializeField] private float targetVolume = 0f; 
+
     private bool hasFaded = false;
 
     private void OnTriggerEnter(Collider other)
@@ -15,9 +17,9 @@ public class MusicFadeTrigger : MonoBehaviour
         }
     }
 
-    private System.Collections.IEnumerator FadeOutMusic()
+    private IEnumerator FadeOutMusic()
     {
-        AudioSource musicSource = DontDestroyMusic.Instance.audioSource;
+        AudioSource musicSource = DontDestroyMusic.instance.audioSource;
         float startVolume = musicSource.volume;
         float elapsed = 0f;
 

@@ -1,29 +1,32 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 public class DontDestroyMusic : MonoBehaviour
 {
+    public static DontDestroyMusic instance { get; private set; }
+
     [SerializeField] private Button m_newGameButton;
+
     private AudioSource m_audioSource;
-
     public AudioSource audioSource => m_audioSource;
+    private Coroutine m_musicFadeCoroutine;
 
-    public static DontDestroyMusic Instance { get; private set; }
-    
-
-    void Awake()
+    private void Awake()
     {
-        if (Instance != null && Instance != this)
+        if (instance != null && instance != this)
         {
             Destroy(gameObject);
             return;
         }
 
-        Instance = this;
+        instance = this;
         DontDestroyOnLoad(gameObject);
 
         if (m_audioSource == null)
+        {
             m_audioSource = GetComponent<AudioSource>();
+        }
     }
 
     private void OnValidate()
@@ -46,19 +49,17 @@ public class DontDestroyMusic : MonoBehaviour
         m_audioSource.loop = false;
     }
 
-    
-
     public void FadeMusic(float targetVolume, float duration)
     {
         if (m_musicFadeCoroutine != null)
+        {
             StopCoroutine(m_musicFadeCoroutine);
+        }
 
         m_musicFadeCoroutine = StartCoroutine(FadeMusicCoroutine(targetVolume, duration));
     }
 
-    private Coroutine m_musicFadeCoroutine;
-
-    private System.Collections.IEnumerator FadeMusicCoroutine(float targetVolume, float duration)
+    private IEnumerator FadeMusicCoroutine(float targetVolume, float duration)
     {
         float startVolume = m_audioSource.volume;
         float elapsed = 0f;

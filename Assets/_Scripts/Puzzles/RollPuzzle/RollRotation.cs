@@ -20,7 +20,6 @@ namespace Puzzles
 
         public void Rotate(int direction)
         {
-            //StopCoroutine(coroutine);
             m_coroutine = GetPosition(direction);
             StartCoroutine(m_coroutine);
         }

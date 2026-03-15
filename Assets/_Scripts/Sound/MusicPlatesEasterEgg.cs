@@ -4,6 +4,7 @@ using UnityEngine;
 public class MusicPlatesEasterEgg : MonoBehaviour
 {
     [SerializeField] private AudioSource m_audioSource;    
+
     private void OnValidate()
     {
         m_audioSource = GetComponent<AudioSource>();

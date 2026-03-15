@@ -10,15 +10,18 @@ public class UIController : MonoBehaviour
     [SerializeField] private TMP_Text m_tutorialText;
     [SerializeField] private float m_tutorialFadeTime = 1f;
     [SerializeField] private float m_tutorialShowTime = 1f;
+
     [Header("Inventory")]
     [SerializeField] private GameObject[] m_inventoryItems;
     [SerializeField] private GameObject m_inventoryUI;
     [SerializeField] private float m_inventoryFadeTime = 0.3f;
     [SerializeField] private float m_inventoryShowTime = 1f;
+
     [Header("Cursor")]
     [SerializeField] private Image m_objectActivationCursor;
     [SerializeField] private float m_cursorFadeTime = 0.3f;
     [SerializeField] private float m_cursorFadeValue = 0.5f;
+
     [Header("Notes")]
     [SerializeField] private Image m_noteImage;
 

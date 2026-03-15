@@ -2,6 +2,5 @@ using System;
 
 public interface ISoundEvent
 {
-    public event Action DiaryTrigger;
-
+    public event Action TriggerSound;
 }

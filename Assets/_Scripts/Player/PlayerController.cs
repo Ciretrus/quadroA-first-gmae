@@ -11,15 +11,18 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float m_gravity = 9.8f;
     [SerializeField] private float m_groundDrag;
     [SerializeField] private float m_airMultiplier;
+
     [Header("Speed settings")]
     [SerializeField] private float m_smoothInputSpeed = 0.2f;
     [SerializeField] private float m_walkSpeed = 10f;
     [SerializeField] private float m_sprintSpeed = 20f;
     [SerializeField] private float m_sneakSpeed = 5f;
     [SerializeField] private float m_jumpForce = 5f;
+
     [Header("Ground settings")]
     [SerializeField] private LayerMask m_groundMask;
     [SerializeField] private float m_checkGroundRadius = 0.3f;
+
     [Header("Slope settings")]
     [SerializeField] private float m_maxSlopeAngle = 50f;
     [SerializeField] private float m_minSlopeAngle = 3f;

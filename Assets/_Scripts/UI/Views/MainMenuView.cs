@@ -7,6 +7,7 @@ public class MainMenuView : MonoBehaviour
     [Header("Main menu elements")]
     [SerializeField] private GameObject m_mainMenu;
     [SerializeField] private GameObject m_settings;
+
     [Header("Main menu buttons")]
     [SerializeField] private Button m_resumeButton;
     [SerializeField] private Button m_newGameButton;

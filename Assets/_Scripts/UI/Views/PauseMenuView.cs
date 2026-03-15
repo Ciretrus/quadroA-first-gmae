@@ -8,6 +8,7 @@ public class PauseMenuView : MonoBehaviour
     [SerializeField] private GameObject m_pauseMenuCanvas;
     [SerializeField] private GameObject m_pauseMenu;
     [SerializeField] private GameObject m_settings;
+
     [Header("Pause menu buttons")]
     [SerializeField] private Button m_continueButton;
     [SerializeField] private Button m_settingsButton;

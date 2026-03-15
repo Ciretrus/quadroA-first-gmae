@@ -1,5 +1,3 @@
-using Puzzles;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
@@ -11,10 +9,10 @@ public class ActionEventSound : InteractableSound
     {
         if (m_source == null)
         {
-            TryGetComponent<AudioSource>(out m_source);
+            TryGetComponent(out m_source);
         }
-        ISoundEvent soundEvent;
-        if (gameObject.TryGetComponent<ISoundEvent>(out soundEvent))
+
+        if (gameObject.TryGetComponent(out ISoundEvent soundEvent))
         {
             m_soundEvent = soundEvent;
         }
@@ -22,11 +20,11 @@ public class ActionEventSound : InteractableSound
 
     private void OnEnable()
     {
-        m_soundEvent.DiaryTrigger += PlaySound;
+        m_soundEvent.TriggerSound += PlaySound;
     }
 
     private void OnDisable()
     {
-        m_soundEvent.DiaryTrigger -= PlaySound;
+        m_soundEvent.TriggerSound -= PlaySound;
     }
 }

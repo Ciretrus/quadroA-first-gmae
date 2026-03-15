@@ -5,15 +5,16 @@ using UnityEngine.UI;
 
 public static class AnimationController
 {
-    public static void Fade<T>(Tween tween, T uiItem, float endValue, float duration) 
+    public static Tween Fade<T>(Tween tween, T uiItem, float endValue, float duration) 
         where T : Graphic
     {
         tween?.Kill();
 
         tween = uiItem.DOFade(endValue, duration);
+        return tween;
     }
 
-    public static void FadeInAndOut<T>(Tween tween, T uiItem, float duration, float interval)
+    public static Tween FadeInAndOut<T>(Tween tween, T uiItem, float duration, float interval)
         where T : Graphic
     {
         tween?.Kill();
@@ -25,6 +26,7 @@ public static class AnimationController
         sequence.Append(uiItem.DOFade(0f, duration));
         
         tween = sequence;
+        return tween;
     }
 
     public static IEnumerator FadeInAndOut<T>(
