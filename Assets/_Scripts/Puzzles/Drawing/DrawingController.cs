@@ -4,6 +4,7 @@ using UnityEngine;
 public class DrawingController : MonoBehaviour
 {
     [SerializeField] private ParticleSystem m_flashParticleSystem;
+    [SerializeField] private AudioSource m_failAudioSource;
     [SerializeField] private DrawableLine[] m_drawableLines;
     [SerializeField] private DrawingData[] m_dataArray;
     [SerializeField] private DrawCanvas[] m_canvases;
@@ -48,6 +49,7 @@ public class DrawingController : MonoBehaviour
 
         m_flashParticleSystem.transform.position = transform.position;
         m_flashParticleSystem.Play();
+        m_failAudioSource.Play();
     }
 
     private string GetDrawnRuneName(List<Vector3> points)

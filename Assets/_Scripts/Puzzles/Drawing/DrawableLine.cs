@@ -1,5 +1,6 @@
 using Puzzles;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -8,6 +9,8 @@ using UnityEngine.InputSystem;
 public class DrawableLine : BasePuzzle
 {
     public event Action<List<Vector3>, Transform> DrawnSymbol;
+
+    [SerializeField] private AudioSource m_audioSource;
 
     [SerializeField] private LineRenderer m_lineRenderer;
     [SerializeField] private DrawingData m_data;
@@ -18,6 +21,11 @@ public class DrawableLine : BasePuzzle
     private List<Vector3> m_dotsList;
     private bool m_canDraw;
     private bool m_hasChalk => ServiceLocator.Resolve<Inventory>().ContainsItem(GlobalConstants.Collectables.DrawingChalk);
+    private bool m_needToIncrease = true;
+
+    private Coroutine m_increaseCoroutine;
+    private Coroutine m_decreaseCoroutine;
+    private bool m_wasPressed = false;
 
     public DrawingData data {  get { return m_data; } }
 
@@ -31,6 +39,7 @@ public class DrawableLine : BasePuzzle
     {
         m_dotsList = new List<Vector3>();
         m_data.solved = false;
+        m_audioSource.volume = 0f;
     }
 
     private void Start()
@@ -40,7 +49,11 @@ public class DrawableLine : BasePuzzle
 
     private void Update()
     {
-        if (m_canDraw && m_hasChalk) DrawLine();
+        if (m_canDraw && m_hasChalk)
+        {
+            DrawLine();
+            PlayDrawSound();
+        }
     }
 
     public override void CheckCondition()
@@ -89,6 +102,65 @@ public class DrawableLine : BasePuzzle
         {
             ResetDrawing();
         }
+    }
+
+    private void PlayDrawSound()
+    {
+        bool isPressed = Mouse.current.leftButton.isPressed;
+
+        if (isPressed != m_wasPressed)
+        {
+            if (isPressed)
+            {
+                StopAllVolumeCoroutines();
+                if (m_audioSource.volume < 1f)
+                    m_increaseCoroutine = StartCoroutine(IncreaseVolume());
+            }
+            else
+            {
+                StopAllVolumeCoroutines();
+                if (m_audioSource.volume > 0f)
+                    m_decreaseCoroutine = StartCoroutine(DecreaseVolume());
+            }
+
+            m_wasPressed = isPressed;
+        }
+    }
+
+    private void StopAllVolumeCoroutines()
+    {
+        if (m_increaseCoroutine != null)
+        {
+            StopCoroutine(m_increaseCoroutine);
+            m_increaseCoroutine = null;
+        }
+        if (m_decreaseCoroutine != null)
+        {
+            StopCoroutine(m_decreaseCoroutine);
+            m_decreaseCoroutine = null;
+        }
+    }
+
+    private IEnumerator IncreaseVolume()
+    {
+        for (float v = m_audioSource.volume; v < 1f; v += 0.01f)
+        {
+            m_audioSource.volume = v;
+            yield return new WaitForSeconds(0.01f);
+        }
+        m_audioSource.volume = 1f; 
+        m_increaseCoroutine = null;
+    }
+
+    private IEnumerator DecreaseVolume()
+    {
+        for (float v = m_audioSource.volume; v > 0f; v -= 0.01f)
+        {
+            m_audioSource.volume = v;
+            yield return new WaitForSeconds(0.01f);
+        }
+        m_audioSource.volume = 0f; 
+        m_decreaseCoroutine = null; 
     }
 
     private void DrawFigure(List<Vector3> points)

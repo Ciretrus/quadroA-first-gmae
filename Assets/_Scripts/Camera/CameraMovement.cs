@@ -8,17 +8,17 @@ public class CameraMovement : MonoBehaviour
     [SerializeField] private Transform m_player;
     [SerializeField] private Transform m_cameraPos;
     
-    [Header ("CameraShake")]
+    [Header("Camera shake settings")]
     [SerializeField] private float m_duration = 0.5f;
     [SerializeField] private float m_strength = 1f;
     [SerializeField] private int m_frequency = 10;
     [SerializeField] private float m_randomness = 90;
 
     private Tween m_shakeTween;
-    private float m_rotationX = 0f;
-    private Vector3 m_velocity;
     private Transform m_shakerPos;
+    private Vector3 m_velocity;
     private Vector3 m_shakerStartPos;
+    private float m_rotationX = 0f;
 
     private void Awake()
     {
@@ -26,6 +26,7 @@ public class CameraMovement : MonoBehaviour
         m_shakerPos = shaker.transform;
         m_shakerPos.position = m_cameraPos.position;
         m_shakerStartPos = m_shakerPos.position;
+
         transform.position = m_cameraPos.position;
     }
 
@@ -37,7 +38,7 @@ public class CameraMovement : MonoBehaviour
 
     private void LateUpdate()
     {
-        // TODO Move to new input system
+        // TODO Switch to new input system
         /*Vector2 mousePosition = m_input.Movement.Point.ReadValue<Vector2>();
         float mouseX = mousePosition.x * m_sensivity * Time.deltaTime;
         float mouseY = mousePosition.y * m_sensivity * Time.deltaTime;*/
@@ -50,10 +51,12 @@ public class CameraMovement : MonoBehaviour
 
         m_player.Rotate(Vector3.up * mouseX);
         transform.rotation = Quaternion.Euler(m_rotationX, m_player.eulerAngles.y, 0f);
-        var shakerShift = m_shakerStartPos - m_shakerPos.position;
         transform.position = Vector3.SmoothDamp(transform.position, m_cameraPos.position, ref m_velocity, m_smoothTime);
+        
+        Vector3 shakerShift = m_shakerStartPos - m_shakerPos.position;
         transform.position += shakerShift;
     }
+
     public void CameraShake()
     {
         transform.DOKill(true);

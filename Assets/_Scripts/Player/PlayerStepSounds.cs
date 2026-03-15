@@ -13,7 +13,7 @@ public class PlayerStepSounds : MonoBehaviour
     [SerializeField] private float m_sneakDelay = 0.7f;
     [SerializeField] float rayDistance = 1.5f;
 
-    private PlayerController m_controller;
+    private PlayerController m_playerController;
     private AudioClip m_currentClip;
     private float m_currentVolume = 1.0f;
     private float m_currentDelay;
@@ -21,17 +21,17 @@ public class PlayerStepSounds : MonoBehaviour
 
     private void Start()
     {
-        m_controller = ServiceLocator.Resolve<PlayerController>();
+        m_playerController = ServiceLocator.Resolve<PlayerController>();
         m_currentDelay = m_delay;
     }
 
     private void Update()
     {
-        if (m_controller.isSprinting)
+        if (m_playerController.isSprinting)
         {
             m_currentDelay = m_sprintDelay;
         }
-        else if (m_controller.isSneaking)
+        else if (m_playerController.isSneaking)
         {
             m_currentDelay = m_sneakDelay;
         }
@@ -40,13 +40,13 @@ public class PlayerStepSounds : MonoBehaviour
             m_currentDelay = m_delay;
         }
 
-        if (m_controller.isGrounded && m_controller.isMoving && !m_isPlaying)
+        if (m_playerController.isGrounded && m_playerController.isMoving && !m_isPlaying)
         {            
             RaycastHit hit;
+
             if (Physics.Raycast(transform.position, Vector3.down, out hit, rayDistance))
             {
-                SoundableFloor floor;
-                if (hit.transform.TryGetComponent<SoundableFloor>(out floor))
+                if (hit.transform.TryGetComponent(out SoundableFloor floor))
                 {
                     int randomIndex = Random.Range(0, floor.floorAudioClips.Count);
                     AudioClip sound = floor.floorAudioClips[randomIndex];
