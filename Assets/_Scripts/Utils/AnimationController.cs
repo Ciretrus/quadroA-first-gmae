@@ -1,34 +1,52 @@
-using UnityEngine;
-using System.Collections;
+using DG.Tweening;
 using System;
+using System.Collections;
+using UnityEngine.UI;
 
-// TODO Remove it completely/rework
 public static class AnimationController
 {
-    public static IEnumerator AnimateWithPause(
-        Animator animator, 
-        string firstAnimationName, 
-        string secondAnimationName,
-        float pauseTimer)
+    public static void Fade<T>(Tween tween, T uiItem, float endValue, float duration) 
+        where T : Graphic
     {
-        animator.Play(firstAnimationName);
-        yield return new WaitForSeconds(pauseTimer);
-        animator.Play(secondAnimationName);
+        tween?.Kill();
+
+        tween = uiItem.DOFade(endValue, duration);
     }
 
-    public static IEnumerator AnimateTransitionWithPause(
-        Animator animator,
-        Action mainAction,
-        Action action,
-        string firstAnimationName,
-        string secondAnimationName,
-        float pauseTimer)
+    public static void FadeInAndOut<T>(Tween tween, T uiItem, float duration, float interval)
+        where T : Graphic
     {
-        animator.Play(firstAnimationName);
+        tween?.Kill();
+
+        Sequence sequence = DOTween.Sequence();
+
+        sequence.Append(uiItem.DOFade(1f, duration));
+        sequence.AppendInterval(interval);
+        sequence.Append(uiItem.DOFade(0f, duration));
+        
+        tween = sequence;
+    }
+
+    public static IEnumerator FadeInAndOut<T>(
+        Action mainAction, 
+        Action action, 
+        Tween tween, 
+        T uiItem, 
+        float duration, 
+        float interval)
+        where T : Graphic
+    {
+        tween?.Kill();
+
+        Sequence sequence = DOTween.Sequence();
+
+        sequence.Append(uiItem.DOFade(1f, duration));
         action();
-        yield return new WaitForSeconds(pauseTimer);
-        mainAction(); 
+        yield return sequence.AppendInterval(interval).WaitForCompletion(); 
+        mainAction();
         action();
-        animator.Play(secondAnimationName);
+        sequence.Append(uiItem.DOFade(0f, duration));
+
+        tween = sequence;
     }
 }

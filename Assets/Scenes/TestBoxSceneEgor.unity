@@ -3511,12 +3511,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16dacb599a530d04182a7a66df2d4c33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TeleportAnimation
-  m_animator: {fileID: 1914851649}
-  m_pauseTimer: 2
   m_triggers:
   - {fileID: 555650277}
   - {fileID: 1907999216}
   - {fileID: 63300486}
+  m_blackImage: {fileID: 1914851652}
+  m_fadeTime: 1
+  m_showTime: 1
 --- !u!1001 &74312759
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23281,6 +23282,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1958111524566671423, guid: 6901c9bc146e4e04aa63563dd7a6bdfe, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 1998252404663274538, guid: 6901c9bc146e4e04aa63563dd7a6bdfe, type: 3}
       propertyPath: Priority
       value: 15
@@ -23297,9 +23302,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 5033946364443981674, guid: 6901c9bc146e4e04aa63563dd7a6bdfe, type: 3}
-      propertyPath: m_sounds.Array.size
-      value: 0
+    - target: {fileID: 3769843117937438718, guid: 6901c9bc146e4e04aa63563dd7a6bdfe, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6335994445593482671, guid: 6901c9bc146e4e04aa63563dd7a6bdfe, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7036142899256244154, guid: 6901c9bc146e4e04aa63563dd7a6bdfe, type: 3}
       propertyPath: m_audio
@@ -23312,6 +23321,10 @@ PrefabInstance:
     - target: {fileID: 7036142899256244154, guid: 6901c9bc146e4e04aa63563dd7a6bdfe, type: 3}
       propertyPath: m_activationTime
       value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7335106558760677122, guid: 6901c9bc146e4e04aa63563dd7a6bdfe, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8016919749616387251, guid: 6901c9bc146e4e04aa63563dd7a6bdfe, type: 3}
       propertyPath: m_LocalPosition.x
@@ -37558,15 +37571,15 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 810131565}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 9.11265}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.1637146, y: 1.1637146, z: 1.1637146}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1907159619}
+  m_Father: {fileID: 1266746020}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 826.87195, y: 928}
+  m_AnchoredPosition: {x: 0, y: -0.036376953}
   m_SizeDelta: {x: 600, y: 200}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &810131567
@@ -58445,7 +58458,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1658685959}
-  - {fileID: 1907159619}
+  - {fileID: 810131566}
   - {fileID: 1914851648}
   - {fileID: 2028843990}
   - {fileID: 167384270}
@@ -80753,6 +80766,7 @@ Transform:
   - {fileID: 1420162288}
   - {fileID: 1957070204}
   - {fileID: 428192443}
+  - {fileID: 1907159619}
   - {fileID: 74302009}
   - {fileID: 1781688251}
   - {fileID: 1078257495}
@@ -90003,7 +90017,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1907159619}
   - component: {fileID: 1907159617}
-  - component: {fileID: 1907159618}
   m_Layer: 0
   m_Name: NotificationSystem
   m_TagString: Untagged
@@ -90023,30 +90036,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4b6a58158fe4f64abf75154a599b70b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DiaryNotificationSystem
-  m_animator: {fileID: 1907159618}
-  m_pauseTimer: 1
---- !u!95 &1907159618
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1907159616}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 4f919f530e53eab46ada97e93b58bd04, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
+  m_notifText: {fileID: 810131567}
+  m_fadeTime: 1.2
+  m_showTime: 1
 --- !u!4 &1907159619
 Transform:
   m_ObjectHideFlags: 0
@@ -90056,12 +90048,11 @@ Transform:
   m_GameObject: {fileID: 1907159616}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -962.243, y: -539.9636, z: -10.604525}
+  m_LocalPosition: {x: -30.351242, y: -0.58862305, z: 0.5715952}
   m_LocalScale: {x: 1.1637146, y: 1.1637146, z: 1.1637146}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 810131566}
-  m_Father: {fileID: 1266746020}
+  m_Children: []
+  m_Father: {fileID: 1717595516}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1907693722
 GameObject:
@@ -90815,7 +90806,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1914851648}
   - component: {fileID: 1914851651}
-  - component: {fileID: 1914851650}
+  - component: {fileID: 1914851652}
   - component: {fileID: 1914851649}
   m_Layer: 5
   m_Name: BlackImage
@@ -90851,7 +90842,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1914851647}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 0190964dd00924c49808c43cd00f6c01, type: 2}
   m_CullingMode: 0
@@ -90865,33 +90856,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1914851650
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1914851647}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.RawImage
-  m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Texture: {fileID: 0}
-  m_UVRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
 --- !u!222 &1914851651
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -90900,6 +90864,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1914851647}
   m_CullTransparentMesh: 1
+--- !u!114 &1914851652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1914851647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &1916439042
 GameObject:
   m_ObjectHideFlags: 0
@@ -92980,7 +92974,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIController
   m_tutorialText: {fileID: 1658685960}
-  m_tutorialTimeFade: 1.5
+  m_tutorialFadeTime: 1
   m_tutorialShowTime: 0.5
   m_inventoryItems:
   - {fileID: 1931169928}
@@ -92993,11 +92987,11 @@ MonoBehaviour:
   - {fileID: 1429852886}
   - {fileID: 1766517974}
   m_inventoryUI: {fileID: 784430934}
-  m_inventoryTimeFade: 0.3
+  m_inventoryFadeTime: 0.3
   m_inventoryShowTime: 1.5
   m_objectActivationCursor: {fileID: 167384271}
-  m_cursorTimeFade: 0.1
-  m_cursorFade: 0.75
+  m_cursorFadeTime: 0.3
+  m_cursorFadeValue: 0.5
   m_noteImage: {fileID: 535843412}
   m_pauseMenuCanvas: {fileID: 1589523555}
   m_pauseMenu: {fileID: 1662229087}
@@ -100041,7 +100035,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2107383107}
   - component: {fileID: 2107383106}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ThiefEyeSound
   m_TagString: Untagged
   m_Icon: {fileID: 0}

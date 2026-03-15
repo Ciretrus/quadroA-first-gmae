@@ -3,24 +3,23 @@ using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using DG.Tweening;
-using System.Collections.Generic;
 using TMPro;
 
 public class UIController : MonoBehaviour
 {
     [Header("Tutorial")]
     [SerializeField] private TMP_Text m_tutorialText;
-    [SerializeField] private float m_tutorialTimeFade = 1f;
+    [SerializeField] private float m_tutorialFadeTime = 1f;
     [SerializeField] private float m_tutorialShowTime = 1f;
     [Header("Inventory")]
     [SerializeField] private GameObject[] m_inventoryItems;
     [SerializeField] private GameObject m_inventoryUI;
-    [SerializeField] private float m_inventoryTimeFade = 0.3f;
+    [SerializeField] private float m_inventoryFadeTime = 0.3f;
     [SerializeField] private float m_inventoryShowTime = 1f;
     [Header("Cursor")]
     [SerializeField] private Image m_objectActivationCursor;
-    [SerializeField] private float m_cursorTimeFade = 0.3f;
-    [SerializeField] private float m_cursorFade = 0.5f;
+    [SerializeField] private float m_cursorFadeTime = 0.3f;
+    [SerializeField] private float m_cursorFadeValue = 0.5f;
     [Header("Notes")]
     [SerializeField] private Image m_noteImage;
     [Header("Pause menu elements")]
@@ -36,9 +35,9 @@ public class UIController : MonoBehaviour
 
     private DiaryNotificationSystem m_notificationSystem;
     private Inventory m_inventory;
-    private List<Sequence> m_inventoryTweens = new ();
-    private Sequence m_tutorialTween;
-    private Tweener m_cursorTween;
+    private Tween m_tutorialTween;
+    private Tween m_cursorTween; 
+    private Tween m_inventoryTween;
     private bool m_onPause = false;
 
     private void Start()
@@ -67,16 +66,16 @@ public class UIController : MonoBehaviour
 
     public void ShowObjectActivationCursor(bool shouldBeActivated)
     {
-        float fade = 0f;
-        float time = m_cursorTimeFade;
+        float value = 0f;
+        float time = m_cursorFadeTime;
 
         if (shouldBeActivated) 
         { 
-            fade = m_cursorFade; 
-            time = m_cursorTimeFade * 2; 
+            value = m_cursorFadeValue; 
+            time *= 2; 
         }
-        m_cursorTween?.Kill();
-        m_cursorTween = m_objectActivationCursor.DOFade(fade, time);
+
+        AnimationController.Fade(m_cursorTween, m_objectActivationCursor, value, time);
     }
 
     public void ShowDiaryNotification()
@@ -92,27 +91,13 @@ public class UIController : MonoBehaviour
 
     public void ShowTutorial(string text)
     {
-        m_tutorialTween?.Kill();
-
         m_tutorialText.text = text;
 
-        var sequence = DOTween.Sequence();
-
-        sequence.Append(m_tutorialText.DOFade(1f, m_tutorialTimeFade));
-        sequence.AppendInterval(m_tutorialShowTime);
-        sequence.Append(m_tutorialText.DOFade(0f, m_tutorialTimeFade));
-
-        m_tutorialTween = sequence;
+        AnimationController.FadeInAndOut(m_tutorialTween, m_tutorialText, m_tutorialFadeTime, m_tutorialShowTime);
     }
 
     public void ShowInventory(InputAction.CallbackContext context)
     {
-        foreach (var tween in m_inventoryTweens)
-        {
-            tween?.Kill();
-        }
-        m_inventoryTweens.Clear();
-
         for (int i = 0; i < m_inventory.Counter; i++)
         {
             GameObject item = m_inventoryItems[i];
@@ -126,25 +111,15 @@ public class UIController : MonoBehaviour
                 Debug.Log(newItem.itemName);
                 itemText.text = newItem.count.ToString();
             }
-
-            else itemText.text = "";
+            else
+            {
+                itemText.text = "";
+            }
 
             itemImage.sprite = newItem.image;
 
-            var sequenceImage = DOTween.Sequence();
-            var sequenceText = DOTween.Sequence();
-
-            sequenceImage.Append(itemImage.DOFade(1f, m_inventoryTimeFade));
-            sequenceImage.AppendInterval(m_inventoryShowTime);
-            sequenceImage.Append(itemImage.DOFade(0f, m_inventoryTimeFade));
-
-            sequenceText.Append(itemText.DOFade(1f, m_inventoryTimeFade));
-            sequenceText.AppendInterval(m_inventoryShowTime);
-            sequenceText.Append(itemText.DOFade(0f, m_inventoryTimeFade));
-
-            Debug.Log("TRY DOTWEEN IMAGE");
-            m_inventoryTweens.Add(sequenceImage);
-            m_inventoryTweens.Add(sequenceText);
+            AnimationController.FadeInAndOut(m_inventoryTween, itemImage, m_inventoryFadeTime, m_inventoryShowTime);
+            AnimationController.FadeInAndOut(m_inventoryTween, itemText, m_inventoryFadeTime, m_inventoryShowTime);
         }
     }
 
