@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class SceneController : MonoBehaviour
+public class MainMenuController : MonoBehaviour
 {
     [SerializeField] private Button m_resumeButton;
     [SerializeField] private Button m_newGameButton;
@@ -32,7 +32,6 @@ public class SceneController : MonoBehaviour
 
     private void ResumeGame()
     {
-        // TODO Create save system
         Debug.Log("Game resumed");
     }
 

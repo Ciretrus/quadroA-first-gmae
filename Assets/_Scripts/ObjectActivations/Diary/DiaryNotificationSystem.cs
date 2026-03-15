@@ -1,16 +1,17 @@
+using DG.Tweening;
+using TMPro;
 using UnityEngine;
 
 public class DiaryNotificationSystem : MonoBehaviour
 {
-    [SerializeField] private Animator m_animator;
-    [SerializeField] private float m_pauseTimer = 1f;
+    [SerializeField] private TMP_Text m_notifText;
+    [SerializeField] private float m_fadeTime = 1.2f;
+    [SerializeField] private float m_showTime = 1f;
+
+    private Tween m_notifTween;
 
     public void TriggerNotification()
     {
-        StartCoroutine(AnimationController.AnimateWithPause(
-            m_animator, 
-            "NotificationFadeIn", 
-            "NotificationFadeOut", 
-            m_pauseTimer));
+        AnimationController.FadeInAndOut(m_notifTween, m_notifText, m_fadeTime, m_showTime);
     }
 }
