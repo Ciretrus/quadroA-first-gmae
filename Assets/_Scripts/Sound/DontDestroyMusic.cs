@@ -47,6 +47,7 @@ public class DontDestroyMusic : MonoBehaviour
     private void StartNewGame()
     {
         m_audioSource.loop = false;
+        m_audioSource.Stop();
     }
 
     public void FadeMusic(float targetVolume, float duration)
