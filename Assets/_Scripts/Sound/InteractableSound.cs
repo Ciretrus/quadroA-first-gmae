@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
@@ -16,7 +15,7 @@ public class InteractableSound : MonoBehaviour
     {
         if (m_source == null)
         {
-            TryGetComponent<AudioSource>(out m_source);
+            TryGetComponent(out m_source);
         }
     }
     
@@ -31,7 +30,10 @@ public class InteractableSound : MonoBehaviour
     public void PlaySound()
     {
         if (m_delayBetweenSounds && m_source.isPlaying)
+        {
             return;
+        }
+
         if (m_pitch)
         {
             PlayPitchedSound();
@@ -44,7 +46,6 @@ public class InteractableSound : MonoBehaviour
 
     public void PlayPitchedSound(float minPitch = 0.8f, float maxPitch = 1.2f)
     {
-        //Debug.LogWarning("Play Pitched");
         m_source.pitch = Random.Range(minPitch, maxPitch);
         AudioClip clip = GetRandomSound();
         m_source.PlayOneShot(clip);
@@ -54,7 +55,9 @@ public class InteractableSound : MonoBehaviour
     protected AudioClip? GetRandomSound()
     {
         if (m_sounds.Length == 0)
+        {
             return null;
+        }
 
         return m_sounds[Random.Range(0, m_sounds.Length)];
     }

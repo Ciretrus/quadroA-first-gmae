@@ -6,6 +6,7 @@ public class ItemsActivations : MonoBehaviour
 {
     [Header("Raycast settings")]
     [SerializeField] private float m_rayDistance = 1f;
+
     [Header("Rune-drawing settings")]
     [SerializeField] private float m_runeOffset = 1.5f;
 
@@ -63,7 +64,7 @@ public class ItemsActivations : MonoBehaviour
             {
                 m_uiController.ShowObjectActivationCursor(true);
 
-                // TODO Rework
+                // TODO Rework input
                 if (m_playerController.input.UI.Interact.WasPerformedThisFrame())
                 {
                     switch (m_interactable.type)
@@ -177,7 +178,7 @@ public class ItemsActivations : MonoBehaviour
 
         if (m_isUIBlocked)
         {
-            m_playerController.cameraPos.transform.localPosition = m_cameraPos; 
+            m_playerController.cameraPos.localPosition = m_cameraPos; 
 
             m_drawingRuneController.currentRune = null;
         }
@@ -190,9 +191,9 @@ public class ItemsActivations : MonoBehaviour
             Vector3 usablePos = interactable.transform.position;
             Vector3 newPos = new Vector3(usablePos.x, transform.position.y, usablePos.z);
             transform.position = newPos - (transform.forward * m_runeOffset);
-            m_playerController.cameraPos.transform.position = new Vector3(transform.position.x, usablePos.y, transform.position.z);
-            // TODO Remove (CameraMovement being disabled in ChangeMovementState())
-            m_camera.transform.position = m_playerController.cameraPos.transform.position;
+            m_playerController.cameraPos.position = new Vector3(transform.position.x, usablePos.y, transform.position.z);
+            
+            m_camera.transform.position = m_playerController.cameraPos.position;
 
             m_drawingRuneController.currentRune = m_runeDraw.drawableLine.data;
         }

@@ -11,15 +11,18 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float m_gravity = 9.8f;
     [SerializeField] private float m_groundDrag;
     [SerializeField] private float m_airMultiplier;
+
     [Header("Speed settings")]
     [SerializeField] private float m_smoothInputSpeed = 0.2f;
     [SerializeField] private float m_walkSpeed = 10f;
     [SerializeField] private float m_sprintSpeed = 20f;
     [SerializeField] private float m_sneakSpeed = 5f;
     [SerializeField] private float m_jumpForce = 5f;
+
     [Header("Ground settings")]
     [SerializeField] private LayerMask m_groundMask;
     [SerializeField] private float m_checkGroundRadius = 0.3f;
+
     [Header("Slope settings")]
     [SerializeField] private float m_maxSlopeAngle = 50f;
     [SerializeField] private float m_minSlopeAngle = 3f;
@@ -65,7 +68,7 @@ public class PlayerController : MonoBehaviour
         m_input.UI.Diary.performed += m_itemsActivations.ChangeUIMode;
         m_input.UI.Diary.performed += m_diary.ChangeState;
         m_input.UI.ThiefEye.performed += m_thiefEye.ActivateThiefEye;
-        m_input.UI.Pause.performed += m_uiController.Pause;
+        m_input.UI.Pause.performed += m_uiController.ShowPauseMenu;
         m_input.UI.Inventory.performed += m_uiController.ShowInventory;
     }
 
@@ -80,7 +83,7 @@ public class PlayerController : MonoBehaviour
         m_input.UI.Diary.performed -= m_itemsActivations.ChangeUIMode;
         m_input.UI.Diary.performed -= m_diary.ChangeState;
         m_input.UI.ThiefEye.performed -= m_thiefEye.ActivateThiefEye;
-        m_input.UI.Pause.performed -= m_uiController.Pause;
+        m_input.UI.Pause.performed -= m_uiController.ShowPauseMenu;
     }
 
     private void OnDestroy()
