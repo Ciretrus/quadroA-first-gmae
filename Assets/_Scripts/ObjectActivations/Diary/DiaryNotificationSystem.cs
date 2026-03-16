@@ -1,10 +1,11 @@
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DiaryNotificationSystem : MonoBehaviour
 {
-    [SerializeField] private TMP_Text m_notifText;
+    [SerializeField] private Image m_notifText;
     [SerializeField] private float m_fadeTime = 1.2f;
     [SerializeField] private float m_showTime = 1f;
 
