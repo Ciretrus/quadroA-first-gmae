@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.Events;
+
 namespace Puzzles
 {
     abstract public class BasePuzzle : MonoBehaviour
