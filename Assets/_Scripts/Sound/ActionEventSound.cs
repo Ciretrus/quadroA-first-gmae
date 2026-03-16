@@ -5,7 +5,7 @@ public class ActionEventSound : InteractableSound
 {
     private ISoundEvent m_soundEvent;
 
-    private void OnValidate()
+    private void Awake()
     {
         if (m_source == null)
         {
