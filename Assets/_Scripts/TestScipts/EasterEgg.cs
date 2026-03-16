@@ -22,8 +22,9 @@ public class EasterEgg : MonoBehaviour
     }
     public void ActivateEgg()
     {
-        m_gameObject.SetActive(true);
+        
         m_door.transform.DOLocalMove(m_newPos, m_time).SetEase(Ease.InQuad);
+        m_gameObject.SetActive(true);
 
     }
     
