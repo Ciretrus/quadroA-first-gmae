@@ -162,14 +162,9 @@ public class PlayerController : MonoBehaviour
             m_currentSpeed = m_walkSpeed;
         }
 
-        if (IsOnSlope())
-        {
-            moveDirection = SlopeMoveDirection(moveDirection);
-            m_rigidbody.AddForce(transform.TransformDirection(moveDirection) * (m_currentSpeed * 10f), ForceMode.Force);
-        }
-
         if (IsGrounded())
         {
+            moveDirection = SlopeMoveDirection(moveDirection);
             m_rigidbody.AddForce(transform.TransformDirection(moveDirection) * (m_currentSpeed * 10f), ForceMode.Force);
         }
 
