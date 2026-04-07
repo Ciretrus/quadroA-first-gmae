@@ -92,18 +92,23 @@ public class PlayerController : MonoBehaviour
     }
 
     private void FixedUpdate()
-    {
+    {   
         Move();
         ControlSpeed();
-
         if (IsGrounded() || IsOnSlope())
         {
             m_rigidbody.linearDamping = m_groundDrag;
+            if (m_input.Movement.Walk.ReadValue<Vector2>() == Vector2.zero && IsOnSlope())
+            { 
+                m_rigidbody.linearDamping = m_groundDrag*10;
+            }
+            
         }
         else
         {
             m_rigidbody.linearDamping = 0;
         }
+
     }
 
     public void SetPosition(Transform newTransform)
@@ -128,8 +133,7 @@ public class PlayerController : MonoBehaviour
 
     private void Move()
     {
-        m_rigidbody.useGravity = !IsOnSlope();
-
+        //m_rigidbody.useGravity = !IsOnSlope();
         Vector2 inputVector = m_input.Movement.Walk.ReadValue<Vector2>();
 
         if (inputVector == Vector2.zero)
